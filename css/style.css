@@ -1,0 +1,146 @@
+:root {
+    --main-bg: #ffffff;
+    --main-text: #000000;
+    --main-text-unselected: #dcdcdc;
+    --main-border: #cecece;
+    --main-border-unselected: #e8e8e8;
+    --main-font: 'Roboto', Helvetica, Arial, sans-serif;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    font-family: var(--main-font);
+    background-color: var(--main-bg);
+    color: var(--main-text);
+    font-size: 0.95em;
+    line-height: 1.5em;
+}
+
+input,
+optgroup,
+select,
+textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 0;
+    color: var(--main-text);
+    background: var(--main-bg);
+    border: none;
+    border-bottom: 1px solid var(--main-border);
+    margin: auto;
+    outline: 0;
+}
+
+h3 {
+    font-weight: 700;
+    line-height: 2.5em;
+}
+
+li {
+    display: inline-block;
+}
+
+.sticky {
+    position: sticky;
+    top: 0;
+}
+
+.flexbox {
+    display: flex;
+}
+
+.flexbox-centered {
+    justify-content: center;
+}
+
+.gridA {
+    grid-area: a;
+}
+
+.gridB {
+    grid-area: b;
+}
+
+.gridC {
+    grid-area: c;
+}
+
+.b {
+    background-color: var(--main-bg);
+    border: 1px solid var(--main-border);
+    color: var(--main-text);
+    padding: 0 4px 0 4px;
+    margin: 5px 2px 5px 2px;
+    border-radius: 5px;
+    text-decoration: none;
+    line-height: 1.75em;
+    cursor: default;
+    text-justify: inter-word;
+    display: inline-block;
+}
+
+.wrapperContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper {
+    display: grid;
+    grid-gap: 1em;
+    max-width: 1400px;
+    grid-template-columns: auto;
+    grid-template-areas:
+        "a a"
+        "b c";
+}
+
+.nav {
+    background: var(--main-bg);
+    padding: 10px 0 0.5em 0;
+}
+
+.nav input {
+    margin: 0.2em 0.2em 0.1em 0.2em;
+    width: 80%;
+    padding: 0.45em;
+}
+
+@media only screen and (max-width: 1400px) {
+    .contentTopBar {
+        padding-top: 0.4em;
+    }
+
+    .wrapper {
+        margin: 0 3em 0 3em;
+        grid-template-areas:
+            "a a"
+            "b c";
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .wrapper {
+        width: 100%;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-areas: "a""b""c";
+        margin: 0 1em 0 1em;
+    }
+
+    .nav {
+        margin: 0.2em 0.2em 0.1em 0.2em;
+        flex-wrap: wrap;
+        display: block;
+        position: initial;
+    }
+
+    .nav input {
+        width: 95%;
+        margin: 0.5em 0 0.5em 0;
+    }
+}
