@@ -41,7 +41,7 @@ awk '{gsub("</DT>","");print}' | \
 awk '{gsub("<DL>","");print}' | \
 awk '{gsub("</DL>","");print}' | \
 awk '{gsub("<p>","");print}' | \
-awk '{gsub("<A","<a class=\"button\"");print}' | \
+awk '{gsub("<A","<a class=\"b\"");print}' | \
 awk '{gsub("</A>","</a>");print}' | \
 sed 's/^[[:space:]]*//' | \
 awk NF > out.txt
