@@ -332,7 +332,7 @@
                 --main-text-unselected: #dcdcdc;
                 --main-border: #cecece;
                 --main-border-unselected: #e8e8e8;
-                --main-font: "Roboto", Helvetica, Arial, sans-serif;
+                --main-font: "Fira Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
             }
 
             body {
@@ -431,6 +431,7 @@
             .nav {
                 background: var(--main-bg);
                 padding: 10px 0 0.5em 0;
+                justify-content: space-evenly;
             }
 
             .nav input {
@@ -478,26 +479,32 @@
     <body>
         <div class="wrapperContainer">
             <div class="wrapper">
-                <div class="gridA nav flexbox sticky">
-                    <div><input placeholder="Filter..." type="text" value="" autocomplete="off" id="filterInput" onkeyup="searchFunction()" /></div>
-
+                <div class="gridA nav flexbox sticky flexbox-centered">
+                    <div><input placeholder="Filter..." type="text" value="" autocomplete="off" id="filterInput"
+                            onkeyup="searchFunction()" /></div>
                     <div>
-                        <form action="https://duckduckgo.com/" method="get"><input autocomplete="off" placeholder="DuckDuckGo" type="text" name="q" id="searchDDG" /></form>
+                        <form action="https://duckduckgo.com/" method="get"><input autocomplete="off" placeholder="DuckDuckGo"
+                                type="text" name="q" id="searchDDG" /></form>
                     </div>
                     <div>
-                        <form action="https://www.google.com/search?lr=lang_en" method="get"><input type="text" autocomplete="off" name="q" placeholder="Google English" id="searchGoogleEn" /></form>
+                        <form action="https://www.google.com/search?lr=lang_en" method="get"><input type="text" autocomplete="off"
+                                name="q" placeholder="Google English" id="searchGoogleEn" /></form>
                     </div>
                     <div>
-                        <form action="https://google.com/search" method="get"><input type="text" autocomplete="off" name="q" placeholder="Google" id="SearchGoogle" /></form>
+                        <form action="https://google.com/search" method="get"><input type="text" autocomplete="off" name="q"
+                                placeholder="Google" id="SearchGoogle" /></form>
                     </div>
                     <div>
-                        <form action="https://en.m.wikipedia.org/w/index.php" method="get"><input autocomplete="off" placeholder="Wikipedia" type="text" name="search" id="searchWikipedia" /></form>
+                        <form action="https://en.m.wikipedia.org/w/index.php" method="get"><input autocomplete="off"
+                                placeholder="Wikipedia" type="text" name="search" id="searchWikipedia" /></form>
                     </div>
                     <div>
-                        <form action="https://hinta.fi/haku" method="get"><input autocomplete="off" placeholder="Hinta.fi" type="text" name="q" id="searchHinta" /></form>
+                        <form action="https://hinta.fi/haku" method="get"><input autocomplete="off" placeholder="Hinta.fi" type="text"
+                                name="q" id="searchHinta" /></form>
                     </div>
                     <div>
-                        <form action="https://www.youtube.com/results" method="get"><input autocomplete="off" placeholder="YouTube" type="text" name="search_query" id="searchYouTube" /></form>
+                        <form action="https://www.youtube.com/results" method="get"><input autocomplete="off" placeholder="YouTube"
+                                type="text" name="search_query" id="searchYouTube" /></form>
                     </div>
                 </div>
                 <div class="gridB">
@@ -556,6 +563,7 @@
                     <a class="b" href="https://fullstackopen.com">Fullstack Open</a>
                     <a class="b" href="https://ndpsoftware.com/git-cheatsheet.html#loc=index;">Git cheatsheet</a>
                     <a class="b" href="https://github.github.com/training-kit/downloads/github-git-cheat-sheet.pdf">+PDF</a>
+                    <a class="b" href="https://app.pluralsight.com/">Pluralsight</a>
                     <br /><br />
                     <h3>Google</h3>
                     <a class="b" href="https://www.google.fi">Google</a>
@@ -571,16 +579,13 @@
                     <a class="b" href="https://www.youtube.com/feed/subscriptions">Subscriptions</a>
                     <a class="b" href="https://contacts.google.com">Contacts</a>
                     <a class="b" href="https://chat.google.com/">Chat</a>
+                    <a class="b" href="https://meet.google.com/_meet">Meet</a>
                     <br /><br />
-                    <h3>Dev blogs</h3>
-                    <a class="b" href="https://blog.codinghorror.com/">Coding Horror</a>
-                    <a class="b" href="https://www.troyhunt.com/">Troy Hunt</a>
-                    <a class="b" href="http://codebetter.com/">Code better</a>
-                    <a class="b" href="https://alistapart.com/">A List Apart</a>
-                    <a class="b" href="https://www.joelonsoftware.com/">Joel on Software</a>
-                    <a class="b" href="https://scottberkun.com/blog/">Scott Berkun</a>
-                    <a class="b" href="https://davidwalsh.name/">David Walsh</a>
-                    <a class="b" href="https://www.backblaze.com/blog/">BackBlaze Blog</a>
+                    <h3>Microsoft</h3>
+                    <a class="b" href="https://www.office.com/?auth=2">Portal</a>
+                    <a class="b" href="https://outlook.office365.com/mail/inbox">Outlook</a>
+                    <a class="b" href="https://teams.microsoft.com/">Teams</a>
+                    <a class="b" href="https://www.office.com/launch/word?auth=2">Word</a>
                     <br /><br />
                     <h3>Social</h3>
                     <a class="b" href="https://twitter.com">Twitter</a>
@@ -594,6 +599,16 @@
                     <a class="b" href="https://www.facebook.com/?sk=h_chr">FB Recent</a>
                     <a class="b" href="https://www.facebook.com/events/">FB Events</a>
                     <a class="b" href="https://www.facebook.com/groups/?category=membership">FB Groups</a>
+                    <br /><br />
+                    <h3>Dev blogs</h3>
+                    <a class="b" href="https://blog.codinghorror.com/">Coding Horror</a>
+                    <a class="b" href="https://www.troyhunt.com/">Troy Hunt</a>
+                    <a class="b" href="http://codebetter.com/">Code better</a>
+                    <a class="b" href="https://alistapart.com/">A List Apart</a>
+                    <a class="b" href="https://www.joelonsoftware.com/">Joel on Software</a>
+                    <a class="b" href="https://scottberkun.com/blog/">Scott Berkun</a>
+                    <a class="b" href="https://davidwalsh.name/">David Walsh</a>
+                    <a class="b" href="https://www.backblaze.com/blog/">BackBlaze Blog</a>
                     <br /><br />
                     <h3>Podcasts</h3>
                     <a class="b" href="http://atp.fm/">ATP</a>
