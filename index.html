@@ -319,13 +319,6 @@
                 resize: vertical;
             }
 
-            .chromeframe {
-                margin: 0.2em 0;
-                background: #ccc;
-                color: #000;
-                padding: 0.2em 0;
-            }
-
             :root {
                 --main-bg: #ffffff;
                 --main-text: #000000;
@@ -418,6 +411,10 @@
                 justify-content: center;
             }
 
+            .time-container span{
+                margin-right: 1em;
+            }
+
             .wrapper {
                 display: grid;
                 grid-gap: 1em;
@@ -508,6 +505,12 @@
                     </div>
                 </div>
                 <div class="gridB">
+                    <div class="time-container">
+                        <span onclick="selectById('currentDate');" id="currentDate"></span>
+                        <span onclick="selectById('currentTime');" id="currentTime"></span>
+                        <span onclick="selectById('isoDate');" id="isoDate"></span>
+                        <span onclick="selectById('isoDateWithTime');" id="isoDateWithTime"></span>
+                    </div>
                     <h3>Common</h3>
                     <!-- <a class="b" href="URLHEREURL">NAMEHEREHERE</a> -->
                     <a class="b" href="https://news.ycombinator.com">Hacker News</a>
@@ -1446,6 +1449,27 @@
                 })(Mousetrap);
             </script>
 
+            <script>
+                const cDate = new Date();
+                const dateString = `${cDate.getDate()}.${cDate.getMonth() + 1}.${cDate.getFullYear()}`;
+                const timeString = `${cDate.getHours()}:${cDate.getMinutes()}`;
+                const ISOdateString = cDate.toISOString().slice(0, 10);
+                const ISOdateWithTime = `${ISOdateString}_${cDate.getHours()}${cDate.getMinutes()}`
+
+                document.getElementById('currentDate').innerText = dateString;
+                document.getElementById('currentTime').innerText = timeString;
+                document.getElementById('isoDate').innerText = ISOdateString;
+                document.getElementById('isoDateWithTime').innerText = ISOdateWithTime;
+
+                const selectById = (id) => {
+                    window.getSelection()
+                        .selectAllChildren(
+                            document.getElementById(id)
+                        );
+                }
+
+            </script>
+
             <script type="text/javascript">
                 const favIcon = "iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAKElEQVRIiWNgGAXDHjAisf/TwmwmKhs6CgYhGE1Fo4ByMJqKRsEQAADWCQMKYvEFtQAAAABJRU5ErkJggg==";
                 const docHead = document.getElementsByTagName("head")[0];
@@ -1506,6 +1530,12 @@
                     document.getElementById("searchYouTube").focus();
                     return false;
                 });
+
+                Mousetrap.bind("q", () => selectById('currentDate'));
+                Mousetrap.bind("w", () => selectById('currentTime'));
+                Mousetrap.bind("e", () => selectById('isoDate'));
+                Mousetrap.bind("r", () => selectById('isoDateWithTime'));
+
             </script>
         </div>
     </body>
