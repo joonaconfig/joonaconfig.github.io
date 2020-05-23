@@ -1451,10 +1451,12 @@
 
             <script>
                 const cDate = new Date();
+                const cHours = ('0' + cDate.getHours()).slice(-2);
+                const cMinutes = ('0' + cDate.getMinutes()).slice(-2);
                 const dateString = `${cDate.getDate()}.${cDate.getMonth() + 1}.${cDate.getFullYear()}`;
                 const timeString = `${cDate.getHours()}:${cDate.getMinutes()}`;
                 const ISOdateString = cDate.toISOString().slice(0, 10);
-                const ISOdateWithTime = `${ISOdateString}_${cDate.getHours()}${cDate.getMinutes()}`
+                const ISOdateWithTime = `${ISOdateString}_${cHours}${cMinutes}`
 
                 document.getElementById('currentDate').innerText = dateString;
                 document.getElementById('currentTime').innerText = timeString;
