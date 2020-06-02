@@ -426,17 +426,9 @@
         }
 
         .wrapper {
-            /* display: grid; */
-            /* grid-gap: 1em; */
             max-width: 1400px;
             display: flex;
             flex-direction: column;
-            /* grid-template-columns: auto; */
-            /* grid-template-areas:
-                "a a"
-                "b b"
-                "c c"
-                "d d"; */
         }
 
         .nav {
@@ -462,10 +454,13 @@
         }
 
         @media only screen and (max-width: 750px) {
+
+            .b {
+                font-size: 1em;
+            }
+
             .wrapper {
                 width: 100%;
-                /* grid-template-columns: repeat(1, 1fr); */
-                /* grid-template-areas: "a""b""c""d"; */
                 margin: 0 1em 0 1em;
             }
 
