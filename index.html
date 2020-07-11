@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width" />
     <meta name="theme-color" content="#000000" />
-    <link rel="shortcut icon" type="image/x-icon" href="data:image/x-icon;" />
     <title>Start</title>
 
     <style>
@@ -328,14 +327,14 @@
             --text-unselected: #dcdcdc;
             --border: #CCCCCC;
             --border-unselected: #e8e8e8;
-            --font: 'Fira Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            --font: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
         }
 
         body {
             font-family: var(--font);
             background-color: var(--bg-color);
             color: var(--text-color);
-            font-size: 0.9em;
+            font-size: 0.8rem;
         }
 
         input,
@@ -380,7 +379,7 @@
             justify-content: center;
         }
 
-        .b {
+        .linkCollection div a {
             background-color: var(--bg-color);
             border: 1px solid var(--border);
             color: var(--text-color);
@@ -393,11 +392,6 @@
             text-justify: inter-word;
             display: inline-block;
             font-size: 10pt;
-        }
-
-        .s {
-            font-size: 10pt;
-            color: #616161;
         }
 
         .lcContainer {
@@ -421,8 +415,19 @@
             justify-content: center;
         }
 
+        .time-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
         .time-container span {
             margin-right: 1em;
+        }
+
+        .time-container div button {
+            border: none;
+            margin: 0.25em;
+            background-color: transparent;
         }
 
         .wrapper {
@@ -443,7 +448,7 @@
             padding: 0.45em;
         }
 
-        @media only screen and (max-width: 1400px) {
+        @media only screen and (max-width: 1300px) {
             .contentTopBar {
                 padding-top: 0.4em;
             }
@@ -454,14 +459,13 @@
         }
 
         @media only screen and (max-width: 750px) {
-
-            .b {
-                font-size: 1em;
-            }
-
             .wrapper {
                 width: 100%;
                 margin: 0 1em 0 1em;
+            }
+
+            .time-container {
+                display: none;
             }
 
             .linkCollection {
@@ -493,32 +497,57 @@
     <div class="wrapperContainer">
         <div class="wrapper">
             <div class="nav flexbox sticky flexbox-centered">
-                <div><input placeholder="Filter..." type="text" value="" autocomplete="off" id="filterInput" onkeyup="searchFunction()" /></div>
-                <div>
-                    <form action="https://duckduckgo.com/" method="get"><input autocomplete="off" placeholder="DuckDuckGo" type="text" name="q" id="searchDDG" /></form>
+                <div><input placeholder="(1) Filter..." type="text" value="" autocomplete="off" id="filterInput"
+                        onkeyup="searchFunction()" />
                 </div>
                 <div>
-                    <form action="https://www.google.com/search?lr=lang_en" method="get"><input type="text" autocomplete="off" name="q" placeholder="Google English" id="searchGoogleEn" /></form>
+                    <form action="https://duckduckgo.com/" method="get"><input autocomplete="off"
+                            placeholder="(2) DuckDuckGo" type="text" name="q" id="searchDDG" /></form>
                 </div>
                 <div>
-                    <form action="https://google.com/search" method="get"><input type="text" autocomplete="off" name="q" placeholder="Google" id="SearchGoogle" /></form>
+                    <form action="https://www.google.com/search?lr=lang_en" method="get"><input type="text"
+                            autocomplete="off" name="q" placeholder="(3) Google English" id="searchGoogleEn" /></form>
                 </div>
                 <div>
-                    <form action="https://en.m.wikipedia.org/w/index.php" method="get"><input autocomplete="off" placeholder="Wikipedia" type="text" name="search" id="searchWikipedia" /></form>
+                    <form action="https://google.com/search" method="get"><input type="text" autocomplete="off" name="q"
+                            placeholder="(4) Google" id="SearchGoogle" /></form>
                 </div>
                 <div>
-                    <form action="https://hinta.fi/haku" method="get"><input autocomplete="off" placeholder="Hinta.fi" type="text" name="q" id="searchHinta" /></form>
+                    <form action="https://en.m.wikipedia.org/w/index.php" method="get"><input autocomplete="off"
+                            placeholder="(5) Wikipedia" type="text" name="search" id="searchWikipedia" /></form>
                 </div>
                 <div>
-                    <form action="https://www.youtube.com/results" method="get"><input autocomplete="off" placeholder="YouTube" type="text" name="search_query" id="searchYouTube" /></form>
+                    <form action="https://hinta.fi/haku" method="get"><input autocomplete="off"
+                            placeholder="(6) Hinta.fi" type="text" name="q" id="searchHinta" /></form>
+                </div>
+                <div>
+                    <form action="https://www.youtube.com/results" method="get"><input autocomplete="off"
+                            placeholder="(7) YouTube" type="text" name="search_query" id="searchYouTube" /></form>
                 </div>
             </div>
             <div style="padding-top: 1em;">
                 <div class="time-container">
-                    <span onclick="selectById('currentDate');" id="currentDate"></span>
-                    <span onclick="selectById('currentTime');" id="currentTime"></span>
-                    <span onclick="selectById('isoDate');" id="isoDate"></span>
-                    <span onclick="selectById('isoDateWithTime');" id="isoDateWithTime"></span>
+                    <div>
+
+                        <span onclick="selectById('currentDate');" id="currentDate"></span>
+                        <span onclick="selectById('currentTime');" id="currentTime"></span>
+                        <span onclick="selectById('isoDate');" id="isoDate"></span>
+                        <span onclick="selectById('isoDateWithTime');" id="isoDateWithTime"></span>
+                        <!-- <span onclick="selectById('ISOdateWithId');" id="ISOdateWithId"></span> -->
+                        <span onclick="selectById('randomId');" id="randomId"></span>
+                        <span onclick="selectById('yearWithId');" id="yearWithId"></span>
+                    </div>
+                    <div>
+                        <button onclick="showDates()">Show</button>
+                        <button onclick="regenerateId()">Update</button>
+                        <button onclick="generateIdAndHideDates(12)">12</button>
+                        <button onclick="generateIdAndHideDates(32)">32</button>
+                        <button onclick="generateIdAndHideDates(48)">48</button>
+
+                        <input style="width: 5em;" type="number" name="Length" id="randomIdLength" min="1" value="12"
+                            onchange="updateValues()">
+                        <!-- <span onclick="selectById('ISOdateWithIdShort');" id="ISOdateWithIdShort"></span> -->
+                    </div>
                 </div>
 
             </div>
@@ -527,241 +556,256 @@
 
                     <div>
                         <h3>Common</h3>
-                        <!-- <a class="b" href="URLHEREURL">NAMEHEREHERE</a> -->
-                        <a class="b" href="https://news.ycombinator.com">Hacker News</a>
-                        <a class="b" href="https://lobste.rs/">Lobste.rs</a>
-                        <a class="b" href="https://en.m.wikipedia.org/wiki/Main_Page">Wikipedia</a>
-                        <a class="b" href="https://unsplash.com/">Unsplash</a>
-                        <a class="b" href="https://mega.nz/">Mega.nz</a>
-                        <a class="b" href="https://www.speedtest.net/">Speedtest</a>
-                        <a class="b" href="https://fast.com/">Fast.com</a>
-                        <a class="b" href="https://www.wolframalpha.com/">Wolfram Alpha</a>
-                        <a class="b" href="https://www.dropbox.com/login">Dropbox</a>
-                        <a class="b" href="https://bbs.io-tech.fi/">TechBBS</a>
-                        <a class="b" href="https://www.startpage.com">StartPage</a>
-                        <a class="b" href="https://www.geeksforgeeks.org/">Geeks for Geeks</a>
-                        <a class="b" href="https://trello.com">Trello</a>
-                        <a class="b" href="http://krewgaming.com/forums/">KrewGaming</a>
-                        <a class="b" href="https://linustechtips.com/">LinusTechTips</a>
+                        <!-- <a href="URLHEREURL">NAMEHEREHERE</a> -->
+                        <a href="https://news.ycombinator.com">Hacker News</a>
+                        <a href="https://lobste.rs/">Lobste.rs</a>
+                        <a href="https://en.m.wikipedia.org/wiki/Main_Page">Wikipedia</a>
+                        <a href="https://unsplash.com/">Unsplash</a>
+                        <a href="https://mega.nz/">Mega.nz</a>
+                        <a href="https://www.speedtest.net/">Speedtest</a>
+                        <a href="https://fast.com/">Fast.com</a>
+                        <a href="https://www.wolframalpha.com/">Wolfram Alpha</a>
+                        <a href="https://www.dropbox.com/login">Dropbox</a>
+                        <a href="https://bbs.io-tech.fi/">TechBBS</a>
+                        <a href="https://www.startpage.com">StartPage</a>
+                        <a href="https://www.geeksforgeeks.org/">Geeks for Geeks</a>
+                        <a href="https://trello.com">Trello</a>
+                        <a href="http://krewgaming.com/forums/">KrewGaming</a>
+                        <a href="https://linustechtips.com/">LinusTechTips</a>
                         <br /><br />
                         <h3>Dev</h3>
-                        <a class="b" href="https://github.com/">Github</a>
-                        <a class="b" href="https://about.gitlab.com/">GitLab</a>
-                        <a class="b" href="https://stackoverflow.com/">Stack Overflow</a>
-                        <a class="b" href="https://www.w3schools.com/">W3 Schools</a>
-                        <a class="b" href="https://www.ascii.cl/htmlcodes.htm">HTML codes</a>
-                        <a class="b" href="https://docs.microsoft.com/en-us/dotnet/csharp/">Microsoft C#</a>
-                        <a class="b" href="https://angular.io/docs">Angluar docs</a>
-                        <a class="b" href="https://reactjs.org/docs/react-api.html">React</a>
-                        <a class="b" href="https://getbootstrap.com/docs/4.0/getting-started/contents/">Bootstrap</a>
-                        <a class="b" href="https://ionicframework.com/docs/">Ionic</a>
-                        <a class="b" href="https://css-tricks.com/">CSS Tricks</a>
-                        <a class="b" href="https://www.w3schools.com/cssref/">w3c CSS</a>
-                        <a class="b" href="https://developer.mozilla.org/en-US/docs/Web">Mozilla web docs</a>
-                        <a class="b" href="https://developer.mozilla.org/bm/docs/Web/JavaScript/Index">MSDN js index</a>
-                        <a class="b" href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309">Swift</a>
-                        <a class="b" href="https://docs.microsoft.com/en-us/dotnet/">.NET</a>
-                        <a class="b" href="https://autohotkey.com/">AHK</a>
-                        <a class="b" href="https://autohotkey.com/docs/AutoHotkey.htm">AHK doc</a>
-                        <a class="b" href="https://autohotkey.com/docs/scripts/">AHK showcase</a>
-                        <a class="b" href="https://www.virustotal.com/#/home/upload">Virustotal</a>
-                        <a class="b" href="https://meyerweb.com/eric/tools/dencoder/">URL decoder/encoder</a>
-                        <a class="b" href="https://humaan.com/checklist/">Website checklist</a>
-                        <a class="b" href="https://codepen.io/">Codepen</a>
-                        <a class="b" href="http://zoo.cs.yale.edu/classes/cs223/f2018/index.html">CPSC223</a>
-                        <a class="b" href="http://www.cs.yale.edu/homes/aspnes/classes/223/notes.html">CPSC223 Notes</a>
-                        <a class="b" href="http://zoo.cs.yale.edu/classes/cs223/f2018/Assignments/index.html">CPSC223 Assignments</a>
-                        <a class="b" href="http://zoo.cs.yale.edu/classes/cs223/f2018/Examples/index.html">CSPSC223 Examples</a>
-                        <a class="b" href="https://www.programiz.com/c-programming/examples">C examples</a>
-                        <a class="b" href="https://www.programiz.com/c-programming/c-functions-examples">C function examples</a>
-                        <a class="b" href="https://regexr.com">Regexr</a>
-                        <a class="b" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions">MDN Regex</a>
-                        <a class="b" href="https://www.wireshark.org/tools/oui-lookup.html">Wireshark OUI lookup</a>
-                        <a class="b" href="https://mooc.fi/">Mooc</a>
-                        <a class="b" href="https://fullstackopen.com">Fullstack Open</a>
-                        <a class="b" href="https://ndpsoftware.com/git-cheatsheet.html#loc=index;">Git cheatsheet</a>
-                        <a class="b" href="https://github.github.com/training-kit/downloads/github-git-cheat-sheet.pdf">+PDF</a>
-                        <a class="b" href="https://app.pluralsight.com/">Pluralsight</a>
-                        <a class="b" href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">CSS Flexbox</a>
+                        <a href="https://github.com/">Github</a>
+                        <a href="https://about.gitlab.com/">GitLab</a>
+                        <a href="https://stackoverflow.com/">Stack Overflow</a>
+                        <a href="https://www.w3schools.com/">W3 Schools</a>
+                        <a href="https://www.ascii.cl/htmlcodes.htm">HTML codes</a>
+                        <a href="https://docs.microsoft.com/en-us/dotnet/csharp/">Microsoft C#</a>
+                        <a href="https://angular.io/docs">Angluar docs</a>
+                        <a href="https://reactjs.org/docs/react-api.html">React</a>
+                        <a href="https://getbootstrap.com/docs/4.0/getting-started/contents/">Bootstrap</a>
+                        <a href="https://ionicframework.com/docs/">Ionic</a>
+                        <a href="https://css-tricks.com/">CSS Tricks</a>
+                        <a href="https://www.w3schools.com/cssref/">w3c CSS</a>
+                        <a href="https://developer.mozilla.org/en-US/docs/Web">Mozilla web docs</a>
+                        <a href="https://developer.mozilla.org/bm/docs/Web/JavaScript/Index">MSDN js index</a>
+                        <a
+                            href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309">Swift</a>
+                        <a href="https://docs.microsoft.com/en-us/dotnet/">.NET</a>
+                        <a href="https://autohotkey.com/">AHK</a>
+                        <a href="https://autohotkey.com/docs/AutoHotkey.htm">AHK doc</a>
+                        <a href="https://autohotkey.com/docs/scripts/">AHK showcase</a>
+                        <a href="https://www.virustotal.com/#/home/upload">Virustotal</a>
+                        <a href="https://meyerweb.com/eric/tools/dencoder/">URL decoder/encoder</a>
+                        <a href="https://humaan.com/checklist/">Website checklist</a>
+                        <a href="https://codepen.io/">Codepen</a>
+                        <a href="http://zoo.cs.yale.edu/classes/cs223/f2018/index.html">CPSC223</a>
+                        <a href="http://www.cs.yale.edu/homes/aspnes/classes/223/notes.html">CPSC223 Notes</a>
+                        <a href="http://zoo.cs.yale.edu/classes/cs223/f2018/Assignments/index.html">CPSC223
+                            Assignments</a>
+                        <a href="http://zoo.cs.yale.edu/classes/cs223/f2018/Examples/index.html">CSPSC223 Examples</a>
+                        <a href="https://www.programiz.com/c-programming/examples">C examples</a>
+                        <a href="https://www.programiz.com/c-programming/c-functions-examples">C function examples</a>
+                        <a href="https://regexr.com">Regexr</a>
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions">MDN
+                            Regex</a>
+                        <a href="https://www.wireshark.org/tools/oui-lookup.html">Wireshark OUI lookup</a>
+                        <a href="https://mooc.fi/">Mooc</a>
+                        <a href="https://fullstackopen.com">Fullstack Open</a>
+                        <a href="https://ndpsoftware.com/git-cheatsheet.html#loc=index;">Git cheatsheet</a>
+                        <a href="https://github.github.com/training-kit/downloads/github-git-cheat-sheet.pdf">+PDF</a>
+                        <a href="https://app.pluralsight.com/">Pluralsight</a>
+                        <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">CSS Flexbox</a>
 
                     </div>
 
                     <div>
                         <h3>Google</h3>
-                        <a class="b" href="https://www.google.fi">Google</a>
-                        <a class="b" href="https://www.google.fi/maps">Maps</a>
-                        <a class="b" href="https://drive.google.com/drive/my-drive">Drive</a>
-                        <a class="b" href="https://photos.google.com">Photos</a>
-                        <a class="b" href="https://calendar.google.com/calendar">Calendar</a>
-                        <a class="b" href="https://hangouts.google.com">Hangouts</a>
-                        <a class="b" href="https://mail.google.com/mail/u/0/#inbox">Gmail</a>
-                        <a class="b" href="https://www.youtube.com/?gl=FI">YouTube</a>
-                        <a class="b" href="https://translate.google.com">Translate</a>
-                        <a class="b" href="https://news.google.com/news/">News</a>
-                        <a class="b" href="https://www.youtube.com/feed/subscriptions">Subscriptions</a>
-                        <a class="b" href="https://contacts.google.com">Contacts</a>
-                        <a class="b" href="https://chat.google.com/">Chat</a>
-                        <a class="b" href="https://meet.google.com/_meet">Meet</a>
+                        <a href="https://www.google.fi">Google</a>
+                        <a href="https://www.google.fi/maps">Maps</a>
+                        <a href="https://drive.google.com/drive/my-drive">Drive</a>
+                        <a href="https://photos.google.com">Photos</a>
+                        <a href="https://calendar.google.com/calendar">Calendar</a>
+                        <a href="https://hangouts.google.com">Hangouts</a>
+                        <a href="https://mail.google.com/mail/u/0/#inbox">Gmail</a>
+                        <a href="https://www.youtube.com/?gl=FI">YouTube</a>
+                        <a href="https://translate.google.com">Translate</a>
+                        <a href="https://news.google.com/news/">News</a>
+                        <a href="https://www.youtube.com/feed/subscriptions">Subscriptions</a>
+                        <a href="https://contacts.google.com">Contacts</a>
+                        <a href="https://chat.google.com/">Chat</a>
+                        <a href="https://meet.google.com/_meet">Meet</a>
                         <br /><br />
                         <h3>Microsoft</h3>
-                        <a class="b" href="https://www.office.com/?auth=2">Portal</a>
-                        <a class="b" href="https://outlook.office365.com/mail/inbox">Outlook</a>
-                        <a class="b" href="https://teams.microsoft.com/">Teams</a>
-                        <a class="b" href="https://www.office.com/launch/word?auth=2">Word</a>
+                        <a href="https://www.office.com/?auth=2">Portal</a>
+                        <a href="https://outlook.office365.com/mail/inbox">Outlook</a>
+                        <a href="https://teams.microsoft.com/">Teams</a>
+                        <a href="https://www.office.com/launch/word?auth=2">Word</a>
+                        <a href="https://portal.azure.com/">Azure Portal</a>
                         <br /><br />
                         <h3>News</h3>
-                        <a class="b" href="http://arstechnica.com/">Ars Technica</a>
-                        <a class="b" href="http://www.theverge.com/">The Verge</a>
-                        <a class="b" href="http://www.anandtech.com/">AnandTech</a>
-                        <a class="b" href="http://www.pcper.com/">Pc Per</a>
-                        <a class="b" href="http://www.hardware.fi/">Hardware.fi</a>
-                        <a class="b" href="https://www.io-tech.fi">io-tech</a>
-                        <a class="b" href="https://rbot.fi/">Rbot</a>
-                        <a class="b" href="http://allthingsd.com/">All Things Digital</a>
-                        <a class="b" href="http://aphnetworks.com/">APH</a>
-                        <a class="b" href="http://hexus.net/">Hexus</a>
-                        <a class="b" href="http://recode.net/">ReCode</a>
-                        <a class="b" href="http://www.techpowerup.com/">TechPowerUp</a>
-                        <a class="b" href="https://techreport.com">The Tech Report</a>
-                        <a class="b" href="https://slashdot.org">Slashdot</a>
+                        <a href="http://arstechnica.com/">Ars Technica</a>
+                        <a href="http://www.theverge.com/">The Verge</a>
+                        <a href="http://www.anandtech.com/">AnandTech</a>
+                        <a href="http://www.pcper.com/">Pc Per</a>
+                        <a href="http://www.hardware.fi/">Hardware.fi</a>
+                        <a href="https://www.io-tech.fi">io-tech</a>
+                        <a href="https://rbot.fi/">Rbot</a>
+                        <a href="http://allthingsd.com/">All Things Digital</a>
+                        <a href="http://aphnetworks.com/">APH</a>
+                        <a href="http://hexus.net/">Hexus</a>
+                        <a href="http://recode.net/">ReCode</a>
+                        <a href="http://www.techpowerup.com/">TechPowerUp</a>
+                        <a href="https://techreport.com">The Tech Report</a>
+                        <a href="https://slashdot.org">Slashdot</a>
                         <br /><br />
-                        <a class="b" href="http://yle.fi/uutiset">Yle Uutiset</a>
-                        <a class="b" href="http://yle.fi/uutiset/osasto/news/">Yle News</a>
-                        <a class="b" href="http://www.kaleva.fi/">Kaleva</a>
-                        <a class="b" href="http://www.hs.fi/">HS</a>
-                        <a class="b" href="https://www.ampparit.com/">Ampparit</a>
-                        <a class="b" href="https://medium.com">Medium</a>
-                        <a class="b" href="https://www.vice.com">Vice</a>
-                        <a class="b" href="https://news.vice.com">Vice News</a>
-                        <a class="b" href="http://www.theguardian.com/uk">The Guardian</a>
-                        <a class="b" href="https://theoutline.com">The Outline</a>
+                        <a href="http://yle.fi/uutiset">Yle Uutiset</a>
+                        <a href="http://yle.fi/uutiset/osasto/news/">Yle News</a>
+                        <a href="http://www.kaleva.fi/">Kaleva</a>
+                        <a href="http://www.hs.fi/">HS</a>
+                        <a href="https://www.ampparit.com/">Ampparit</a>
+                        <a href="https://medium.com">Medium</a>
+                        <a href="https://www.vice.com">Vice</a>
+                        <a href="https://news.vice.com">Vice News</a>
+                        <a href="http://www.theguardian.com/uk">The Guardian</a>
+                        <a href="https://theoutline.com">The Outline</a>
 
                         <br /><br />
                         <h3>Social</h3>
-                        <a class="b" href="https://twitter.com">Twitter</a>
-                        <a class="b" href="https://tweetdeck.twitter.com/">Tweetdeck</a>
-                        <a class="b" href="https://discordapp.com/activity">Discord Web App</a>
-                        <a class="b" href="https://web.telegram.org/">Telegram</a>
-                        <a class="b" href="https://www.facebook.com">Facebook</a>
-                        <a class="b" href="https://www.messenger.com">Messenger</a>
-                        <a class="b" href="https://web.whatsapp.com">WhatsApp</a>
-                        <a class="b" href="https://www.linkedin.com/">LinkedIn</a>
-                        <a class="b" href="https://www.facebook.com/?sk=h_chr">FB Recent</a>
-                        <a class="b" href="https://www.facebook.com/events/">FB Events</a>
-                        <a class="b" href="https://www.facebook.com/groups/?category=membership">FB Groups</a>
+                        <a href="https://twitter.com">Twitter</a>
+                        <a href="https://tweetdeck.twitter.com/">Tweetdeck</a>
+                        <a href="https://discordapp.com/activity">Discord Web App</a>
+                        <a href="https://web.telegram.org/">Telegram</a>
+                        <a href="https://www.facebook.com">Facebook</a>
+                        <a href="https://www.messenger.com">Messenger</a>
+                        <a href="https://web.whatsapp.com">WhatsApp</a>
+                        <a href="https://www.linkedin.com/">LinkedIn</a>
+                        <a href="https://www.facebook.com/?sk=h_chr">FB Recent</a>
+                        <a href="https://www.facebook.com/events/">FB Events</a>
+                        <a href="https://www.facebook.com/groups/?category=membership">FB Groups</a>
 
                     </div>
 
                     <div>
                         <h3>Dev blogs</h3>
-                        <a class="b" href="https://blog.codinghorror.com/">Coding Horror</a>
-                        <a class="b" href="https://www.troyhunt.com/">Troy Hunt</a>
-                        <a class="b" href="https://alistapart.com/">A List Apart</a>
-                        <a class="b" href="https://www.joelonsoftware.com/">Joel on Software</a>
-                        <a class="b" href="https://scottberkun.com/blog/">Scott Berkun</a>
-                        <a class="b" href="https://davidwalsh.name/">David Walsh</a>
-                        <a class="b" href="https://www.backblaze.com/blog/">BackBlaze Blog</a>
-                        <a class="b" href="http://codebetter.com/">Code better</a>
+                        <a href="https://blog.codinghorror.com/">Coding Horror</a>
+                        <a href="https://www.troyhunt.com/">Troy Hunt</a>
+                        <a href="https://alistapart.com/">A List Apart</a>
+                        <a href="https://www.joelonsoftware.com/">Joel on Software</a>
+                        <a href="https://scottberkun.com/blog/">Scott Berkun</a>
+                        <a href="https://davidwalsh.name/">David Walsh</a>
+                        <a href="https://www.backblaze.com/blog/">BackBlaze Blog</a>
+                        <a href="http://codebetter.com/">Code better</a>
                         <br /><br />
                         <h3>TechBBS</h3>
-                        <a class="b" href="https://bbs.io-tech.fi/whats-new/">Uutta</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/io-tech-fi-uutiset.67/">Uutiset</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/io-tech-fi-artikkelit.68/">Artikkelit</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/palaute-tiedotukset-ja-arvonnat.21/">Palaute</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/naeytoenohjaimet.6/">GPU</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/tallennus.7/">Tallennus</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/kotelot-ja-virtalaehteet.11/">Kotelot, PSU</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/buildit-setupit-kotelomodifikaatiot-diy.92/">Builds, DIY</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/jaeaehdytys.54/">Jäähdytys</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/konepaketit.10/">Konepaketit</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/kannettavat-tietokoneet.41/">Kannettavat</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/muut-pc-komponentit-ja-oheislaitteet.72/">Muut komponentit</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/ongelmat.39/">Ongelmat</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/yleinen-rautakeskustelu.9/">Yleinen rautakeskustelu</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/aelypuhelimet-tabletit-aelykellot-ja-muu-mobiili.15/">Mobiili</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/viihde-elektroniikka-kamerat-ja-kodinkoneet.59/">Viihde-elektroniikka</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/elektroniikka-rakentelu-ja-muut-diy-projektit.60/">Rakentelu ja DIY</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/internet-tietoliikenne-ja-tietoturva.25/">Verkko</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/kaeyttaejien-omat-tuotetestit.65/">Käyttäjien tuotetestit</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/ohjelmointi-pelikehitys-ja-muu-sovelluskehitys.24/">Ohjelmointi</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/yleinen-ohjelmistokeskustelu.14/">Ohjelmistokeskutelu</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/testiohjelmat-ja-tulokset.64/">Testiohjelmat ja tulokset</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/autot-ja-liikenne.48/">Autot ja liikenne</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/urheilu.40/">Urheilu</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/tv-nettisarjat-elokuvat-ja-musiikki.42/">TV</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/ruoka-juoma.63/">Ruoka ja juoma</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/yleistae-keskustelua.18/">Yleistä</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/myydaeaen.80/">Myydään</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/ostetaan.45/">Ostetaan</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/vaihdetaan.46/">Vaihdetaan</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/lahjoitetaan.47/">Lahjoitetaan</a>
+                        <a href="https://bbs.io-tech.fi/whats-new/">Uutta</a>
+                        <a href="https://bbs.io-tech.fi/forums/io-tech-fi-uutiset.67/">Uutiset</a>
+                        <a href="https://bbs.io-tech.fi/forums/io-tech-fi-artikkelit.68/">Artikkelit</a>
+                        <a href="https://bbs.io-tech.fi/forums/palaute-tiedotukset-ja-arvonnat.21/">Palaute</a>
+                        <a href="https://bbs.io-tech.fi/forums/naeytoenohjaimet.6/">GPU</a>
+                        <a href="https://bbs.io-tech.fi/forums/tallennus.7/">Tallennus</a>
+                        <a href="https://bbs.io-tech.fi/forums/kotelot-ja-virtalaehteet.11/">Kotelot, PSU</a>
+                        <a href="https://bbs.io-tech.fi/forums/buildit-setupit-kotelomodifikaatiot-diy.92/">Builds,
+                            DIY</a>
+                        <a href="https://bbs.io-tech.fi/forums/jaeaehdytys.54/">Jäähdytys</a>
+                        <a href="https://bbs.io-tech.fi/forums/konepaketit.10/">Konepaketit</a>
+                        <a href="https://bbs.io-tech.fi/forums/kannettavat-tietokoneet.41/">Kannettavat</a>
+                        <a href="https://bbs.io-tech.fi/forums/muut-pc-komponentit-ja-oheislaitteet.72/">Muut
+                            komponentit</a>
+                        <a href="https://bbs.io-tech.fi/forums/ongelmat.39/">Ongelmat</a>
+                        <a href="https://bbs.io-tech.fi/forums/yleinen-rautakeskustelu.9/">Yleinen rautakeskustelu</a>
+                        <a
+                            href="https://bbs.io-tech.fi/forums/aelypuhelimet-tabletit-aelykellot-ja-muu-mobiili.15/">Mobiili</a>
+                        <a
+                            href="https://bbs.io-tech.fi/forums/viihde-elektroniikka-kamerat-ja-kodinkoneet.59/">Viihde-elektroniikka</a>
+                        <a href="https://bbs.io-tech.fi/forums/elektroniikka-rakentelu-ja-muut-diy-projektit.60/">Rakentelu
+                            ja DIY</a>
+                        <a href="https://bbs.io-tech.fi/forums/internet-tietoliikenne-ja-tietoturva.25/">Verkko</a>
+                        <a href="https://bbs.io-tech.fi/forums/kaeyttaejien-omat-tuotetestit.65/">Käyttäjien
+                            tuotetestit</a>
+                        <a
+                            href="https://bbs.io-tech.fi/forums/ohjelmointi-pelikehitys-ja-muu-sovelluskehitys.24/">Ohjelmointi</a>
+                        <a href="https://bbs.io-tech.fi/forums/yleinen-ohjelmistokeskustelu.14/">Ohjelmistokeskutelu</a>
+                        <a href="https://bbs.io-tech.fi/forums/testiohjelmat-ja-tulokset.64/">Testiohjelmat ja
+                            tulokset</a>
+                        <a href="https://bbs.io-tech.fi/forums/autot-ja-liikenne.48/">Autot ja liikenne</a>
+                        <a href="https://bbs.io-tech.fi/forums/urheilu.40/">Urheilu</a>
+                        <a href="https://bbs.io-tech.fi/forums/tv-nettisarjat-elokuvat-ja-musiikki.42/">TV</a>
+                        <a href="https://bbs.io-tech.fi/forums/ruoka-juoma.63/">Ruoka ja juoma</a>
+                        <a href="https://bbs.io-tech.fi/forums/yleistae-keskustelua.18/">Yleistä</a>
+                        <a href="https://bbs.io-tech.fi/forums/myydaeaen.80/">Myydään</a>
+                        <a href="https://bbs.io-tech.fi/forums/ostetaan.45/">Ostetaan</a>
+                        <a href="https://bbs.io-tech.fi/forums/vaihdetaan.46/">Vaihdetaan</a>
+                        <a href="https://bbs.io-tech.fi/forums/lahjoitetaan.47/">Lahjoitetaan</a>
                     </div>
 
                     <div>
 
                         <h3>Weather (FMI)</h3>
-                        <!-- <a class="b" href="http://ilmatieteenlaitos.fi/etusivu">FMI</a> -->
-                        <a class="b" href="http://ilmatieteenlaitos.fi/saa/oulu">Oulu</a>
-                        <a class="b" href="https://www.yr.no/place/Finland/Laponia/Sodankyl%C3%A4/">Sodankylä</a>
-                        <a class="b" href="http://ilmatieteenlaitos.fi/saa/helsinki">Helsinki</a>
-                        <a class="b" href="https://ilmatieteenlaitos.fi/saa/tampere">Tampere</a>
-                        <a class="b" href="https://ilmatieteenlaitos.fi/saa/ruotsi/tukholma">Stockholm</a>
-                        <a class="b" href="https://ilmatieteenlaitos.fi/saa/britannia/lontoo">London</a>
-                        <a class="b" href="https://ilmatieteenlaitos.fi/saa/tanska/k%C3%B6%C3%B6penhamina">Copenhagen</a>
-                        <a class="b" href="https://ilmatieteenlaitos.fi/saa/ranska/pariisi">Paris</a>
-                        <a class="b" href="https://ilmatieteenlaitos.fi/saa/viro/tallinna">Tallinn</a>
-                        <a class="b" href="https://ilmatieteenlaitos.fi/saa/latvia/riika">Riga</a>
-                        <a class="b" href="https://ilmatieteenlaitos.fi/saa/saksa/berliini">Berlin</a>
-                        <a class="b" href="https://ilmatieteenlaitos.fi/saa/it%C3%A4valta/wien">Vienna</a>
-                        <a class="b" href="https://ilmatieteenlaitos.fi/saa/sveitsi/z%C3%BCrich">Zürich</a>
+                        <!-- <a href="http://ilmatieteenlaitos.fi/etusivu">FMI</a> -->
+                        <a href="http://ilmatieteenlaitos.fi/saa/oulu">Oulu</a>
+                        <a href="https://www.yr.no/place/Finland/Laponia/Sodankyl%C3%A4/">Sodankylä</a>
+                        <a href="http://ilmatieteenlaitos.fi/saa/helsinki">Helsinki</a>
+                        <a href="https://ilmatieteenlaitos.fi/saa/tampere">Tampere</a>
+                        <a href="https://ilmatieteenlaitos.fi/saa/ruotsi/tukholma">Stockholm</a>
+                        <a href="https://ilmatieteenlaitos.fi/saa/britannia/lontoo">London</a>
+                        <a href="https://ilmatieteenlaitos.fi/saa/tanska/k%C3%B6%C3%B6penhamina">Copenhagen</a>
+                        <a href="https://ilmatieteenlaitos.fi/saa/ranska/pariisi">Paris</a>
+                        <a href="https://ilmatieteenlaitos.fi/saa/viro/tallinna">Tallinn</a>
+                        <a href="https://ilmatieteenlaitos.fi/saa/latvia/riika">Riga</a>
+                        <a href="https://ilmatieteenlaitos.fi/saa/saksa/berliini">Berlin</a>
+                        <a href="https://ilmatieteenlaitos.fi/saa/it%C3%A4valta/wien">Vienna</a>
+                        <a href="https://ilmatieteenlaitos.fi/saa/sveitsi/z%C3%BCrich">Zürich</a>
 
                         <br /><br />
                         <h3>Weather (YR)</h3>
-                        <!-- <a class="b" href="https://www.yr.no/forsida.aspx?spr=eng">YR</a> -->
-                        <a class="b" href="https://www.yr.no/place/Finland/Oulu/Oulu/?spr=eng">Oulu</a>
-                        <a class="b" href="http://ilmatieteenlaitos.fi/saa/sodankylä">Sodankylä</a>
-                        <a class="b" href="https://www.yr.no/place/Finland/Southern_Finland/Helsinki/?spr=eng">Helsinki</a>
-                        <a class="b" href="https://www.yr.no/place/Finland/Western_Finland/Tampere/?spr=eng">Tampere</a>
-                        <a class="b" href="https://www.yr.no/sted/Sverige/Stockholm/Stockholm/?spr=eng">Stockholm</a>
-                        <a class="b" href="https://www.yr.no/place/United_Kingdom/England/London/?spr=eng">London</a>
-                        <a class="b" href="https://www.yr.no/place/Denmark/Capital/Copenhagen/?spr=eng">Copenhagen</a>
-                        <a class="b" href="https://www.yr.no/sted/Frankrike/%C3%8Ele-de-France/Paris/?spr=eng">Paris</a>
-                        <a class="b" href="https://www.yr.no/place/Estonia/Harjumaa/Tallinn/?spr=eng">Tallinn</a>
-                        <a class="b" href="https://www.yr.no/place/Latvia/Riga/Riga/?spr=eng">Riga</a>
-                        <a class="b" href="https://www.yr.no/place/Germany/Berlin/Berlin/?spr=eng">Berlin</a>
-                        <a class="b" href="https://www.yr.no/place/Austria/Vienna/Vienna/?spr=eng">Vienna</a>
-                        <a class="b" href="https://www.yr.no/place/Switzerland/Z%C3%BCrich/Zurich/?spr=eng">Zürich</a>
+                        <!-- <a href="https://www.yr.no/forsida.aspx?spr=eng">YR</a> -->
+                        <a href="https://www.yr.no/place/Finland/Oulu/Oulu/?spr=eng">Oulu</a>
+                        <a href="http://ilmatieteenlaitos.fi/saa/sodankylä">Sodankylä</a>
+                        <a href="https://www.yr.no/place/Finland/Southern_Finland/Helsinki/?spr=eng">Helsinki</a>
+                        <a href="https://www.yr.no/place/Finland/Western_Finland/Tampere/?spr=eng">Tampere</a>
+                        <a href="https://www.yr.no/sted/Sverige/Stockholm/Stockholm/?spr=eng">Stockholm</a>
+                        <a href="https://www.yr.no/place/United_Kingdom/England/London/?spr=eng">London</a>
+                        <a href="https://www.yr.no/place/Denmark/Capital/Copenhagen/?spr=eng">Copenhagen</a>
+                        <a href="https://www.yr.no/sted/Frankrike/%C3%8Ele-de-France/Paris/?spr=eng">Paris</a>
+                        <a href="https://www.yr.no/place/Estonia/Harjumaa/Tallinn/?spr=eng">Tallinn</a>
+                        <a href="https://www.yr.no/place/Latvia/Riga/Riga/?spr=eng">Riga</a>
+                        <a href="https://www.yr.no/place/Germany/Berlin/Berlin/?spr=eng">Berlin</a>
+                        <a href="https://www.yr.no/place/Austria/Vienna/Vienna/?spr=eng">Vienna</a>
+                        <a href="https://www.yr.no/place/Switzerland/Z%C3%BCrich/Zurich/?spr=eng">Zürich</a>
                         <br /><br />
                         <h3>Podcasts</h3>
-                        <a class="b" href="http://atp.fm/">ATP</a>
-                        <a class="b" href="https://mission.org/missiondaily/">Mission Daily</a>
-                        <a class="b" href="https://www.relay.fm/analogue/">Analogue</a>
-                        <a class="b" href="https://www.relay.fm/clockwise">Clockwise</a>
-                        <a class="b" href="https://www.relay.fm/connected">Connected</a>
-                        <a class="b" href="https://www.relay.fm/material">Material</a>
-                        <a class="b" href="https://www.relay.fm/radar">Under the Radar</a>
-                        <a class="b" href="https://www.relay.fm/upgrade">Upgrade</a>
-                        <a class="b" href="https://www.abc.net.au/radionational/programs/futuretense/">Future Tense</a>
-                        <a class="b" href="https://darknetdiaries.com/">Darknet Diaries</a>
-                        <a class="b" href="https://www.nytimes.com/column/the-daily">The Daily</a>
-                        <a class="b" href="https://99percentinvisible.org/">99% Invisible</a>
-                        <a class="b" href="https://www.npr.org/sections/money/">NPR Planet Money</a>
-                        <a class="b" href="https://www.npr.org/podcasts/510318/up-first">NPR Up First</a>
-                        <a class="b" href="https://www.vox.com/today-explained">Vox: Today Explained</a>
-                        <a class="b" href="https://podcasts.apple.com/us/podcast/id1474429475">MKBHD Waveform</a>
-                        <a class="b" href="https://syntax.fm/">Syntax Podcast</a>
-                        <a class="b" href="https://www.wired.co.uk/podcasts">The WIRED Podcast</a>
-                        <a class="b" href="http://www.hellointernet.fm/">Hello Internet</a>
-                        <a class="b" href="https://www.relay.fm/cortex">Cortex</a>
-                        <a class="b" href="https://www.functionalgeekery.com/">Functional Geekery</a>
-                        <a class="b" href="https://choice.npr.org/index.html?origin=https://www.npr.org/podcasts/510313/how-i-built-this">How I built This</a>
-                        <a class="b" href="https://www.npr.org/podcasts/510289/planet-money">Planet Money</a>
-                        <a class="b" href="https://www.npr.org/podcasts/510308/hidden-brain">Hidden Brain</a>
-                        <a class="b" href="https://www.bloomberg.com/podcasts/decrypted">Decrypted</a>
-                        <a class="b" href="https://www.wnycstudios.org/podcasts/notetoself">Note to Self</a>
-                        <a class="b" href="https://a16z.com/podcasts/">a16z</a>
-                        <a class="b" href="http://5by5.tv/b2w">Back to Work</a>
-                        <a class="b" href="https://player.fm/featured/tech">Player FM Featured</a>
+                        <a href="http://atp.fm/">ATP</a>
+                        <a href="https://mission.org/missiondaily/">Mission Daily</a>
+                        <a href="https://www.relay.fm/analogue/">Analogue</a>
+                        <a href="https://www.relay.fm/clockwise">Clockwise</a>
+                        <a href="https://www.relay.fm/connected">Connected</a>
+                        <a href="https://www.relay.fm/material">Material</a>
+                        <a href="https://www.relay.fm/radar">Under the Radar</a>
+                        <a href="https://www.relay.fm/upgrade">Upgrade</a>
+                        <a href="https://www.abc.net.au/radionational/programs/futuretense/">Future Tense</a>
+                        <a href="https://darknetdiaries.com/">Darknet Diaries</a>
+                        <a href="https://www.nytimes.com/column/the-daily">The Daily</a>
+                        <a href="https://99percentinvisible.org/">99% Invisible</a>
+                        <a href="https://www.npr.org/sections/money/">NPR Planet Money</a>
+                        <a href="https://www.npr.org/podcasts/510318/up-first">NPR Up First</a>
+                        <a href="https://www.vox.com/today-explained">Vox: Today Explained</a>
+                        <a href="https://podcasts.apple.com/us/podcast/id1474429475">MKBHD Waveform</a>
+                        <a href="https://syntax.fm/">Syntax Podcast</a>
+                        <a href="https://www.wired.co.uk/podcasts">The WIRED Podcast</a>
+                        <a href="http://www.hellointernet.fm/">Hello Internet</a>
+                        <a href="https://www.relay.fm/cortex">Cortex</a>
+                        <a href="https://www.functionalgeekery.com/">Functional Geekery</a>
+                        <a
+                            href="https://choice.npr.org/index.html?origin=https://www.npr.org/podcasts/510313/how-i-built-this">How
+                            I built
+                            This</a>
+                        <a href="https://www.npr.org/podcasts/510289/planet-money">Planet Money</a>
+                        <a href="https://www.npr.org/podcasts/510308/hidden-brain">Hidden Brain</a>
+                        <a href="https://www.bloomberg.com/podcasts/decrypted">Decrypted</a>
+                        <a href="https://www.wnycstudios.org/podcasts/notetoself">Note to Self</a>
+                        <a href="https://a16z.com/podcasts/">a16z</a>
+                        <a href="http://5by5.tv/b2w">Back to Work</a>
+                        <a href="https://player.fm/featured/tech">Player FM Featured</a>
 
                     </div>
 
@@ -774,55 +818,70 @@
 
                     <div>
                         <h3>Stores</h3>
-                        <a class="b" href="https://hinta.fi">Hinta.fi</a>
-                        <a class="b" href="https://hinta.fi/tarjoukset">Hinta tarjoukset</a>
-                        <a class="b" href="https://murobbs.muropaketti.com/threads/hyvaet-tarjoukset-ketju-v3-0.1358648/page-999999">MuroBBS tarjoukset</a>
-                        <a class="b" href="https://bbs.io-tech.fi/threads/hyvaet-tarjoukset-ei-keskustelua.151/page-999999">io-tech tarjoukset</a>
-                        <a class="b" href="https://www.jimms.fi">Jimm's</a>
-                        <a class="b" href="https://www.jimms.fi/fi/Product/Search?i=100&ob=4&q=b-stock">b-stock</a>
-                        <a class="b" href="https://murobbs.muropaketti.com/threads/sinae-hyoedyt-siitae-mitae-jimms-tietaeae.760477/">Jimm's BBS</a>
-                        <a class="b" href="https://bbs.io-tech.fi/threads/sinae-hyoedyt-siitae-mitae-jimms-tietaeae-jimms-pc-n-oma-ketju.727/">Jimm's io</a>
-                        <a class="b" href="http://cdon.fi">CDON</a>
-                        <a class="b" href="https://www.gigantti.fi">Gigantti</a>
-                        <a class="b" href="http://www.apple.com/fi-edu/shop">Apple EDU</a>
-                        <a class="b" href="https://www.data-systems.fi">Data Systems</a>
+                        <a href="https://hinta.fi">Hinta.fi</a>
+                        <a href="https://hinta.fi/tarjoukset">Hinta tarjoukset</a>
+                        <a
+                            href="https://murobbs.muropaketti.com/threads/hyvaet-tarjoukset-ketju-v3-0.1358648/page-999999">MuroBBS
+                            tarjoukset</a>
+                        <a href="https://bbs.io-tech.fi/threads/hyvaet-tarjoukset-ei-keskustelua.151/page-999999">io-tech
+                            tarjoukset</a>
+                        <a href="https://www.jimms.fi">Jimm's</a>
+                        <a href="https://www.jimms.fi/fi/Product/Search?i=100&ob=4&q=b-stock">b-stock</a>
+                        <a
+                            href="https://murobbs.muropaketti.com/threads/sinae-hyoedyt-siitae-mitae-jimms-tietaeae.760477/">Jimm's
+                            BBS</a>
+                        <a
+                            href="https://bbs.io-tech.fi/threads/sinae-hyoedyt-siitae-mitae-jimms-tietaeae-jimms-pc-n-oma-ketju.727/">Jimm's
+                            io</a>
+                        <a href="http://cdon.fi">CDON</a>
+                        <a href="https://www.gigantti.fi">Gigantti</a>
+                        <a href="http://www.apple.com/fi-edu/shop">Apple EDU</a>
+                        <a href="https://www.data-systems.fi">Data Systems</a>
                     </div>
 
                     <div>
                         <h3>&nbsp;</h3>
-                        <a class="b" href="https://www.power.fi/">Power</a>
-                        <a class="b" href="https://www.aliexpress.com/">Aliexpress</a>
-                        <a class="b" href="https://www.euronics.fi/">Euronics</a>
-                        <a class="b" href="http://www.verkkokauppa.com/fi/">Verkkokauppa</a>
-                        <a class="b" href="https://www.thomann.de/fi/index.html?sid=2aba707766a5d8d856ddd9a99a26f55d">Thomann</a>
-                        <a class="b" href="https://www.teraset.net/">Teraset</a>
-                        <a class="b" href="https://www.hobbyhall.fi/">Hobbyhall</a>
-                        <a class="b" href="https://www.deltaco.fi/">Deltaco</a>
-                        <a class="b" href="https://tietokonekauppa.fi/">Tietokonekauppa</a>
-                        <a class="b" href="https://www.karkkainen.com/verkkokauppa/">Kärkkäinen</a>
-                        <a class="b" href="https://www.beesting.fi/">Beesting</a>
-                        <a class="b" href="https://www.dustinhome.fi/">Dustin</a>
-                        <a class="b" href="https://www.proshop.fi/">Proshop</a>
+                        <a href="https://www.power.fi/">Power</a>
+                        <a href="https://www.aliexpress.com/">Aliexpress</a>
+                        <a href="https://www.euronics.fi/">Euronics</a>
+                        <a href="http://www.verkkokauppa.com/fi/">Verkkokauppa</a>
+                        <a href="https://www.thomann.de/fi/index.html?sid=2aba707766a5d8d856ddd9a99a26f55d">Thomann</a>
+                        <a href="https://www.teraset.net/">Teraset</a>
+                        <a href="https://www.hobbyhall.fi/">Hobbyhall</a>
+                        <a href="https://www.deltaco.fi/">Deltaco</a>
+                        <a href="https://tietokonekauppa.fi/">Tietokonekauppa</a>
+                        <a href="https://www.karkkainen.com/verkkokauppa/">Kärkkäinen</a>
+                        <a href="https://www.beesting.fi/">Beesting</a>
+                        <a href="https://www.dustinhome.fi/">Dustin</a>
+                        <a href="https://www.proshop.fi/">Proshop</a>
                     </div>
 
                     <div>
                         <h3>io-tech myydään</h3>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/myydaeaen.80/">Myydään</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/hiiret-ja-naeppaeimistoet.30/">Hiiret ja näppäimistöt</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/audiolaitteet-ja-tarvikkeet.36/">Audio</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/ssd-asemat-ja-kiintolevyt.77/">SSD etc.</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/muut-pc-komponentit.27/">Muut</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/naeytoet-ja-videotykit.31/">Näytöt</a>
-                        <a class="b" href="https://bbs.io-tech.fi/forums/aelypuhelimet-taulutietokoneet-aelykellot.33/">Laitteet</a>
+                        <a href="https://bbs.io-tech.fi/forums/myydaeaen.80/">Myydään</a>
+                        <a href="https://bbs.io-tech.fi/forums/hiiret-ja-naeppaeimistoet.30/">Hiiret ja näppäimistöt</a>
+                        <a href="https://bbs.io-tech.fi/forums/audiolaitteet-ja-tarvikkeet.36/">Audio</a>
+                        <a href="https://bbs.io-tech.fi/forums/ssd-asemat-ja-kiintolevyt.77/">SSD etc.</a>
+                        <a href="https://bbs.io-tech.fi/forums/muut-pc-komponentit.27/">Muut</a>
+                        <a href="https://bbs.io-tech.fi/forums/naeytoet-ja-videotykit.31/">Näytöt</a>
+                        <a
+                            href="https://bbs.io-tech.fi/forums/aelypuhelimet-taulutietokoneet-aelykellot.33/">Laitteet</a>
                     </div>
 
                     <div>
                         <h3>Tori.fi</h3>
-                        <a class="b" href="https://www.tori.fi/pohjois-pohjanmaa/viihde-elektroniikka/audio_ja_musiikkilaitteet?ca=2&st=s&st=k&st=u&st=h&st=g&st=b&w=1&cg=5020&c=5024">Audio</a>
-                        <a class="b" href="https://www.tori.fi/pohjois-pohjanmaa/viihde-elektroniikka/muu_viihde-elektroniikka?ca=2&st=s&st=k&st=u&st=h&st=g&st=b&w=1&cg=5020&c=5029">Muu viihde elektroniikka</a>
-                        <a class="b" href="https://www.tori.fi/pohjois-pohjanmaa/tietokoneet_ja_lisalaitteet?ca=2&w=1&cg=5030&st=s&st=k&st=u&st=h&st=g&st=b">Tietokoneet ja lisälaitteet</a>
-                        <a class="b" href="https://www.tori.fi/pohjois-pohjanmaa/tietokoneet_ja_lisalaitteet/oheislaitteet?ca=2&st=s&st=k&st=u&st=h&st=g&st=b&w=1&cg=5030&c=5036">Oheislaitteet</a>
-                        <a class="b" href="https://www.tori.fi/pohjois-pohjanmaa/tietokoneet_ja_lisalaitteet/verkkotuotteet?ca=2&st=s&st=k&st=u&st=h&st=g&st=b&w=1&cg=5030&c=5039">Verkkotuotteet</a>
+                        <a
+                            href="https://www.tori.fi/pohjois-pohjanmaa/viihde-elektroniikka/audio_ja_musiikkilaitteet?ca=2&st=s&st=k&st=u&st=h&st=g&st=b&w=1&cg=5020&c=5024">Audio</a>
+                        <a
+                            href="https://www.tori.fi/pohjois-pohjanmaa/viihde-elektroniikka/muu_viihde-elektroniikka?ca=2&st=s&st=k&st=u&st=h&st=g&st=b&w=1&cg=5020&c=5029">Muu
+                            viihde elektroniikka</a>
+                        <a
+                            href="https://www.tori.fi/pohjois-pohjanmaa/tietokoneet_ja_lisalaitteet?ca=2&w=1&cg=5030&st=s&st=k&st=u&st=h&st=g&st=b">Tietokoneet
+                            ja lisälaitteet</a>
+                        <a
+                            href="https://www.tori.fi/pohjois-pohjanmaa/tietokoneet_ja_lisalaitteet/oheislaitteet?ca=2&st=s&st=k&st=u&st=h&st=g&st=b&w=1&cg=5030&c=5036">Oheislaitteet</a>
+                        <a
+                            href="https://www.tori.fi/pohjois-pohjanmaa/tietokoneet_ja_lisalaitteet/verkkotuotteet?ca=2&st=s&st=k&st=u&st=h&st=g&st=b&w=1&cg=5030&c=5039">Verkkotuotteet</a>
                     </div>
 
                 </div>
@@ -834,233 +893,287 @@
 
                     <div>
                         <h3>Bookmarklets</h3>
-                        <a class="b s" href="javascript:Array.prototype.forEach.call(document.getElementsByTagName('*'),function(e){e.style.fontFamily='PT Sans'})">PT Sans</a>
-                        <a class="b s" href="javascript:Array.prototype.forEach.call(document.getElementsByTagName('*'),function(e){e.style.fontFamily='Source Sans Pro'})">SSP</a>
-                        <a class="b s" href="javascript:Array.prototype.forEach.call(document.getElementsByTagName('*'),function(e){e.style.fontFamily='Fira Sans'})">Fira Sans</a>
-                        <a class="b s" href="javascript:Array.prototype.forEach.call(document.getElementsByTagName('*'),function(e){e.style.fontFamily='Lexend Deca'})">Lexend</a>
+                        <a
+                            href="javascript:Array.prototype.forEach.call(document.getElementsByTagName('*'),function(e){e.style.fontFamily='PT Sans'})">PT
+                            Sans</a>
+                        <a
+                            href="javascript:Array.prototype.forEach.call(document.getElementsByTagName('*'),function(e){e.style.fontFamily='Source Sans Pro'})">SSP</a>
+                        <a
+                            href="javascript:Array.prototype.forEach.call(document.getElementsByTagName('*'),function(e){e.style.fontFamily='Fira Sans'})">Fira
+                            Sans</a>
+                        <a
+                            href="javascript:Array.prototype.forEach.call(document.getElementsByTagName('*'),function(e){e.style.fontFamily='Lexend Deca'})">Lexend</a>
 
-                        <a class="b s" href="javascript:(function()%7Bjavascript%3A(function()%7Bdocument.getElementsByTagName(%22body%22)%5B0%5D.addEventListener(%22wheel%22%2Cfunction%20(event)%20%7Bif%20(event.target.classList.contains('ace_content'))%20%7Breturn%3B%7Devent.stopPropagation()%3B%7D%2C%20true)%3B%7D)()%7D)()">Remove JS smooth scroll</a>
+                        <a
+                            href="javascript:(function()%7Bjavascript%3A(function()%7Bdocument.getElementsByTagName(%22body%22)%5B0%5D.addEventListener(%22wheel%22%2Cfunction%20(event)%20%7Bif%20(event.target.classList.contains('ace_content'))%20%7Breturn%3B%7Devent.stopPropagation()%3B%7D%2C%20true)%3B%7D)()%7D)()">Remove
+                            JS smooth scroll</a>
 
-                        <a class="b s" href="javascript:(function()%7B(function%20()%20%7Bvar%20i%2C%20elements%20%3D%20document.querySelectorAll('body%20*')%3Bfor%20(i%20%3D%200%3B%20i%20%3C%20elements.length%3B%20i%2B%2B)%20%7Bif%20(getComputedStyle(elements%5Bi%5D).position%20%3D%3D%3D%20'fixed')%20%7Belements%5Bi%5D.parentNode.removeChild(elements%5Bi%5D)%3B%7D%7D%7D)()%7D)()">Kill sticky</a>
+                        <a
+                            href="javascript:(function()%7B(function%20()%20%7Bvar%20i%2C%20elements%20%3D%20document.querySelectorAll('body%20*')%3Bfor%20(i%20%3D%200%3B%20i%20%3C%20elements.length%3B%20i%2B%2B)%20%7Bif%20(getComputedStyle(elements%5Bi%5D).position%20%3D%3D%3D%20'fixed')%20%7Belements%5Bi%5D.parentNode.removeChild(elements%5Bi%5D)%3B%7D%7D%7D)()%7D)()">Kill
+                            sticky</a>
 
-                        <a class="b s" href="javascript:(function()%7Bvar%20d=document.createElement(%22div%22);d.innerHTML=%22%3Cstyle%3E*:not(.icon):not(i),*:not(.icon):not(i):after,*:not(.icon):not(i):before%7Bbox-shadow:none%20!important;text-shadow:none%20!important;background-image:none%20!important;%7D*:not(.icon):not(i)%7Bborder-color:transparent%20!important;%7D%3C/style%3E%22;document.body.appendChild(d)%7D)();">Flatten</a>
+                        <a
+                            href="javascript:(function()%7Bvar%20d=document.createElement(%22div%22);d.innerHTML=%22%3Cstyle%3E*:not(.icon):not(i),*:not(.icon):not(i):after,*:not(.icon):not(i):before%7Bbox-shadow:none%20!important;text-shadow:none%20!important;background-image:none%20!important;%7D*:not(.icon):not(i)%7Bborder-color:transparent%20!important;%7D%3C/style%3E%22;document.body.appendChild(d)%7D)();">Flatten</a>
 
-                        <a class="b s" href="javascript:%5B%5D.forEach.call(document.querySelectorAll(%22*%22),function(a)%7Ba.style.outline=%221px%20solid%20%23%22+(~~(Math.random()*(1%3C%3C24))).toString(16)%7D)">Show CSS</a>
+                        <a
+                            href="javascript:%5B%5D.forEach.call(document.querySelectorAll(%22*%22),function(a)%7Ba.style.outline=%221px%20solid%20%23%22+(~~(Math.random()*(1%3C%3C24))).toString(16)%7D)">Show
+                            CSS</a>
 
-                        <a class="b s" href="javascript:(function()%7Bvar%20newSS,%20styles='*%20%7Bcolor:black%20!important;%7D';%20if(document.createStyleSheet)%20%7B%20document.createStyleSheet(%22javascript:'%22+styles+%22'%22);%20%7D%20else%20%7B%20newSS=document.createElement('link');%20newSS.rel='stylesheet';%20newSS.href='data:text/css,'+escape(styles);%20document.getElementsByTagName(%22head%22)%5B0%5D.appendChild(newSS);%20%7D%20%7D)();">Black text</a>
+                        <a
+                            href="javascript:(function()%7Bvar%20newSS,%20styles='*%20%7Bcolor:black%20!important;%7D';%20if(document.createStyleSheet)%20%7B%20document.createStyleSheet(%22javascript:'%22+styles+%22'%22);%20%7D%20else%20%7B%20newSS=document.createElement('link');%20newSS.rel='stylesheet';%20newSS.href='data:text/css,'+escape(styles);%20document.getElementsByTagName(%22head%22)%5B0%5D.appendChild(newSS);%20%7D%20%7D)();">Black
+                            text</a>
 
-                        <a class="b" href="javascript:(function()%7Bfunction%20RGBtoHSL(RGBColor)%7Bwith(Math)%7Bvar%20R,G,B;var%20cMax,cMin;var%20sum,diff;var%20Rdelta,Gdelta,Bdelta;var%20H,L,S;R=RGBColor%5B0%5D;G=RGBColor%5B1%5D;B=RGBColor%5B2%5D;cMax=max(max(R,G),B);cMin=min(min(R,G),B);sum=cMax+cMin;diff=cMax-cMin;L=sum/2;if(cMax==cMin)%7BS=0;H=0;%7Delse%7Bif(L%3C=(1/2))S=diff/sum;else%20S=diff/(2-sum);Rdelta=R/6/diff;Gdelta=G/6/diff;Bdelta=B/6/diff;if(R==cMax)H=Gdelta-Bdelta;else%20if(G==cMax)H=(1/3)+Bdelta-Rdelta;else%20H=(2/3)+Rdelta-Gdelta;if(H%3C0)H+=1;if(H%3E1)H-=1;%7Dreturn%5BH,S,L%5D;%7D%7Dfunction%20getRGBColor(node,prop)%7Bvar%20rgb=getComputedStyle(node,null).getPropertyValue(prop);var%20r,g,b;if(/rgb%5C((%5Cd+),%5Cs(%5Cd+),%5Cs(%5Cd+)%5C)/.exec(rgb))%7Br=parseInt(RegExp.$1,10);g=parseInt(RegExp.$2,10);b=parseInt(RegExp.$3,10);return%5Br/255,g/255,b/255%5D;%7Dreturn%20rgb;%7Dfunction%20hslToCSS(hsl)%7Breturn%20%22hsl(%22+Math.round(hsl%5B0%5D*360)+%22,%20%22+Math.round(hsl%5B1%5D*100)+%22%25,%20%22+Math.round(hsl%5B2%5D*100)+%22%25)%22;%7Dvar%20props=%5B%22color%22,%22background-color%22,%22border-left-color%22,%22border-right-color%22,%22border-top-color%22,%22border-bottom-color%22%5D;var%20props2=%5B%22color%22,%22backgroundColor%22,%22borderLeftColor%22,%22borderRightColor%22,%22borderTopColor%22,%22borderBottomColor%22%5D;if(typeof%20getRGBColor(document.documentElement,%22background-color%22)==%22string%22)document.documentElement.style.backgroundColor=%22white%22;revl(document.documentElement);function%20revl(n)%7Bvar%20i,x,color,hsl;if(n.nodeType==Node.ELEMENT_NODE)%7Bfor(i=0;x=n.childNodes%5Bi%5D;++i)revl(x);for(i=0;x=props%5Bi%5D;++i)%7Bcolor=getRGBColor(n,x);if(typeof(color)!=%22string%22)%7Bhsl=RGBtoHSL(color);hsl%5B2%5D=1-hsl%5B2%5D;n.style%5Bprops2%5Bi%5D%5D=hslToCSS(hsl);%7D%7D%7D%7D%7D)()">Invert</a>
+                        <a
+                            href="javascript:(function()%7Bfunction%20RGBtoHSL(RGBColor)%7Bwith(Math)%7Bvar%20R,G,B;var%20cMax,cMin;var%20sum,diff;var%20Rdelta,Gdelta,Bdelta;var%20H,L,S;R=RGBColor%5B0%5D;G=RGBColor%5B1%5D;B=RGBColor%5B2%5D;cMax=max(max(R,G),B);cMin=min(min(R,G),B);sum=cMax+cMin;diff=cMax-cMin;L=sum/2;if(cMax==cMin)%7BS=0;H=0;%7Delse%7Bif(L%3C=(1/2))S=diff/sum;else%20S=diff/(2-sum);Rdelta=R/6/diff;Gdelta=G/6/diff;Bdelta=B/6/diff;if(R==cMax)H=Gdelta-Bdelta;else%20if(G==cMax)H=(1/3)+Bdelta-Rdelta;else%20H=(2/3)+Rdelta-Gdelta;if(H%3C0)H+=1;if(H%3E1)H-=1;%7Dreturn%5BH,S,L%5D;%7D%7Dfunction%20getRGBColor(node,prop)%7Bvar%20rgb=getComputedStyle(node,null).getPropertyValue(prop);var%20r,g,b;if(/rgb%5C((%5Cd+),%5Cs(%5Cd+),%5Cs(%5Cd+)%5C)/.exec(rgb))%7Br=parseInt(RegExp.$1,10);g=parseInt(RegExp.$2,10);b=parseInt(RegExp.$3,10);return%5Br/255,g/255,b/255%5D;%7Dreturn%20rgb;%7Dfunction%20hslToCSS(hsl)%7Breturn%20%22hsl(%22+Math.round(hsl%5B0%5D*360)+%22,%20%22+Math.round(hsl%5B1%5D*100)+%22%25,%20%22+Math.round(hsl%5B2%5D*100)+%22%25)%22;%7Dvar%20props=%5B%22color%22,%22background-color%22,%22border-left-color%22,%22border-right-color%22,%22border-top-color%22,%22border-bottom-color%22%5D;var%20props2=%5B%22color%22,%22backgroundColor%22,%22borderLeftColor%22,%22borderRightColor%22,%22borderTopColor%22,%22borderBottomColor%22%5D;if(typeof%20getRGBColor(document.documentElement,%22background-color%22)==%22string%22)document.documentElement.style.backgroundColor=%22white%22;revl(document.documentElement);function%20revl(n)%7Bvar%20i,x,color,hsl;if(n.nodeType==Node.ELEMENT_NODE)%7Bfor(i=0;x=n.childNodes%5Bi%5D;++i)revl(x);for(i=0;x=props%5Bi%5D;++i)%7Bcolor=getRGBColor(n,x);if(typeof(color)!=%22string%22)%7Bhsl=RGBtoHSL(color);hsl%5B2%5D=1-hsl%5B2%5D;n.style%5Bprops2%5Bi%5D%5D=hslToCSS(hsl);%7D%7D%7D%7D%7D)()">Invert</a>
 
-                        <a class="b" href="javascript:(function()%7Bjavascript%3A (function () %7Bconst s %3D (function () %7Bloremipsum %3D %5B'Lorem ipsum dolor sit amet%2C consectetur adipisicing elit%2C sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'%2C'Ut enim ad minim veniam%2C quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'%2C'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'%2C'Excepteur sint occaecat cupidatat non proident%2C sunt in culpa qui officia deserunt mollit anim id est laborum.'%2C'Nam facilisis enim.'%2C%5D%3Blet whitespaceAtFrontRe %3D %2F%5E%5B%5Cs%5Cxa0%5D%2B%2F%3Blet whitespaceAtEndRe %3D %2F%5B%5Cs%5Cxa0%5D%2B%24%2F%3Blet punctationRe %3D %2F(%5B%3A!%3F%5C.%5D)%24%2F%3Blet punctationFrontRe %3D %2F%5E(%5B%3A!%3F%5C.%5D%5Cs%2B)%2F%3Blet capatializedRe %3D %2F%5E%5B%5E%5CwÃ„Ã–ÃœÃ€Ã€ÃÃˆÃ‰Ã‡%5D*%5BA-ZÃ„Ã–ÃœÃ€Ã€ÃÃˆÃ‰Ã‡%5D%2F%3Blet simpleExpressionRe %3D %2F%5E%5B%5C(%5C%5B%5D%3F.%5B%3A%5C.%5C)%5C%5D%5D%3F%24%2F%3Blet singleWordRe %3D %2F%5E%5Cw*%24%2F%3Blet charAtFrontRe %3D %2F%5E%5Ba-z%5D%2Fi%3Blet headlineRe %3D %2F%5EH%5B1-3%5D%24%2Fi%3Blet lastTextHadPunctation %3D false%3Blet foundMain %3D false%3Blet idx %3D 0%3Blet getLoremIpsum %3D function (n%2C isHeadline%2C singleWord) %7Bif (!foundMain %26%26 isHeadline) %7Bidx %3D 0%3BfoundMain %3D true%3B%7Dlet t %3D loremipsum%5Bidx%5D%3Blet l %3D t.length%3Bwhile (l < n) %7Bif (%2B%2Bidx >%3D loremipsum.length) idx %3D 0%3Bt %2B%3D ' ' %2B loremipsum%5Bidx%5D%3Bl %3D t.length%3B%7Dif (l > n) %7Blet t1 %3D t.substring(0%2C n)%3Blet t2 %3D t.substring(n).replace(%2F%5Cs.*%24%2F%2C '')%3Bif (!singleWord %26%26 (t2.length < 3 %7C%7C (singleWordRe.test(t1) %26%26 charAtFrontRe.test(t.charAt(n))))) %7Bt %3D t1 %2B t2%3B%7D else %7Bt %3D t1.replace(%2F%2C%3F%5Cs%5Cw*%24%2F%2C '')%3B%7Dif (t.length > 3) t %3D t.replace(%2F%5Cs%5Cw%24%2F%2C '')%3B%7Dt %3D t.replace(%2F%5Cs%2B%24%2F%2C '')%3Bif (%2B%2Bidx >%3D loremipsum.length) idx %3D 0%3Breturn t%3B%7D%3Blet getDocumentBody %3D function () %7Bif (document.getElementsByTagName) %7Breturn document.getElementsByTagName('body').item(0)%3B%7D else if (document.body) %7Breturn document.body%3B%7D else if ((document.all) %26%26 (document.all.tags)) %7Breturn document.all.tags('body')%5B0%5D%3B%7D else %7Breturn null%3B%7D%7D%3Blet replaceText %3D function (el%2C isHeadline) %7Blet t %3D el.nodeValue%3Bif (!t) return%3Blet n %3D t.length%3Bt %3D t.replace(whitespaceAtFrontRe%2C '')%3Blet wsFront %3D (t.length !%3D n)%3Bn %3D t.length%3Bt %3D t.replace(whitespaceAtEndRe%2C '')%3Blet wsEnd %3D (t.length !%3D n)%3Bn %3D t.length%3Bif (n > 0 %26%26 !simpleExpressionRe.test(t)) %7Blet tn %3D getLoremIpsum(n%2C isHeadline%2C singleWordRe.test(t))%3Blet matches %3D punctationRe.exec(t)%3Bif (matches) %7Btn %3D tn.replace(%2F%5B%2C%5C.%5D%2B%24%2F%2C '').replace(%2F%5Cs%2B%24%2F%2C '') %2B matches%5B1%5D%3B%7D else %7Btn %3D tn.replace(%2F%2C%5Cs*%24%2F%2C '')%3B%7Dlet first %3D tn.charAt(0)%3Blet rest %3D tn.substring(1)%3Btn %3D ((lastTextHadPunctation %7C%7C capatializedRe.test(t)) %3F first.toUpperCase() %3A first.toLowerCase()) %2B rest%3Bmatches %3D punctationFrontRe.exec(t)%3Bif (matches) tn %3D matches%5B1%5D %2B tn%3BlastTextHadPunctation %3D punctationRe.test(tn)%3Bif (wsFront) tn %3D ' ' %2B tn%3Bif (wsEnd) tn %2B%3D ' '%3Bel.nodeValue %3D tn%3B%7D%7D%3Blet scanElement %3D function (el%2C isHeadline) %7Blet n %3D el.firstChild%3Bwhile (n) %7Blet nt %3D n.nodeType%3Blet ns %3D n.nextSibling%3Bif (nt %3D%3D 1) %7Blet nn %3D n.nodeName%3Bif (nn !%3D 'SCRIPT' %26%26 nn !%3D 'STYLE' %26%26 nn !%3D 'EMBED') %7BscanElement(n%2C isHeadline %7C%7C headlineRe.test(nn))%3B%7D%7D else if (nt %3D%3D 3) %7BreplaceText(n%2C isHeadline)%3B%7Dn %3D ns%3B%7D%7D%3Blet b %3D getDocumentBody()%3Bif (b) %7BscanElement(b%2C false)%3B%7D%7D)()%3Blet h %3D document.getElementsByTagName('head').item(0)%3Bif (h) %7Bh.appendChild(s)%3B%7D%7D)()%7D)()">Lorem</a>
+                        <a
+                            href="javascript:(function()%7Bjavascript%3A (function () %7Bconst s %3D (function () %7Bloremipsum %3D %5B'Lorem ipsum dolor sit amet%2C consectetur adipisicing elit%2C sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'%2C'Ut enim ad minim veniam%2C quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'%2C'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'%2C'Excepteur sint occaecat cupidatat non proident%2C sunt in culpa qui officia deserunt mollit anim id est laborum.'%2C'Nam facilisis enim.'%2C%5D%3Blet whitespaceAtFrontRe %3D %2F%5E%5B%5Cs%5Cxa0%5D%2B%2F%3Blet whitespaceAtEndRe %3D %2F%5B%5Cs%5Cxa0%5D%2B%24%2F%3Blet punctationRe %3D %2F(%5B%3A!%3F%5C.%5D)%24%2F%3Blet punctationFrontRe %3D %2F%5E(%5B%3A!%3F%5C.%5D%5Cs%2B)%2F%3Blet capatializedRe %3D %2F%5E%5B%5E%5CwÃ„Ã–ÃœÃ€Ã€ÃÃˆÃ‰Ã‡%5D*%5BA-ZÃ„Ã–ÃœÃ€Ã€ÃÃˆÃ‰Ã‡%5D%2F%3Blet simpleExpressionRe %3D %2F%5E%5B%5C(%5C%5B%5D%3F.%5B%3A%5C.%5C)%5C%5D%5D%3F%24%2F%3Blet singleWordRe %3D %2F%5E%5Cw*%24%2F%3Blet charAtFrontRe %3D %2F%5E%5Ba-z%5D%2Fi%3Blet headlineRe %3D %2F%5EH%5B1-3%5D%24%2Fi%3Blet lastTextHadPunctation %3D false%3Blet foundMain %3D false%3Blet idx %3D 0%3Blet getLoremIpsum %3D function (n%2C isHeadline%2C singleWord) %7Bif (!foundMain %26%26 isHeadline) %7Bidx %3D 0%3BfoundMain %3D true%3B%7Dlet t %3D loremipsum%5Bidx%5D%3Blet l %3D t.length%3Bwhile (l < n) %7Bif (%2B%2Bidx >%3D loremipsum.length) idx %3D 0%3Bt %2B%3D ' ' %2B loremipsum%5Bidx%5D%3Bl %3D t.length%3B%7Dif (l > n) %7Blet t1 %3D t.substring(0%2C n)%3Blet t2 %3D t.substring(n).replace(%2F%5Cs.*%24%2F%2C '')%3Bif (!singleWord %26%26 (t2.length < 3 %7C%7C (singleWordRe.test(t1) %26%26 charAtFrontRe.test(t.charAt(n))))) %7Bt %3D t1 %2B t2%3B%7D else %7Bt %3D t1.replace(%2F%2C%3F%5Cs%5Cw*%24%2F%2C '')%3B%7Dif (t.length > 3) t %3D t.replace(%2F%5Cs%5Cw%24%2F%2C '')%3B%7Dt %3D t.replace(%2F%5Cs%2B%24%2F%2C '')%3Bif (%2B%2Bidx >%3D loremipsum.length) idx %3D 0%3Breturn t%3B%7D%3Blet getDocumentBody %3D function () %7Bif (document.getElementsByTagName) %7Breturn document.getElementsByTagName('body').item(0)%3B%7D else if (document.body) %7Breturn document.body%3B%7D else if ((document.all) %26%26 (document.all.tags)) %7Breturn document.all.tags('body')%5B0%5D%3B%7D else %7Breturn null%3B%7D%7D%3Blet replaceText %3D function (el%2C isHeadline) %7Blet t %3D el.nodeValue%3Bif (!t) return%3Blet n %3D t.length%3Bt %3D t.replace(whitespaceAtFrontRe%2C '')%3Blet wsFront %3D (t.length !%3D n)%3Bn %3D t.length%3Bt %3D t.replace(whitespaceAtEndRe%2C '')%3Blet wsEnd %3D (t.length !%3D n)%3Bn %3D t.length%3Bif (n > 0 %26%26 !simpleExpressionRe.test(t)) %7Blet tn %3D getLoremIpsum(n%2C isHeadline%2C singleWordRe.test(t))%3Blet matches %3D punctationRe.exec(t)%3Bif (matches) %7Btn %3D tn.replace(%2F%5B%2C%5C.%5D%2B%24%2F%2C '').replace(%2F%5Cs%2B%24%2F%2C '') %2B matches%5B1%5D%3B%7D else %7Btn %3D tn.replace(%2F%2C%5Cs*%24%2F%2C '')%3B%7Dlet first %3D tn.charAt(0)%3Blet rest %3D tn.substring(1)%3Btn %3D ((lastTextHadPunctation %7C%7C capatializedRe.test(t)) %3F first.toUpperCase() %3A first.toLowerCase()) %2B rest%3Bmatches %3D punctationFrontRe.exec(t)%3Bif (matches) tn %3D matches%5B1%5D %2B tn%3BlastTextHadPunctation %3D punctationRe.test(tn)%3Bif (wsFront) tn %3D ' ' %2B tn%3Bif (wsEnd) tn %2B%3D ' '%3Bel.nodeValue %3D tn%3B%7D%7D%3Blet scanElement %3D function (el%2C isHeadline) %7Blet n %3D el.firstChild%3Bwhile (n) %7Blet nt %3D n.nodeType%3Blet ns %3D n.nextSibling%3Bif (nt %3D%3D 1) %7Blet nn %3D n.nodeName%3Bif (nn !%3D 'SCRIPT' %26%26 nn !%3D 'STYLE' %26%26 nn !%3D 'EMBED') %7BscanElement(n%2C isHeadline %7C%7C headlineRe.test(nn))%3B%7D%7D else if (nt %3D%3D 3) %7BreplaceText(n%2C isHeadline)%3B%7Dn %3D ns%3B%7D%7D%3Blet b %3D getDocumentBody()%3Bif (b) %7BscanElement(b%2C false)%3B%7D%7D)()%3Blet h %3D document.getElementsByTagName('head').item(0)%3Bif (h) %7Bh.appendChild(s)%3B%7D%7D)()%7D)()">Lorem</a>
 
-                        <a class="b" href="javascript:document.body.contentEditable%20=%20'true';%20document.designMode='on';%20void%200">Edit</a>
+                        <a
+                            href="javascript:document.body.contentEditable%20=%20'true';%20document.designMode='on';%20void%200">Edit</a>
                         <br /><br />
                         <h3>Gaming</h3>
-                        <a class="b" href="https://store.steampowered.com/">Steam</a>
-                        <a class="b" href="https://www.origin.com/fin/en-us/store">EA Origin</a>
-                        <a class="b" href="https://www.msi.com/page/afterburner">MSI Afterburner</a>
-                        <a class="b" href="https://www.minecraft.net/fi-fi/">Minecraft</a>
+                        <a href="https://store.steampowered.com/">Steam</a>
+                        <a href="https://www.origin.com/fin/en-us/store">EA Origin</a>
+                        <a href="https://www.msi.com/page/afterburner">MSI Afterburner</a>
+                        <a href="https://www.minecraft.net/fi-fi/">Minecraft</a>
 
                         <br /><br />
                         <h3>Windows software</h3>
-                        <a class="b s" href="https://chocolatey.org/">Chocolatey</a>
-                        <a class="b s" href="https://chocolatey.org/packages">Chocolatey packages</a>
-                        <a class="b s" href="https://github.com/joonikko/panel/releases">Panel releases</a>
-                        <a class="b s" href="https://github.com/Joonikko/Panel/releases/download/v1.06/Panel.exe">Panel 64b</a>
-                        <a class="b s" href="https://github.com/Joonikko/Panel/releases/download/v1.06/Panel_mpress.exe">Panel 64b mpress</a>
-                        <a class="b s" href="https://github.com/joonaconfig/config/archive/Windows.zip">Windows config dl</a>
-                        <a class="b s" href="https://www.voidtools.com/">Everything</a>
-                        <a class="b s" href="https://www.7-zip.org/">7Zip</a>
-                        <a class="b s" href="http://apathysoftworks.com/software/quickcliq">Quick Cliq</a>
-                        <a class="b s" href="http://www.pegtop.net/start/">P Start</a>
-                        <a class="b s" href="https://notepad-plus-plus.org/download">Notepad++</a>
-                        <a class="b s" href="https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe">OOSU10</a>
-                        <a class="b s" href="https://www.revouninstaller.com/download-free-portable.php">Revo Portable</a>
-                        <a class="b s" href="https://www.ccleaner.com/recuva/download/portable">Recuva Portable</a>
-                        <a class="b s" href="https://www.jam-software.de/customers/downloadTrial.php?article_no=80&language=EN">TreeSizeFree</a>
-                        <a class="b s" href="https://www.jam-software.de/customers/downloadTrial.php?article_no=402&language=EN">HeavyLoad</a>
-                        <a class="b s" href="http://www.majorgeeks.com/files/details/intelburntest.html">Intel Burn Test</a>
-                        <a class="b s" href="https://www.f-secure.com/en/web/home_global/online-scanner">F-Secure online scanner</a>
-                        <a class="b s" href="https://processhacker.sourceforge.io/downloads.php">Process Hacker</a>
-                        <a class="b s" href="http://openhardwaremonitor.org/downloads/">Open Hardware Monitor</a>
-                        <a class="b s" href="https://www.malwarebytes.com/mwb-download/thankyou/">Malwarebytes</a>
-                        <a class="b s" href="https://toolslib.net/downloads/finish/1/">AdwCleaner</a>
-                        <a class="b s" href="https://www.advancedrenamer.com/down/?obj=12">Advanced Renamer</a>
-                        <a class="b s" href="https://github.com/stsrki/keepalivehd">Keep Alive HD</a>
+                        <a href="https://chocolatey.org/">Chocolatey</a>
+                        <a href="https://chocolatey.org/packages">Chocolatey packages</a>
+                        <a href="https://github.com/joonikko/panel/releases">Panel releases</a>
+                        <a href="https://github.com/Joonikko/Panel/releases/download/v1.06/Panel.exe">Panel 64b</a>
+                        <a href="https://github.com/Joonikko/Panel/releases/download/v1.06/Panel_mpress.exe">Panel 64b
+                            mpress</a>
+                        <a href="https://github.com/joonaconfig/config/archive/Windows.zip">Windows config dl</a>
+                        <a href="https://www.voidtools.com/">Everything</a>
+                        <a href="https://www.7-zip.org/">7Zip</a>
+                        <a href="http://apathysoftworks.com/software/quickcliq">Quick Cliq</a>
+                        <a href="http://www.pegtop.net/start/">P Start</a>
+                        <a href="https://notepad-plus-plus.org/download">Notepad++</a>
+                        <a href="https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe">OOSU10</a>
+                        <a href="https://www.revouninstaller.com/download-free-portable.php">Revo Portable</a>
+                        <a href="https://www.ccleaner.com/recuva/download/portable">Recuva Portable</a>
+                        <a
+                            href="https://www.jam-software.de/customers/downloadTrial.php?article_no=80&language=EN">TreeSizeFree</a>
+                        <a
+                            href="https://www.jam-software.de/customers/downloadTrial.php?article_no=402&language=EN">HeavyLoad</a>
+                        <a href="http://www.majorgeeks.com/files/details/intelburntest.html">Intel Burn Test</a>
+                        <a href="https://www.f-secure.com/en/web/home_global/online-scanner">F-Secure online scanner</a>
+                        <a href="https://processhacker.sourceforge.io/downloads.php">Process Hacker</a>
+                        <a href="http://openhardwaremonitor.org/downloads/">Open Hardware Monitor</a>
+                        <a href="https://www.malwarebytes.com/mwb-download/thankyou/">Malwarebytes</a>
+                        <a href="https://toolslib.net/downloads/finish/1/">AdwCleaner</a>
+                        <a href="https://www.advancedrenamer.com/down/?obj=12">Advanced Renamer</a>
+                        <a href="https://github.com/stsrki/keepalivehd">Keep Alive HD</a>
                     </div>
                     <div>
                         <h3>macOS Software</h3>
-                        <a class="b s" href="https://www.iterm2.com">iTerm2</a>
-                        <a class="b s" href="https://www.keka.io/en/">Keka</a>
-                        <a class="b s" href="https://ranchero.com/netnewswire/">NetNewsWire</a>
-                        <a class="b s" href="https://objective-see.com/products/lulu.html">LuLu</a>
-                        <a class="b s" href="https://macpassapp.org/">MacPass</a>
-                        <a class="b s" href="https://github.com/lhc70000/iina">IINA</a>
-                        <a class="b s" href="https://www.devontechnologies.com/apps/freeware">XMenu</a>
-                        <a class="b s" href="http://www.lorembuilder.com/">Lorem Builder</a>
-                        <a class="b s" href="http://marco.org/appcasts/Quitter.zip">Quitter</a>
-                        <a class="b s" href="https://www.sequelpro.com/">Sequel Pro</a>
-                        <a class="b s" href="https://mrrsoftware.com/namechanger/">NameChanger</a>
-                        <a class="b s" href="https://www.tonymacx86.com/threads/controlling-your-monitor-with-osx-ddc-panel.90077/">DDC
+                        <a href="https://www.iterm2.com">iTerm2</a>
+                        <a href="https://www.keka.io/en/">Keka</a>
+                        <a href="https://ranchero.com/netnewswire/">NetNewsWire</a>
+                        <a href="https://objective-see.com/products/lulu.html">LuLu</a>
+                        <a href="https://macpassapp.org/">MacPass</a>
+                        <a href="https://github.com/lhc70000/iina">IINA</a>
+                        <a href="https://www.devontechnologies.com/apps/freeware">XMenu</a>
+                        <a href="http://www.lorembuilder.com/">Lorem Builder</a>
+                        <a href="http://marco.org/appcasts/Quitter.zip">Quitter</a>
+                        <a href="https://www.sequelpro.com/">Sequel Pro</a>
+                        <a href="https://mrrsoftware.com/namechanger/">NameChanger</a>
+                        <a href="https://www.tonymacx86.com/threads/controlling-your-monitor-with-osx-ddc-panel.90077/">DDC
                             Panel</a>
-                        <a class="b s" href="https://bogner.sh/2012/12/os-x-create-a-ram-disk-the-easy-way/">RamDiskCreator</a>
-                        <a class="b s" href="http://www.shirt-pocket.com/SuperDuper/SuperDuperDescription.html">SuperDuper</a>
-                        <a class="b s" href="https://freemacsoft.net/appcleaner/">AppCleaner</a>
-                        <a class="b s" href="http://www.autistici.org/rpg/">RPG</a>
-                        <a class="b s" href="http://www.catnapgames.com/tiny-player-for-mac/">Tiny Player</a>
-                        <a class="b s" href="http://www.squared5.com/">Mpeg Streamclip</a>
-                        <a class="b s" href="https://github.com/nickzman/symboliclinker/releases">Symbolic Linker</a>
-                        <a class="b s" href="https://handbrake.fr/">HandBrake</a>
-                        <a class="b s" href="https://github.com/yujitach/MenuMeters">MenuMeters</a>
-                        <a class="b s" href="https://www.crystalidea.com/macs-fan-control">MacsFanControl</a>
-                        <a class="b s" href="https://github.com/coteditor/CotEditor/releases">CotEditor</a>
-                        <a class="b s" href="https://github.com/CocoaBob/xee">Xee</a>
-                        <a class="b s" href="http://hasseg.org/launchList/">Launchlist</a>
-                        <a class="b s" href="https://brew.sh/">Homebrew</a>
-                        <a class="b s" href="http://jon.stovell.info/software/keep-drive-spinning/">Keep Drive Spinning</a>
-                        <a class="b s" href="https://github.com/newmarcel/KeepingYouAwake">KeepingYouAwake</a>
-                        <a class="b s" href="https://github.com/Mortennn/Dozer">Dozer</a>
-                        <a class="b s" href="https://www.vmware.com/products/fusion.html">VMware Fusion</a>
-                        <a class="b s" href="https://www.fileloupe.com/">Fileloupe</a>
-                        <a class="b s" href="https://ia.net/writer">iA Writer</a>
-                        <a class="b s" href="https://pdfexpert.com/">PDF Expert</a>
-                        <a class="b s" href="https://www.sketchapp.com/">Sketch</a>
-                        <a class="b s" href="https://rogueamoeba.com/audiohijack/">Audio Hijack</a>
-                        <a class="b s" href="https://bjango.com/mac/istatmenus/">iStat Menus</a>
-                        <a class="b s" href="http://reederapp.com/">Reeder</a>
-                        <a class="b s" href="https://www.keyboardmaestro.com/main/">Keyboard Maestro</a>
-                        <a class="b s" href="http://mizage.com/divvy/">Divvy</a>
-                        <a class="b s" href="https://daisydiskapp.com/">DaisyDisk</a>
-                        <a class="b s" href="https://www.omnigroup.com/omnigraffle/">OmniGraffle</a>
-                        <a class="b s" href="https://www.barebones.com/products/bbedit/">BBEdit</a>
-                        <a class="b s" href="https://monodraw.helftone.com/">Monodraw</a>
-                        <a class="b s" href="https://github.com/michaelvillar/timer-app">Timer app</a>
-                        <a class="b s" href="https://github.com/HendrikNoeller/Writer">Writer</a>
+                        <a href="https://bogner.sh/2012/12/os-x-create-a-ram-disk-the-easy-way/">RamDiskCreator</a>
+                        <a href="http://www.shirt-pocket.com/SuperDuper/SuperDuperDescription.html">SuperDuper</a>
+                        <a href="https://freemacsoft.net/appcleaner/">AppCleaner</a>
+                        <a href="http://www.autistici.org/rpg/">RPG</a>
+                        <a href="http://www.catnapgames.com/tiny-player-for-mac/">Tiny Player</a>
+                        <a href="http://www.squared5.com/">Mpeg Streamclip</a>
+                        <a href="https://github.com/nickzman/symboliclinker/releases">Symbolic Linker</a>
+                        <a href="https://handbrake.fr/">HandBrake</a>
+                        <a href="https://github.com/yujitach/MenuMeters">MenuMeters</a>
+                        <a href="https://www.crystalidea.com/macs-fan-control">MacsFanControl</a>
+                        <a href="https://github.com/coteditor/CotEditor/releases">CotEditor</a>
+                        <a href="https://github.com/CocoaBob/xee">Xee</a>
+                        <a href="http://hasseg.org/launchList/">Launchlist</a>
+                        <a href="https://brew.sh/">Homebrew</a>
+                        <a href="http://jon.stovell.info/software/keep-drive-spinning/">Keep Drive Spinning</a>
+                        <a href="https://github.com/newmarcel/KeepingYouAwake">KeepingYouAwake</a>
+                        <a href="https://github.com/Mortennn/Dozer">Dozer</a>
+                        <a href="https://www.vmware.com/products/fusion.html">VMware Fusion</a>
+                        <a href="https://www.fileloupe.com/">Fileloupe</a>
+                        <a href="https://ia.net/writer">iA Writer</a>
+                        <a href="https://pdfexpert.com/">PDF Expert</a>
+                        <a href="https://www.sketchapp.com/">Sketch</a>
+                        <a href="https://rogueamoeba.com/audiohijack/">Audio Hijack</a>
+                        <a href="https://bjango.com/mac/istatmenus/">iStat Menus</a>
+                        <a href="http://reederapp.com/">Reeder</a>
+                        <a href="https://www.keyboardmaestro.com/main/">Keyboard Maestro</a>
+                        <a href="http://mizage.com/divvy/">Divvy</a>
+                        <a href="https://daisydiskapp.com/">DaisyDisk</a>
+                        <a href="https://www.omnigroup.com/omnigraffle/">OmniGraffle</a>
+                        <a href="https://www.barebones.com/products/bbedit/">BBEdit</a>
+                        <a href="https://monodraw.helftone.com/">Monodraw</a>
+                        <a href="https://github.com/michaelvillar/timer-app">Timer app</a>
+                        <a href="https://github.com/HendrikNoeller/Writer">Writer</a>
                         <br /><br />
                         <h3>Linux & Gnome tools</h3>
-                        <a class="b s" href="https://extensions.gnome.org/">Gnome shell extensions</a>
-                        <a class="b s" href="https://snapcraft.io/store">Snapcraft</a>
+                        <a href="https://extensions.gnome.org/">Gnome shell extensions</a>
+                        <a href="https://snapcraft.io/store">Snapcraft</a>
                         <br /><br />
                         <h3>CLI tools</h3>
-                        <a class="b s" href="https://github.com/jarun/nnn/releases">nnn</a>
-                        <a class="b s" href="https://github.com/cjbassi/gotop/releases">GoTop</a>
-                        <a class="b s" href="https://github.com/michael-lazar/rtv">RTV</a>
-                        <a class="b s" href="http://rg3.github.io/youtube-dl/">youtube-dl</a>
-                        <a class="b s" href="http://www.pixelbeat.org/lkdb/screen.html">Screen hotkey reference</a>
+                        <a href="https://github.com/jarun/nnn/releases">nnn</a>
+                        <a href="https://github.com/cjbassi/gotop/releases">GoTop</a>
+                        <a href="https://github.com/michael-lazar/rtv">RTV</a>
+                        <a href="http://rg3.github.io/youtube-dl/">youtube-dl</a>
+                        <a href="http://www.pixelbeat.org/lkdb/screen.html">Screen hotkey reference</a>
 
                     </div>
                     <div>
                         <h3>Transport and shipping</h3>
-                        <a class="b s" href="https://www.17track.net/fi">17Track</a>
-                        <a class="b s" href="https://www.posti.fi/henkiloasiakkaat/seuranta/#/">Posti</a>
-                        <a class="b s" href="https://www.matkahuolto.fi/">Matkahuolto</a>
-                        <a class="b s" href="https://www.matkahuolto.fi/pakettipalvelut/lahetysten-seuranta/">MH Lähetyksen seuranta</a>
-                        <a class="b s" href="https://www.vr.fi/cs/vr/fi/etusivu">VR</a>
-                        <a class="b s" href="https://www.airbnb.fi/">AirBnB</a>
-                        <a class="b s" href="https://www.skyscanner.fi/">SkyScanner</a>
-                        <a class="b s" href="https://www.finnair.com/fi/fi/">Finnair</a>
-                        <a class="b s" href="https://www.norwegian.com/fi/">Norwegian</a>
+                        <a href="https://www.17track.net/fi">17Track</a>
+                        <a href="https://www.posti.fi/henkiloasiakkaat/seuranta/#/">Posti</a>
+                        <a href="https://www.matkahuolto.fi/">Matkahuolto</a>
+                        <a href="https://www.matkahuolto.fi/pakettipalvelut/lahetysten-seuranta/">MH Lähetyksen
+                            seuranta</a>
+                        <a href="https://www.vr.fi/cs/vr/fi/etusivu">VR</a>
+                        <a href="https://www.airbnb.fi/">AirBnB</a>
+                        <a href="https://www.skyscanner.fi/">SkyScanner</a>
+                        <a href="https://www.finnair.com/fi/fi/">Finnair</a>
+                        <a href="https://www.norwegian.com/fi/">Norwegian</a>
                         <br /><br />
                         <h3>Other</h3>
-                        <a class="b" href="https://www.manualslib.com/">Manualslib</a>
-                        <a class="b" href="https://www.cia.gov/library/publications/the-world-factbook/index.html">World Factbook</a>
-                        <a class="b" href="https://medium.com/">Medium</a>
-                        <a class="b" href="https://www.imdb.com/">IMDb</a>
-                        <a class="b" href="https://www.thefreelibrary.com/">The Free Library</a>
-                        <a class="b" href="https://www.edx.org/">edX</a>
-                        <a class="b" href="https://www.cheatography.com/">Cheatography</a>
-                        <a class="b" href="https://www.nasa.gov/multimedia/nasatv/index.html#public">NASA TV</a>
-                        <a class="b" href="https://www.tonymacx86.com/">TonyMacX86</a>
-                        <a class="b" href="https://asoftmurmur.com/">A Soft Murmur</a>
-                        <a class="b" href="https://www.sven.de/dpi/">PPI calculator</a>
+                        <a href="https://www.manualslib.com/">Manualslib</a>
+                        <a href="https://www.cia.gov/library/publications/the-world-factbook/index.html">World
+                            Factbook</a>
+                        <a href="https://medium.com/">Medium</a>
+                        <a href="https://www.imdb.com/">IMDb</a>
+                        <a href="https://www.thefreelibrary.com/">The Free Library</a>
+                        <a href="https://www.edx.org/">edX</a>
+                        <a href="https://www.cheatography.com/">Cheatography</a>
+                        <a href="https://www.nasa.gov/multimedia/nasatv/index.html#public">NASA TV</a>
+                        <a href="https://www.tonymacx86.com/">TonyMacX86</a>
+                        <a href="https://asoftmurmur.com/">A Soft Murmur</a>
+                        <a href="https://www.sven.de/dpi/">PPI calculator</a>
                         <br /><br />
                         <h3>Cross-platform software</h3>
-                        <a class="b" href="https://code.visualstudio.com/">VS Code</a>
-                        <a class="b" href="https://github.com/VSCodium/vscodium">vscodium</a>
-                        <a class="b" href="https://www.sublimetext.com/">Sublime Text</a>
-                        <a class="b" href="https://www.spotify.com/fi/">Spotify</a>
-                        <a class="b" href="https://open.spotify.com/browse">Spotify Web</a>
-                        <a class="b" href="https://download-chromium.appspot.com/">Chromium builds</a>
-                        <a class="b" href="https://chromium.woolyss.com/">Woolyss Chromium</a>
-                        <a class="b" href="https://discordapp.com/">Discord</a>
-                        <a class="b" href="https://www.google.com/chrome/">Chrome</a>
-                        <a class="b" href="https://brave.com/">Brave</a>
-                        <a class="b" href="https://www.mozilla.org/fi/firefox/new/">Firefox</a>
-                        <a class="b" href="https://fi.libreoffice.org/">LibreOffice</a>
-                        <a class="b" href="https://setup.office.com/">Microsoft Office setup</a>
-                        <a class="b" href="https://mpv.io/">mpv</a>
-                        <a class="b" href="https://www.videolan.org/vlc/">VLC</a>
-                        <a class="b" href="https://www.cgsecurity.org/wiki/TestDisk_Download">TestDisk</a>
+                        <a href="https://code.visualstudio.com/">VS Code</a>
+                        <a href="https://github.com/VSCodium/vscodium">vscodium</a>
+                        <a href="https://www.sublimetext.com/">Sublime Text</a>
+                        <a href="https://www.spotify.com/fi/">Spotify</a>
+                        <a href="https://open.spotify.com/browse">Spotify Web</a>
+                        <a href="https://download-chromium.appspot.com/">Chromium builds</a>
+                        <a href="https://chromium.woolyss.com/">Woolyss Chromium</a>
+                        <a href="https://discordapp.com/">Discord</a>
+                        <a href="https://www.google.com/chrome/">Chrome</a>
+                        <a href="https://brave.com/">Brave</a>
+                        <a href="https://www.mozilla.org/fi/firefox/new/">Firefox</a>
+                        <a href="https://fi.libreoffice.org/">LibreOffice</a>
+                        <a href="https://setup.office.com/">Microsoft Office setup</a>
+                        <a href="https://mpv.io/">mpv</a>
+                        <a href="https://www.videolan.org/vlc/">VLC</a>
+                        <a href="https://www.cgsecurity.org/wiki/TestDisk_Download">TestDisk</a>
                         <br /><br />
                         <h3>Wallpapers</h3>
-                        <a class="b" href="https://unsplash.com/photos/DzHihgxNiko">wp1</a>
-                        <a class="b" href="https://unsplash.com/photos/irA2xa68xNA">wp2</a>
-                        <a class="b" href="https://unsplash.com/photos/5ZeooCGNw3s">wp3</a>
-                        <a class="b" href="https://unsplash.com/photos/0Gw99ZH321A">wp4</a>
-                        <a class="b" href="https://unsplash.com/photos/4yta6mU66dE">wp5</a>
-                        <a class="b" href="https://unsplash.com/photos/7ACuHoezUYk">wp6</a>
-                        <a class="b" href="https://unsplash.com/photos/P6ek62anGJ0">wp7</a>
-                        <a class="b" href="https://unsplash.com/photos/GoW90IkxOO0">wp8</a>
-                        <a class="b" href="https://unsplash.com/collections/1753467/textures">textures</a>
-                        <a class="b" href="https://unsplash.com/collections/347167/backgrounds">backgrounds</a>
-                        <a class="b" href="https://unsplash.com/collections/614656/hello-darkness-my-old-friend">dark</a>
-                        <a class="b" href="https://unsplash.com/collections/1394721/clean">clean</a>
-                        <a class="b" href="https://unsplash.com/collections/193055/highkey">highkey</a>
-                        <a class="b" href="https://unsplash.com/collections/1410320/raindrops-glass">raindrops</a>
-                        <a class="b" href="https://unsplash.com/collections/1819753/neutrals">neutrals</a>
-                        <a class="b" href="https://unsplash.com/collections/395791/colors">colors</a>
-                        <a class="b" href="https://unsplash.com/collections/577737/unreal">unreal</a>
-                        <a class="b" href="https://unsplash.com/collections/1242150/abstract-landscapenature">abstract landscape</a>
+                        <a href="https://unsplash.com/photos/DzHihgxNiko">wp1</a>
+                        <a href="https://unsplash.com/photos/irA2xa68xNA">wp2</a>
+                        <a href="https://unsplash.com/photos/5ZeooCGNw3s">wp3</a>
+                        <a href="https://unsplash.com/photos/0Gw99ZH321A">wp4</a>
+                        <a href="https://unsplash.com/photos/4yta6mU66dE">wp5</a>
+                        <a href="https://unsplash.com/photos/7ACuHoezUYk">wp6</a>
+                        <a href="https://unsplash.com/photos/P6ek62anGJ0">wp7</a>
+                        <a href="https://unsplash.com/photos/GoW90IkxOO0">wp8</a>
+                        <a href="https://unsplash.com/collections/1753467/textures">textures</a>
+                        <a href="https://unsplash.com/collections/347167/backgrounds">backgrounds</a>
+                        <a href="https://unsplash.com/collections/614656/hello-darkness-my-old-friend">dark</a>
+                        <a href="https://unsplash.com/collections/1394721/clean">clean</a>
+                        <a href="https://unsplash.com/collections/193055/highkey">highkey</a>
+                        <a href="https://unsplash.com/collections/1410320/raindrops-glass">raindrops</a>
+                        <a href="https://unsplash.com/collections/1819753/neutrals">neutrals</a>
+                        <a href="https://unsplash.com/collections/395791/colors">colors</a>
+                        <a href="https://unsplash.com/collections/577737/unreal">unreal</a>
+                        <a href="https://unsplash.com/collections/1242150/abstract-landscapenature">abstract
+                            landscape</a>
 
                     </div>
                     <div>
                         <h3>Chrome extensions</h3>
-                        <a class="b s" href="https://chrome.google.com/webstore/category/extensions">Chrome web store</a>
-                        <a class="b s" href="https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm">uBlock Origin</a>
-                        <a class="b s" href="https://chrome.google.com/webstore/detail/privacy-badger/pkehgijcmpdhfbdbbnkijodmdjhbjlgp">Privacy Badger</a>
-                        <a class="b s" href="https://chrome.google.com/webstore/detail/onetab/chphlpgkkbolifaimnlloiipkdnihall">OneTab</a>
-                        <a class="b s" href="https://chrome.google.com/webstore/detail/linkclump/lfpjkncokllnfokkgpkobnkbkmelfefj">LinkClump</a>
-                        <a class="b s" href="https://chrome.google.com/webstore/detail/pin-all-tabs/ggdflfnbccnnmnejiblifjjgeiepdjop">PintAllTabs</a>
-                        <a class="b s" href="https://chrome.google.com/webstore/detail/pin-tabs/achoaodpkagkocipghglppnbagjheoni">Pin Tabs</a>
-                        <a class="b s" href="https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne">Stylus</a>
-                        <a class="b s" href="https://chrome.google.com/webstore/detail/reddit-enhancement-suite/kbmfpngjjgdllneeigpgjifpgocmfgmb?hl=en-GB">RES</a>
-                        <a class="b s" href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en-GB">TamperMonkey</a>
-                        <a class="b s" href="https://chrome.google.com/webstore/detail/whatfont/jabopobgcpjmedljpbcaablpmlmfcogm?hl=en-GB">WhatFont</a>
-                        <a class="b s" href="https://chrome.google.com/webstore/detail/videostream-for-google-ch/cnciopoikihiagdjbjpnocolokfelagl">Videostream</a>
-                        <a class="b s" href="https://chrome.google.com/webstore/detail/decentraleyes/ldpochfccmkkmhdbclfhpagapcfdljkj?hl=en-GB">Decentral Eyes</a>
-                        <a class="b s" href="https://chrome.google.com/webstore/detail/canvas-defender/obdbgnebcljmgkoljcdddaopadkifnpm">Canvas Defender</a>
-                        <a class="b s" href="https://chrome.google.com/webstore/detail/whatruns/cmkdbmfndkfgebldhnkbfhlneefdaaip?hl=en-GB">WhatRuns</a>
-                        <a class="b s" href="https://chrome.google.com/webstore/detail/clear-cache/cppjkneekbjaeellbfkmgnhonkkjfpdn">Clear Cache</a>
-                        <a class="b s" href="https://chrome.google.com/webstore/detail/refresh-em-all/iaoghbeamaalcgoembjppfekhelajipd">Refresh 'Em All</a>
-                        <a class="b s" href="https://chrome.google.com/webstore/detail/tab-auto-reloader/knnahnemielbnanghaphjgheamgcjjcb?hl=en">Tab Auto Reloader</a>
+                        <a href="https://chrome.google.com/webstore/category/extensions">Chrome web store</a>
+                        <a
+                            href="https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm">uBlock
+                            Origin</a>
+                        <a
+                            href="https://chrome.google.com/webstore/detail/privacy-badger/pkehgijcmpdhfbdbbnkijodmdjhbjlgp">Privacy
+                            Badger</a>
+                        <a
+                            href="https://chrome.google.com/webstore/detail/onetab/chphlpgkkbolifaimnlloiipkdnihall">OneTab</a>
+                        <a
+                            href="https://chrome.google.com/webstore/detail/linkclump/lfpjkncokllnfokkgpkobnkbkmelfefj">LinkClump</a>
+                        <a
+                            href="https://chrome.google.com/webstore/detail/pin-all-tabs/ggdflfnbccnnmnejiblifjjgeiepdjop">PintAllTabs</a>
+                        <a href="https://chrome.google.com/webstore/detail/pin-tabs/achoaodpkagkocipghglppnbagjheoni">Pin
+                            Tabs</a>
+                        <a
+                            href="https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne">Stylus</a>
+                        <a
+                            href="https://chrome.google.com/webstore/detail/reddit-enhancement-suite/kbmfpngjjgdllneeigpgjifpgocmfgmb?hl=en-GB">RES</a>
+                        <a
+                            href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en-GB">TamperMonkey</a>
+                        <a
+                            href="https://chrome.google.com/webstore/detail/whatfont/jabopobgcpjmedljpbcaablpmlmfcogm?hl=en-GB">WhatFont</a>
+                        <a
+                            href="https://chrome.google.com/webstore/detail/videostream-for-google-ch/cnciopoikihiagdjbjpnocolokfelagl">Videostream</a>
+                        <a
+                            href="https://chrome.google.com/webstore/detail/decentraleyes/ldpochfccmkkmhdbclfhpagapcfdljkj?hl=en-GB">Decentral
+                            Eyes</a>
+                        <a
+                            href="https://chrome.google.com/webstore/detail/canvas-defender/obdbgnebcljmgkoljcdddaopadkifnpm">Canvas
+                            Defender</a>
+                        <a
+                            href="https://chrome.google.com/webstore/detail/whatruns/cmkdbmfndkfgebldhnkbfhlneefdaaip?hl=en-GB">WhatRuns</a>
+                        <a
+                            href="https://chrome.google.com/webstore/detail/clear-cache/cppjkneekbjaeellbfkmgnhonkkjfpdn">Clear
+                            Cache</a>
+                        <a
+                            href="https://chrome.google.com/webstore/detail/refresh-em-all/iaoghbeamaalcgoembjppfekhelajipd">Refresh
+                            'Em
+                            All</a>
+                        <a
+                            href="https://chrome.google.com/webstore/detail/tab-auto-reloader/knnahnemielbnanghaphjgheamgcjjcb?hl=en">Tab
+                            Auto Reloader</a>
                         <br /><br />
                         <h3>Firefox extensions</h3>
-                        <a class="b s" href="https://addons.mozilla.org/fi/firefox/addon/multi-account-containers/">Multi-Account containers</a>
-                        <a class="b s" href="https://addons.mozilla.org/fi/firefox/addon/tab-center-redux/?src=search">Tab Center Redux</a>
-                        <a class="b s" href="https://addons.mozilla.org/fi/firefox/addon/ublock-origin/?src=search">uBlock Origin</a>
-                        <a class="b s" href="https://addons.mozilla.org/fi/firefox/addon/temporary-containers/?src=search">Temporary Containers</a>
-                        <a class="b s" href="https://addons.mozilla.org/fi/firefox/addon/switch-container/?src=search">Switch Container</a>
-                        <a class="b s" href="https://addons.mozilla.org/fi/firefox/addon/onetab/?src=search">OneTab</a>
+                        <a href="https://addons.mozilla.org/fi/firefox/addon/multi-account-containers/">Multi-Account
+                            containers</a>
+                        <a href="https://addons.mozilla.org/fi/firefox/addon/tab-center-redux/?src=search">Tab Center
+                            Redux</a>
+                        <a href="https://addons.mozilla.org/fi/firefox/addon/ublock-origin/?src=search">uBlock
+                            Origin</a>
+                        <a href="https://addons.mozilla.org/fi/firefox/addon/temporary-containers/?src=search">Temporary
+                            Containers</a>
+                        <a href="https://addons.mozilla.org/fi/firefox/addon/switch-container/?src=search">Switch
+                            Container</a>
+                        <a href="https://addons.mozilla.org/fi/firefox/addon/onetab/?src=search">OneTab</a>
                         <br /><br />
                         <h3>Nirsoft</h3>
-                        <a class="b s" href="https://www.nirsoft.net/panel/byname.html">All of Nirsoft</a>
-                        <a class="b s" href="https://www.nirsoft.net/panel/produkey.exe">Produkey</a>
-                        <a class="b s" href="https://www.nirsoft.net/panel/bluescreenview.exe">Blue screen view</a>
-                        <a class="b s" href="https://www.nirsoft.net/panel/processactivityview.exe">Process activity view</a>
-                        <a class="b s" href="https://www.nirsoft.net/panel/shellmenunew.exe">Shell menu view</a>
-                        <a class="b s" href="https://www.nirsoft.net/panel/monitorinfoview.exe">Monitor info view</a>
-                        <a class="b s" href="https://www.nirsoft.net/panel/wincrashreport.exe">Win crash report</a>
-                        <a class="b s" href="https://www.nirsoft.net/panel/disksmartview.exe">Disk smart view</a>
-                        <a class="b s" href="https://www.nirsoft.net/panel/chromehistoryview.exe">Chrome history view</a>
-                        <a class="b s" href="https://www.nirsoft.net/panel/chromecookiesview.exe">Chrome cookies view</a>
-                        <a class="b s" href="https://www.nirsoft.net/panel/wifiinfoview.exe">Wifi info view</a>
-                        <a class="b s" href="https://www.nirsoft.net/panel/networktrafficview.exe">Network traffic view</a>
-                        <a class="b s" href="https://www.nirsoft.net/panel/wul.exe">Windows update list</a>
-                        <a class="b s" href="https://www.nirsoft.net/panel/devmanview.exe">Dev man view</a>
-                        <a class="b s" href="https://www.nirsoft.net/panel/driverview.exe">Driver view</a>
-                        <a class="b s" href="https://www.nirsoft.net/panel/smsniff.exe">Smart Sniff</a>
-                        <a class="b s" href="https://www.nirsoft.net/panel/turnedontimesview.exe">Turned on times view</a>
-                        <a class="b s" href="https://www.nirsoft.net/panel/wnetwatcher.exe">Wireless network watcher</a>
+                        <a href="https://www.nirsoft.net/panel/byname.html">All of Nirsoft</a>
+                        <a href="https://www.nirsoft.net/panel/produkey.exe">Produkey</a>
+                        <a href="https://www.nirsoft.net/panel/bluescreenview.exe">Blue screen view</a>
+                        <a href="https://www.nirsoft.net/panel/processactivityview.exe">Process activity view</a>
+                        <a href="https://www.nirsoft.net/panel/shellmenunew.exe">Shell menu view</a>
+                        <a href="https://www.nirsoft.net/panel/monitorinfoview.exe">Monitor info view</a>
+                        <a href="https://www.nirsoft.net/panel/wincrashreport.exe">Win crash report</a>
+                        <a href="https://www.nirsoft.net/panel/disksmartview.exe">Disk smart view</a>
+                        <a href="https://www.nirsoft.net/panel/chromehistoryview.exe">Chrome history view</a>
+                        <a href="https://www.nirsoft.net/panel/chromecookiesview.exe">Chrome cookies view</a>
+                        <a href="https://www.nirsoft.net/panel/wifiinfoview.exe">Wifi info view</a>
+                        <a href="https://www.nirsoft.net/panel/networktrafficview.exe">Network traffic view</a>
+                        <a href="https://www.nirsoft.net/panel/wul.exe">Windows update list</a>
+                        <a href="https://www.nirsoft.net/panel/devmanview.exe">Dev man view</a>
+                        <a href="https://www.nirsoft.net/panel/driverview.exe">Driver view</a>
+                        <a href="https://www.nirsoft.net/panel/smsniff.exe">Smart Sniff</a>
+                        <a href="https://www.nirsoft.net/panel/turnedontimesview.exe">Turned on times view</a>
+                        <a href="https://www.nirsoft.net/panel/wnetwatcher.exe">Wireless network watcher</a>
 
                     </div>
                 </div>
@@ -1072,67 +1185,69 @@
                 <div class="linkCollection">
 
                     <div>
-                        <a class="b" href="https://areena.yle.fi/tv">YLE Areena</a>
-                        <a class="b" href="https://www.youtube.com">YouTube</a>
-                        <a class="b" href="https://www.netflix.com/fi-en/">Netflix</a>
-                        <a class="b" href="https://www.youtube.com/feed/subscriptions">Subscriptions</a>
-                        <a class="b" href="https://fi.hbonordic.com/">HBO Nordic</a>
-                        <a class="b" href="https://www.youtube.com/channel/UCTdw38Cw6jcm0atBPA39a0Q/videos">NDC Conferences</a>
-                        <a class="b" href="https://www.youtube.com/user/LinusTechTips/videos">LinusTechTips</a>
-                        <a class="b" href="https://www.youtube.com/channel/UCeeFfhMcJa1kjtfZAGskOCA/videos">TechLinked</a>
-                        <a class="b" href="https://www.youtube.com/user/Techquickie/videos">Techquickie</a>
-                        <a class="b" href="https://www.youtube.com/user/pcper/videos">PC Per</a>
-                        <a class="b" href="https://www.youtube.com/channel/UCWVmpLlFWYD-ZMNdbw2hJzw/videos">io-tech</a>
-                        <a class="b" href="https://www.youtube.com/user/phreakindee/videos">LGR</a>
-                        <a class="b" href="https://www.youtube.com/user/voxdotcom/videos">Vox</a>
-                        <a class="b" href="https://www.youtube.com/user/vicenews/videos">VICE News</a>
-                        <a class="b" href="https://www.youtube.com/user/SeattleCoffeeGear/videos">Seattle Coffee Gear</a>
+                        <a href="https://areena.yle.fi/tv">YLE Areena</a>
+                        <a href="https://www.youtube.com">YouTube</a>
+                        <a href="https://www.netflix.com/fi-en/">Netflix</a>
+                        <a href="https://www.youtube.com/feed/subscriptions">Subscriptions</a>
+                        <a href="https://fi.hbonordic.com/">HBO Nordic</a>
+                        <a href="https://www.youtube.com/channel/UCTdw38Cw6jcm0atBPA39a0Q/videos">NDC Conferences</a>
+                        <a href="https://www.youtube.com/user/LinusTechTips/videos">LinusTechTips</a>
+                        <a href="https://www.youtube.com/channel/UCeeFfhMcJa1kjtfZAGskOCA/videos">TechLinked</a>
+                        <a href="https://www.youtube.com/user/Techquickie/videos">Techquickie</a>
+                        <a href="https://www.youtube.com/user/pcper/videos">PC Per</a>
+                        <a href="https://www.youtube.com/channel/UCWVmpLlFWYD-ZMNdbw2hJzw/videos">io-tech</a>
+                        <a href="https://www.youtube.com/user/phreakindee/videos">LGR</a>
+                        <a href="https://www.youtube.com/user/voxdotcom/videos">Vox</a>
+                        <a href="https://www.youtube.com/user/vicenews/videos">VICE News</a>
+                        <a href="https://www.youtube.com/user/SeattleCoffeeGear/videos">Seattle Coffee Gear</a>
                     </div>
 
                     <div>
-                        <a class="b" href="https://www.youtube.com/user/TheVerge/videos">The Verge</a>
-                        <a class="b" href="https://www.youtube.com/user/marquesbrownlee/videos">MKBHD</a>
-                        <a class="b" href="https://www.youtube.com/user/testedcom/videos">Tested</a>
-                        <a class="b" href="https://www.youtube.com/user/MobileTechReview/videos">MobileTechReview</a>
-                        <a class="b" href="https://www.youtube.com/user/HardwareCanucks/videos">HardwareCanucks</a>
-                        <a class="b" href="https://www.youtube.com/user/ZeosReviews/videos">Z Reviews</a>
-                        <a class="b" href="https://www.youtube.com/user/rossmanngroup/videos">Louis Rossmann</a>
-                        <a class="b" href="https://www.youtube.com/user/JerryRigEverything/videos">JerryRig</a>
-                        <a class="b" href="https://www.youtube.com/user/TimeToLiveCustoms/videos">OC3D</a>
-                        <a class="b" href="https://www.youtube.com/user/iFixitYourself/videos">iFixit</a>
-                        <a class="b" href="https://www.youtube.com/channel/UCfhW84xfA6gEc4hDK90rR1Q/videos">Thomas Heathon</a>
+                        <a href="https://www.youtube.com/user/TheVerge/videos">The Verge</a>
+                        <a href="https://www.youtube.com/user/marquesbrownlee/videos">MKBHD</a>
+                        <a href="https://www.youtube.com/user/testedcom/videos">Tested</a>
+                        <a href="https://www.youtube.com/user/MobileTechReview/videos">MobileTechReview</a>
+                        <a href="https://www.youtube.com/user/HardwareCanucks/videos">HardwareCanucks</a>
+                        <a href="https://www.youtube.com/user/ZeosReviews/videos">Z Reviews</a>
+                        <a href="https://www.youtube.com/user/rossmanngroup/videos">Louis Rossmann</a>
+                        <a href="https://www.youtube.com/user/JerryRigEverything/videos">JerryRig</a>
+                        <a href="https://www.youtube.com/user/TimeToLiveCustoms/videos">OC3D</a>
+                        <a href="https://www.youtube.com/user/iFixitYourself/videos">iFixit</a>
+                        <a href="https://www.youtube.com/channel/UCfhW84xfA6gEc4hDK90rR1Q/videos">Thomas Heathon</a>
                     </div>
 
                     <div>
-                        <a class="b" href="https://www.youtube.com/user/ManyATrueNerd/videos">Many A True Nerd</a>
-                        <a class="b" href="https://www.youtube.com/user/ChristopherOdd/videos">Christoper Odd</a>
-                        <a class="b" href="https://www.youtube.com/user/ClassyManIAm/videos">Oxhorn</a>
-                        <a class="b" href="https://www.youtube.com/channel/UCp8OOssjSjGZRVYK6zWbNLg/videos">Monstercat Instinct</a>
-                        <a class="b" href="https://www.youtube.com/user/MonstercatMedia/videos">Monstercat Uncaged</a>
-                        <a class="b" href="https://www.youtube.com/user/RedLetterMedia/videos">Red Letter Media</a>
-                        <a class="b" href="https://www.youtube.com/user/crashcourse/videos">CrashCourse</a>
-                        <a class="b" href="https://www.youtube.com/user/TheGreatWar/videos">The Great War</a>
-                        <a class="b" href="https://www.youtube.com/user/enyay/videos">Tom Scott</a>
-                        <a class="b" href="https://www.youtube.com/user/CGPGrey/videos">CGP Grey</a>
-                        <a class="b" href="https://www.youtube.com/user/scishow/videos">SciShow</a>
-                        <a class="b" href="https://www.youtube.com/user/scishowspace/videos">SciShow Space</a>
-                        <a class="b" href="https://www.youtube.com/user/DeepSkyVideos/videos">DeepSkyVideos</a>
+                        <a href="https://www.youtube.com/user/ManyATrueNerd/videos">Many A True Nerd</a>
+                        <a href="https://www.youtube.com/user/ChristopherOdd/videos">Christoper Odd</a>
+                        <a href="https://www.youtube.com/user/ClassyManIAm/videos">Oxhorn</a>
+                        <a href="https://www.youtube.com/channel/UCp8OOssjSjGZRVYK6zWbNLg/videos">Monstercat
+                            Instinct</a>
+                        <a href="https://www.youtube.com/user/MonstercatMedia/videos">Monstercat Uncaged</a>
+                        <a href="https://www.youtube.com/user/RedLetterMedia/videos">Red Letter Media</a>
+                        <a href="https://www.youtube.com/user/crashcourse/videos">CrashCourse</a>
+                        <a href="https://www.youtube.com/user/TheGreatWar/videos">The Great War</a>
+                        <a href="https://www.youtube.com/user/enyay/videos">Tom Scott</a>
+                        <a href="https://www.youtube.com/user/CGPGrey/videos">CGP Grey</a>
+                        <a href="https://www.youtube.com/user/scishow/videos">SciShow</a>
+                        <a href="https://www.youtube.com/user/scishowspace/videos">SciShow Space</a>
+                        <a href="https://www.youtube.com/user/DeepSkyVideos/videos">DeepSkyVideos</a>
                     </div>
 
                     <div>
-                        <a class="b" href="https://www.youtube.com/user/numberphile/videos">Numberphile</a>
-                        <a class="b" href="https://www.youtube.com/user/sixtysymbols/videos">Sixty Symbols</a>
-                        <a class="b" href="https://www.youtube.com/user/periodicvideos/videos">Periodic Videos</a>
-                        <a class="b" href="https://www.youtube.com/user/Computerphile/videos">Computerphile</a>
-                        <a class="b" href="https://www.youtube.com/channel/UCtwKon9qMt5YLVgQt1tvJKg/videos">Objectivity</a>
-                        <a class="b" href="https://www.youtube.com/user/minuteearth/videos">Minute Earth</a>
-                        <a class="b" href="https://www.youtube.com/user/minutephysics/videos">Minute Physics</a>
-                        <a class="b" href="https://www.youtube.com/user/opetustv/playlists">OpetusTV</a>
-                        <a class="b" href="https://www.youtube.com/channel/UCP5tjEmvPItGyLhmjdwP7Ww/videos">Real Life Lore</a>
-                        <a class="b" href="https://www.youtube.com/channel/UCgNg3vwj3xt7QOrcIDaHdFg/videos">PolyMatter</a>
-                        <a class="b" href="https://www.youtube.com/user/bosnianbill/videos">Bosnianbill</a>
-                        <a class="b" href="https://www.youtube.com/channel/UCuCkxoKLYO_EQ2GeFtbM_bw/videos">Half as Interesting</a>
-                        <a class="b" href="https://www.youtube.com/user/Wendoverproductions/videos">Wendover Productions</a>
+                        <a href="https://www.youtube.com/user/numberphile/videos">Numberphile</a>
+                        <a href="https://www.youtube.com/user/sixtysymbols/videos">Sixty Symbols</a>
+                        <a href="https://www.youtube.com/user/periodicvideos/videos">Periodic Videos</a>
+                        <a href="https://www.youtube.com/user/Computerphile/videos">Computerphile</a>
+                        <a href="https://www.youtube.com/channel/UCtwKon9qMt5YLVgQt1tvJKg/videos">Objectivity</a>
+                        <a href="https://www.youtube.com/user/minuteearth/videos">Minute Earth</a>
+                        <a href="https://www.youtube.com/user/minutephysics/videos">Minute Physics</a>
+                        <a href="https://www.youtube.com/user/opetustv/playlists">OpetusTV</a>
+                        <a href="https://www.youtube.com/channel/UCP5tjEmvPItGyLhmjdwP7Ww/videos">Real Life Lore</a>
+                        <a href="https://www.youtube.com/channel/UCgNg3vwj3xt7QOrcIDaHdFg/videos">PolyMatter</a>
+                        <a href="https://www.youtube.com/user/bosnianbill/videos">Bosnianbill</a>
+                        <a href="https://www.youtube.com/channel/UCuCkxoKLYO_EQ2GeFtbM_bw/videos">Half as
+                            Interesting</a>
+                        <a href="https://www.youtube.com/user/Wendoverproductions/videos">Wendover Productions</a>
                     </div>
                 </div>
             </div>
@@ -1141,80 +1256,80 @@
                 <h3>Reddit</h3>
                 <div class="linkCollection">
                     <div>
-                        <a class="b s" href="https://redditgrid.com/">Grid</a>
-                        <a class="b s" href="https://www.reddit.com/">Reddit</a>
-                        <a class="b s" href="https://www.reddit.com/r/technology/">Technology</a>
-                        <a class="b s" href="https://www.reddit.com/r/software/">software</a>
-                        <a class="b s" href="https://www.reddit.com/r/windows/">Windows</a>
-                        <a class="b s" href="https://www.reddit.com/r/linux/">Linux</a>
-                        <a class="b s" href="https://www.reddit.com/r/unixporn/">unix</a>
-                        <a class="b s" href="https://www.reddit.com/r/AutoHotkey/">Autohotkey</a>
-                        <a class="b s" href="https://www.reddit.com/r/customization/">Customization</a>
-                        <a class="b s" href="https://www.reddit.com/r/tech/">Tech</a>
-                        <a class="b s" href="https://www.reddit.com/r/Android/">Android</a>
-                        <a class="b s" href="https://www.reddit.com/r/Apple/">Apple</a>
-                        <a class="b s" href="https://www.reddit.com/r/MacOS/">macOS</a>
-                        <a class="b s" href="https://www.reddit.com/r/mac/">Mac</a>
-                        <a class="b s" href="https://www.reddit.com/r/VintageApple/">Vintage Apple</a>
-                        <a class="b s" href="https://www.reddit.com/r/ipad/">iPad</a>
-                        <a class="b s" href="https://www.reddit.com/r/iphone/">iPhone</a>
-                        <a class="b s" href="https://www.reddit.com/r/iOSBeta/">iOS Beta</a>
-                        <a class="b s" href="https://www.reddit.com/r/OSXBeta/">macOS Beta</a>
+                        <a href="https://redditgrid.com/">Grid</a>
+                        <a href="https://www.reddit.com/">Reddit</a>
+                        <a href="https://www.reddit.com/r/technology/">Technology</a>
+                        <a href="https://www.reddit.com/r/software/">software</a>
+                        <a href="https://www.reddit.com/r/windows/">Windows</a>
+                        <a href="https://www.reddit.com/r/linux/">Linux</a>
+                        <a href="https://www.reddit.com/r/unixporn/">unix</a>
+                        <a href="https://www.reddit.com/r/AutoHotkey/">Autohotkey</a>
+                        <a href="https://www.reddit.com/r/customization/">Customization</a>
+                        <a href="https://www.reddit.com/r/tech/">Tech</a>
+                        <a href="https://www.reddit.com/r/Android/">Android</a>
+                        <a href="https://www.reddit.com/r/Apple/">Apple</a>
+                        <a href="https://www.reddit.com/r/MacOS/">macOS</a>
+                        <a href="https://www.reddit.com/r/mac/">Mac</a>
+                        <a href="https://www.reddit.com/r/VintageApple/">Vintage Apple</a>
+                        <a href="https://www.reddit.com/r/ipad/">iPad</a>
+                        <a href="https://www.reddit.com/r/iphone/">iPhone</a>
+                        <a href="https://www.reddit.com/r/iOSBeta/">iOS Beta</a>
+                        <a href="https://www.reddit.com/r/OSXBeta/">macOS Beta</a>
                     </div>
 
                     <div>
-                        <a class="b s" href="https://www.reddit.com/r/programming/">Programming</a>
-                        <a class="b s" href="https://www.reddit.com/r/swift/">Swift</a>
-                        <a class="b s" href="https://www.reddit.com/r/Python/">Python</a>
-                        <a class="b s" href="https://www.reddit.com/r/learnprogramming/">Learn Programming</a>
-                        <a class="b s" href="https://www.reddit.com/r/cscareerquestions/">CS career</a>
-                        <a class="b s" href="https://www.reddit.com/r/ProgrammerHumor/">Programmer humor</a>
-                        <a class="b s" href="https://www.reddit.com/r/ProgrammerTIL/">Programmer TIL</a>
-                        <a class="b s" href="https://www.reddit.com/r/coding/">Coding</a>
-                        <a class="b s" href="https://www.reddit.com/r/compsci/">Compsci</a>
-                        <a class="b s" href="https://www.reddit.com/r/netsec/">Netsec</a>
-                        <a class="b s" href="https://www.reddit.com/r/webdev/">Webdev</a>
-                        <a class="b s" href="https://www.reddit.com/r/dailyprogrammer/">Daily Programmer</a>
-                        <a class="b s" href="https://www.reddit.com/r/web_design/">Web design</a>
-                        <a class="b s" href="https://www.reddit.com/r/gamedev/">Gamedev</a>
-                        <a class="b s" href="https://www.reddit.com/r/startups/">Startups</a>
-                        <a class="b s" href="https://www.reddit.com/r/hacking/">Hacking</a>
-                        <a class="b s" href="https://www.reddit.com/r/ReverseEngineering/URL">Reverse engineering</a>
-                        <a class="b s" href="https://www.reddit.com/r/techsupport/">Tech support</a>
-                        <a class="b s" href="https://www.reddit.com/r/forhire/">For hire</a>
-                        <a class="b s" href="https://www.reddit.com/r/jobbit/">Jobbit</a>
+                        <a href="https://www.reddit.com/r/programming/">Programming</a>
+                        <a href="https://www.reddit.com/r/swift/">Swift</a>
+                        <a href="https://www.reddit.com/r/Python/">Python</a>
+                        <a href="https://www.reddit.com/r/learnprogramming/">Learn Programming</a>
+                        <a href="https://www.reddit.com/r/cscareerquestions/">CS career</a>
+                        <a href="https://www.reddit.com/r/ProgrammerHumor/">Programmer humor</a>
+                        <a href="https://www.reddit.com/r/ProgrammerTIL/">Programmer TIL</a>
+                        <a href="https://www.reddit.com/r/coding/">Coding</a>
+                        <a href="https://www.reddit.com/r/compsci/">Compsci</a>
+                        <a href="https://www.reddit.com/r/netsec/">Netsec</a>
+                        <a href="https://www.reddit.com/r/webdev/">Webdev</a>
+                        <a href="https://www.reddit.com/r/dailyprogrammer/">Daily Programmer</a>
+                        <a href="https://www.reddit.com/r/web_design/">Web design</a>
+                        <a href="https://www.reddit.com/r/gamedev/">Gamedev</a>
+                        <a href="https://www.reddit.com/r/startups/">Startups</a>
+                        <a href="https://www.reddit.com/r/hacking/">Hacking</a>
+                        <a href="https://www.reddit.com/r/ReverseEngineering/URL">Reverse engineering</a>
+                        <a href="https://www.reddit.com/r/techsupport/">Tech support</a>
+                        <a href="https://www.reddit.com/r/forhire/">For hire</a>
+                        <a href="https://www.reddit.com/r/jobbit/">Jobbit</a>
                     </div>
 
                     <div>
-                        <a class="b s" href="https://www.reddit.com/r/worldnews/">World news</a>
-                        <a class="b s" href="https://www.reddit.com/r/news/">News</a>
-                        <a class="b s" href="https://www.reddit.com/r/Europe/">Europe</a>
-                        <a class="b s" href="https://www.reddit.com/r/Finland/">Finland</a>
-                        <a class="b s" href="https://www.reddit.com/r/Suomi/">Suomi</a>
-                        <a class="b s" href="https://www.reddit.com/r/Oulu/">Oulu</a>
-                        <a class="b s" href="https://www.reddit.com/r/desktops/">Desktops</a>
-                        <a class="b s" href="https://www.reddit.com/r/typography/">Typography</a>
-                        <a class="b s" href="https://www.reddit.com/r/productivity/">Productivity</a>
-                        <a class="b s" href="https://www.reddit.com/r/headphones/">Headphones</a>
-                        <a class="b s" href="https://www.reddit.com/r/MechanicalKeyboards/">mechanicalkeyboards</a>
-                        <a class="b s" href="https://www.reddit.com/r/macsetups/">Mac setups</a>
-                        <a class="b s" href="https://www.reddit.com/r/battlestations/">Battlestations</a>
+                        <a href="https://www.reddit.com/r/worldnews/">World news</a>
+                        <a href="https://www.reddit.com/r/news/">News</a>
+                        <a href="https://www.reddit.com/r/Europe/">Europe</a>
+                        <a href="https://www.reddit.com/r/Finland/">Finland</a>
+                        <a href="https://www.reddit.com/r/Suomi/">Suomi</a>
+                        <a href="https://www.reddit.com/r/Oulu/">Oulu</a>
+                        <a href="https://www.reddit.com/r/desktops/">Desktops</a>
+                        <a href="https://www.reddit.com/r/typography/">Typography</a>
+                        <a href="https://www.reddit.com/r/productivity/">Productivity</a>
+                        <a href="https://www.reddit.com/r/headphones/">Headphones</a>
+                        <a href="https://www.reddit.com/r/MechanicalKeyboards/">mechanicalkeyboards</a>
+                        <a href="https://www.reddit.com/r/macsetups/">Mac setups</a>
+                        <a href="https://www.reddit.com/r/battlestations/">Battlestations</a>
                     </div>
 
                     <div>
-                        <a class="b s" href="https://www.reddit.com/r/MapPorn/">Maps</a>
-                        <a class="b s" href="https://www.reddit.com/r/oldmaps/">Old maps</a>
-                        <a class="b s" href="https://www.reddit.com/r/minimalism/">Minimalism</a>
-                        <a class="b s" href="https://www.reddit.com/r/science/">Science</a>
-                        <a class="b s" href="https://www.reddit.com/r/MouseReview/">Mousereview</a>
-                        <a class="b s" href="https://www.reddit.com/r/gaming/">Gaming</a>
-                        <a class="b s" href="https://www.reddit.com/r/DIY/">DIY</a>
-                        <a class="b s" href="https://www.reddit.com/r/ikeahacks/">ikeahacks</a>
-                        <a class="b s" href="https://www.reddit.com/r/HelloInternet/">HelloInternet</a>
-                        <a class="b s" href="https://www.reddit.com/r/vexillology/">vexillology</a>
-                        <a class="b s" href="https://www.reddit.com/r/AskHistorians/">AskHistorians</a>
-                        <a class="b s" href="https://www.reddit.com/r/CGPGrey/">CGP Grey</a>
-                        <a class="b s" href="https://www.reddit.com/r/CableManagement/">Cablemanagement</a>
+                        <a href="https://www.reddit.com/r/MapPorn/">Maps</a>
+                        <a href="https://www.reddit.com/r/oldmaps/">Old maps</a>
+                        <a href="https://www.reddit.com/r/minimalism/">Minimalism</a>
+                        <a href="https://www.reddit.com/r/science/">Science</a>
+                        <a href="https://www.reddit.com/r/MouseReview/">Mousereview</a>
+                        <a href="https://www.reddit.com/r/gaming/">Gaming</a>
+                        <a href="https://www.reddit.com/r/DIY/">DIY</a>
+                        <a href="https://www.reddit.com/r/ikeahacks/">ikeahacks</a>
+                        <a href="https://www.reddit.com/r/HelloInternet/">HelloInternet</a>
+                        <a href="https://www.reddit.com/r/vexillology/">vexillology</a>
+                        <a href="https://www.reddit.com/r/AskHistorians/">AskHistorians</a>
+                        <a href="https://www.reddit.com/r/CGPGrey/">CGP Grey</a>
+                        <a href="https://www.reddit.com/r/CableManagement/">Cablemanagement</a>
 
                     </div>
                 </div>
@@ -1226,41 +1341,42 @@
 
                     <div>
                         <h3>OAMK</h3>
-                        <a class="b" href="http://www.oamk.fi/fi/">OAMK</a>
-                        <a class="b" href="https://lukkarit.oamk.fi/">Lukkarit</a>
-                        <a class="b" href="https://oiva.oamk.fi/index.php?kirjautumisok">Oiva</a>
-                        <a class="b" href="https://outlook.office.com/owa/?realm=students.oamk.fi">Office</a>
-                        <a class="b" href="https://it.oamk.fi/">IT OAMK</a>
-                        <a class="b" href="https://www.oamk.fi/peppi">Peppi</a>
-                        <a class="b" href="http://www.oamk.fi/kirjasto/fi/">Library</a>
-                        <a class="b" href="https://moodle.oamk.fi/">Moodle</a>
-                        <a class="b" href="http://www.osakoweb.fi/">Osako</a>
-                        <a class="b" href="http://www.oamk.fi/opinto-opas/">Study Guide</a>
-                        <a class="b" href="https://mot.kielikone.fi/mot/oamk/netmot.exe">MOT</a>
-                        <a class="b" href="https://safeq/m/">SafeQ</a>
-                        <a class="b" href="http://www.naturalprogramming.com">Natural Programming</a>
-                        <a class="b" href="http://www.naturalprogramming.com/web_programming.html">Web Programming</a>
-                        <a class="b" href="http://www.oamk.fi/fi/tietoa-oamkista/yhteystiedot/kampukset/">Campuses</a>
+                        <a href="http://www.oamk.fi/fi/">OAMK</a>
+                        <a href="https://lukkarit.oamk.fi/">Lukkarit</a>
+                        <a href="https://oiva.oamk.fi/index.php?kirjautumisok">Oiva</a>
+                        <a href="https://outlook.office.com/owa/?realm=students.oamk.fi">Office</a>
+                        <a href="https://it.oamk.fi/">IT OAMK</a>
+                        <a href="https://www.oamk.fi/peppi">Peppi</a>
+                        <a href="http://www.oamk.fi/kirjasto/fi/">Library</a>
+                        <a href="https://moodle.oamk.fi/">Moodle</a>
+                        <a href="http://www.osakoweb.fi/">Osako</a>
+                        <a href="http://www.oamk.fi/opinto-opas/">Study Guide</a>
+                        <a href="https://mot.kielikone.fi/mot/oamk/netmot.exe">MOT</a>
+                        <a href="https://safeq/m/">SafeQ</a>
+                        <a href="http://www.naturalprogramming.com">Natural Programming</a>
+                        <a href="http://www.naturalprogramming.com/web_programming.html">Web Programming</a>
+                        <a href="http://www.oamk.fi/fi/tietoa-oamkista/yhteystiedot/kampukset/">Campuses</a>
                     </div>
 
                     <div>
                         <h3>Polito</h3>
-                        <a class="b" href="https://www.polito.it/index.php?lang=en">Polito</a>
-                        <a class="b" href="https://didattica.polito.it/index_en.html">Didattica</a>
-                        <a class="b" href="https://didattica.polito.it/portal/page/portal/home/Studente">Didattica login</a>
-                        <a class="b" href="https://mail.studenti.polito.it/">Webmail</a>
-                        <a class="b" href="https://idp.polito.it/idp/x509mixed-login">Login</a>
-                        <a class="b" href="http://apply.polito.it">Apply</a>
-                        <a class="b" href="https://didattica.polito.it/offerta/index_en.html">Course catalog</a>
-                        <a class="b" href="https://didattica.polito.it/servizi_studenti/index_en.html">Student Services</a>
-                        <a class="b" href="https://didattica.polito.it/bacheca/">News and events</a>
-                        <a class="b" href="https://www.polito.it/sitemap/?lang=en">Sitemap</a>
-                        <a class="b" href="http://www.biblio.polito.it/en">Library</a>
-                        <a class="b" href="https://www.polito.it/ateneo/sedi/index.php?lang=en">Campus map</a>
-                        <a class="b" href="https://www.swas.polito.it/dotnet/orari_lezione_pub/">Schedule</a>
-                        <a class="b" href="http://fmgroup.polito.it/quer/">Stefano Quer</a>
-                        <a class="b" href="http://fmgroup.polito.it/quer/teaching/apaEn/teaching.htm">Stefano Quer Algorithms</a>
-                        <a class="b" href="http://winpcap.polito.it/index.php?id=28:cn-materials&catid=19:cn-2014-2015">Computer Networks</a>
+                        <a href="https://www.polito.it/index.php?lang=en">Polito</a>
+                        <a href="https://didattica.polito.it/index_en.html">Didattica</a>
+                        <a href="https://didattica.polito.it/portal/page/portal/home/Studente">Didattica login</a>
+                        <a href="https://mail.studenti.polito.it/">Webmail</a>
+                        <a href="https://idp.polito.it/idp/x509mixed-login">Login</a>
+                        <a href="http://apply.polito.it">Apply</a>
+                        <a href="https://didattica.polito.it/offerta/index_en.html">Course catalog</a>
+                        <a href="https://didattica.polito.it/servizi_studenti/index_en.html">Student Services</a>
+                        <a href="https://didattica.polito.it/bacheca/">News and events</a>
+                        <a href="https://www.polito.it/sitemap/?lang=en">Sitemap</a>
+                        <a href="http://www.biblio.polito.it/en">Library</a>
+                        <a href="https://www.polito.it/ateneo/sedi/index.php?lang=en">Campus map</a>
+                        <a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/">Schedule</a>
+                        <a href="http://fmgroup.polito.it/quer/">Stefano Quer</a>
+                        <a href="http://fmgroup.polito.it/quer/teaching/apaEn/teaching.htm">Stefano Quer Algorithms</a>
+                        <a href="http://winpcap.polito.it/index.php?id=28:cn-materials&catid=19:cn-2014-2015">Computer
+                            Networks</a>
                         <br /><br />
                     </div>
                 </div>
@@ -1504,25 +1620,85 @@
         </script>
 
         <script>
-            const cDate = new Date();
-            const cHours = ('0' + cDate.getHours()).slice(-2);
-            const cMinutes = ('0' + cDate.getMinutes()).slice(-2);
-            const dateString = `${cDate.getDate()}.${cDate.getMonth() + 1}.${cDate.getFullYear()}`;
-            const timeString = `${cHours}:${cMinutes}`;
-            const ISOdateString = cDate.toISOString().slice(0, 10);
-            const ISOdateWithTime = `${ISOdateString}_${cHours}${cMinutes}`
-
-            document.getElementById('currentDate').innerText = dateString;
-            document.getElementById('currentTime').innerText = timeString;
-            document.getElementById('isoDate').innerText = ISOdateString;
-            document.getElementById('isoDateWithTime').innerText = ISOdateWithTime;
-
             const selectById = (id) => {
                 window.getSelection()
                     .selectAllChildren(
                         document.getElementById(id)
                     );
             }
+
+            const makeId = (length) => {
+                var result = '';
+                const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+                const charactersLength = characters.length;
+                for (var i = 0; i < length; i++) {
+                    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+                }
+                return result;
+            }
+
+            const makeLowercaseId = (length) => {
+                var result = '';
+                const characters = 'abcdefghijklmnopqrstuvwxyz';
+                const charactersLength = characters.length;
+                for (var i = 0; i < length; i++) {
+                    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+                }
+                return result;
+            }
+
+            const setValues = (randomIdLength) => {
+                const randomId = makeLowercaseId(randomIdLength);
+                const cDate = new Date();
+                const cHours = ('0' + cDate.getHours()).slice(-2);
+                const cMinutes = ('0' + cDate.getMinutes()).slice(-2);
+                const dateString = `${cDate.getDate()}.${cDate.getMonth() + 1}.${cDate.getFullYear()}`;
+                const timeString = `${cHours}:${cMinutes}`;
+                const ISOdateString = cDate.toISOString().slice(0, 10);
+                const ISOdateWithTime = `${ISOdateString}_${cHours}${cMinutes}`;
+                // const ISOdateWithId = `${ISOdateString}_${randomId}`;
+                const yearWithId = `${cDate.getFullYear()}-${randomId}`;
+                document.getElementById('currentDate').innerText = dateString;
+                document.getElementById('currentTime').innerText = timeString;
+                document.getElementById('isoDate').innerText = ISOdateString;
+                document.getElementById('isoDateWithTime').innerText = ISOdateWithTime;
+                // document.getElementById('ISOdateWithId').innerText = ISOdateWithId;
+                document.getElementById('randomId').innerText = randomId;
+                document.getElementById('yearWithId').innerText = yearWithId;
+            }
+
+            const hideDates = () => {
+                document.getElementById('currentDate').style.display = "none";
+                document.getElementById('currentTime').style.display = "none";
+                document.getElementById('isoDate').style.display = "none";
+                document.getElementById('isoDateWithTime').style.display = "none";
+            }
+
+            const showDates = () => {
+                document.getElementById('currentDate').style.display = "inline";
+                document.getElementById('currentTime').style.display = "inline";
+                document.getElementById('isoDate').style.display = "inline";
+                document.getElementById('isoDateWithTime').style.display = "inline";
+            }
+
+            const generateIdAndHideDates = (randomIdLength) => {
+                document.getElementById("randomIdLength").value = randomIdLength;
+                hideDates();
+                setValues(randomIdLength)
+            }
+
+            const updateValues = () => {
+                const randomIdLength = document.getElementById("randomIdLength").value;
+                hideDates();
+                setValues(randomIdLength)
+            }
+
+            const regenerateId = () => {
+                const randomIdLength = document.getElementById("randomIdLength").value;
+                setValues(randomIdLength)
+            }
+
+            setValues(12);
 
         </script>
 
@@ -1537,7 +1713,7 @@
             const searchFunction = () => {
                 const input = document.getElementById("filterInput");
                 const filter = input.value.toUpperCase();
-                const links = document.getElementsByClassName("b");
+                const links = document.getElementsByTagName('a');
 
                 for (i = 0; i < links.length; i++) {
                     const foundLinks = links[i];
@@ -1590,7 +1766,11 @@
             Mousetrap.bind("q", () => selectById('currentDate'));
             Mousetrap.bind("w", () => selectById('currentTime'));
             Mousetrap.bind("e", () => selectById('isoDate'));
-            Mousetrap.bind("r", () => selectById('isoDateWithTime'));
+            Mousetrap.bind("a", () => selectById('isoDateWithTime'));
+            Mousetrap.bind("s", () => selectById('randomId'));
+            Mousetrap.bind("d", () => selectById('yearWithId'));
+
+            Mousetrap.bind("r", () => regenerateId());
 
         </script>
     </div>
