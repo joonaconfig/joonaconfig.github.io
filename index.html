@@ -9,332 +9,29 @@
     <title>Start</title>
 
     <style>
-        a,
-        abbr,
-        acronym,
-        address,
-        applet,
-        article,
-        aside,
-        audio,
-        b,
-        big,
-        blockquote,
-        body,
-        canvas,
-        caption,
-        center,
-        cite,
-        code,
-        dd,
-        del,
-        details,
-        dfn,
-        div,
-        dl,
-        dt,
-        em,
-        embed,
-        fieldset,
-        figcaption,
-        figure,
-        footer,
-        form,
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        header,
-        hgroup,
-        html,
-        i,
-        iframe,
-        img,
-        ins,
-        kbd,
-        label,
-        legend,
-        li,
-        mark,
-        menu,
-        nav,
-        object,
-        ol,
-        output,
-        p,
-        pre,
-        q,
-        ruby,
-        s,
-        samp,
-        section,
-        small,
-        span,
-        strike,
-        strong,
-        sub,
-        summary,
-        sup,
-        table,
-        tbody,
-        td,
-        tfoot,
-        th,
-        thead,
-        time,
-        tr,
-        tt,
-        u,
-        ul,
-        var,
-        video {
-            margin: 0;
-            padding: 0;
-            border: 0;
-            font-size: 100%;
-            font: inherit;
-            vertical-align: baseline;
-        }
-
-        :focus {
-            outline: 0;
-        }
-
-        article,
-        aside,
-        details,
-        figcaption,
-        figure,
-        footer,
-        header,
-        hgroup,
-        menu,
-        nav,
-        section {
-            display: block;
-        }
-
-        body {
-            width: 100%;
-            height: 100%;
-            line-height: 1;
-        }
-
-        ol,
-        ul {
-            list-style: none;
-        }
-
-        blockquote,
-        q {
-            quotes: none;
-        }
-
-        blockquote:after,
-        blockquote:before,
-        q:after,
-        q:before {
-            content: "";
-            content: none;
-        }
-
-        table {
-            border-collapse: collapse;
-            border-spacing: 0;
-        }
-
-        input[type="search"]::-webkit-search-cancel-button,
-        input[type="search"]::-webkit-search-decoration,
-        input[type="search"]::-webkit-search-results-button,
-        input[type="search"]::-webkit-search-results-decoration {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-        }
-
-        input[type="search"] {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            -webkit-box-sizing: content-box;
-            -moz-box-sizing: content-box;
-            box-sizing: content-box;
-        }
-
-        textarea {
-            overflow: auto;
-            vertical-align: top;
-            resize: vertical;
-        }
-
-        audio,
-        canvas,
-        video {
-            display: inline-block;
-            max-width: 100%;
-        }
-
-        audio:not([controls]) {
-            display: none;
-            height: 0;
-        }
-
-        [hidden] {
-            display: none;
-        }
-
-        html {
-            font-size: 100%;
-            -webkit-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
-        }
-
-        a:focus {
-            outline: thin dotted;
-        }
-
-        a:active,
-        a:hover {
-            outline: 0;
-        }
-
-        img {
-            border: 0;
-            -ms-interpolation-mode: bicubic;
-        }
-
-        figure {
-            margin: 0;
-        }
-
-        form {
-            margin: 0;
-        }
-
-        fieldset {
-            border: 1px solid silver;
-            margin: 0 2px;
-            padding: 0.35em 0.625em 0.75em;
-        }
-
-        legend {
-            border: 0;
-            padding: 0;
-            white-space: normal;
-        }
-
-        button,
-        input,
-        select,
-        textarea {
-            font-size: 100%;
-            margin: 0;
-            vertical-align: baseline;
-        }
-
-        button,
-        input {
-            line-height: normal;
-        }
-
-        button,
-        select {
-            text-transform: none;
-        }
-
-        button,
-        html input[type="button"],
-        input[type="reset"],
-        input[type="submit"] {
-            -webkit-appearance: button;
-            cursor: pointer;
-        }
-
-        button[disabled],
-        html input[disabled] {
-            cursor: default;
-        }
-
-        input[type="checkbox"],
-        input[type="radio"] {
-            box-sizing: border-box;
-            padding: 0;
-        }
-
-        input[type="search"] {
-            -webkit-appearance: textfield;
-            -moz-box-sizing: content-box;
-            -webkit-box-sizing: content-box;
-            box-sizing: content-box;
-        }
-
-        input[type="search"]::-webkit-search-cancel-button,
-        input[type="search"]::-webkit-search-decoration {
-            -webkit-appearance: none;
-        }
-
-        button::-moz-focus-inner,
-        input::-moz-focus-inner {
-            border: 0;
-            padding: 0;
-        }
-
-        textarea {
-            overflow: auto;
-            vertical-align: top;
-        }
-
-        table {
-            border-collapse: collapse;
-            border-spacing: 0;
-        }
-
-        button,
-        html,
-        input,
-        select,
-        textarea {
-            color: #222;
-        }
-
-        ::-moz-selection {
-            background: #b3d4fc;
-            text-shadow: none;
-        }
-
-        ::selection {
-            background: #b3d4fc;
-            text-shadow: none;
-        }
-
-        img {
-            vertical-align: middle;
-        }
-
-        fieldset {
-            border: 0;
-            margin: 0;
-            padding: 0;
-        }
-
-        textarea {
-            resize: vertical;
-        }
+        a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}:focus{outline:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{width:100%;height:100%;line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:"";content:none}table{border-collapse:collapse;border-spacing:0}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration,input[type=search]::-webkit-search-results-button,input[type=search]::-webkit-search-results-decoration{-webkit-appearance:none;-moz-appearance:none}input[type=search]{-webkit-appearance:none;-moz-appearance:none;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}textarea{overflow:auto;vertical-align:top;resize:vertical}audio,canvas,video{display:inline-block;max-width:100%}audio:not([controls]){display:none;height:0}[hidden]{display:none}html{font-size:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}a:focus{outline:thin dotted}a:active,a:hover{outline:0}img{border:0;-ms-interpolation-mode:bicubic}figure{margin:0}form{margin:0}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0;white-space:normal}button,input,select,textarea{font-size:100%;margin:0;vertical-align:baseline}button,input{line-height:normal}button,select{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top}table{border-collapse:collapse;border-spacing:0}button,html,input,select,textarea{color:#222}::-moz-selection{background:#b3d4fc;text-shadow:none}::selection{background:#b3d4fc;text-shadow:none}img{vertical-align:middle}fieldset{border:0;margin:0;padding:0}textarea{resize:vertical}
 
         :root {
             --bg-color: #ffffff;
             --text-color: #020202;
             --text-unselected: #dcdcdc;
-            --border: #CCCCCC;
+            --border: #cccccc;
             --border-unselected: #e8e8e8;
-            --font: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            --font: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
         }
 
         body {
             font-family: var(--font);
             background-color: var(--bg-color);
             color: var(--text-color);
-            font-size: 0.8rem;
+        }
+
+        .nav div {
+            margin: 0 10px;
+        }
+
+        .nav div form input {
+            width: 100%;
         }
 
         input,
@@ -357,9 +54,10 @@
         }
 
         h3 {
-            font-weight: 700;
+            font-weight: 600;
             line-height: 2.5em;
-            color: #212121;
+            color: var(--text-color);
+            font-size: 10pt;
         }
 
         li {
@@ -383,19 +81,19 @@
             background-color: var(--bg-color);
             border: 1px solid var(--border);
             color: var(--text-color);
-            padding: 0 4px 0 4px;
+            padding: 1px 4px 1px 4px;
             margin: 4px 2px 4px 2px;
-            border-radius: 5px;
+            border-radius: 4px;
             text-decoration: none;
             line-height: 1.75em;
             cursor: default;
             text-justify: inter-word;
             display: inline-block;
-            font-size: 10pt;
+            font-size: 9.5pt;
         }
 
         .lcContainer {
-            border-top: 1px solid #CCCCCC;
+            border-top: 1px solid #cccccc;
             margin-top: 1.5em;
             padding-top: 1em;
             padding: 0.5em;
@@ -406,7 +104,10 @@
         }
 
         .linkCollection div {
+            width: 100%;
+            min-width: 200px;
             max-width: 350px;
+            margin: 0.2rem;
         }
 
         .wrapperContainer {
@@ -418,16 +119,29 @@
         .time-container {
             display: flex;
             justify-content: space-between;
+            align-items: center;
+        }
+
+        .time-container * {
+            font-size: 10pt;
         }
 
         .time-container span {
-            margin-right: 1em;
+            margin-right: 0.75em;
         }
 
         .time-container div button {
             border: none;
             margin: 0.25em;
             background-color: transparent;
+        }
+
+        .time-container div div {
+            height: 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-right: 20px;
         }
 
         .wrapper {
@@ -446,9 +160,10 @@
             margin: 0.2em 0.2em 0.1em 0.2em;
             width: 80%;
             padding: 0.45em;
+            font-size: 9pt;
         }
 
-        @media only screen and (max-width: 1300px) {
+        @media only screen and (max-width: 1400px) {
             .contentTopBar {
                 padding-top: 0.4em;
             }
@@ -491,15 +206,13 @@
             }
         }
     </style>
-</head>
 
 <body>
     <div class="wrapperContainer">
         <div class="wrapper">
             <div class="nav flexbox sticky flexbox-centered">
                 <div><input placeholder="(1) Filter..." type="text" value="" autocomplete="off" id="filterInput"
-                        onkeyup="searchFunction()" />
-                </div>
+                        onkeyup="searchFunction()" /></div>
                 <div>
                     <form action="https://duckduckgo.com/" method="get"><input autocomplete="off"
                             placeholder="(2) DuckDuckGo" type="text" name="q" id="searchDDG" /></form>
@@ -527,33 +240,35 @@
             </div>
             <div style="padding-top: 1em;">
                 <div class="time-container">
-                    <div>
-
-                        <span onclick="selectById('currentDate');" id="currentDate"></span>
-                        <span onclick="selectById('currentTime');" id="currentTime"></span>
-                        <span onclick="selectById('isoDate');" id="isoDate"></span>
-                        <span onclick="selectById('isoDateWithTime');" id="isoDateWithTime"></span>
-                        <!-- <span onclick="selectById('ISOdateWithId');" id="ISOdateWithId"></span> -->
-                        <span onclick="selectById('randomId');" id="randomId"></span>
-                        <span onclick="selectById('yearWithId');" id="yearWithId"></span>
+                    <div style="display: flex;">
+                        <div>
+                            <span onclick="selectById('currentDate');" id="currentDate"></span>
+                            <span onclick="selectById('currentTime');" id="currentTime"></span>
+                        </div>
+                        <div>
+                            <span onclick="selectById('isoDate');" id="isoDate"></span>
+                            <span onclick="selectById('isoDateWithTime');" id="isoDateWithTime"></span>
+                        </div>
+                        <div>
+                            <span onclick="selectById('randomId');" id="randomId"></span>
+                            <span onclick="selectById('yearWithId');" id="yearWithId"></span>
+                        </div>
+                        <div>
+                            <span style="color: #AAAAAA" onclick="selectById('spacerLine');" id="spacerLine">--------------------------------------</span>
+                        </div>
                     </div>
                     <div>
                         <button onclick="showDates()">Show</button>
                         <button onclick="regenerateId()">Update</button>
-                        <button onclick="generateIdAndHideDates(12)">12</button>
-                        <button onclick="generateIdAndHideDates(32)">32</button>
-                        <button onclick="generateIdAndHideDates(48)">48</button>
 
+                        <input type="text" placeholder="Label" id="customLabel" onchange="setLabel();">
                         <input style="width: 5em;" type="number" name="Length" id="randomIdLength" min="1" value="12"
-                            onchange="updateValues()">
-                        <!-- <span onclick="selectById('ISOdateWithIdShort');" id="ISOdateWithIdShort"></span> -->
+                            onchange="updateValues()" />
                     </div>
                 </div>
-
             </div>
             <div class="lcContainer">
                 <div class="linkCollection">
-
                     <div>
                         <h3>Common</h3>
                         <!-- <a href="URLHEREURL">NAMEHEREHERE</a> -->
@@ -615,7 +330,6 @@
                         <a href="https://github.github.com/training-kit/downloads/github-git-cheat-sheet.pdf">+PDF</a>
                         <a href="https://app.pluralsight.com/">Pluralsight</a>
                         <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">CSS Flexbox</a>
-
                     </div>
 
                     <div>
@@ -627,19 +341,22 @@
                         <a href="https://calendar.google.com/calendar">Calendar</a>
                         <a href="https://hangouts.google.com">Hangouts</a>
                         <a href="https://mail.google.com/mail/u/0/#inbox">Gmail</a>
-                        <a href="https://www.youtube.com/?gl=FI">YouTube</a>
+
                         <a href="https://translate.google.com">Translate</a>
                         <a href="https://news.google.com/news/">News</a>
-                        <a href="https://www.youtube.com/feed/subscriptions">Subscriptions</a>
                         <a href="https://contacts.google.com">Contacts</a>
                         <a href="https://chat.google.com/">Chat</a>
                         <a href="https://meet.google.com/_meet">Meet</a>
+                        <a href="https://www.youtube.com/?gl=FI">YouTube</a>
+                        <a href="https://www.youtube.com/feed/subscriptions">Subscriptions</a>
                         <br /><br />
                         <h3>Microsoft</h3>
                         <a href="https://www.office.com/?auth=2">Portal</a>
                         <a href="https://outlook.office365.com/mail/inbox">Outlook</a>
                         <a href="https://teams.microsoft.com/">Teams</a>
                         <a href="https://www.office.com/launch/word?auth=2">Word</a>
+                        <!-- <br> -->
+                        <a href="https://dev.azure.com">Azure Devops</a>
                         <a href="https://portal.azure.com/">Azure Portal</a>
                         <br /><br />
                         <h3>News</h3>
@@ -682,7 +399,6 @@
                         <a href="https://www.facebook.com/?sk=h_chr">FB Recent</a>
                         <a href="https://www.facebook.com/events/">FB Events</a>
                         <a href="https://www.facebook.com/groups/?category=membership">FB Groups</a>
-
                     </div>
 
                     <div>
@@ -739,7 +455,6 @@
                     </div>
 
                     <div>
-
                         <h3>Weather (FMI)</h3>
                         <!-- <a href="http://ilmatieteenlaitos.fi/etusivu">FMI</a> -->
                         <a href="http://ilmatieteenlaitos.fi/saa/oulu">Oulu</a>
@@ -806,16 +521,12 @@
                         <a href="https://a16z.com/podcasts/">a16z</a>
                         <a href="http://5by5.tv/b2w">Back to Work</a>
                         <a href="https://player.fm/featured/tech">Player FM Featured</a>
-
                     </div>
-
                 </div>
             </div>
 
             <div class="lcContainer">
-
                 <div class="linkCollection">
-
                     <div>
                         <h3>Stores</h3>
                         <a href="https://hinta.fi">Hinta.fi</a>
@@ -883,14 +594,11 @@
                         <a
                             href="https://www.tori.fi/pohjois-pohjanmaa/tietokoneet_ja_lisalaitteet/verkkotuotteet?ca=2&st=s&st=k&st=u&st=h&st=g&st=b&w=1&cg=5030&c=5039">Verkkotuotteet</a>
                     </div>
-
                 </div>
-
             </div>
 
             <div class="lcContainer">
                 <div class="linkCollection">
-
                     <div>
                         <h3>Bookmarklets</h3>
                         <a
@@ -967,6 +675,8 @@
                         <a href="https://toolslib.net/downloads/finish/1/">AdwCleaner</a>
                         <a href="https://www.advancedrenamer.com/down/?obj=12">Advanced Renamer</a>
                         <a href="https://github.com/stsrki/keepalivehd">Keep Alive HD</a>
+                        <a href="http://www.softwareok.com/?Download=DontSleep">Don't Sleep</a>
+
                     </div>
                     <div>
                         <h3>macOS Software</h3>
@@ -1027,7 +737,6 @@
                         <a href="https://github.com/michael-lazar/rtv">RTV</a>
                         <a href="http://rg3.github.io/youtube-dl/">youtube-dl</a>
                         <a href="http://www.pixelbeat.org/lkdb/screen.html">Screen hotkey reference</a>
-
                     </div>
                     <div>
                         <h3>Transport and shipping</h3>
@@ -1094,7 +803,6 @@
                         <a href="https://unsplash.com/collections/577737/unreal">unreal</a>
                         <a href="https://unsplash.com/collections/1242150/abstract-landscapenature">abstract
                             landscape</a>
-
                     </div>
                     <div>
                         <h3>Chrome extensions</h3>
@@ -1174,7 +882,6 @@
                         <a href="https://www.nirsoft.net/panel/smsniff.exe">Smart Sniff</a>
                         <a href="https://www.nirsoft.net/panel/turnedontimesview.exe">Turned on times view</a>
                         <a href="https://www.nirsoft.net/panel/wnetwatcher.exe">Wireless network watcher</a>
-
                     </div>
                 </div>
             </div>
@@ -1183,11 +890,11 @@
                 <h3>Video</h3>
 
                 <div class="linkCollection">
-
                     <div>
                         <a href="https://areena.yle.fi/tv">YLE Areena</a>
                         <a href="https://www.youtube.com">YouTube</a>
                         <a href="https://www.netflix.com/fi-en/">Netflix</a>
+                        <a href="https://www.twitch.tv/">Twitch</a>
                         <a href="https://www.youtube.com/feed/subscriptions">Subscriptions</a>
                         <a href="https://fi.hbonordic.com/">HBO Nordic</a>
                         <a href="https://www.youtube.com/channel/UCTdw38Cw6jcm0atBPA39a0Q/videos">NDC Conferences</a>
@@ -1294,7 +1001,7 @@
                         <a href="https://www.reddit.com/r/gamedev/">Gamedev</a>
                         <a href="https://www.reddit.com/r/startups/">Startups</a>
                         <a href="https://www.reddit.com/r/hacking/">Hacking</a>
-                        <a href="https://www.reddit.com/r/ReverseEngineering/URL">Reverse engineering</a>
+                        <a href="https://www.reddit.com/r/ReverseEngineering/">Reverse engineering</a>
                         <a href="https://www.reddit.com/r/techsupport/">Tech support</a>
                         <a href="https://www.reddit.com/r/forhire/">For hire</a>
                         <a href="https://www.reddit.com/r/jobbit/">Jobbit</a>
@@ -1330,58 +1037,9 @@
                         <a href="https://www.reddit.com/r/AskHistorians/">AskHistorians</a>
                         <a href="https://www.reddit.com/r/CGPGrey/">CGP Grey</a>
                         <a href="https://www.reddit.com/r/CableManagement/">Cablemanagement</a>
-
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="lcContainer">
-                <div class="linkCollection">
-
-                    <div>
-                        <h3>OAMK</h3>
-                        <a href="http://www.oamk.fi/fi/">OAMK</a>
-                        <a href="https://lukkarit.oamk.fi/">Lukkarit</a>
-                        <a href="https://oiva.oamk.fi/index.php?kirjautumisok">Oiva</a>
-                        <a href="https://outlook.office.com/owa/?realm=students.oamk.fi">Office</a>
-                        <a href="https://it.oamk.fi/">IT OAMK</a>
-                        <a href="https://www.oamk.fi/peppi">Peppi</a>
-                        <a href="http://www.oamk.fi/kirjasto/fi/">Library</a>
-                        <a href="https://moodle.oamk.fi/">Moodle</a>
-                        <a href="http://www.osakoweb.fi/">Osako</a>
-                        <a href="http://www.oamk.fi/opinto-opas/">Study Guide</a>
-                        <a href="https://mot.kielikone.fi/mot/oamk/netmot.exe">MOT</a>
-                        <a href="https://safeq/m/">SafeQ</a>
-                        <a href="http://www.naturalprogramming.com">Natural Programming</a>
-                        <a href="http://www.naturalprogramming.com/web_programming.html">Web Programming</a>
-                        <a href="http://www.oamk.fi/fi/tietoa-oamkista/yhteystiedot/kampukset/">Campuses</a>
-                    </div>
-
-                    <div>
-                        <h3>Polito</h3>
-                        <a href="https://www.polito.it/index.php?lang=en">Polito</a>
-                        <a href="https://didattica.polito.it/index_en.html">Didattica</a>
-                        <a href="https://didattica.polito.it/portal/page/portal/home/Studente">Didattica login</a>
-                        <a href="https://mail.studenti.polito.it/">Webmail</a>
-                        <a href="https://idp.polito.it/idp/x509mixed-login">Login</a>
-                        <a href="http://apply.polito.it">Apply</a>
-                        <a href="https://didattica.polito.it/offerta/index_en.html">Course catalog</a>
-                        <a href="https://didattica.polito.it/servizi_studenti/index_en.html">Student Services</a>
-                        <a href="https://didattica.polito.it/bacheca/">News and events</a>
-                        <a href="https://www.polito.it/sitemap/?lang=en">Sitemap</a>
-                        <a href="http://www.biblio.polito.it/en">Library</a>
-                        <a href="https://www.polito.it/ateneo/sedi/index.php?lang=en">Campus map</a>
-                        <a href="https://www.swas.polito.it/dotnet/orari_lezione_pub/">Schedule</a>
-                        <a href="http://fmgroup.polito.it/quer/">Stefano Quer</a>
-                        <a href="http://fmgroup.polito.it/quer/teaching/apaEn/teaching.htm">Stefano Quer Algorithms</a>
-                        <a href="http://winpcap.polito.it/index.php?id=28:cn-materials&catid=19:cn-2014-2015">Computer
-                            Networks</a>
-                        <br /><br />
                     </div>
                 </div>
             </div>
-
         </div>
         <br /><br />
 
@@ -1391,6 +1049,7 @@
                 function u(a, b, d) {
                     a.addEventListener ? a.addEventListener(b, d, !1) : a.attachEvent("on" + b, d);
                 }
+
                 function y(a) {
                     if ("keypress" == a.type) {
                         var b = String.fromCharCode(a.which);
@@ -1399,6 +1058,7 @@
                     }
                     return m[a.which] ? m[a.which] : q[a.which] ? q[a.which] : String.fromCharCode(a.which).toLowerCase();
                 }
+
                 function E(a) {
                     var b = [];
                     a.shiftKey && b.push("shift");
@@ -1407,9 +1067,11 @@
                     a.metaKey && b.push("meta");
                     return b;
                 }
+
                 function v(a) {
                     return "shift" == a || "ctrl" == a || "alt" == a || "meta" == a;
                 }
+
                 function z(a, b) {
                     var d,
                         e = [];
@@ -1431,11 +1093,17 @@
                         d = n[c] ? "keydown" : "keypress";
                     }
                     "keypress" == d && e.length && (d = "keydown");
-                    return { key: k, modifiers: e, action: d };
+                    return {
+                        key: k,
+                        modifiers: e,
+                        action: d,
+                    };
                 }
+
                 function C(a, b) {
                     return null === a || a === t ? !1 : a === b ? !0 : C(a.parentNode, b);
                 }
+
                 function e(a) {
                     function b(a) {
                         a = a || {};
@@ -1444,6 +1112,7 @@
                         for (l in n) a[l] ? (b = !0) : (n[l] = 0);
                         b || (w = !1);
                     }
+
                     function d(a, b, r, g, F, e) {
                         var l,
                             D = [],
@@ -1460,14 +1129,17 @@
                         }
                         return D;
                     }
+
                     function h(a, b, d, g) {
                         f.stopCallback(b, b.target || b.srcElement, d, g) || !1 !== a(b, d) || (b.preventDefault ? b.preventDefault() : (b.returnValue = !1), b.stopPropagation ? b.stopPropagation() : (b.cancelBubble = !0));
                     }
+
                     function c(a) {
                         "number" !== typeof a.which && (a.which = a.keyCode);
                         var b = y(a);
                         b && ("keyup" == a.type && x === b ? (x = !1) : f.handleKey(b, E(a), a));
                     }
+
                     function k(a, d, r, g) {
                         function l(d) {
                             return function () {
@@ -1477,6 +1149,7 @@
                                 p = setTimeout(b, 1e3);
                             };
                         }
+
                         function e(d) {
                             h(r, d, a);
                             "keyup" !== g && (x = y(d));
@@ -1487,13 +1160,33 @@
                             m(d[c], f, g, a, c);
                         }
                     }
+
                     function m(a, b, c, g, e) {
                         f._directMap[a + ":" + c] = b;
                         a = a.replace(/\s+/g, " ");
                         var h = a.split(" ");
                         1 < h.length
                             ? k(a, h, b, c)
-                            : ((c = z(a, c)), (f._callbacks[c.key] = f._callbacks[c.key] || []), d(c.key, c.modifiers, { type: c.action }, g, a, e), f._callbacks[c.key][g ? "unshift" : "push"]({ callback: b, modifiers: c.modifiers, action: c.action, seq: g, level: e, combo: a }));
+                            : ((c = z(a, c)),
+                                (f._callbacks[c.key] = f._callbacks[c.key] || []),
+                                d(
+                                    c.key,
+                                    c.modifiers,
+                                    {
+                                        type: c.action,
+                                    },
+                                    g,
+                                    a,
+                                    e
+                                ),
+                                f._callbacks[c.key][g ? "unshift" : "push"]({
+                                    callback: b,
+                                    modifiers: c.modifiers,
+                                    action: c.action,
+                                    seq: g,
+                                    level: e,
+                                    combo: a,
+                                }));
                     }
                     var f = this;
                     a = a || t;
@@ -1548,11 +1241,55 @@
                         46: "del",
                         91: "meta",
                         93: "meta",
-                        224: "meta"
+                        224: "meta",
                     },
-                        q = { 106: "*", 107: "+", 109: "-", 110: ".", 111: "/", 186: ";", 187: "=", 188: ",", 189: "-", 190: ".", 191: "/", 192: "`", 219: "[", 220: "\\", 221: "]", 222: "'" },
-                        B = { "~": "`", "!": "1", "@": "2", "#": "3", $: "4", "%": "5", "^": "6", "&": "7", "*": "8", "(": "9", ")": "0", _: "-", "+": "=", ":": ";", '"': "'", "<": ",", ">": ".", "?": "/", "|": "\\" },
-                        A = { option: "alt", command: "meta", return: "enter", escape: "esc", plus: "+", mod: /Mac|iPod|iPhone|iPad/.test(navigator.platform) ? "meta" : "ctrl" },
+                        q = {
+                            106: "*",
+                            107: "+",
+                            109: "-",
+                            110: ".",
+                            111: "/",
+                            186: ";",
+                            187: "=",
+                            188: ",",
+                            189: "-",
+                            190: ".",
+                            191: "/",
+                            192: "`",
+                            219: "[",
+                            220: "\\",
+                            221: "]",
+                            222: "'",
+                        },
+                        B = {
+                            "~": "`",
+                            "!": "1",
+                            "@": "2",
+                            "#": "3",
+                            $: "4",
+                            "%": "5",
+                            "^": "6",
+                            "&": "7",
+                            "*": "8",
+                            "(": "9",
+                            ")": "0",
+                            _: "-",
+                            "+": "=",
+                            ":": ";",
+                            '"': "'",
+                            "<": ",",
+                            ">": ".",
+                            "?": "/",
+                            "|": "\\",
+                        },
+                        A = {
+                            option: "alt",
+                            command: "meta",
+                            return: "enter",
+                            escape: "esc",
+                            plus: "+",
+                            mod: /Mac|iPod|iPhone|iPad/.test(navigator.platform) ? "meta" : "ctrl",
+                        },
                         n;
                     for (h = 1; 20 > h; ++h) m[111 + h] = "f" + h;
                     for (h = 0; 9 >= h; ++h) m[h + 96] = h.toString();
@@ -1621,85 +1358,87 @@
 
         <script>
             const selectById = (id) => {
-                window.getSelection()
-                    .selectAllChildren(
-                        document.getElementById(id)
-                    );
-            }
+                window.getSelection().selectAllChildren(document.getElementById(id));
+            };
 
-            const makeId = (length) => {
-                var result = '';
-                const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+            const makeLowercaseId = (length, characters) => {
+                var result = "";
                 const charactersLength = characters.length;
                 for (var i = 0; i < length; i++) {
                     result += characters.charAt(Math.floor(Math.random() * charactersLength));
                 }
                 return result;
-            }
+            };
 
-            const makeLowercaseId = (length) => {
-                var result = '';
-                const characters = 'abcdefghijklmnopqrstuvwxyz';
-                const charactersLength = characters.length;
-                for (var i = 0; i < length; i++) {
-                    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-                }
-                return result;
-            }
-
-            const setValues = (randomIdLength) => {
-                const randomId = makeLowercaseId(randomIdLength);
+            const setValues = (randomId, customLabel = "") => {
                 const cDate = new Date();
-                const cHours = ('0' + cDate.getHours()).slice(-2);
-                const cMinutes = ('0' + cDate.getMinutes()).slice(-2);
+                const cHours = ("0" + cDate.getHours()).slice(-2);
+                const cMinutes = ("0" + cDate.getMinutes()).slice(-2);
                 const dateString = `${cDate.getDate()}.${cDate.getMonth() + 1}.${cDate.getFullYear()}`;
                 const timeString = `${cHours}:${cMinutes}`;
                 const ISOdateString = cDate.toISOString().slice(0, 10);
                 const ISOdateWithTime = `${ISOdateString}_${cHours}${cMinutes}`;
-                // const ISOdateWithId = `${ISOdateString}_${randomId}`;
                 const yearWithId = `${cDate.getFullYear()}-${randomId}`;
-                document.getElementById('currentDate').innerText = dateString;
-                document.getElementById('currentTime').innerText = timeString;
-                document.getElementById('isoDate').innerText = ISOdateString;
-                document.getElementById('isoDateWithTime').innerText = ISOdateWithTime;
-                // document.getElementById('ISOdateWithId').innerText = ISOdateWithId;
-                document.getElementById('randomId').innerText = randomId;
-                document.getElementById('yearWithId').innerText = yearWithId;
+
+                // setValues(dateString, timeString, ISOdateString, ISOdateWithTime, yearWithId, randomId, customLabel );
+
+                document.getElementById("currentDate").innerText = `${dateString}${customLabel}`;
+                document.getElementById("currentTime").innerText = `${timeString}${customLabel}`;
+                document.getElementById("isoDate").innerText = `${ISOdateString}${customLabel}`;
+                document.getElementById("isoDateWithTime").innerText = `${ISOdateWithTime}${customLabel}`;
+                document.getElementById("randomId").innerText = `${randomId}${customLabel}`;
+                document.getElementById("yearWithId").innerText = `${yearWithId}${customLabel}`;
+            }
+
+            const getCustomLabel = () => {
+                const el = document.getElementById('customLabel').value;
+                return (el !== "") ? `_${el}` : "";
             }
 
             const hideDates = () => {
-                document.getElementById('currentDate').style.display = "none";
-                document.getElementById('currentTime').style.display = "none";
-                document.getElementById('isoDate').style.display = "none";
-                document.getElementById('isoDateWithTime').style.display = "none";
-            }
+                document.getElementById("currentDate").style.display = "none";
+                document.getElementById("currentTime").style.display = "none";
+                document.getElementById("isoDate").style.display = "none";
+                document.getElementById("isoDateWithTime").style.display = "none";
+            };
 
             const showDates = () => {
-                document.getElementById('currentDate').style.display = "inline";
-                document.getElementById('currentTime').style.display = "inline";
-                document.getElementById('isoDate').style.display = "inline";
-                document.getElementById('isoDateWithTime').style.display = "inline";
-            }
+                document.getElementById("currentDate").style.display = "inline";
+                document.getElementById("currentTime").style.display = "inline";
+                document.getElementById("isoDate").style.display = "inline";
+                document.getElementById("isoDateWithTime").style.display = "inline";
+            };
 
             const generateIdAndHideDates = (randomIdLength) => {
-                document.getElementById("randomIdLength").value = randomIdLength;
                 hideDates();
-                setValues(randomIdLength)
+                const randomId = createRandomId();
+                setValues(randomId);
+            };
+
+            const createRandomId = () => {
+                const randomIdLength = document.getElementById("randomIdLength").value;
+                const randomId = makeLowercaseId(randomIdLength, "abcdefghijklmnopqrstuvwxyz");
+                return randomId;
+            }
+
+            const setLabel = () => {
+                const randomId = createRandomId();
+                const customLabel = getCustomLabel();
+                setValues(randomId, customLabel);
             }
 
             const updateValues = () => {
-                const randomIdLength = document.getElementById("randomIdLength").value;
+                const randomId = createRandomId();
                 hideDates();
-                setValues(randomIdLength)
-            }
+                setValues(randomId);
+            };
 
             const regenerateId = () => {
-                const randomIdLength = document.getElementById("randomIdLength").value;
-                setValues(randomIdLength)
-            }
+                const randomId = createRandomId();
+                setValues(randomId);
+            };
 
-            setValues(12);
-
+            regenerateId(12);
         </script>
 
         <script type="text/javascript">
@@ -1713,7 +1452,7 @@
             const searchFunction = () => {
                 const input = document.getElementById("filterInput");
                 const filter = input.value.toUpperCase();
-                const links = document.getElementsByTagName('a');
+                const links = document.getElementsByTagName("a");
 
                 for (i = 0; i < links.length; i++) {
                     const foundLinks = links[i];
@@ -1763,15 +1502,14 @@
                 return false;
             });
 
-            Mousetrap.bind("q", () => selectById('currentDate'));
-            Mousetrap.bind("w", () => selectById('currentTime'));
-            Mousetrap.bind("e", () => selectById('isoDate'));
-            Mousetrap.bind("a", () => selectById('isoDateWithTime'));
-            Mousetrap.bind("s", () => selectById('randomId'));
-            Mousetrap.bind("d", () => selectById('yearWithId'));
-
+            Mousetrap.bind("q", () => selectById("currentDate"));
+            Mousetrap.bind("w", () => selectById("currentTime"));
+            Mousetrap.bind("e", () => selectById("isoDate"));
+            Mousetrap.bind("a", () => selectById("isoDateWithTime"));
+            Mousetrap.bind("s", () => selectById("randomId"));
+            Mousetrap.bind("d", () => selectById("yearWithId"));
+            Mousetrap.bind("f", () => selectById("spacerLine"));
             Mousetrap.bind("r", () => regenerateId());
-
         </script>
     </div>
 </body>
