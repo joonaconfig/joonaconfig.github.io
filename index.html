@@ -9,7 +9,317 @@
     <title>Start</title>
 
     <style>
-        a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}:focus{outline:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{width:100%;height:100%;line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:"";content:none}table{border-collapse:collapse;border-spacing:0}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration,input[type=search]::-webkit-search-results-button,input[type=search]::-webkit-search-results-decoration{-webkit-appearance:none;-moz-appearance:none}input[type=search]{-webkit-appearance:none;-moz-appearance:none;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}textarea{overflow:auto;vertical-align:top;resize:vertical}audio,canvas,video{display:inline-block;max-width:100%}audio:not([controls]){display:none;height:0}[hidden]{display:none}html{font-size:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}a:focus{outline:thin dotted}a:active,a:hover{outline:0}img{border:0;-ms-interpolation-mode:bicubic}figure{margin:0}form{margin:0}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0;white-space:normal}button,input,select,textarea{font-size:100%;margin:0;vertical-align:baseline}button,input{line-height:normal}button,select{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top}table{border-collapse:collapse;border-spacing:0}button,html,input,select,textarea{color:#222}::-moz-selection{background:#b3d4fc;text-shadow:none}::selection{background:#b3d4fc;text-shadow:none}img{vertical-align:middle}fieldset{border:0;margin:0;padding:0}textarea{resize:vertical}
+        a,
+        abbr,
+        acronym,
+        address,
+        applet,
+        article,
+        aside,
+        audio,
+        b,
+        big,
+        blockquote,
+        body,
+        canvas,
+        caption,
+        center,
+        cite,
+        code,
+        dd,
+        del,
+        details,
+        dfn,
+        div,
+        dl,
+        dt,
+        em,
+        embed,
+        fieldset,
+        figcaption,
+        figure,
+        footer,
+        form,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        header,
+        hgroup,
+        html,
+        i,
+        iframe,
+        img,
+        ins,
+        kbd,
+        label,
+        legend,
+        li,
+        mark,
+        menu,
+        nav,
+        object,
+        ol,
+        output,
+        p,
+        pre,
+        q,
+        ruby,
+        s,
+        samp,
+        section,
+        small,
+        span,
+        strike,
+        strong,
+        sub,
+        summary,
+        sup,
+        table,
+        tbody,
+        td,
+        tfoot,
+        th,
+        thead,
+        time,
+        tr,
+        tt,
+        u,
+        ul,
+        var,
+        video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline
+        }
+
+        :focus {
+            outline: 0
+        }
+
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        section {
+            display: block
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            line-height: 1
+        }
+
+        ol,
+        ul {
+            list-style: none
+        }
+
+        blockquote,
+        q {
+            quotes: none
+        }
+
+        blockquote:after,
+        blockquote:before,
+        q:after,
+        q:before {
+            content: "";
+            content: none
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0
+        }
+
+        input[type=search]::-webkit-search-cancel-button,
+        input[type=search]::-webkit-search-decoration,
+        input[type=search]::-webkit-search-results-button,
+        input[type=search]::-webkit-search-results-decoration {
+            -webkit-appearance: none;
+            -moz-appearance: none
+        }
+
+        input[type=search] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -webkit-box-sizing: content-box;
+            -moz-box-sizing: content-box;
+            box-sizing: content-box
+        }
+
+        textarea {
+            overflow: auto;
+            vertical-align: top;
+            resize: vertical
+        }
+
+        audio,
+        canvas,
+        video {
+            display: inline-block;
+            max-width: 100%
+        }
+
+        audio:not([controls]) {
+            display: none;
+            height: 0
+        }
+
+        [hidden] {
+            display: none
+        }
+
+        html {
+            font-size: 100%;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        a:focus {
+            outline: thin dotted;
+        }
+
+        a:active,
+        a:hover {
+            outline: 0;
+        }
+
+        img {
+            border: 0;
+            -ms-interpolation-mode: bicubic;
+        }
+
+        figure {
+            margin: 0;
+        }
+
+        form {
+            margin: 0;
+        }
+
+        fieldset {
+            border: 1px solid silver;
+            margin: 0 2px;
+            padding: 0.35em 0.625em 0.75em;
+        }
+
+        legend {
+            border: 0;
+            padding: 0;
+            white-space: normal;
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font-size: 100%;
+            margin: 0;
+            vertical-align: baseline;
+        }
+
+        button,
+        input {
+            line-height: normal;
+        }
+
+        button,
+        select {
+            text-transform: none;
+        }
+
+        button,
+        html input[type="button"],
+        input[type="reset"],
+        input[type="submit"] {
+            -webkit-appearance: button;
+            cursor: pointer;
+        }
+
+        button[disabled],
+        html input[disabled] {
+            cursor: default;
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            box-sizing: border-box;
+            padding: 0;
+        }
+
+        input[type="search"] {
+            -webkit-appearance: textfield;
+            -moz-box-sizing: content-box;
+            -webkit-box-sizing: content-box;
+            box-sizing: content-box;
+        }
+
+        input[type="search"]::-webkit-search-cancel-button,
+        input[type="search"]::-webkit-search-decoration {
+            -webkit-appearance: none;
+        }
+
+        button::-moz-focus-inner,
+        input::-moz-focus-inner {
+            border: 0;
+            padding: 0;
+        }
+
+        textarea {
+            overflow: auto;
+            vertical-align: top;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        button,
+        html,
+        input,
+        select,
+        textarea {
+            color: #222;
+        }
+
+        ::-moz-selection {
+            background: #b3d4fc;
+            text-shadow: none;
+        }
+
+        ::selection {
+            background: #b3d4fc;
+            text-shadow: none;
+        }
+
+        img {
+            vertical-align: middle;
+        }
+
+        fieldset {
+            border: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        textarea {
+            resize: vertical;
+        }
 
         :root {
             --bg-color: #ffffff;
@@ -64,6 +374,13 @@
             display: inline-block;
         }
 
+        .anchor {
+            display: block;
+            position: relative;
+            top: -75px;
+            visibility: hidden
+        }
+
         .sticky {
             position: sticky;
             top: 0;
@@ -77,7 +394,9 @@
             justify-content: center;
         }
 
-        .linkCollection div a {
+        .linkCollection div a,
+        .linkCollection div button,
+        .wrapper div button {
             background-color: var(--bg-color);
             border: 1px solid var(--border);
             color: var(--text-color);
@@ -163,6 +482,17 @@
             font-size: 9pt;
         }
 
+        #nav-buttons {
+            display: none;
+            margin: 0 0.5em;
+        }
+
+        #nav-buttons button {
+            padding: 0.25em 0.7em;
+            width: 2.5em;
+            margin: 0 0.5em;
+        }
+
         @media only screen and (max-width: 1400px) {
             .contentTopBar {
                 padding-top: 0.4em;
@@ -173,7 +503,30 @@
             }
         }
 
+        @media only screen and (max-width: 1200px) {
+
+            #spacerLine,
+            #randomId,
+            #yearWithId {
+                display: none;
+            }
+
+            #customLabel {
+                width: 5em;
+            }
+
+            .linkCollection div a,
+            .linkCollection div button {
+                font-size: 8.9pt;
+            }
+        }
+
         @media only screen and (max-width: 750px) {
+            #nav-buttons {
+                /* visibility: visible; */
+                display: flex;
+            }
+
             .wrapper {
                 width: 100%;
                 margin: 0 1em 0 1em;
@@ -211,32 +564,33 @@
     <div class="wrapperContainer">
         <div class="wrapper">
             <div class="nav flexbox sticky flexbox-centered">
-                <div><input placeholder="(1) Filter..." type="text" value="" autocomplete="off" id="filterInput"
-                        onkeyup="searchFunction()" /></div>
+                <div><input placeholder="(1) Filter..." type="text" value="" autocomplete="off" id="filterInput" onkeyup="searchFunction()" /></div>
                 <div>
-                    <form action="https://duckduckgo.com/" method="get"><input autocomplete="off"
-                            placeholder="(2) DuckDuckGo" type="text" name="q" id="searchDDG" /></form>
+                    <form action="https://duckduckgo.com/" method="get"><input autocomplete="off" placeholder="(2) DuckDuckGo" type="text" name="q" id="searchDDG" /></form>
                 </div>
                 <div>
-                    <form action="https://www.google.com/search?lr=lang_en" method="get"><input type="text"
-                            autocomplete="off" name="q" placeholder="(3) Google English" id="searchGoogleEn" /></form>
+                    <form action="https://www.google.com/search?lr=lang_en" method="get"><input type="text" autocomplete="off" name="q" placeholder="(3) Google English" id="searchGoogleEn" /></form>
                 </div>
                 <div>
-                    <form action="https://google.com/search" method="get"><input type="text" autocomplete="off" name="q"
-                            placeholder="(4) Google" id="SearchGoogle" /></form>
+                    <form action="https://google.com/search" method="get"><input type="text" autocomplete="off" name="q" placeholder="(4) Google" id="SearchGoogle" /></form>
                 </div>
                 <div>
-                    <form action="https://en.m.wikipedia.org/w/index.php" method="get"><input autocomplete="off"
-                            placeholder="(5) Wikipedia" type="text" name="search" id="searchWikipedia" /></form>
+                    <form action="https://en.m.wikipedia.org/w/index.php" method="get"><input autocomplete="off" placeholder="(5) Wikipedia" type="text" name="search" id="searchWikipedia" /></form>
                 </div>
                 <div>
-                    <form action="https://hinta.fi/haku" method="get"><input autocomplete="off"
-                            placeholder="(6) Hinta.fi" type="text" name="q" id="searchHinta" /></form>
+                    <form action="https://hinta.fi/haku" method="get"><input autocomplete="off" placeholder="(6) Hinta.fi" type="text" name="q" id="searchHinta" /></form>
                 </div>
                 <div>
-                    <form action="https://www.youtube.com/results" method="get"><input autocomplete="off"
-                            placeholder="(7) YouTube" type="text" name="search_query" id="searchYouTube" /></form>
+                    <form action="https://www.youtube.com/results" method="get"><input autocomplete="off" placeholder="(7) YouTube" type="text" name="search_query" id="searchYouTube" /></form>
                 </div>
+            </div>
+
+            <div id="nav-buttons" class="flexbox flexbox-centered">
+                <button onclick="scrollToElement('anchor1')">1</button>
+                <button onclick="scrollToElement('anchor2')">2</button>
+                <button onclick="scrollToElement('anchor3')">3</button>
+                <button onclick="scrollToElement('anchor4')">4</button>
+                <button onclick="scrollToElement('anchor5')">5</button>
             </div>
             <div style="padding-top: 1em;">
                 <div class="time-container">
@@ -261,13 +615,15 @@
                         <button onclick="showDates()">Show</button>
                         <button onclick="regenerateId()">Update</button>
 
-                        <input type="text" placeholder="Label" id="customLabel" onchange="setLabel();">
-                        <input style="width: 5em;" type="number" name="Length" id="randomIdLength" min="1" value="12"
-                            onchange="updateValues()" />
+                        <input style="width: 7em;" type="text" placeholder="Label" id="customLabel" onchange="setLabel();">
+                        <input style="width: 3em;" type="number" name="Length" id="randomIdLength" min="1" value="12" onchange="updateValues()" />
+                        <input onchange="setTabName()" style="width: 8em;" type="text" name="" id="tabName" placeholder="(t) Tab…" />
                     </div>
                 </div>
             </div>
             <div class="lcContainer">
+                <div id="anchor1" class="anchor"></div>
+
                 <div class="linkCollection">
                     <div>
                         <h3>Common</h3>
@@ -287,6 +643,7 @@
                         <a href="https://trello.com">Trello</a>
                         <a href="http://krewgaming.com/forums/">KrewGaming</a>
                         <a href="https://linustechtips.com/">LinusTechTips</a>
+                        <a href="https://app.diagrams.net/">Draw.io</a>
                         <br /><br />
                         <h3>Dev</h3>
                         <a href="https://github.com/">Github</a>
@@ -303,8 +660,7 @@
                         <a href="https://www.w3schools.com/cssref/">w3c CSS</a>
                         <a href="https://developer.mozilla.org/en-US/docs/Web">Mozilla web docs</a>
                         <a href="https://developer.mozilla.org/bm/docs/Web/JavaScript/Index">MSDN js index</a>
-                        <a
-                            href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309">Swift</a>
+                        <a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309">Swift</a>
                         <a href="https://docs.microsoft.com/en-us/dotnet/">.NET</a>
                         <a href="https://autohotkey.com/">AHK</a>
                         <a href="https://autohotkey.com/docs/AutoHotkey.htm">AHK doc</a>
@@ -330,6 +686,9 @@
                         <a href="https://github.github.com/training-kit/downloads/github-git-cheat-sheet.pdf">+PDF</a>
                         <a href="https://app.pluralsight.com/">Pluralsight</a>
                         <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">CSS Flexbox</a>
+                        <a href="http://www.responsinator.com/">Responsinator</a>
+                        <a href="https://material.io/resources/resizer/">Material Resizer</a>
+                        <a href="https://books.goalkicker.com/">GoalKicker: Notes for professionals</a>
                     </div>
 
                     <div>
@@ -429,17 +788,14 @@
                             komponentit</a>
                         <a href="https://bbs.io-tech.fi/forums/ongelmat.39/">Ongelmat</a>
                         <a href="https://bbs.io-tech.fi/forums/yleinen-rautakeskustelu.9/">Yleinen rautakeskustelu</a>
-                        <a
-                            href="https://bbs.io-tech.fi/forums/aelypuhelimet-tabletit-aelykellot-ja-muu-mobiili.15/">Mobiili</a>
-                        <a
-                            href="https://bbs.io-tech.fi/forums/viihde-elektroniikka-kamerat-ja-kodinkoneet.59/">Viihde-elektroniikka</a>
+                        <a href="https://bbs.io-tech.fi/forums/aelypuhelimet-tabletit-aelykellot-ja-muu-mobiili.15/">Mobiili</a>
+                        <a href="https://bbs.io-tech.fi/forums/viihde-elektroniikka-kamerat-ja-kodinkoneet.59/">Viihde-elektroniikka</a>
                         <a href="https://bbs.io-tech.fi/forums/elektroniikka-rakentelu-ja-muut-diy-projektit.60/">Rakentelu
                             ja DIY</a>
                         <a href="https://bbs.io-tech.fi/forums/internet-tietoliikenne-ja-tietoturva.25/">Verkko</a>
                         <a href="https://bbs.io-tech.fi/forums/kaeyttaejien-omat-tuotetestit.65/">Käyttäjien
                             tuotetestit</a>
-                        <a
-                            href="https://bbs.io-tech.fi/forums/ohjelmointi-pelikehitys-ja-muu-sovelluskehitys.24/">Ohjelmointi</a>
+                        <a href="https://bbs.io-tech.fi/forums/ohjelmointi-pelikehitys-ja-muu-sovelluskehitys.24/">Ohjelmointi</a>
                         <a href="https://bbs.io-tech.fi/forums/yleinen-ohjelmistokeskustelu.14/">Ohjelmistokeskutelu</a>
                         <a href="https://bbs.io-tech.fi/forums/testiohjelmat-ja-tulokset.64/">Testiohjelmat ja
                             tulokset</a>
@@ -455,38 +811,23 @@
                     </div>
 
                     <div>
+
+                        <h3>Tabnames</h3>
+                        <button onclick="setTabNameFromButton('Social')">Social</button>
+                        <button onclick="setTabNameFromButton('Some')">Some</button>
+                        <button onclick="setTabNameFromButton('Shop')">Shop</button>
+                        <button onclick="setTabNameFromButton('YouTube')">YouTube</button>
+                        <br /><br />
                         <h3>Weather (FMI)</h3>
-                        <!-- <a href="http://ilmatieteenlaitos.fi/etusivu">FMI</a> -->
                         <a href="http://ilmatieteenlaitos.fi/saa/oulu">Oulu</a>
-                        <a href="https://www.yr.no/place/Finland/Laponia/Sodankyl%C3%A4/">Sodankylä</a>
                         <a href="http://ilmatieteenlaitos.fi/saa/helsinki">Helsinki</a>
                         <a href="https://ilmatieteenlaitos.fi/saa/tampere">Tampere</a>
-                        <a href="https://ilmatieteenlaitos.fi/saa/ruotsi/tukholma">Stockholm</a>
-                        <a href="https://ilmatieteenlaitos.fi/saa/britannia/lontoo">London</a>
-                        <a href="https://ilmatieteenlaitos.fi/saa/tanska/k%C3%B6%C3%B6penhamina">Copenhagen</a>
-                        <a href="https://ilmatieteenlaitos.fi/saa/ranska/pariisi">Paris</a>
-                        <a href="https://ilmatieteenlaitos.fi/saa/viro/tallinna">Tallinn</a>
-                        <a href="https://ilmatieteenlaitos.fi/saa/latvia/riika">Riga</a>
-                        <a href="https://ilmatieteenlaitos.fi/saa/saksa/berliini">Berlin</a>
-                        <a href="https://ilmatieteenlaitos.fi/saa/it%C3%A4valta/wien">Vienna</a>
-                        <a href="https://ilmatieteenlaitos.fi/saa/sveitsi/z%C3%BCrich">Zürich</a>
 
                         <br /><br />
                         <h3>Weather (YR)</h3>
-                        <!-- <a href="https://www.yr.no/forsida.aspx?spr=eng">YR</a> -->
                         <a href="https://www.yr.no/place/Finland/Oulu/Oulu/?spr=eng">Oulu</a>
-                        <a href="http://ilmatieteenlaitos.fi/saa/sodankylä">Sodankylä</a>
                         <a href="https://www.yr.no/place/Finland/Southern_Finland/Helsinki/?spr=eng">Helsinki</a>
                         <a href="https://www.yr.no/place/Finland/Western_Finland/Tampere/?spr=eng">Tampere</a>
-                        <a href="https://www.yr.no/sted/Sverige/Stockholm/Stockholm/?spr=eng">Stockholm</a>
-                        <a href="https://www.yr.no/place/United_Kingdom/England/London/?spr=eng">London</a>
-                        <a href="https://www.yr.no/place/Denmark/Capital/Copenhagen/?spr=eng">Copenhagen</a>
-                        <a href="https://www.yr.no/sted/Frankrike/%C3%8Ele-de-France/Paris/?spr=eng">Paris</a>
-                        <a href="https://www.yr.no/place/Estonia/Harjumaa/Tallinn/?spr=eng">Tallinn</a>
-                        <a href="https://www.yr.no/place/Latvia/Riga/Riga/?spr=eng">Riga</a>
-                        <a href="https://www.yr.no/place/Germany/Berlin/Berlin/?spr=eng">Berlin</a>
-                        <a href="https://www.yr.no/place/Austria/Vienna/Vienna/?spr=eng">Vienna</a>
-                        <a href="https://www.yr.no/place/Switzerland/Z%C3%BCrich/Zurich/?spr=eng">Zürich</a>
                         <br /><br />
                         <h3>Podcasts</h3>
                         <a href="http://atp.fm/">ATP</a>
@@ -510,8 +851,7 @@
                         <a href="http://www.hellointernet.fm/">Hello Internet</a>
                         <a href="https://www.relay.fm/cortex">Cortex</a>
                         <a href="https://www.functionalgeekery.com/">Functional Geekery</a>
-                        <a
-                            href="https://choice.npr.org/index.html?origin=https://www.npr.org/podcasts/510313/how-i-built-this">How
+                        <a href="https://choice.npr.org/index.html?origin=https://www.npr.org/podcasts/510313/how-i-built-this">How
                             I built
                             This</a>
                         <a href="https://www.npr.org/podcasts/510289/planet-money">Planet Money</a>
@@ -526,23 +866,22 @@
             </div>
 
             <div class="lcContainer">
+                <div id="anchor2" class="anchor"></div>
+
                 <div class="linkCollection">
                     <div>
                         <h3>Stores</h3>
                         <a href="https://hinta.fi">Hinta.fi</a>
                         <a href="https://hinta.fi/tarjoukset">Hinta tarjoukset</a>
-                        <a
-                            href="https://murobbs.muropaketti.com/threads/hyvaet-tarjoukset-ketju-v3-0.1358648/page-999999">MuroBBS
+                        <a href="https://murobbs.muropaketti.com/threads/hyvaet-tarjoukset-ketju-v3-0.1358648/page-999999">MuroBBS
                             tarjoukset</a>
                         <a href="https://bbs.io-tech.fi/threads/hyvaet-tarjoukset-ei-keskustelua.151/page-999999">io-tech
                             tarjoukset</a>
                         <a href="https://www.jimms.fi">Jimm's</a>
                         <a href="https://www.jimms.fi/fi/Product/Search?i=100&ob=4&q=b-stock">b-stock</a>
-                        <a
-                            href="https://murobbs.muropaketti.com/threads/sinae-hyoedyt-siitae-mitae-jimms-tietaeae.760477/">Jimm's
+                        <a href="https://murobbs.muropaketti.com/threads/sinae-hyoedyt-siitae-mitae-jimms-tietaeae.760477/">Jimm's
                             BBS</a>
-                        <a
-                            href="https://bbs.io-tech.fi/threads/sinae-hyoedyt-siitae-mitae-jimms-tietaeae-jimms-pc-n-oma-ketju.727/">Jimm's
+                        <a href="https://bbs.io-tech.fi/threads/sinae-hyoedyt-siitae-mitae-jimms-tietaeae-jimms-pc-n-oma-ketju.727/">Jimm's
                             io</a>
                         <a href="http://cdon.fi">CDON</a>
                         <a href="https://www.gigantti.fi">Gigantti</a>
@@ -575,70 +914,54 @@
                         <a href="https://bbs.io-tech.fi/forums/ssd-asemat-ja-kiintolevyt.77/">SSD etc.</a>
                         <a href="https://bbs.io-tech.fi/forums/muut-pc-komponentit.27/">Muut</a>
                         <a href="https://bbs.io-tech.fi/forums/naeytoet-ja-videotykit.31/">Näytöt</a>
-                        <a
-                            href="https://bbs.io-tech.fi/forums/aelypuhelimet-taulutietokoneet-aelykellot.33/">Laitteet</a>
+                        <a href="https://bbs.io-tech.fi/forums/aelypuhelimet-taulutietokoneet-aelykellot.33/">Laitteet</a>
                     </div>
 
                     <div>
                         <h3>Tori.fi</h3>
-                        <a
-                            href="https://www.tori.fi/pohjois-pohjanmaa/viihde-elektroniikka/audio_ja_musiikkilaitteet?ca=2&st=s&st=k&st=u&st=h&st=g&st=b&w=1&cg=5020&c=5024">Audio</a>
-                        <a
-                            href="https://www.tori.fi/pohjois-pohjanmaa/viihde-elektroniikka/muu_viihde-elektroniikka?ca=2&st=s&st=k&st=u&st=h&st=g&st=b&w=1&cg=5020&c=5029">Muu
+                        <a href="https://www.tori.fi/pohjois-pohjanmaa/viihde-elektroniikka/audio_ja_musiikkilaitteet?ca=2&st=s&st=k&st=u&st=h&st=g&st=b&w=1&cg=5020&c=5024">Audio</a>
+                        <a href="https://www.tori.fi/pohjois-pohjanmaa/viihde-elektroniikka/muu_viihde-elektroniikka?ca=2&st=s&st=k&st=u&st=h&st=g&st=b&w=1&cg=5020&c=5029">Muu
                             viihde elektroniikka</a>
-                        <a
-                            href="https://www.tori.fi/pohjois-pohjanmaa/tietokoneet_ja_lisalaitteet?ca=2&w=1&cg=5030&st=s&st=k&st=u&st=h&st=g&st=b">Tietokoneet
+                        <a href="https://www.tori.fi/pohjois-pohjanmaa/tietokoneet_ja_lisalaitteet?ca=2&w=1&cg=5030&st=s&st=k&st=u&st=h&st=g&st=b">Tietokoneet
                             ja lisälaitteet</a>
-                        <a
-                            href="https://www.tori.fi/pohjois-pohjanmaa/tietokoneet_ja_lisalaitteet/oheislaitteet?ca=2&st=s&st=k&st=u&st=h&st=g&st=b&w=1&cg=5030&c=5036">Oheislaitteet</a>
-                        <a
-                            href="https://www.tori.fi/pohjois-pohjanmaa/tietokoneet_ja_lisalaitteet/verkkotuotteet?ca=2&st=s&st=k&st=u&st=h&st=g&st=b&w=1&cg=5030&c=5039">Verkkotuotteet</a>
+                        <a href="https://www.tori.fi/pohjois-pohjanmaa/tietokoneet_ja_lisalaitteet/oheislaitteet?ca=2&st=s&st=k&st=u&st=h&st=g&st=b&w=1&cg=5030&c=5036">Oheislaitteet</a>
+                        <a href="https://www.tori.fi/pohjois-pohjanmaa/tietokoneet_ja_lisalaitteet/verkkotuotteet?ca=2&st=s&st=k&st=u&st=h&st=g&st=b&w=1&cg=5030&c=5039">Verkkotuotteet</a>
                     </div>
                 </div>
             </div>
 
             <div class="lcContainer">
+                <div id="anchor3" class="anchor"></div>
+
                 <div class="linkCollection">
                     <div>
                         <h3>Bookmarklets</h3>
-                        <a
-                            href="javascript:Array.prototype.forEach.call(document.getElementsByTagName('*'),function(e){e.style.fontFamily='PT Sans'})">PT
+                        <a href="javascript:Array.prototype.forEach.call(document.getElementsByTagName('*'),function(e){e.style.fontFamily='PT Sans'})">PT
                             Sans</a>
-                        <a
-                            href="javascript:Array.prototype.forEach.call(document.getElementsByTagName('*'),function(e){e.style.fontFamily='Source Sans Pro'})">SSP</a>
-                        <a
-                            href="javascript:Array.prototype.forEach.call(document.getElementsByTagName('*'),function(e){e.style.fontFamily='Fira Sans'})">Fira
+                        <a href="javascript:Array.prototype.forEach.call(document.getElementsByTagName('*'),function(e){e.style.fontFamily='Source Sans Pro'})">SSP</a>
+                        <a href="javascript:Array.prototype.forEach.call(document.getElementsByTagName('*'),function(e){e.style.fontFamily='Fira Sans'})">Fira
                             Sans</a>
-                        <a
-                            href="javascript:Array.prototype.forEach.call(document.getElementsByTagName('*'),function(e){e.style.fontFamily='Lexend Deca'})">Lexend</a>
+                        <a href="javascript:Array.prototype.forEach.call(document.getElementsByTagName('*'),function(e){e.style.fontFamily='Lexend Deca'})">Lexend</a>
 
-                        <a
-                            href="javascript:(function()%7Bjavascript%3A(function()%7Bdocument.getElementsByTagName(%22body%22)%5B0%5D.addEventListener(%22wheel%22%2Cfunction%20(event)%20%7Bif%20(event.target.classList.contains('ace_content'))%20%7Breturn%3B%7Devent.stopPropagation()%3B%7D%2C%20true)%3B%7D)()%7D)()">Remove
+                        <a href="javascript:(function()%7Bjavascript%3A(function()%7Bdocument.getElementsByTagName(%22body%22)%5B0%5D.addEventListener(%22wheel%22%2Cfunction%20(event)%20%7Bif%20(event.target.classList.contains('ace_content'))%20%7Breturn%3B%7Devent.stopPropagation()%3B%7D%2C%20true)%3B%7D)()%7D)()">Remove
                             JS smooth scroll</a>
 
-                        <a
-                            href="javascript:(function()%7B(function%20()%20%7Bvar%20i%2C%20elements%20%3D%20document.querySelectorAll('body%20*')%3Bfor%20(i%20%3D%200%3B%20i%20%3C%20elements.length%3B%20i%2B%2B)%20%7Bif%20(getComputedStyle(elements%5Bi%5D).position%20%3D%3D%3D%20'fixed')%20%7Belements%5Bi%5D.parentNode.removeChild(elements%5Bi%5D)%3B%7D%7D%7D)()%7D)()">Kill
+                        <a href="javascript:(function()%7B(function%20()%20%7Bvar%20i%2C%20elements%20%3D%20document.querySelectorAll('body%20*')%3Bfor%20(i%20%3D%200%3B%20i%20%3C%20elements.length%3B%20i%2B%2B)%20%7Bif%20(getComputedStyle(elements%5Bi%5D).position%20%3D%3D%3D%20'fixed')%20%7Belements%5Bi%5D.parentNode.removeChild(elements%5Bi%5D)%3B%7D%7D%7D)()%7D)()">Kill
                             sticky</a>
 
-                        <a
-                            href="javascript:(function()%7Bvar%20d=document.createElement(%22div%22);d.innerHTML=%22%3Cstyle%3E*:not(.icon):not(i),*:not(.icon):not(i):after,*:not(.icon):not(i):before%7Bbox-shadow:none%20!important;text-shadow:none%20!important;background-image:none%20!important;%7D*:not(.icon):not(i)%7Bborder-color:transparent%20!important;%7D%3C/style%3E%22;document.body.appendChild(d)%7D)();">Flatten</a>
+                        <a href="javascript:(function()%7Bvar%20d=document.createElement(%22div%22);d.innerHTML=%22%3Cstyle%3E*:not(.icon):not(i),*:not(.icon):not(i):after,*:not(.icon):not(i):before%7Bbox-shadow:none%20!important;text-shadow:none%20!important;background-image:none%20!important;%7D*:not(.icon):not(i)%7Bborder-color:transparent%20!important;%7D%3C/style%3E%22;document.body.appendChild(d)%7D)();">Flatten</a>
 
-                        <a
-                            href="javascript:%5B%5D.forEach.call(document.querySelectorAll(%22*%22),function(a)%7Ba.style.outline=%221px%20solid%20%23%22+(~~(Math.random()*(1%3C%3C24))).toString(16)%7D)">Show
+                        <a href="javascript:%5B%5D.forEach.call(document.querySelectorAll(%22*%22),function(a)%7Ba.style.outline=%221px%20solid%20%23%22+(~~(Math.random()*(1%3C%3C24))).toString(16)%7D)">Show
                             CSS</a>
 
-                        <a
-                            href="javascript:(function()%7Bvar%20newSS,%20styles='*%20%7Bcolor:black%20!important;%7D';%20if(document.createStyleSheet)%20%7B%20document.createStyleSheet(%22javascript:'%22+styles+%22'%22);%20%7D%20else%20%7B%20newSS=document.createElement('link');%20newSS.rel='stylesheet';%20newSS.href='data:text/css,'+escape(styles);%20document.getElementsByTagName(%22head%22)%5B0%5D.appendChild(newSS);%20%7D%20%7D)();">Black
+                        <a href="javascript:(function()%7Bvar%20newSS,%20styles='*%20%7Bcolor:black%20!important;%7D';%20if(document.createStyleSheet)%20%7B%20document.createStyleSheet(%22javascript:'%22+styles+%22'%22);%20%7D%20else%20%7B%20newSS=document.createElement('link');%20newSS.rel='stylesheet';%20newSS.href='data:text/css,'+escape(styles);%20document.getElementsByTagName(%22head%22)%5B0%5D.appendChild(newSS);%20%7D%20%7D)();">Black
                             text</a>
 
-                        <a
-                            href="javascript:(function()%7Bfunction%20RGBtoHSL(RGBColor)%7Bwith(Math)%7Bvar%20R,G,B;var%20cMax,cMin;var%20sum,diff;var%20Rdelta,Gdelta,Bdelta;var%20H,L,S;R=RGBColor%5B0%5D;G=RGBColor%5B1%5D;B=RGBColor%5B2%5D;cMax=max(max(R,G),B);cMin=min(min(R,G),B);sum=cMax+cMin;diff=cMax-cMin;L=sum/2;if(cMax==cMin)%7BS=0;H=0;%7Delse%7Bif(L%3C=(1/2))S=diff/sum;else%20S=diff/(2-sum);Rdelta=R/6/diff;Gdelta=G/6/diff;Bdelta=B/6/diff;if(R==cMax)H=Gdelta-Bdelta;else%20if(G==cMax)H=(1/3)+Bdelta-Rdelta;else%20H=(2/3)+Rdelta-Gdelta;if(H%3C0)H+=1;if(H%3E1)H-=1;%7Dreturn%5BH,S,L%5D;%7D%7Dfunction%20getRGBColor(node,prop)%7Bvar%20rgb=getComputedStyle(node,null).getPropertyValue(prop);var%20r,g,b;if(/rgb%5C((%5Cd+),%5Cs(%5Cd+),%5Cs(%5Cd+)%5C)/.exec(rgb))%7Br=parseInt(RegExp.$1,10);g=parseInt(RegExp.$2,10);b=parseInt(RegExp.$3,10);return%5Br/255,g/255,b/255%5D;%7Dreturn%20rgb;%7Dfunction%20hslToCSS(hsl)%7Breturn%20%22hsl(%22+Math.round(hsl%5B0%5D*360)+%22,%20%22+Math.round(hsl%5B1%5D*100)+%22%25,%20%22+Math.round(hsl%5B2%5D*100)+%22%25)%22;%7Dvar%20props=%5B%22color%22,%22background-color%22,%22border-left-color%22,%22border-right-color%22,%22border-top-color%22,%22border-bottom-color%22%5D;var%20props2=%5B%22color%22,%22backgroundColor%22,%22borderLeftColor%22,%22borderRightColor%22,%22borderTopColor%22,%22borderBottomColor%22%5D;if(typeof%20getRGBColor(document.documentElement,%22background-color%22)==%22string%22)document.documentElement.style.backgroundColor=%22white%22;revl(document.documentElement);function%20revl(n)%7Bvar%20i,x,color,hsl;if(n.nodeType==Node.ELEMENT_NODE)%7Bfor(i=0;x=n.childNodes%5Bi%5D;++i)revl(x);for(i=0;x=props%5Bi%5D;++i)%7Bcolor=getRGBColor(n,x);if(typeof(color)!=%22string%22)%7Bhsl=RGBtoHSL(color);hsl%5B2%5D=1-hsl%5B2%5D;n.style%5Bprops2%5Bi%5D%5D=hslToCSS(hsl);%7D%7D%7D%7D%7D)()">Invert</a>
+                        <a href="javascript:(function()%7Bfunction%20RGBtoHSL(RGBColor)%7Bwith(Math)%7Bvar%20R,G,B;var%20cMax,cMin;var%20sum,diff;var%20Rdelta,Gdelta,Bdelta;var%20H,L,S;R=RGBColor%5B0%5D;G=RGBColor%5B1%5D;B=RGBColor%5B2%5D;cMax=max(max(R,G),B);cMin=min(min(R,G),B);sum=cMax+cMin;diff=cMax-cMin;L=sum/2;if(cMax==cMin)%7BS=0;H=0;%7Delse%7Bif(L%3C=(1/2))S=diff/sum;else%20S=diff/(2-sum);Rdelta=R/6/diff;Gdelta=G/6/diff;Bdelta=B/6/diff;if(R==cMax)H=Gdelta-Bdelta;else%20if(G==cMax)H=(1/3)+Bdelta-Rdelta;else%20H=(2/3)+Rdelta-Gdelta;if(H%3C0)H+=1;if(H%3E1)H-=1;%7Dreturn%5BH,S,L%5D;%7D%7Dfunction%20getRGBColor(node,prop)%7Bvar%20rgb=getComputedStyle(node,null).getPropertyValue(prop);var%20r,g,b;if(/rgb%5C((%5Cd+),%5Cs(%5Cd+),%5Cs(%5Cd+)%5C)/.exec(rgb))%7Br=parseInt(RegExp.$1,10);g=parseInt(RegExp.$2,10);b=parseInt(RegExp.$3,10);return%5Br/255,g/255,b/255%5D;%7Dreturn%20rgb;%7Dfunction%20hslToCSS(hsl)%7Breturn%20%22hsl(%22+Math.round(hsl%5B0%5D*360)+%22,%20%22+Math.round(hsl%5B1%5D*100)+%22%25,%20%22+Math.round(hsl%5B2%5D*100)+%22%25)%22;%7Dvar%20props=%5B%22color%22,%22background-color%22,%22border-left-color%22,%22border-right-color%22,%22border-top-color%22,%22border-bottom-color%22%5D;var%20props2=%5B%22color%22,%22backgroundColor%22,%22borderLeftColor%22,%22borderRightColor%22,%22borderTopColor%22,%22borderBottomColor%22%5D;if(typeof%20getRGBColor(document.documentElement,%22background-color%22)==%22string%22)document.documentElement.style.backgroundColor=%22white%22;revl(document.documentElement);function%20revl(n)%7Bvar%20i,x,color,hsl;if(n.nodeType==Node.ELEMENT_NODE)%7Bfor(i=0;x=n.childNodes%5Bi%5D;++i)revl(x);for(i=0;x=props%5Bi%5D;++i)%7Bcolor=getRGBColor(n,x);if(typeof(color)!=%22string%22)%7Bhsl=RGBtoHSL(color);hsl%5B2%5D=1-hsl%5B2%5D;n.style%5Bprops2%5Bi%5D%5D=hslToCSS(hsl);%7D%7D%7D%7D%7D)()">Invert</a>
 
-                        <a
-                            href="javascript:(function()%7Bjavascript%3A (function () %7Bconst s %3D (function () %7Bloremipsum %3D %5B'Lorem ipsum dolor sit amet%2C consectetur adipisicing elit%2C sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'%2C'Ut enim ad minim veniam%2C quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'%2C'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'%2C'Excepteur sint occaecat cupidatat non proident%2C sunt in culpa qui officia deserunt mollit anim id est laborum.'%2C'Nam facilisis enim.'%2C%5D%3Blet whitespaceAtFrontRe %3D %2F%5E%5B%5Cs%5Cxa0%5D%2B%2F%3Blet whitespaceAtEndRe %3D %2F%5B%5Cs%5Cxa0%5D%2B%24%2F%3Blet punctationRe %3D %2F(%5B%3A!%3F%5C.%5D)%24%2F%3Blet punctationFrontRe %3D %2F%5E(%5B%3A!%3F%5C.%5D%5Cs%2B)%2F%3Blet capatializedRe %3D %2F%5E%5B%5E%5CwÃ„Ã–ÃœÃ€Ã€ÃÃˆÃ‰Ã‡%5D*%5BA-ZÃ„Ã–ÃœÃ€Ã€ÃÃˆÃ‰Ã‡%5D%2F%3Blet simpleExpressionRe %3D %2F%5E%5B%5C(%5C%5B%5D%3F.%5B%3A%5C.%5C)%5C%5D%5D%3F%24%2F%3Blet singleWordRe %3D %2F%5E%5Cw*%24%2F%3Blet charAtFrontRe %3D %2F%5E%5Ba-z%5D%2Fi%3Blet headlineRe %3D %2F%5EH%5B1-3%5D%24%2Fi%3Blet lastTextHadPunctation %3D false%3Blet foundMain %3D false%3Blet idx %3D 0%3Blet getLoremIpsum %3D function (n%2C isHeadline%2C singleWord) %7Bif (!foundMain %26%26 isHeadline) %7Bidx %3D 0%3BfoundMain %3D true%3B%7Dlet t %3D loremipsum%5Bidx%5D%3Blet l %3D t.length%3Bwhile (l < n) %7Bif (%2B%2Bidx >%3D loremipsum.length) idx %3D 0%3Bt %2B%3D ' ' %2B loremipsum%5Bidx%5D%3Bl %3D t.length%3B%7Dif (l > n) %7Blet t1 %3D t.substring(0%2C n)%3Blet t2 %3D t.substring(n).replace(%2F%5Cs.*%24%2F%2C '')%3Bif (!singleWord %26%26 (t2.length < 3 %7C%7C (singleWordRe.test(t1) %26%26 charAtFrontRe.test(t.charAt(n))))) %7Bt %3D t1 %2B t2%3B%7D else %7Bt %3D t1.replace(%2F%2C%3F%5Cs%5Cw*%24%2F%2C '')%3B%7Dif (t.length > 3) t %3D t.replace(%2F%5Cs%5Cw%24%2F%2C '')%3B%7Dt %3D t.replace(%2F%5Cs%2B%24%2F%2C '')%3Bif (%2B%2Bidx >%3D loremipsum.length) idx %3D 0%3Breturn t%3B%7D%3Blet getDocumentBody %3D function () %7Bif (document.getElementsByTagName) %7Breturn document.getElementsByTagName('body').item(0)%3B%7D else if (document.body) %7Breturn document.body%3B%7D else if ((document.all) %26%26 (document.all.tags)) %7Breturn document.all.tags('body')%5B0%5D%3B%7D else %7Breturn null%3B%7D%7D%3Blet replaceText %3D function (el%2C isHeadline) %7Blet t %3D el.nodeValue%3Bif (!t) return%3Blet n %3D t.length%3Bt %3D t.replace(whitespaceAtFrontRe%2C '')%3Blet wsFront %3D (t.length !%3D n)%3Bn %3D t.length%3Bt %3D t.replace(whitespaceAtEndRe%2C '')%3Blet wsEnd %3D (t.length !%3D n)%3Bn %3D t.length%3Bif (n > 0 %26%26 !simpleExpressionRe.test(t)) %7Blet tn %3D getLoremIpsum(n%2C isHeadline%2C singleWordRe.test(t))%3Blet matches %3D punctationRe.exec(t)%3Bif (matches) %7Btn %3D tn.replace(%2F%5B%2C%5C.%5D%2B%24%2F%2C '').replace(%2F%5Cs%2B%24%2F%2C '') %2B matches%5B1%5D%3B%7D else %7Btn %3D tn.replace(%2F%2C%5Cs*%24%2F%2C '')%3B%7Dlet first %3D tn.charAt(0)%3Blet rest %3D tn.substring(1)%3Btn %3D ((lastTextHadPunctation %7C%7C capatializedRe.test(t)) %3F first.toUpperCase() %3A first.toLowerCase()) %2B rest%3Bmatches %3D punctationFrontRe.exec(t)%3Bif (matches) tn %3D matches%5B1%5D %2B tn%3BlastTextHadPunctation %3D punctationRe.test(tn)%3Bif (wsFront) tn %3D ' ' %2B tn%3Bif (wsEnd) tn %2B%3D ' '%3Bel.nodeValue %3D tn%3B%7D%7D%3Blet scanElement %3D function (el%2C isHeadline) %7Blet n %3D el.firstChild%3Bwhile (n) %7Blet nt %3D n.nodeType%3Blet ns %3D n.nextSibling%3Bif (nt %3D%3D 1) %7Blet nn %3D n.nodeName%3Bif (nn !%3D 'SCRIPT' %26%26 nn !%3D 'STYLE' %26%26 nn !%3D 'EMBED') %7BscanElement(n%2C isHeadline %7C%7C headlineRe.test(nn))%3B%7D%7D else if (nt %3D%3D 3) %7BreplaceText(n%2C isHeadline)%3B%7Dn %3D ns%3B%7D%7D%3Blet b %3D getDocumentBody()%3Bif (b) %7BscanElement(b%2C false)%3B%7D%7D)()%3Blet h %3D document.getElementsByTagName('head').item(0)%3Bif (h) %7Bh.appendChild(s)%3B%7D%7D)()%7D)()">Lorem</a>
+                        <a href="javascript:(function()%7Bjavascript%3A (function () %7Bconst s %3D (function () %7Bloremipsum %3D %5B'Lorem ipsum dolor sit amet%2C consectetur adipisicing elit%2C sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'%2C'Ut enim ad minim veniam%2C quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'%2C'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'%2C'Excepteur sint occaecat cupidatat non proident%2C sunt in culpa qui officia deserunt mollit anim id est laborum.'%2C'Nam facilisis enim.'%2C%5D%3Blet whitespaceAtFrontRe %3D %2F%5E%5B%5Cs%5Cxa0%5D%2B%2F%3Blet whitespaceAtEndRe %3D %2F%5B%5Cs%5Cxa0%5D%2B%24%2F%3Blet punctationRe %3D %2F(%5B%3A!%3F%5C.%5D)%24%2F%3Blet punctationFrontRe %3D %2F%5E(%5B%3A!%3F%5C.%5D%5Cs%2B)%2F%3Blet capatializedRe %3D %2F%5E%5B%5E%5CwÃ„Ã–ÃœÃ€Ã€ÃÃˆÃ‰Ã‡%5D*%5BA-ZÃ„Ã–ÃœÃ€Ã€ÃÃˆÃ‰Ã‡%5D%2F%3Blet simpleExpressionRe %3D %2F%5E%5B%5C(%5C%5B%5D%3F.%5B%3A%5C.%5C)%5C%5D%5D%3F%24%2F%3Blet singleWordRe %3D %2F%5E%5Cw*%24%2F%3Blet charAtFrontRe %3D %2F%5E%5Ba-z%5D%2Fi%3Blet headlineRe %3D %2F%5EH%5B1-3%5D%24%2Fi%3Blet lastTextHadPunctation %3D false%3Blet foundMain %3D false%3Blet idx %3D 0%3Blet getLoremIpsum %3D function (n%2C isHeadline%2C singleWord) %7Bif (!foundMain %26%26 isHeadline) %7Bidx %3D 0%3BfoundMain %3D true%3B%7Dlet t %3D loremipsum%5Bidx%5D%3Blet l %3D t.length%3Bwhile (l < n) %7Bif (%2B%2Bidx >%3D loremipsum.length) idx %3D 0%3Bt %2B%3D ' ' %2B loremipsum%5Bidx%5D%3Bl %3D t.length%3B%7Dif (l > n) %7Blet t1 %3D t.substring(0%2C n)%3Blet t2 %3D t.substring(n).replace(%2F%5Cs.*%24%2F%2C '')%3Bif (!singleWord %26%26 (t2.length < 3 %7C%7C (singleWordRe.test(t1) %26%26 charAtFrontRe.test(t.charAt(n))))) %7Bt %3D t1 %2B t2%3B%7D else %7Bt %3D t1.replace(%2F%2C%3F%5Cs%5Cw*%24%2F%2C '')%3B%7Dif (t.length > 3) t %3D t.replace(%2F%5Cs%5Cw%24%2F%2C '')%3B%7Dt %3D t.replace(%2F%5Cs%2B%24%2F%2C '')%3Bif (%2B%2Bidx >%3D loremipsum.length) idx %3D 0%3Breturn t%3B%7D%3Blet getDocumentBody %3D function () %7Bif (document.getElementsByTagName) %7Breturn document.getElementsByTagName('body').item(0)%3B%7D else if (document.body) %7Breturn document.body%3B%7D else if ((document.all) %26%26 (document.all.tags)) %7Breturn document.all.tags('body')%5B0%5D%3B%7D else %7Breturn null%3B%7D%7D%3Blet replaceText %3D function (el%2C isHeadline) %7Blet t %3D el.nodeValue%3Bif (!t) return%3Blet n %3D t.length%3Bt %3D t.replace(whitespaceAtFrontRe%2C '')%3Blet wsFront %3D (t.length !%3D n)%3Bn %3D t.length%3Bt %3D t.replace(whitespaceAtEndRe%2C '')%3Blet wsEnd %3D (t.length !%3D n)%3Bn %3D t.length%3Bif (n > 0 %26%26 !simpleExpressionRe.test(t)) %7Blet tn %3D getLoremIpsum(n%2C isHeadline%2C singleWordRe.test(t))%3Blet matches %3D punctationRe.exec(t)%3Bif (matches) %7Btn %3D tn.replace(%2F%5B%2C%5C.%5D%2B%24%2F%2C '').replace(%2F%5Cs%2B%24%2F%2C '') %2B matches%5B1%5D%3B%7D else %7Btn %3D tn.replace(%2F%2C%5Cs*%24%2F%2C '')%3B%7Dlet first %3D tn.charAt(0)%3Blet rest %3D tn.substring(1)%3Btn %3D ((lastTextHadPunctation %7C%7C capatializedRe.test(t)) %3F first.toUpperCase() %3A first.toLowerCase()) %2B rest%3Bmatches %3D punctationFrontRe.exec(t)%3Bif (matches) tn %3D matches%5B1%5D %2B tn%3BlastTextHadPunctation %3D punctationRe.test(tn)%3Bif (wsFront) tn %3D ' ' %2B tn%3Bif (wsEnd) tn %2B%3D ' '%3Bel.nodeValue %3D tn%3B%7D%7D%3Blet scanElement %3D function (el%2C isHeadline) %7Blet n %3D el.firstChild%3Bwhile (n) %7Blet nt %3D n.nodeType%3Blet ns %3D n.nextSibling%3Bif (nt %3D%3D 1) %7Blet nn %3D n.nodeName%3Bif (nn !%3D 'SCRIPT' %26%26 nn !%3D 'STYLE' %26%26 nn !%3D 'EMBED') %7BscanElement(n%2C isHeadline %7C%7C headlineRe.test(nn))%3B%7D%7D else if (nt %3D%3D 3) %7BreplaceText(n%2C isHeadline)%3B%7Dn %3D ns%3B%7D%7D%3Blet b %3D getDocumentBody()%3Bif (b) %7BscanElement(b%2C false)%3B%7D%7D)()%3Blet h %3D document.getElementsByTagName('head').item(0)%3Bif (h) %7Bh.appendChild(s)%3B%7D%7D)()%7D)()">Lorem</a>
 
-                        <a
-                            href="javascript:document.body.contentEditable%20=%20'true';%20document.designMode='on';%20void%200">Edit</a>
+                        <a href="javascript:document.body.contentEditable%20=%20'true';%20document.designMode='on';%20void%200">Edit</a>
                         <br /><br />
                         <h3>Gaming</h3>
                         <a href="https://store.steampowered.com/">Steam</a>
@@ -663,10 +986,8 @@
                         <a href="https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe">OOSU10</a>
                         <a href="https://www.revouninstaller.com/download-free-portable.php">Revo Portable</a>
                         <a href="https://www.ccleaner.com/recuva/download/portable">Recuva Portable</a>
-                        <a
-                            href="https://www.jam-software.de/customers/downloadTrial.php?article_no=80&language=EN">TreeSizeFree</a>
-                        <a
-                            href="https://www.jam-software.de/customers/downloadTrial.php?article_no=402&language=EN">HeavyLoad</a>
+                        <a href="https://www.jam-software.de/customers/downloadTrial.php?article_no=80&language=EN">TreeSizeFree</a>
+                        <a href="https://www.jam-software.de/customers/downloadTrial.php?article_no=402&language=EN">HeavyLoad</a>
                         <a href="http://www.majorgeeks.com/files/details/intelburntest.html">Intel Burn Test</a>
                         <a href="https://www.f-secure.com/en/web/home_global/online-scanner">F-Secure online scanner</a>
                         <a href="https://processhacker.sourceforge.io/downloads.php">Process Hacker</a>
@@ -807,47 +1128,31 @@
                     <div>
                         <h3>Chrome extensions</h3>
                         <a href="https://chrome.google.com/webstore/category/extensions">Chrome web store</a>
-                        <a
-                            href="https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm">uBlock
+                        <a href="https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm">uBlock
                             Origin</a>
-                        <a
-                            href="https://chrome.google.com/webstore/detail/privacy-badger/pkehgijcmpdhfbdbbnkijodmdjhbjlgp">Privacy
+                        <a href="https://chrome.google.com/webstore/detail/privacy-badger/pkehgijcmpdhfbdbbnkijodmdjhbjlgp">Privacy
                             Badger</a>
-                        <a
-                            href="https://chrome.google.com/webstore/detail/onetab/chphlpgkkbolifaimnlloiipkdnihall">OneTab</a>
-                        <a
-                            href="https://chrome.google.com/webstore/detail/linkclump/lfpjkncokllnfokkgpkobnkbkmelfefj">LinkClump</a>
-                        <a
-                            href="https://chrome.google.com/webstore/detail/pin-all-tabs/ggdflfnbccnnmnejiblifjjgeiepdjop">PintAllTabs</a>
+                        <a href="https://chrome.google.com/webstore/detail/onetab/chphlpgkkbolifaimnlloiipkdnihall">OneTab</a>
+                        <a href="https://chrome.google.com/webstore/detail/linkclump/lfpjkncokllnfokkgpkobnkbkmelfefj">LinkClump</a>
+                        <a href="https://chrome.google.com/webstore/detail/pin-all-tabs/ggdflfnbccnnmnejiblifjjgeiepdjop">PintAllTabs</a>
                         <a href="https://chrome.google.com/webstore/detail/pin-tabs/achoaodpkagkocipghglppnbagjheoni">Pin
                             Tabs</a>
-                        <a
-                            href="https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne">Stylus</a>
-                        <a
-                            href="https://chrome.google.com/webstore/detail/reddit-enhancement-suite/kbmfpngjjgdllneeigpgjifpgocmfgmb?hl=en-GB">RES</a>
-                        <a
-                            href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en-GB">TamperMonkey</a>
-                        <a
-                            href="https://chrome.google.com/webstore/detail/whatfont/jabopobgcpjmedljpbcaablpmlmfcogm?hl=en-GB">WhatFont</a>
-                        <a
-                            href="https://chrome.google.com/webstore/detail/videostream-for-google-ch/cnciopoikihiagdjbjpnocolokfelagl">Videostream</a>
-                        <a
-                            href="https://chrome.google.com/webstore/detail/decentraleyes/ldpochfccmkkmhdbclfhpagapcfdljkj?hl=en-GB">Decentral
+                        <a href="https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne">Stylus</a>
+                        <a href="https://chrome.google.com/webstore/detail/reddit-enhancement-suite/kbmfpngjjgdllneeigpgjifpgocmfgmb?hl=en-GB">RES</a>
+                        <a href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en-GB">TamperMonkey</a>
+                        <a href="https://chrome.google.com/webstore/detail/whatfont/jabopobgcpjmedljpbcaablpmlmfcogm?hl=en-GB">WhatFont</a>
+                        <a href="https://chrome.google.com/webstore/detail/videostream-for-google-ch/cnciopoikihiagdjbjpnocolokfelagl">Videostream</a>
+                        <a href="https://chrome.google.com/webstore/detail/decentraleyes/ldpochfccmkkmhdbclfhpagapcfdljkj?hl=en-GB">Decentral
                             Eyes</a>
-                        <a
-                            href="https://chrome.google.com/webstore/detail/canvas-defender/obdbgnebcljmgkoljcdddaopadkifnpm">Canvas
+                        <a href="https://chrome.google.com/webstore/detail/canvas-defender/obdbgnebcljmgkoljcdddaopadkifnpm">Canvas
                             Defender</a>
-                        <a
-                            href="https://chrome.google.com/webstore/detail/whatruns/cmkdbmfndkfgebldhnkbfhlneefdaaip?hl=en-GB">WhatRuns</a>
-                        <a
-                            href="https://chrome.google.com/webstore/detail/clear-cache/cppjkneekbjaeellbfkmgnhonkkjfpdn">Clear
+                        <a href="https://chrome.google.com/webstore/detail/whatruns/cmkdbmfndkfgebldhnkbfhlneefdaaip?hl=en-GB">WhatRuns</a>
+                        <a href="https://chrome.google.com/webstore/detail/clear-cache/cppjkneekbjaeellbfkmgnhonkkjfpdn">Clear
                             Cache</a>
-                        <a
-                            href="https://chrome.google.com/webstore/detail/refresh-em-all/iaoghbeamaalcgoembjppfekhelajipd">Refresh
+                        <a href="https://chrome.google.com/webstore/detail/refresh-em-all/iaoghbeamaalcgoembjppfekhelajipd">Refresh
                             'Em
                             All</a>
-                        <a
-                            href="https://chrome.google.com/webstore/detail/tab-auto-reloader/knnahnemielbnanghaphjgheamgcjjcb?hl=en">Tab
+                        <a href="https://chrome.google.com/webstore/detail/tab-auto-reloader/knnahnemielbnanghaphjgheamgcjjcb?hl=en">Tab
                             Auto Reloader</a>
                         <br /><br />
                         <h3>Firefox extensions</h3>
@@ -887,6 +1192,8 @@
             </div>
 
             <div class="lcContainer">
+                <div id="anchor4" class="anchor"></div>
+
                 <h3>Video</h3>
 
                 <div class="linkCollection">
@@ -960,6 +1267,8 @@
             </div>
 
             <div class="lcContainer">
+                <div id="anchor5" class="anchor"></div>
+
                 <h3>Reddit</h3>
                 <div class="linkCollection">
                     <div>
@@ -1040,6 +1349,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
         <br /><br />
 
@@ -1438,6 +1748,19 @@
                 setValues(randomId);
             };
 
+            const setTabName = () => {
+                const x = document.getElementById("tabName").value;
+                document.title = x;
+            }
+
+            const setTabNameFromButton = (newName) => {
+                document.title = newName;
+            }
+
+            const scrollToElement = (href) => {
+                document.getElementById(href).scrollIntoView();
+            }
+
             regenerateId(12);
         </script>
 
@@ -1499,6 +1822,11 @@
 
             Mousetrap.bind("7", () => {
                 document.getElementById("searchYouTube").focus();
+                return false;
+            });
+
+            Mousetrap.bind("t", () => {
+                document.getElementById("tabName").focus();
                 return false;
             });
 
