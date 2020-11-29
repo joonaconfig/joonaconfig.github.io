@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width" />
     <meta name="theme-color" content="#000000" />
     <title>Start</title>
-
     <style>
         a,
         abbr,
@@ -120,11 +119,6 @@
             width: 100%;
             height: 100%;
             line-height: 1
-        }
-
-        ol,
-        ul {
-            list-style: none
         }
 
         blockquote,
@@ -323,11 +317,11 @@
 
         :root {
             --bg-color: #ffffff;
-            --text-color: #020202;
-            --text-unselected: #dcdcdc;
-            --border: #cccccc;
             --border-unselected: #e8e8e8;
+            --border: #cccccc;
             --font: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            --text-color: #1B1B1B;
+            --text-unselected: #dcdcdc;
         }
 
         body {
@@ -349,7 +343,6 @@
         select,
         textarea {
             font-family: inherit;
-            font-size: 100%;
             line-height: 1;
             appearance: none;
             -webkit-appearance: none;
@@ -394,6 +387,7 @@
             justify-content: center;
         }
 
+        .linkCollectionFullWidth div a,
         .linkCollection div a,
         .linkCollection div button,
         .wrapper div button {
@@ -408,7 +402,7 @@
             cursor: default;
             text-justify: inter-word;
             display: inline-block;
-            font-size: 9.5pt;
+            font-size: 10pt;
         }
 
         .lcContainer {
@@ -484,13 +478,6 @@
 
         #nav-buttons {
             display: none;
-            margin: 0 0.5em;
-        }
-
-        #nav-buttons button {
-            padding: 0.25em 0.7em;
-            width: 2.5em;
-            margin: 0 0.5em;
         }
 
         @media only screen and (max-width: 1400px) {
@@ -517,13 +504,12 @@
 
             .linkCollection div a,
             .linkCollection div button {
-                font-size: 8.9pt;
+                font-size: 9pt;
             }
         }
 
         @media only screen and (max-width: 750px) {
             #nav-buttons {
-                /* visibility: visible; */
                 display: flex;
             }
 
@@ -557,10 +543,57 @@
                 width: 95%;
                 margin: 0.5em 0 0.5em 0;
             }
+
+            #nav-buttons {
+                justify-content: center;
+                background-color: #212121;
+                overflow: hidden;
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+            }
+
+            #nav-buttons button {
+                color: #f2f2f2;
+                background-color: #212121;
+                border: none;
+                text-align: center;
+                padding: 12px 22px;
+                font-size: 17px;
+
+            }
+
+        }
+
+        .world-clock {
+            font-size: 9pt;
+            line-height: 1.5em;
+            border-collapse: collapse;
+        }
+
+        .world-clock table,
+        .world-clock th,
+        .world-clocktd {
+            border: 1px solid #D3D3D3;
+        }
+
+        .world-clock th,
+        .world-clock td {
+            padding: 3px 6px;
+            text-align: left;
         }
     </style>
 
 <body>
+
+    <div id="nav-buttons" class="flexbox flexbox-centered">
+        <button onclick="scrollToElement('anchor1')">1</button>
+        <button onclick="scrollToElement('anchor2')">2</button>
+        <button onclick="scrollToElement('anchor3')">3</button>
+        <button onclick="scrollToElement('anchor4')">4</button>
+        <button onclick="scrollToElement('anchor5')">5</button>
+    </div>
+
     <div class="wrapperContainer">
         <div class="wrapper">
             <div class="nav flexbox sticky flexbox-centered">
@@ -584,14 +617,6 @@
                     <form action="https://www.youtube.com/results" method="get"><input autocomplete="off" placeholder="(7) YouTube" type="text" name="search_query" id="searchYouTube" /></form>
                 </div>
             </div>
-
-            <div id="nav-buttons" class="flexbox flexbox-centered">
-                <button onclick="scrollToElement('anchor1')">1</button>
-                <button onclick="scrollToElement('anchor2')">2</button>
-                <button onclick="scrollToElement('anchor3')">3</button>
-                <button onclick="scrollToElement('anchor4')">4</button>
-                <button onclick="scrollToElement('anchor5')">5</button>
-            </div>
             <div style="padding-top: 1em;">
                 <div class="time-container">
                     <div style="display: flex;">
@@ -614,20 +639,19 @@
                     <div>
                         <button onclick="showDates()">Show</button>
                         <button onclick="regenerateId()">Update</button>
-
                         <input style="width: 7em;" type="text" placeholder="Label" id="customLabel" onchange="setLabel();">
                         <input style="width: 3em;" type="number" name="Length" id="randomIdLength" min="1" value="12" onchange="updateValues()" />
-                        <input onchange="setTabName()" style="width: 8em;" type="text" name="" id="tabName" placeholder="(t) Tab…" />
+                        <input onchange="setTabNameFromInputBox()" style="width: 8em;" type="text" name="" id="tabName" placeholder="(t) Tab…" />
                     </div>
                 </div>
             </div>
             <div class="lcContainer">
                 <div id="anchor1" class="anchor"></div>
-
                 <div class="linkCollection">
                     <div>
                         <h3>Common</h3>
-                        <!-- <a href="URLHEREURL">NAMEHEREHERE</a> -->
+                        <a onclick="openNotepad()">Notepad</a>
+                        <a onclick="openNotepadLexend()">Notepad Lexend</a>
                         <a href="https://news.ycombinator.com">Hacker News</a>
                         <a href="https://lobste.rs/">Lobste.rs</a>
                         <a href="https://en.m.wikipedia.org/wiki/Main_Page">Wikipedia</a>
@@ -690,7 +714,6 @@
                         <a href="https://material.io/resources/resizer/">Material Resizer</a>
                         <a href="https://books.goalkicker.com/">GoalKicker: Notes for professionals</a>
                     </div>
-
                     <div>
                         <h3>Google</h3>
                         <a href="https://www.google.fi">Google</a>
@@ -700,7 +723,6 @@
                         <a href="https://calendar.google.com/calendar">Calendar</a>
                         <a href="https://hangouts.google.com">Hangouts</a>
                         <a href="https://mail.google.com/mail/u/0/#inbox">Gmail</a>
-
                         <a href="https://translate.google.com">Translate</a>
                         <a href="https://news.google.com/news/">News</a>
                         <a href="https://contacts.google.com">Contacts</a>
@@ -708,15 +730,13 @@
                         <a href="https://meet.google.com/_meet">Meet</a>
                         <a href="https://www.youtube.com/?gl=FI">YouTube</a>
                         <a href="https://www.youtube.com/feed/subscriptions">Subscriptions</a>
+                        <a href="https://podcasts.google.com/">Podcasts</a>
                         <br /><br />
                         <h3>Microsoft</h3>
                         <a href="https://www.office.com/?auth=2">Portal</a>
                         <a href="https://outlook.office365.com/mail/inbox">Outlook</a>
                         <a href="https://teams.microsoft.com/">Teams</a>
                         <a href="https://www.office.com/launch/word?auth=2">Word</a>
-                        <!-- <br> -->
-                        <a href="https://dev.azure.com">Azure Devops</a>
-                        <a href="https://portal.azure.com/">Azure Portal</a>
                         <br /><br />
                         <h3>News</h3>
                         <a href="http://arstechnica.com/">Ars Technica</a>
@@ -744,7 +764,6 @@
                         <a href="https://news.vice.com">Vice News</a>
                         <a href="http://www.theguardian.com/uk">The Guardian</a>
                         <a href="https://theoutline.com">The Outline</a>
-
                         <br /><br />
                         <h3>Social</h3>
                         <a href="https://twitter.com">Twitter</a>
@@ -759,8 +778,29 @@
                         <a href="https://www.facebook.com/events/">FB Events</a>
                         <a href="https://www.facebook.com/groups/?category=membership">FB Groups</a>
                     </div>
-
                     <div>
+                        <h3>Local</h3>
+                        <a href="http://localhost:3000">:3000</a>
+                        <a href="http://localhost:3001">:3001</a>
+                        <a href="http://localhost:4200">:4200</a>
+                        <a href="http://localhost:5000">:5000</a>
+                        <a href="http://localhost:5001">:5001</a>
+                        <a href="http://localhost:8000">:8000</a>
+                        <a href="http://localhost:8080">:8080</a>
+                        <a href="http://localhost:8081">:8081</a>
+                        <a href="http://localhost:8888">:8888</a>
+                        <a href="http://localhost:8899">:8899</a>
+                        <h3>Local HTTPS</h3>
+                        <a href="https://localhost:3000">:3000</a>
+                        <a href="https://localhost:3001">:3001</a>
+                        <a href="https://localhost:4200">:4200</a>
+                        <a href="https://localhost:5000">:5000</a>
+                        <a href="https://localhost:5001">:5001</a>
+                        <a href="https://localhost:8000">:8000</a>
+                        <a href="https://localhost:8080">:8080</a>
+                        <a href="https://localhost:8081">:8081</a>
+                        <a href="https://localhost:8888">:8888</a>
+                        <a href="https://localhost:8899">:8899</a>
                         <h3>Dev blogs</h3>
                         <a href="https://blog.codinghorror.com/">Coding Horror</a>
                         <a href="https://www.troyhunt.com/">Troy Hunt</a>
@@ -772,6 +812,7 @@
                         <a href="http://codebetter.com/">Code better</a>
                         <br /><br />
                         <h3>TechBBS</h3>
+                        <a href="https://bbs.io-tech.fi/misc/style?style_id=22">Light theme</a>
                         <a href="https://bbs.io-tech.fi/whats-new/">Uutta</a>
                         <a href="https://bbs.io-tech.fi/forums/io-tech-fi-uutiset.67/">Uutiset</a>
                         <a href="https://bbs.io-tech.fi/forums/io-tech-fi-artikkelit.68/">Artikkelit</a>
@@ -779,26 +820,21 @@
                         <a href="https://bbs.io-tech.fi/forums/naeytoenohjaimet.6/">GPU</a>
                         <a href="https://bbs.io-tech.fi/forums/tallennus.7/">Tallennus</a>
                         <a href="https://bbs.io-tech.fi/forums/kotelot-ja-virtalaehteet.11/">Kotelot, PSU</a>
-                        <a href="https://bbs.io-tech.fi/forums/buildit-setupit-kotelomodifikaatiot-diy.92/">Builds,
-                            DIY</a>
+                        <a href="https://bbs.io-tech.fi/forums/buildit-setupit-kotelomodifikaatiot-diy.92/">Builds, DIY</a>
                         <a href="https://bbs.io-tech.fi/forums/jaeaehdytys.54/">Jäähdytys</a>
                         <a href="https://bbs.io-tech.fi/forums/konepaketit.10/">Konepaketit</a>
                         <a href="https://bbs.io-tech.fi/forums/kannettavat-tietokoneet.41/">Kannettavat</a>
-                        <a href="https://bbs.io-tech.fi/forums/muut-pc-komponentit-ja-oheislaitteet.72/">Muut
-                            komponentit</a>
+                        <a href="https://bbs.io-tech.fi/forums/muut-pc-komponentit-ja-oheislaitteet.72/">Muut komponentit</a>
                         <a href="https://bbs.io-tech.fi/forums/ongelmat.39/">Ongelmat</a>
                         <a href="https://bbs.io-tech.fi/forums/yleinen-rautakeskustelu.9/">Yleinen rautakeskustelu</a>
                         <a href="https://bbs.io-tech.fi/forums/aelypuhelimet-tabletit-aelykellot-ja-muu-mobiili.15/">Mobiili</a>
                         <a href="https://bbs.io-tech.fi/forums/viihde-elektroniikka-kamerat-ja-kodinkoneet.59/">Viihde-elektroniikka</a>
-                        <a href="https://bbs.io-tech.fi/forums/elektroniikka-rakentelu-ja-muut-diy-projektit.60/">Rakentelu
-                            ja DIY</a>
+                        <a href="https://bbs.io-tech.fi/forums/elektroniikka-rakentelu-ja-muut-diy-projektit.60/">Rakentelu ja DIY</a>
                         <a href="https://bbs.io-tech.fi/forums/internet-tietoliikenne-ja-tietoturva.25/">Verkko</a>
-                        <a href="https://bbs.io-tech.fi/forums/kaeyttaejien-omat-tuotetestit.65/">Käyttäjien
-                            tuotetestit</a>
+                        <a href="https://bbs.io-tech.fi/forums/kaeyttaejien-omat-tuotetestit.65/">Käyttäjien tuotetestit</a>
                         <a href="https://bbs.io-tech.fi/forums/ohjelmointi-pelikehitys-ja-muu-sovelluskehitys.24/">Ohjelmointi</a>
                         <a href="https://bbs.io-tech.fi/forums/yleinen-ohjelmistokeskustelu.14/">Ohjelmistokeskutelu</a>
-                        <a href="https://bbs.io-tech.fi/forums/testiohjelmat-ja-tulokset.64/">Testiohjelmat ja
-                            tulokset</a>
+                        <a href="https://bbs.io-tech.fi/forums/testiohjelmat-ja-tulokset.64/">Testiohjelmat ja tulokset</a>
                         <a href="https://bbs.io-tech.fi/forums/autot-ja-liikenne.48/">Autot ja liikenne</a>
                         <a href="https://bbs.io-tech.fi/forums/urheilu.40/">Urheilu</a>
                         <a href="https://bbs.io-tech.fi/forums/tv-nettisarjat-elokuvat-ja-musiikki.42/">TV</a>
@@ -809,20 +845,32 @@
                         <a href="https://bbs.io-tech.fi/forums/vaihdetaan.46/">Vaihdetaan</a>
                         <a href="https://bbs.io-tech.fi/forums/lahjoitetaan.47/">Lahjoitetaan</a>
                     </div>
-
                     <div>
 
-                        <h3>Tabnames</h3>
-                        <button onclick="setTabNameFromButton('Social')">Social</button>
-                        <button onclick="setTabNameFromButton('Some')">Some</button>
-                        <button onclick="setTabNameFromButton('Shop')">Shop</button>
-                        <button onclick="setTabNameFromButton('YouTube')">YouTube</button>
+                        <h3>World clock</h3>
+                        <table class="world-clock">
+                            <tr>
+                                <th>LA</th>
+                                <th id="time-la"></th>
+                            </tr>
+                            <tr>
+                                <th>NY</th>
+                                <th id="time-ny"></th>
+                            </tr>
+                            <tr>
+                                <th>London</th>
+                                <th id="time-london"></th>
+                            </tr>
+                            <tr>
+                                <th>Helsinki</th>
+                                <th id="time-helsinki"></th>
+                            </tr>
+                        </table>
                         <br /><br />
                         <h3>Weather (FMI)</h3>
                         <a href="http://ilmatieteenlaitos.fi/saa/oulu">Oulu</a>
                         <a href="http://ilmatieteenlaitos.fi/saa/helsinki">Helsinki</a>
                         <a href="https://ilmatieteenlaitos.fi/saa/tampere">Tampere</a>
-
                         <br /><br />
                         <h3>Weather (YR)</h3>
                         <a href="https://www.yr.no/place/Finland/Oulu/Oulu/?spr=eng">Oulu</a>
@@ -864,31 +912,24 @@
                     </div>
                 </div>
             </div>
-
             <div class="lcContainer">
                 <div id="anchor2" class="anchor"></div>
-
                 <div class="linkCollection">
                     <div>
                         <h3>Stores</h3>
                         <a href="https://hinta.fi">Hinta.fi</a>
                         <a href="https://hinta.fi/tarjoukset">Hinta tarjoukset</a>
-                        <a href="https://murobbs.muropaketti.com/threads/hyvaet-tarjoukset-ketju-v3-0.1358648/page-999999">MuroBBS
-                            tarjoukset</a>
-                        <a href="https://bbs.io-tech.fi/threads/hyvaet-tarjoukset-ei-keskustelua.151/page-999999">io-tech
-                            tarjoukset</a>
+                        <a href="https://murobbs.muropaketti.com/threads/hyvaet-tarjoukset-ketju-v3-0.1358648/page-999999">MuroBBS tarjoukset</a>
+                        <a href="https://bbs.io-tech.fi/threads/hyvaet-tarjoukset-ei-keskustelua.151/page-999999">io-tech tarjoukset</a>
                         <a href="https://www.jimms.fi">Jimm's</a>
                         <a href="https://www.jimms.fi/fi/Product/Search?i=100&ob=4&q=b-stock">b-stock</a>
-                        <a href="https://murobbs.muropaketti.com/threads/sinae-hyoedyt-siitae-mitae-jimms-tietaeae.760477/">Jimm's
-                            BBS</a>
-                        <a href="https://bbs.io-tech.fi/threads/sinae-hyoedyt-siitae-mitae-jimms-tietaeae-jimms-pc-n-oma-ketju.727/">Jimm's
-                            io</a>
+                        <a href="https://murobbs.muropaketti.com/threads/sinae-hyoedyt-siitae-mitae-jimms-tietaeae.760477/">Jimm's BBS</a>
+                        <a href="https://bbs.io-tech.fi/threads/sinae-hyoedyt-siitae-mitae-jimms-tietaeae-jimms-pc-n-oma-ketju.727/">Jimm's io</a>
                         <a href="http://cdon.fi">CDON</a>
                         <a href="https://www.gigantti.fi">Gigantti</a>
                         <a href="http://www.apple.com/fi-edu/shop">Apple EDU</a>
                         <a href="https://www.data-systems.fi">Data Systems</a>
                     </div>
-
                     <div>
                         <h3>&nbsp;</h3>
                         <a href="https://www.power.fi/">Power</a>
@@ -905,7 +946,6 @@
                         <a href="https://www.dustinhome.fi/">Dustin</a>
                         <a href="https://www.proshop.fi/">Proshop</a>
                     </div>
-
                     <div>
                         <h3>io-tech myydään</h3>
                         <a href="https://bbs.io-tech.fi/forums/myydaeaen.80/">Myydään</a>
@@ -916,67 +956,48 @@
                         <a href="https://bbs.io-tech.fi/forums/naeytoet-ja-videotykit.31/">Näytöt</a>
                         <a href="https://bbs.io-tech.fi/forums/aelypuhelimet-taulutietokoneet-aelykellot.33/">Laitteet</a>
                     </div>
-
                     <div>
                         <h3>Tori.fi</h3>
                         <a href="https://www.tori.fi/pohjois-pohjanmaa/viihde-elektroniikka/audio_ja_musiikkilaitteet?ca=2&st=s&st=k&st=u&st=h&st=g&st=b&w=1&cg=5020&c=5024">Audio</a>
-                        <a href="https://www.tori.fi/pohjois-pohjanmaa/viihde-elektroniikka/muu_viihde-elektroniikka?ca=2&st=s&st=k&st=u&st=h&st=g&st=b&w=1&cg=5020&c=5029">Muu
-                            viihde elektroniikka</a>
-                        <a href="https://www.tori.fi/pohjois-pohjanmaa/tietokoneet_ja_lisalaitteet?ca=2&w=1&cg=5030&st=s&st=k&st=u&st=h&st=g&st=b">Tietokoneet
-                            ja lisälaitteet</a>
+                        <a href="https://www.tori.fi/pohjois-pohjanmaa/viihde-elektroniikka/muu_viihde-elektroniikka?ca=2&st=s&st=k&st=u&st=h&st=g&st=b&w=1&cg=5020&c=5029">Muu viihde elektroniikka</a>
+                        <a href="https://www.tori.fi/pohjois-pohjanmaa/tietokoneet_ja_lisalaitteet?ca=2&w=1&cg=5030&st=s&st=k&st=u&st=h&st=g&st=b">Tietokoneet ja lisälaitteet</a>
                         <a href="https://www.tori.fi/pohjois-pohjanmaa/tietokoneet_ja_lisalaitteet/oheislaitteet?ca=2&st=s&st=k&st=u&st=h&st=g&st=b&w=1&cg=5030&c=5036">Oheislaitteet</a>
                         <a href="https://www.tori.fi/pohjois-pohjanmaa/tietokoneet_ja_lisalaitteet/verkkotuotteet?ca=2&st=s&st=k&st=u&st=h&st=g&st=b&w=1&cg=5030&c=5039">Verkkotuotteet</a>
                     </div>
                 </div>
             </div>
-
             <div class="lcContainer">
                 <div id="anchor3" class="anchor"></div>
-
                 <div class="linkCollection">
                     <div>
                         <h3>Bookmarklets</h3>
-                        <a href="javascript:Array.prototype.forEach.call(document.getElementsByTagName('*'),function(e){e.style.fontFamily='PT Sans'})">PT
-                            Sans</a>
+                        <a href="javascript:Array.prototype.forEach.call(document.getElementsByTagName('*'),function(e){e.style.fontFamily='PT Sans'})">PT Sans</a>
                         <a href="javascript:Array.prototype.forEach.call(document.getElementsByTagName('*'),function(e){e.style.fontFamily='Source Sans Pro'})">SSP</a>
-                        <a href="javascript:Array.prototype.forEach.call(document.getElementsByTagName('*'),function(e){e.style.fontFamily='Fira Sans'})">Fira
-                            Sans</a>
+                        <a href="javascript:Array.prototype.forEach.call(document.getElementsByTagName('*'),function(e){e.style.fontFamily='Fira Sans'})">Fira Sans</a>
                         <a href="javascript:Array.prototype.forEach.call(document.getElementsByTagName('*'),function(e){e.style.fontFamily='Lexend Deca'})">Lexend</a>
-
-                        <a href="javascript:(function()%7Bjavascript%3A(function()%7Bdocument.getElementsByTagName(%22body%22)%5B0%5D.addEventListener(%22wheel%22%2Cfunction%20(event)%20%7Bif%20(event.target.classList.contains('ace_content'))%20%7Breturn%3B%7Devent.stopPropagation()%3B%7D%2C%20true)%3B%7D)()%7D)()">Remove
-                            JS smooth scroll</a>
-
-                        <a href="javascript:(function()%7B(function%20()%20%7Bvar%20i%2C%20elements%20%3D%20document.querySelectorAll('body%20*')%3Bfor%20(i%20%3D%200%3B%20i%20%3C%20elements.length%3B%20i%2B%2B)%20%7Bif%20(getComputedStyle(elements%5Bi%5D).position%20%3D%3D%3D%20'fixed')%20%7Belements%5Bi%5D.parentNode.removeChild(elements%5Bi%5D)%3B%7D%7D%7D)()%7D)()">Kill
-                            sticky</a>
-
+                        <a href="javascript:(function()%7Bjavascript%3A(function()%7Bdocument.getElementsByTagName(%22body%22)%5B0%5D.addEventListener(%22wheel%22%2Cfunction%20(event)%20%7Bif%20(event.target.classList.contains('ace_content'))%20%7Breturn%3B%7Devent.stopPropagation()%3B%7D%2C%20true)%3B%7D)()%7D)()">Remove JS smooth scroll</a>
+                        <a href="javascript:(function()%7B(function%20()%20%7Bvar%20i%2C%20elements%20%3D%20document.querySelectorAll('body%20*')%3Bfor%20(i%20%3D%200%3B%20i%20%3C%20elements.length%3B%20i%2B%2B)%20%7Bif%20(getComputedStyle(elements%5Bi%5D).position%20%3D%3D%3D%20'fixed')%20%7Belements%5Bi%5D.parentNode.removeChild(elements%5Bi%5D)%3B%7D%7D%7D)()%7D)()">Kill sticky</a>
                         <a href="javascript:(function()%7Bvar%20d=document.createElement(%22div%22);d.innerHTML=%22%3Cstyle%3E*:not(.icon):not(i),*:not(.icon):not(i):after,*:not(.icon):not(i):before%7Bbox-shadow:none%20!important;text-shadow:none%20!important;background-image:none%20!important;%7D*:not(.icon):not(i)%7Bborder-color:transparent%20!important;%7D%3C/style%3E%22;document.body.appendChild(d)%7D)();">Flatten</a>
-
-                        <a href="javascript:%5B%5D.forEach.call(document.querySelectorAll(%22*%22),function(a)%7Ba.style.outline=%221px%20solid%20%23%22+(~~(Math.random()*(1%3C%3C24))).toString(16)%7D)">Show
-                            CSS</a>
-
-                        <a href="javascript:(function()%7Bvar%20newSS,%20styles='*%20%7Bcolor:black%20!important;%7D';%20if(document.createStyleSheet)%20%7B%20document.createStyleSheet(%22javascript:'%22+styles+%22'%22);%20%7D%20else%20%7B%20newSS=document.createElement('link');%20newSS.rel='stylesheet';%20newSS.href='data:text/css,'+escape(styles);%20document.getElementsByTagName(%22head%22)%5B0%5D.appendChild(newSS);%20%7D%20%7D)();">Black
-                            text</a>
-
+                        <a href="javascript:%5B%5D.forEach.call(document.querySelectorAll(%22*%22),function(a)%7Ba.style.outline=%221px%20solid%20%23%22+(~~(Math.random()*(1%3C%3C24))).toString(16)%7D)">Show CSS</a>
+                        <a href="javascript:(function()%7Bvar%20newSS,%20styles='*%20%7Bcolor:black%20!important;%7D';%20if(document.createStyleSheet)%20%7B%20document.createStyleSheet(%22javascript:'%22+styles+%22'%22);%20%7D%20else%20%7B%20newSS=document.createElement('link');%20newSS.rel='stylesheet';%20newSS.href='data:text/css,'+escape(styles);%20document.getElementsByTagName(%22head%22)%5B0%5D.appendChild(newSS);%20%7D%20%7D)();">Black text</a>
                         <a href="javascript:(function()%7Bfunction%20RGBtoHSL(RGBColor)%7Bwith(Math)%7Bvar%20R,G,B;var%20cMax,cMin;var%20sum,diff;var%20Rdelta,Gdelta,Bdelta;var%20H,L,S;R=RGBColor%5B0%5D;G=RGBColor%5B1%5D;B=RGBColor%5B2%5D;cMax=max(max(R,G),B);cMin=min(min(R,G),B);sum=cMax+cMin;diff=cMax-cMin;L=sum/2;if(cMax==cMin)%7BS=0;H=0;%7Delse%7Bif(L%3C=(1/2))S=diff/sum;else%20S=diff/(2-sum);Rdelta=R/6/diff;Gdelta=G/6/diff;Bdelta=B/6/diff;if(R==cMax)H=Gdelta-Bdelta;else%20if(G==cMax)H=(1/3)+Bdelta-Rdelta;else%20H=(2/3)+Rdelta-Gdelta;if(H%3C0)H+=1;if(H%3E1)H-=1;%7Dreturn%5BH,S,L%5D;%7D%7Dfunction%20getRGBColor(node,prop)%7Bvar%20rgb=getComputedStyle(node,null).getPropertyValue(prop);var%20r,g,b;if(/rgb%5C((%5Cd+),%5Cs(%5Cd+),%5Cs(%5Cd+)%5C)/.exec(rgb))%7Br=parseInt(RegExp.$1,10);g=parseInt(RegExp.$2,10);b=parseInt(RegExp.$3,10);return%5Br/255,g/255,b/255%5D;%7Dreturn%20rgb;%7Dfunction%20hslToCSS(hsl)%7Breturn%20%22hsl(%22+Math.round(hsl%5B0%5D*360)+%22,%20%22+Math.round(hsl%5B1%5D*100)+%22%25,%20%22+Math.round(hsl%5B2%5D*100)+%22%25)%22;%7Dvar%20props=%5B%22color%22,%22background-color%22,%22border-left-color%22,%22border-right-color%22,%22border-top-color%22,%22border-bottom-color%22%5D;var%20props2=%5B%22color%22,%22backgroundColor%22,%22borderLeftColor%22,%22borderRightColor%22,%22borderTopColor%22,%22borderBottomColor%22%5D;if(typeof%20getRGBColor(document.documentElement,%22background-color%22)==%22string%22)document.documentElement.style.backgroundColor=%22white%22;revl(document.documentElement);function%20revl(n)%7Bvar%20i,x,color,hsl;if(n.nodeType==Node.ELEMENT_NODE)%7Bfor(i=0;x=n.childNodes%5Bi%5D;++i)revl(x);for(i=0;x=props%5Bi%5D;++i)%7Bcolor=getRGBColor(n,x);if(typeof(color)!=%22string%22)%7Bhsl=RGBtoHSL(color);hsl%5B2%5D=1-hsl%5B2%5D;n.style%5Bprops2%5Bi%5D%5D=hslToCSS(hsl);%7D%7D%7D%7D%7D)()">Invert</a>
-
                         <a href="javascript:(function()%7Bjavascript%3A (function () %7Bconst s %3D (function () %7Bloremipsum %3D %5B'Lorem ipsum dolor sit amet%2C consectetur adipisicing elit%2C sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'%2C'Ut enim ad minim veniam%2C quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'%2C'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'%2C'Excepteur sint occaecat cupidatat non proident%2C sunt in culpa qui officia deserunt mollit anim id est laborum.'%2C'Nam facilisis enim.'%2C%5D%3Blet whitespaceAtFrontRe %3D %2F%5E%5B%5Cs%5Cxa0%5D%2B%2F%3Blet whitespaceAtEndRe %3D %2F%5B%5Cs%5Cxa0%5D%2B%24%2F%3Blet punctationRe %3D %2F(%5B%3A!%3F%5C.%5D)%24%2F%3Blet punctationFrontRe %3D %2F%5E(%5B%3A!%3F%5C.%5D%5Cs%2B)%2F%3Blet capatializedRe %3D %2F%5E%5B%5E%5CwÃ„Ã–ÃœÃ€Ã€ÃÃˆÃ‰Ã‡%5D*%5BA-ZÃ„Ã–ÃœÃ€Ã€ÃÃˆÃ‰Ã‡%5D%2F%3Blet simpleExpressionRe %3D %2F%5E%5B%5C(%5C%5B%5D%3F.%5B%3A%5C.%5C)%5C%5D%5D%3F%24%2F%3Blet singleWordRe %3D %2F%5E%5Cw*%24%2F%3Blet charAtFrontRe %3D %2F%5E%5Ba-z%5D%2Fi%3Blet headlineRe %3D %2F%5EH%5B1-3%5D%24%2Fi%3Blet lastTextHadPunctation %3D false%3Blet foundMain %3D false%3Blet idx %3D 0%3Blet getLoremIpsum %3D function (n%2C isHeadline%2C singleWord) %7Bif (!foundMain %26%26 isHeadline) %7Bidx %3D 0%3BfoundMain %3D true%3B%7Dlet t %3D loremipsum%5Bidx%5D%3Blet l %3D t.length%3Bwhile (l < n) %7Bif (%2B%2Bidx >%3D loremipsum.length) idx %3D 0%3Bt %2B%3D ' ' %2B loremipsum%5Bidx%5D%3Bl %3D t.length%3B%7Dif (l > n) %7Blet t1 %3D t.substring(0%2C n)%3Blet t2 %3D t.substring(n).replace(%2F%5Cs.*%24%2F%2C '')%3Bif (!singleWord %26%26 (t2.length < 3 %7C%7C (singleWordRe.test(t1) %26%26 charAtFrontRe.test(t.charAt(n))))) %7Bt %3D t1 %2B t2%3B%7D else %7Bt %3D t1.replace(%2F%2C%3F%5Cs%5Cw*%24%2F%2C '')%3B%7Dif (t.length > 3) t %3D t.replace(%2F%5Cs%5Cw%24%2F%2C '')%3B%7Dt %3D t.replace(%2F%5Cs%2B%24%2F%2C '')%3Bif (%2B%2Bidx >%3D loremipsum.length) idx %3D 0%3Breturn t%3B%7D%3Blet getDocumentBody %3D function () %7Bif (document.getElementsByTagName) %7Breturn document.getElementsByTagName('body').item(0)%3B%7D else if (document.body) %7Breturn document.body%3B%7D else if ((document.all) %26%26 (document.all.tags)) %7Breturn document.all.tags('body')%5B0%5D%3B%7D else %7Breturn null%3B%7D%7D%3Blet replaceText %3D function (el%2C isHeadline) %7Blet t %3D el.nodeValue%3Bif (!t) return%3Blet n %3D t.length%3Bt %3D t.replace(whitespaceAtFrontRe%2C '')%3Blet wsFront %3D (t.length !%3D n)%3Bn %3D t.length%3Bt %3D t.replace(whitespaceAtEndRe%2C '')%3Blet wsEnd %3D (t.length !%3D n)%3Bn %3D t.length%3Bif (n > 0 %26%26 !simpleExpressionRe.test(t)) %7Blet tn %3D getLoremIpsum(n%2C isHeadline%2C singleWordRe.test(t))%3Blet matches %3D punctationRe.exec(t)%3Bif (matches) %7Btn %3D tn.replace(%2F%5B%2C%5C.%5D%2B%24%2F%2C '').replace(%2F%5Cs%2B%24%2F%2C '') %2B matches%5B1%5D%3B%7D else %7Btn %3D tn.replace(%2F%2C%5Cs*%24%2F%2C '')%3B%7Dlet first %3D tn.charAt(0)%3Blet rest %3D tn.substring(1)%3Btn %3D ((lastTextHadPunctation %7C%7C capatializedRe.test(t)) %3F first.toUpperCase() %3A first.toLowerCase()) %2B rest%3Bmatches %3D punctationFrontRe.exec(t)%3Bif (matches) tn %3D matches%5B1%5D %2B tn%3BlastTextHadPunctation %3D punctationRe.test(tn)%3Bif (wsFront) tn %3D ' ' %2B tn%3Bif (wsEnd) tn %2B%3D ' '%3Bel.nodeValue %3D tn%3B%7D%7D%3Blet scanElement %3D function (el%2C isHeadline) %7Blet n %3D el.firstChild%3Bwhile (n) %7Blet nt %3D n.nodeType%3Blet ns %3D n.nextSibling%3Bif (nt %3D%3D 1) %7Blet nn %3D n.nodeName%3Bif (nn !%3D 'SCRIPT' %26%26 nn !%3D 'STYLE' %26%26 nn !%3D 'EMBED') %7BscanElement(n%2C isHeadline %7C%7C headlineRe.test(nn))%3B%7D%7D else if (nt %3D%3D 3) %7BreplaceText(n%2C isHeadline)%3B%7Dn %3D ns%3B%7D%7D%3Blet b %3D getDocumentBody()%3Bif (b) %7BscanElement(b%2C false)%3B%7D%7D)()%3Blet h %3D document.getElementsByTagName('head').item(0)%3Bif (h) %7Bh.appendChild(s)%3B%7D%7D)()%7D)()">Lorem</a>
-
                         <a href="javascript:document.body.contentEditable%20=%20'true';%20document.designMode='on';%20void%200">Edit</a>
+                        <a href="javascript:(d=>{var css=`:root{background-color:#fefefe;filter:invert(100%)}*{background-color:inherit}img:not([src*='.svg']),video{filter: invert(100%)}`,style,id='dark-theme-snippet',ee=d.getElementById(id);if(null!=ee)ee.parentNode.removeChild(ee);else {style = d.createElement('style');style.type='text/css';style.id=id;if(style.styleSheet)style.styleSheet.cssText=css;else style.appendChild(d.createTextNode(css));(d.head||d.querySelector('head')).appendChild(style)}})(document)">Dark</a>
+                        <a href="javascript:(d=>{var css=`:root{background-color:#fefefe;filter:invert(100%)}*{background-color:inherit}img:not([src*='.svg']),video{filter: invert(100%)}`,style,id='dark-theme-snippet',ee=d.getElementById(id);if(null!=ee)ee.parentNode.removeChild(ee);else {style = d.createElement('style');style.type='text/css';style.id=id;if(style.styleSheet)style.styleSheet.cssText=css;else style.appendChild(d.createTextNode(css));(d.head||d.querySelector('head')).appendChild(style)}})(document)">Dark 2</a>
                         <br /><br />
                         <h3>Gaming</h3>
                         <a href="https://store.steampowered.com/">Steam</a>
                         <a href="https://www.origin.com/fin/en-us/store">EA Origin</a>
                         <a href="https://www.msi.com/page/afterburner">MSI Afterburner</a>
                         <a href="https://www.minecraft.net/fi-fi/">Minecraft</a>
-
                         <br /><br />
                         <h3>Windows software</h3>
                         <a href="https://chocolatey.org/">Chocolatey</a>
                         <a href="https://chocolatey.org/packages">Chocolatey packages</a>
                         <a href="https://github.com/joonikko/panel/releases">Panel releases</a>
                         <a href="https://github.com/Joonikko/Panel/releases/download/v1.06/Panel.exe">Panel 64b</a>
-                        <a href="https://github.com/Joonikko/Panel/releases/download/v1.06/Panel_mpress.exe">Panel 64b
-                            mpress</a>
+                        <a href="https://github.com/Joonikko/Panel/releases/download/v1.06/Panel_mpress.exe">Panel 64b mpress</a>
                         <a href="https://github.com/joonaconfig/config/archive/Windows.zip">Windows config dl</a>
                         <a href="https://www.voidtools.com/">Everything</a>
                         <a href="https://www.7-zip.org/">7Zip</a>
@@ -997,11 +1018,12 @@
                         <a href="https://www.advancedrenamer.com/down/?obj=12">Advanced Renamer</a>
                         <a href="https://github.com/stsrki/keepalivehd">Keep Alive HD</a>
                         <a href="http://www.softwareok.com/?Download=DontSleep">Don't Sleep</a>
-
                     </div>
                     <div>
                         <h3>macOS Software</h3>
                         <a href="https://www.iterm2.com">iTerm2</a>
+                        <a href="https://github.com/exelban/stats">Stats</a>
+                        <a href="https://macromates.com/">TextMate</a>
                         <a href="https://www.keka.io/en/">Keka</a>
                         <a href="https://ranchero.com/netnewswire/">NetNewsWire</a>
                         <a href="https://objective-see.com/products/lulu.html">LuLu</a>
@@ -1009,28 +1031,32 @@
                         <a href="https://github.com/lhc70000/iina">IINA</a>
                         <a href="https://www.devontechnologies.com/apps/freeware">XMenu</a>
                         <a href="http://www.lorembuilder.com/">Lorem Builder</a>
-                        <a href="http://marco.org/appcasts/Quitter.zip">Quitter</a>
                         <a href="https://www.sequelpro.com/">Sequel Pro</a>
                         <a href="https://mrrsoftware.com/namechanger/">NameChanger</a>
-                        <a href="https://www.tonymacx86.com/threads/controlling-your-monitor-with-osx-ddc-panel.90077/">DDC
-                            Panel</a>
+                        <a href="https://github.com/MonitorControl/MonitorControl">MonitorControl (DDC)</a>
                         <a href="https://bogner.sh/2012/12/os-x-create-a-ram-disk-the-easy-way/">RamDiskCreator</a>
-                        <a href="http://www.shirt-pocket.com/SuperDuper/SuperDuperDescription.html">SuperDuper</a>
                         <a href="https://freemacsoft.net/appcleaner/">AppCleaner</a>
-                        <a href="http://www.autistici.org/rpg/">RPG</a>
                         <a href="http://www.catnapgames.com/tiny-player-for-mac/">Tiny Player</a>
-                        <a href="http://www.squared5.com/">Mpeg Streamclip</a>
                         <a href="https://github.com/nickzman/symboliclinker/releases">Symbolic Linker</a>
                         <a href="https://handbrake.fr/">HandBrake</a>
-                        <a href="https://github.com/yujitach/MenuMeters">MenuMeters</a>
                         <a href="https://www.crystalidea.com/macs-fan-control">MacsFanControl</a>
                         <a href="https://github.com/coteditor/CotEditor/releases">CotEditor</a>
                         <a href="https://github.com/CocoaBob/xee">Xee</a>
-                        <a href="http://hasseg.org/launchList/">Launchlist</a>
                         <a href="https://brew.sh/">Homebrew</a>
                         <a href="http://jon.stovell.info/software/keep-drive-spinning/">Keep Drive Spinning</a>
-                        <a href="https://github.com/newmarcel/KeepingYouAwake">KeepingYouAwake</a>
                         <a href="https://github.com/Mortennn/Dozer">Dozer</a>
+                        <a href="https://github.com/newmarcel/KeepingYouAwake">KeepingYouAwake</a>
+                        <a href="https://github.com/michaelvillar/timer-app">Timer app</a>
+                        <a href="https://github.com/HendrikNoeller/Writer">Writer</a>
+                        <a href="http://www.squared5.com/">Mpeg Streamclip</a>
+                        <!-- <a href="https://github.com/yujitach/MenuMeters">MenuMeters</a> -->
+                        <!-- <a href="https://www.tonymacx86.com/threads/controlling-your-monitor-with-osx-ddc-panel.90077/">DDCPanel</a> -->
+                        <!-- <a href="http://hasseg.org/launchList/">Launchlist</a> -->
+                        <!-- <a href="http://www.autistici.org/rpg/">RPG</a> -->
+                        <!-- <a href="http://marco.org/appcasts/Quitter.zip">Quitter</a> -->
+                        <!-- Paid apps -->
+                        <a href="https://daisydiskapp.com/">DaisyDisk</a>
+                        <a href="http://www.shirt-pocket.com/SuperDuper/SuperDuperDescription.html">SuperDuper</a>
                         <a href="https://www.vmware.com/products/fusion.html">VMware Fusion</a>
                         <a href="https://www.fileloupe.com/">Fileloupe</a>
                         <a href="https://ia.net/writer">iA Writer</a>
@@ -1041,12 +1067,9 @@
                         <a href="http://reederapp.com/">Reeder</a>
                         <a href="https://www.keyboardmaestro.com/main/">Keyboard Maestro</a>
                         <a href="http://mizage.com/divvy/">Divvy</a>
-                        <a href="https://daisydiskapp.com/">DaisyDisk</a>
                         <a href="https://www.omnigroup.com/omnigraffle/">OmniGraffle</a>
                         <a href="https://www.barebones.com/products/bbedit/">BBEdit</a>
                         <a href="https://monodraw.helftone.com/">Monodraw</a>
-                        <a href="https://github.com/michaelvillar/timer-app">Timer app</a>
-                        <a href="https://github.com/HendrikNoeller/Writer">Writer</a>
                         <br /><br />
                         <h3>Linux & Gnome tools</h3>
                         <a href="https://extensions.gnome.org/">Gnome shell extensions</a>
@@ -1190,12 +1213,9 @@
                     </div>
                 </div>
             </div>
-
             <div class="lcContainer">
                 <div id="anchor4" class="anchor"></div>
-
                 <h3>Video</h3>
-
                 <div class="linkCollection">
                     <div>
                         <a href="https://areena.yle.fi/tv">YLE Areena</a>
@@ -1215,7 +1235,6 @@
                         <a href="https://www.youtube.com/user/vicenews/videos">VICE News</a>
                         <a href="https://www.youtube.com/user/SeattleCoffeeGear/videos">Seattle Coffee Gear</a>
                     </div>
-
                     <div>
                         <a href="https://www.youtube.com/user/TheVerge/videos">The Verge</a>
                         <a href="https://www.youtube.com/user/marquesbrownlee/videos">MKBHD</a>
@@ -1229,7 +1248,6 @@
                         <a href="https://www.youtube.com/user/iFixitYourself/videos">iFixit</a>
                         <a href="https://www.youtube.com/channel/UCfhW84xfA6gEc4hDK90rR1Q/videos">Thomas Heathon</a>
                     </div>
-
                     <div>
                         <a href="https://www.youtube.com/user/ManyATrueNerd/videos">Many A True Nerd</a>
                         <a href="https://www.youtube.com/user/ChristopherOdd/videos">Christoper Odd</a>
@@ -1246,7 +1264,6 @@
                         <a href="https://www.youtube.com/user/scishowspace/videos">SciShow Space</a>
                         <a href="https://www.youtube.com/user/DeepSkyVideos/videos">DeepSkyVideos</a>
                     </div>
-
                     <div>
                         <a href="https://www.youtube.com/user/numberphile/videos">Numberphile</a>
                         <a href="https://www.youtube.com/user/sixtysymbols/videos">Sixty Symbols</a>
@@ -1265,10 +1282,8 @@
                     </div>
                 </div>
             </div>
-
             <div class="lcContainer">
                 <div id="anchor5" class="anchor"></div>
-
                 <h3>Reddit</h3>
                 <div class="linkCollection">
                     <div>
@@ -1292,7 +1307,6 @@
                         <a href="https://www.reddit.com/r/iOSBeta/">iOS Beta</a>
                         <a href="https://www.reddit.com/r/OSXBeta/">macOS Beta</a>
                     </div>
-
                     <div>
                         <a href="https://www.reddit.com/r/programming/">Programming</a>
                         <a href="https://www.reddit.com/r/swift/">Swift</a>
@@ -1315,7 +1329,6 @@
                         <a href="https://www.reddit.com/r/forhire/">For hire</a>
                         <a href="https://www.reddit.com/r/jobbit/">Jobbit</a>
                     </div>
-
                     <div>
                         <a href="https://www.reddit.com/r/worldnews/">World news</a>
                         <a href="https://www.reddit.com/r/news/">News</a>
@@ -1331,7 +1344,6 @@
                         <a href="https://www.reddit.com/r/macsetups/">Mac setups</a>
                         <a href="https://www.reddit.com/r/battlestations/">Battlestations</a>
                     </div>
-
                     <div>
                         <a href="https://www.reddit.com/r/MapPorn/">Maps</a>
                         <a href="https://www.reddit.com/r/oldmaps/">Old maps</a>
@@ -1349,497 +1361,561 @@
                     </div>
                 </div>
             </div>
-
+            <div class="lcContainer">
+                <div id="anchor6" class="anchor"></div>
+                <div class="linkCollection">
+                    <div>
+                        <h3>Ebooks</h3>
+                        <a href="https://www.openrightslibrary.com/">Open Rights Library</a>
+                        <a href="https://www.gutenberg.org/">Gutenberg</a>
+                        <a href="http://www.feedbooks.com/publicdomain">Feedbooks</a>
+                        <a href="https://standardebooks.org/">Standard Ebooks</a>
+                        <a href="https://www.hathitrust.org/">Hathi Trust</a>
+                        <a href="https://guides.library.appstate.edu/ebooks/free-ebooks">Appstate.edu</a>
+                        <a href="https://dp.la/">DPLA</a>
+                        <a href="https://books.google.com/?hl=en">Google Books</a>
+                        <a href="https://librivox.org/">LibriVox</a>
+                        <a href="https://archive.org/details/texts">Internet Archive Books</a>
+                        <a href="https://library.si.edu/digital-library">Smithsonian</a>
+                    </div>
+                </div>
+            </div>
         </div>
         <br /><br />
+    </div>
 
-        <script type="text/javascript">
-            /* mousetrap v1.6.2 craig.is/killing/mice */
-            (function (p, t, h) {
-                function u(a, b, d) {
-                    a.addEventListener ? a.addEventListener(b, d, !1) : a.attachEvent("on" + b, d);
+    <script type="text/javascript">
+        /* mousetrap v1.6.5 craig.is/killing/mice */
+        (function (q, u, c) {
+            function v(a, b, g) {
+                a.addEventListener ? a.addEventListener(b, g, !1) : a.attachEvent("on" + b, g)
+            }
+
+            function z(a) {
+                if ("keypress" == a.type) {
+                    var b = String.fromCharCode(a.which);
+                    a.shiftKey || (b = b.toLowerCase());
+                    return b
                 }
+                return n[a.which] ? n[a.which] : r[a.which] ? r[a.which] : String.fromCharCode(a.which).toLowerCase()
+            }
 
-                function y(a) {
-                    if ("keypress" == a.type) {
-                        var b = String.fromCharCode(a.which);
-                        a.shiftKey || (b = b.toLowerCase());
-                        return b;
+            function F(a) {
+                var b = [];
+                a.shiftKey && b.push("shift");
+                a.altKey && b.push("alt");
+                a.ctrlKey && b.push("ctrl");
+                a.metaKey && b.push("meta");
+                return b
+            }
+
+            function w(a) {
+                return "shift" == a || "ctrl" == a || "alt" == a ||
+                    "meta" == a
+            }
+
+            function A(a, b) {
+                var g, d = [];
+                var e = a;
+                "+" === e ? e = ["+"] : (e = e.replace(/\+{2}/g, "+plus"), e = e.split("+"));
+                for (g = 0; g < e.length; ++g) {
+                    var m = e[g];
+                    B[m] && (m = B[m]);
+                    b && "keypress" != b && C[m] && (m = C[m], d.push("shift"));
+                    w(m) && d.push(m)
+                }
+                e = m;
+                g = b;
+                if (!g) {
+                    if (!p) {
+                        p = {};
+                        for (var c in n) 95 < c && 112 > c || n.hasOwnProperty(c) && (p[n[c]] = c)
                     }
-                    return m[a.which] ? m[a.which] : q[a.which] ? q[a.which] : String.fromCharCode(a.which).toLowerCase();
+                    g = p[e] ? "keydown" : "keypress"
+                }
+                "keypress" == g && d.length && (g = "keydown");
+                return {
+                    key: m,
+                    modifiers: d,
+                    action: g
+                }
+            }
+
+            function D(a, b) {
+                return null === a || a === u ? !1 : a === b ? !0 : D(a.parentNode, b)
+            }
+
+            function d(a) {
+                function b(a) {
+                    a =
+                        a || {};
+                    var b = !1,
+                        l;
+                    for (l in p) a[l] ? b = !0 : p[l] = 0;
+                    b || (x = !1)
                 }
 
-                function E(a) {
-                    var b = [];
-                    a.shiftKey && b.push("shift");
-                    a.altKey && b.push("alt");
-                    a.ctrlKey && b.push("ctrl");
-                    a.metaKey && b.push("meta");
-                    return b;
-                }
-
-                function v(a) {
-                    return "shift" == a || "ctrl" == a || "alt" == a || "meta" == a;
-                }
-
-                function z(a, b) {
-                    var d,
-                        e = [];
-                    var c = a;
-                    "+" === c ? (c = ["+"]) : ((c = c.replace(/\+{2}/g, "+plus")), (c = c.split("+")));
-                    for (d = 0; d < c.length; ++d) {
-                        var k = c[d];
-                        A[k] && (k = A[k]);
-                        b && "keypress" != b && B[k] && ((k = B[k]), e.push("shift"));
-                        v(k) && e.push(k);
-                    }
-                    c = k;
-                    d = b;
-                    if (!d) {
-                        if (!n) {
-                            n = {};
-                            for (var h in m) (95 < h && 112 > h) || (m.hasOwnProperty(h) && (n[m[h]] = h));
+                function g(a, b, t, f, g, d) {
+                    var l, E = [],
+                        h = t.type;
+                    if (!k._callbacks[a]) return [];
+                    "keyup" == h && w(a) && (b = [a]);
+                    for (l = 0; l < k._callbacks[a].length; ++l) {
+                        var c = k._callbacks[a][l];
+                        if ((f || !c.seq || p[c.seq] == c.level) && h == c.action) {
+                            var e;
+                            (e = "keypress" == h && !t.metaKey && !t.ctrlKey) || (e = c.modifiers, e = b.sort().join(",") === e.sort().join(","));
+                            e && (e = f && c.seq == f && c.level == d, (!f && c.combo == g || e) && k._callbacks[a].splice(l, 1), E.push(c))
                         }
-                        d = n[c] ? "keydown" : "keypress";
                     }
-                    "keypress" == d && e.length && (d = "keydown");
-                    return {
-                        key: k,
-                        modifiers: e,
-                        action: d,
-                    };
+                    return E
                 }
 
-                function C(a, b) {
-                    return null === a || a === t ? !1 : a === b ? !0 : C(a.parentNode, b);
+                function c(a, b, c, f) {
+                    k.stopCallback(b,
+                        b.target || b.srcElement, c, f) || !1 !== a(b, c) || (b.preventDefault ? b.preventDefault() : b.returnValue = !1, b.stopPropagation ? b.stopPropagation() : b.cancelBubble = !0)
                 }
 
                 function e(a) {
-                    function b(a) {
-                        a = a || {};
-                        var b = !1,
-                            l;
-                        for (l in n) a[l] ? (b = !0) : (n[l] = 0);
-                        b || (w = !1);
-                    }
-
-                    function d(a, b, r, g, F, e) {
-                        var l,
-                            D = [],
-                            h = r.type;
-                        if (!f._callbacks[a]) return [];
-                        "keyup" == h && v(a) && (b = [a]);
-                        for (l = 0; l < f._callbacks[a].length; ++l) {
-                            var d = f._callbacks[a][l];
-                            if ((g || !d.seq || n[d.seq] == d.level) && h == d.action) {
-                                var c;
-                                (c = "keypress" == h && !r.metaKey && !r.ctrlKey) || ((c = d.modifiers), (c = b.sort().join(",") === c.sort().join(",")));
-                                c && ((c = g && d.seq == g && d.level == e), ((!g && d.combo == F) || c) && f._callbacks[a].splice(l, 1), D.push(d));
-                            }
-                        }
-                        return D;
-                    }
-
-                    function h(a, b, d, g) {
-                        f.stopCallback(b, b.target || b.srcElement, d, g) || !1 !== a(b, d) || (b.preventDefault ? b.preventDefault() : (b.returnValue = !1), b.stopPropagation ? b.stopPropagation() : (b.cancelBubble = !0));
-                    }
-
-                    function c(a) {
-                        "number" !== typeof a.which && (a.which = a.keyCode);
-                        var b = y(a);
-                        b && ("keyup" == a.type && x === b ? (x = !1) : f.handleKey(b, E(a), a));
-                    }
-
-                    function k(a, d, r, g) {
-                        function l(d) {
-                            return function () {
-                                w = d;
-                                ++n[a];
-                                clearTimeout(p);
-                                p = setTimeout(b, 1e3);
-                            };
-                        }
-
-                        function e(d) {
-                            h(r, d, a);
-                            "keyup" !== g && (x = y(d));
-                            setTimeout(b, 10);
-                        }
-                        for (var c = (n[a] = 0); c < d.length; ++c) {
-                            var f = c + 1 === d.length ? e : l(g || z(d[c + 1]).action);
-                            m(d[c], f, g, a, c);
-                        }
-                    }
-
-                    function m(a, b, c, g, e) {
-                        f._directMap[a + ":" + c] = b;
-                        a = a.replace(/\s+/g, " ");
-                        var h = a.split(" ");
-                        1 < h.length
-                            ? k(a, h, b, c)
-                            : ((c = z(a, c)),
-                                (f._callbacks[c.key] = f._callbacks[c.key] || []),
-                                d(
-                                    c.key,
-                                    c.modifiers,
-                                    {
-                                        type: c.action,
-                                    },
-                                    g,
-                                    a,
-                                    e
-                                ),
-                                f._callbacks[c.key][g ? "unshift" : "push"]({
-                                    callback: b,
-                                    modifiers: c.modifiers,
-                                    action: c.action,
-                                    seq: g,
-                                    level: e,
-                                    combo: a,
-                                }));
-                    }
-                    var f = this;
-                    a = a || t;
-                    if (!(f instanceof e)) return new e(a);
-                    f.target = a;
-                    f._callbacks = {};
-                    f._directMap = {};
-                    var n = {},
-                        p,
-                        x = !1,
-                        q = !1,
-                        w = !1;
-                    f._handleKey = function (a, c, e) {
-                        var g = d(a, c, e),
-                            f;
-                        c = {};
-                        var l = 0,
-                            k = !1;
-                        for (f = 0; f < g.length; ++f) g[f].seq && (l = Math.max(l, g[f].level));
-                        for (f = 0; f < g.length; ++f) g[f].seq ? g[f].level == l && ((k = !0), (c[g[f].seq] = 1), h(g[f].callback, e, g[f].combo, g[f].seq)) : k || h(g[f].callback, e, g[f].combo);
-                        g = "keypress" == e.type && q;
-                        e.type != w || v(a) || g || b(c);
-                        q = k && "keydown" == e.type;
-                    };
-                    f._bindMultiple = function (a, b, c) {
-                        for (var d = 0; d < a.length; ++d) m(a[d], b, c);
-                    };
-                    u(a, "keypress", c);
-                    u(a, "keydown", c);
-                    u(a, "keyup", c);
+                    "number" !== typeof a.which && (a.which = a.keyCode);
+                    var b = z(a);
+                    b && ("keyup" == a.type && y === b ? y = !1 : k.handleKey(b, F(a), a))
                 }
-                if (p) {
-                    var m = {
-                        8: "backspace",
-                        9: "tab",
-                        13: "enter",
-                        16: "shift",
-                        17: "ctrl",
-                        18: "alt",
-                        20: "capslock",
-                        27: "esc",
-                        32: "space",
-                        33: "pageup",
-                        34: "pagedown",
-                        35: "end",
-                        36: "home",
-                        37: "left",
-                        38: "up",
-                        39: "right",
-                        40: "down",
-                        45: "ins",
-                        46: "del",
-                        91: "meta",
-                        93: "meta",
-                        224: "meta",
+
+                function m(a, g, t, f) {
+                    function h(c) {
+                        return function () {
+                            x = c;
+                            ++p[a];
+                            clearTimeout(q);
+                            q = setTimeout(b, 1E3)
+                        }
+                    }
+
+                    function l(g) {
+                        c(t, g, a);
+                        "keyup" !== f && (y = z(g));
+                        setTimeout(b, 10)
+                    }
+                    for (var d = p[a] = 0; d < g.length; ++d) {
+                        var e = d + 1 === g.length ? l : h(f ||
+                            A(g[d + 1]).action);
+                        n(g[d], e, f, a, d)
+                    }
+                }
+
+                function n(a, b, c, f, d) {
+                    k._directMap[a + ":" + c] = b;
+                    a = a.replace(/\s+/g, " ");
+                    var e = a.split(" ");
+                    1 < e.length ? m(a, e, b, c) : (c = A(a, c), k._callbacks[c.key] = k._callbacks[c.key] || [], g(c.key, c.modifiers, {
+                        type: c.action
+                    }, f, a, d), k._callbacks[c.key][f ? "unshift" : "push"]({
+                        callback: b,
+                        modifiers: c.modifiers,
+                        action: c.action,
+                        seq: f,
+                        level: d,
+                        combo: a
+                    }))
+                }
+                var k = this;
+                a = a || u;
+                if (!(k instanceof d)) return new d(a);
+                k.target = a;
+                k._callbacks = {};
+                k._directMap = {};
+                var p = {},
+                    q, y = !1,
+                    r = !1,
+                    x = !1;
+                k._handleKey = function (a,
+                    d, e) {
+                    var f = g(a, d, e),
+                        h;
+                    d = {};
+                    var k = 0,
+                        l = !1;
+                    for (h = 0; h < f.length; ++h) f[h].seq && (k = Math.max(k, f[h].level));
+                    for (h = 0; h < f.length; ++h) f[h].seq ? f[h].level == k && (l = !0, d[f[h].seq] = 1, c(f[h].callback, e, f[h].combo, f[h].seq)) : l || c(f[h].callback, e, f[h].combo);
+                    f = "keypress" == e.type && r;
+                    e.type != x || w(a) || f || b(d);
+                    r = l && "keydown" == e.type
+                };
+                k._bindMultiple = function (a, b, c) {
+                    for (var d = 0; d < a.length; ++d) n(a[d], b, c)
+                };
+                v(a, "keypress", e);
+                v(a, "keydown", e);
+                v(a, "keyup", e)
+            }
+            if (q) {
+                var n = {
+                    8: "backspace",
+                    9: "tab",
+                    13: "enter",
+                    16: "shift",
+                    17: "ctrl",
+                    18: "alt",
+                    20: "capslock",
+                    27: "esc",
+                    32: "space",
+                    33: "pageup",
+                    34: "pagedown",
+                    35: "end",
+                    36: "home",
+                    37: "left",
+                    38: "up",
+                    39: "right",
+                    40: "down",
+                    45: "ins",
+                    46: "del",
+                    91: "meta",
+                    93: "meta",
+                    224: "meta"
+                },
+                    r = {
+                        106: "*",
+                        107: "+",
+                        109: "-",
+                        110: ".",
+                        111: "/",
+                        186: ";",
+                        187: "=",
+                        188: ",",
+                        189: "-",
+                        190: ".",
+                        191: "/",
+                        192: "`",
+                        219: "[",
+                        220: "\\",
+                        221: "]",
+                        222: "'"
                     },
-                        q = {
-                            106: "*",
-                            107: "+",
-                            109: "-",
-                            110: ".",
-                            111: "/",
-                            186: ";",
-                            187: "=",
-                            188: ",",
-                            189: "-",
-                            190: ".",
-                            191: "/",
-                            192: "`",
-                            219: "[",
-                            220: "\\",
-                            221: "]",
-                            222: "'",
-                        },
-                        B = {
-                            "~": "`",
-                            "!": "1",
-                            "@": "2",
-                            "#": "3",
-                            $: "4",
-                            "%": "5",
-                            "^": "6",
-                            "&": "7",
-                            "*": "8",
-                            "(": "9",
-                            ")": "0",
-                            _: "-",
-                            "+": "=",
-                            ":": ";",
-                            '"': "'",
-                            "<": ",",
-                            ">": ".",
-                            "?": "/",
-                            "|": "\\",
-                        },
-                        A = {
-                            option: "alt",
-                            command: "meta",
-                            return: "enter",
-                            escape: "esc",
-                            plus: "+",
-                            mod: /Mac|iPod|iPhone|iPad/.test(navigator.platform) ? "meta" : "ctrl",
-                        },
-                        n;
-                    for (h = 1; 20 > h; ++h) m[111 + h] = "f" + h;
-                    for (h = 0; 9 >= h; ++h) m[h + 96] = h.toString();
-                    e.prototype.bind = function (a, b, d) {
-                        a = a instanceof Array ? a : [a];
-                        this._bindMultiple.call(this, a, b, d);
-                        return this;
-                    };
-                    e.prototype.unbind = function (a, b) {
-                        return this.bind.call(this, a, function () { }, b);
-                    };
-                    e.prototype.trigger = function (a, b) {
-                        if (this._directMap[a + ":" + b]) this._directMap[a + ":" + b]({}, a);
-                        return this;
-                    };
-                    e.prototype.reset = function () {
-                        this._callbacks = {};
-                        this._directMap = {};
-                        return this;
-                    };
-                    e.prototype.stopCallback = function (a, b) {
-                        return -1 < (" " + b.className + " ").indexOf(" mousetrap ") || C(b, this.target) ? !1 : "INPUT" == b.tagName || "SELECT" == b.tagName || "TEXTAREA" == b.tagName || b.isContentEditable;
-                    };
-                    e.prototype.handleKey = function () {
-                        return this._handleKey.apply(this, arguments);
-                    };
-                    e.addKeycodes = function (a) {
-                        for (var b in a) a.hasOwnProperty(b) && (m[b] = a[b]);
-                        n = null;
-                    };
-                    e.init = function () {
-                        var a = e(t),
-                            b;
-                        for (b in a)
-                            "_" !== b.charAt(0) &&
-                                (e[b] = (function (b) {
-                                    return function () {
-                                        return a[b].apply(a, arguments);
-                                    };
-                                })(b));
-                    };
-                    e.init();
-                    p.Mousetrap = e;
-                    "undefined" !== typeof module && module.exports && (module.exports = e);
-                    "function" === typeof define &&
-                        define.amd &&
-                        define(function () {
-                            return e;
-                        });
-                }
-            })("undefined" !== typeof window ? window : null, "undefined" !== typeof window ? document : null);
-            (function (a) {
-                var c = {},
-                    d = a.prototype.stopCallback;
-                a.prototype.stopCallback = function (e, b, a, f) {
-                    return this.paused ? !0 : c[a] || c[f] ? !1 : d.call(this, e, b, a);
+                    C = {
+                        "~": "`",
+                        "!": "1",
+                        "@": "2",
+                        "#": "3",
+                        $: "4",
+                        "%": "5",
+                        "^": "6",
+                        "&": "7",
+                        "*": "8",
+                        "(": "9",
+                        ")": "0",
+                        _: "-",
+                        "+": "=",
+                        ":": ";",
+                        '"': "'",
+                        "<": ",",
+                        ">": ".",
+                        "?": "/",
+                        "|": "\\"
+                    },
+                    B = {
+                        option: "alt",
+                        command: "meta",
+                        "return": "enter",
+                        escape: "esc",
+                        plus: "+",
+                        mod: /Mac|iPod|iPhone|iPad/.test(navigator.platform) ? "meta" : "ctrl"
+                    },
+                    p;
+                for (c = 1; 20 > c; ++c) n[111 + c] = "f" + c;
+                for (c = 0; 9 >= c; ++c) n[c + 96] = c.toString();
+                d.prototype.bind = function (a, b, c) {
+                    a = a instanceof Array ? a : [a];
+                    this._bindMultiple.call(this, a, b, c);
+                    return this
                 };
-                a.prototype.bindGlobal = function (a, b, d) {
-                    this.bind(a, b, d);
-                    if (a instanceof Array) for (b = 0; b < a.length; b++) c[a[b]] = !0;
-                    else c[a] = !0;
+                d.prototype.unbind = function (a, b) {
+                    return this.bind.call(this, a, function () { }, b)
                 };
-                a.init();
-            })(Mousetrap);
-        </script>
-
-        <script>
-            const selectById = (id) => {
-                window.getSelection().selectAllChildren(document.getElementById(id));
-            };
-
-            const makeLowercaseId = (length, characters) => {
-                var result = "";
-                const charactersLength = characters.length;
-                for (var i = 0; i < length; i++) {
-                    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-                }
-                return result;
-            };
-
-            const setValues = (randomId, customLabel = "") => {
-                const cDate = new Date();
-                const cHours = ("0" + cDate.getHours()).slice(-2);
-                const cMinutes = ("0" + cDate.getMinutes()).slice(-2);
-                const dateString = `${cDate.getDate()}.${cDate.getMonth() + 1}.${cDate.getFullYear()}`;
-                const timeString = `${cHours}:${cMinutes}`;
-                const ISOdateString = cDate.toISOString().slice(0, 10);
-                const ISOdateWithTime = `${ISOdateString}_${cHours}${cMinutes}`;
-                const yearWithId = `${cDate.getFullYear()}-${randomId}`;
-
-                // setValues(dateString, timeString, ISOdateString, ISOdateWithTime, yearWithId, randomId, customLabel );
-
-                document.getElementById("currentDate").innerText = `${dateString}${customLabel}`;
-                document.getElementById("currentTime").innerText = `${timeString}${customLabel}`;
-                document.getElementById("isoDate").innerText = `${ISOdateString}${customLabel}`;
-                document.getElementById("isoDateWithTime").innerText = `${ISOdateWithTime}${customLabel}`;
-                document.getElementById("randomId").innerText = `${randomId}${customLabel}`;
-                document.getElementById("yearWithId").innerText = `${yearWithId}${customLabel}`;
-            }
-
-            const getCustomLabel = () => {
-                const el = document.getElementById('customLabel').value;
-                return (el !== "") ? `_${el}` : "";
-            }
-
-            const hideDates = () => {
-                document.getElementById("currentDate").style.display = "none";
-                document.getElementById("currentTime").style.display = "none";
-                document.getElementById("isoDate").style.display = "none";
-                document.getElementById("isoDateWithTime").style.display = "none";
-            };
-
-            const showDates = () => {
-                document.getElementById("currentDate").style.display = "inline";
-                document.getElementById("currentTime").style.display = "inline";
-                document.getElementById("isoDate").style.display = "inline";
-                document.getElementById("isoDateWithTime").style.display = "inline";
-            };
-
-            const generateIdAndHideDates = (randomIdLength) => {
-                hideDates();
-                const randomId = createRandomId();
-                setValues(randomId);
-            };
-
-            const createRandomId = () => {
-                const randomIdLength = document.getElementById("randomIdLength").value;
-                const randomId = makeLowercaseId(randomIdLength, "abcdefghijklmnopqrstuvwxyz");
-                return randomId;
-            }
-
-            const setLabel = () => {
-                const randomId = createRandomId();
-                const customLabel = getCustomLabel();
-                setValues(randomId, customLabel);
-            }
-
-            const updateValues = () => {
-                const randomId = createRandomId();
-                hideDates();
-                setValues(randomId);
-            };
-
-            const regenerateId = () => {
-                const randomId = createRandomId();
-                setValues(randomId);
-            };
-
-            const setTabName = () => {
-                const x = document.getElementById("tabName").value;
-                document.title = x;
-            }
-
-            const setTabNameFromButton = (newName) => {
-                document.title = newName;
-            }
-
-            const scrollToElement = (href) => {
-                document.getElementById(href).scrollIntoView();
-            }
-
-            regenerateId(12);
-        </script>
-
-        <script type="text/javascript">
-            const favIcon = "iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAKElEQVRIiWNgGAXDHjAisf/TwmwmKhs6CgYhGE1Fo4ByMJqKRsEQAADWCQMKYvEFtQAAAABJRU5ErkJggg==";
-            const docHead = document.getElementsByTagName("head")[0];
-            const newLink = document.createElement("link");
-            newLink.rel = "shortcut icon";
-            newLink.href = "data:image/png;base64," + favIcon;
-            docHead.appendChild(newLink);
-
-            const searchFunction = () => {
-                const input = document.getElementById("filterInput");
-                const filter = input.value.toUpperCase();
-                const links = document.getElementsByTagName("a");
-
-                for (i = 0; i < links.length; i++) {
-                    const foundLinks = links[i];
-
-                    if (foundLinks.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                        foundLinks.style.color = "";
-                        foundLinks.style.borderColor = "";
-                    } else {
-                        foundLinks.style.color = "var(--text-unselected)";
-                        foundLinks.style.borderColor = "var(--border-unselected)";
+                d.prototype.trigger = function (a, b) {
+                    if (this._directMap[a + ":" + b]) this._directMap[a + ":" + b]({}, a);
+                    return this
+                };
+                d.prototype.reset = function () {
+                    this._callbacks = {};
+                    this._directMap = {};
+                    return this
+                };
+                d.prototype.stopCallback = function (a, b) {
+                    if (-1 < (" " + b.className + " ").indexOf(" mousetrap ") || D(b, this.target)) return !1;
+                    if ("composedPath" in a && "function" === typeof a.composedPath) {
+                        var c = a.composedPath()[0];
+                        c !== a.target && (b = c)
                     }
+                    return "INPUT" == b.tagName || "SELECT" == b.tagName || "TEXTAREA" == b.tagName || b.isContentEditable
+                };
+                d.prototype.handleKey = function () {
+                    return this._handleKey.apply(this, arguments)
+                };
+                d.addKeycodes = function (a) {
+                    for (var b in a) a.hasOwnProperty(b) && (n[b] = a[b]);
+                    p = null
+                };
+                d.init = function () {
+                    var a = d(u),
+                        b;
+                    for (b in a) "_" !== b.charAt(0) && (d[b] = function (b) {
+                        return function () {
+                            return a[b].apply(a, arguments)
+                        }
+                    }(b))
+                };
+                d.init();
+                q.Mousetrap = d;
+                "undefined" !== typeof module && module.exports && (module.exports = d);
+                "function" === typeof define && define.amd && define(function () {
+                    return d
+                })
+            }
+        })("undefined" !== typeof window ? window : null, "undefined" !== typeof window ? document : null);
+
+    </script>
+
+    <script>
+        const selectById = (id) => {
+            window.getSelection().selectAllChildren(document.getElementById(id));
+        };
+
+        const makeLowercaseId = (length, characters) => {
+            var result = "";
+            const charactersLength = characters.length;
+            for (var i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            }
+            return result;
+        };
+
+        const setValues = (randomId, customLabel = "") => {
+            const cDate = new Date();
+            const cHours = ("0" + cDate.getHours()).slice(-2);
+            const cMinutes = ("0" + cDate.getMinutes()).slice(-2);
+            const dateString = `${cDate.getDate()}.${cDate.getMonth() + 1}.${cDate.getFullYear()}`;
+            const timeString = `${cHours}:${cMinutes}`;
+            const ISOdateString = cDate.toISOString().slice(0, 10);
+            const ISOdateWithTime = `${ISOdateString}_${cHours}${cMinutes}`;
+            const yearWithId = `${cDate.getFullYear()}-${randomId}`;
+
+            document.getElementById("currentDate").innerText = `${dateString}${customLabel}`;
+            document.getElementById("currentTime").innerText = `${timeString}${customLabel}`;
+            document.getElementById("isoDate").innerText = `${ISOdateString}${customLabel}`;
+            document.getElementById("isoDateWithTime").innerText = `${ISOdateWithTime}${customLabel}`;
+            document.getElementById("randomId").innerText = `${randomId}${customLabel}`;
+            document.getElementById("yearWithId").innerText = `${yearWithId}${customLabel}`;
+        }
+
+        const getCustomLabel = () => {
+            const el = document.getElementById('customLabel').value;
+            return (el !== "") ? `_${el}` : "";
+        }
+
+        const hideDates = () => {
+            document.getElementById("currentDate").style.display = "none";
+            document.getElementById("currentTime").style.display = "none";
+            document.getElementById("isoDate").style.display = "none";
+            document.getElementById("isoDateWithTime").style.display = "none";
+        };
+
+        const showDates = () => {
+            document.getElementById("currentDate").style.display = "inline";
+            document.getElementById("currentTime").style.display = "inline";
+            document.getElementById("isoDate").style.display = "inline";
+            document.getElementById("isoDateWithTime").style.display = "inline";
+        };
+
+        const generateIdAndHideDates = (randomIdLength) => {
+            hideDates();
+            const randomId = createRandomId();
+            setValues(randomId);
+        };
+
+        const createRandomId = () => {
+            const randomIdLength = document.getElementById("randomIdLength").value;
+            const randomId = makeLowercaseId(randomIdLength, "abcdefghijklmnopqrstuvwxyz");
+            return randomId;
+        }
+
+        const setLabel = () => {
+            const randomId = createRandomId();
+            const customLabel = getCustomLabel();
+            setValues(randomId, customLabel);
+        }
+
+        const updateValues = () => {
+            const randomId = createRandomId();
+            hideDates();
+            setValues(randomId);
+        };
+
+        const regenerateId = () => {
+            const randomId = createRandomId();
+            setValues(randomId);
+        };
+
+        const setTabNameFromInputBox = () => {
+            const x = document.getElementById("tabName").value;
+            document.title = x;
+        }
+
+        const setTabName = (newName) => {
+            document.title = newName;
+        }
+
+        const scrollToElement = (id) => {
+            document.getElementById(id).scrollIntoView();
+        }
+
+        regenerateId(12);
+
+        const hideElement = (id) => {
+            const el = document.getElementById(id);
+            el.style.display = "none";
+        }
+
+        const showElement = (id) => {
+            const el = document.getElementById(id);
+            el.style.display = "block";
+        }
+
+    </script>
+
+    <script>
+        let baseOptions = {
+            timeZone: 'Europe/London',
+            year: 'numeric',
+            month: 'numeric',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            second: 'numeric'
+        }
+        const timeLa = (new Date()).toLocaleString([], {
+            ...baseOptions,
+            timeZone: "America/Los_Angeles"
+        });
+        const timeNy = (new Date()).toLocaleString([], {
+            ...baseOptions,
+            timeZone: "America/New_York"
+        });
+        const timeLondon = (new Date()).toLocaleString([], {
+            ...baseOptions,
+            timeZone: "Europe/London"
+        });
+        const timeHelsinki = (new Date()).toLocaleString([], {
+            ...baseOptions,
+            timeZone: "Europe/Helsinki"
+        });
+        document.getElementById('time-la').innerHTML = timeLa;
+        document.getElementById('time-ny').innerHTML = timeNy;
+        document.getElementById('time-london').innerHTML = timeLondon;
+        document.getElementById('time-helsinki').innerHTML = timeHelsinki;
+    </script>
+
+    <script>
+        const bStyle = "bWF4LXdpZHRoOjYwcmVtO21hcmdpbjowIGF1dG87cGFkZGluZzoxcmVtOw==";
+
+        const openNotepadLexend = () => {
+            initNotepad("PHRleHRhcmVhIGF1dG9mb2N1cyBzcGVsbGNoZWNrPSJmYWxzZSIgc3R5bGU9InJlc2l6ZTogbm9uZTt3aWR0aDoxMDAlO2hlaWdodDoxMDAlO2ZvbnQtc2l6ZToxMnB0O2xpbmUtaGVpZ2h0OjEuNDtib3JkZXI6IG5vbmU7b3V0bGluZTpub25lO2ZvbnQtZmFtaWx5OidMZXhlbmQgRGVjYSciPgo8L3RleHRhcmVhPg==");
+        };
+
+        const openNotepad = () => {
+            initNotepad("PHRleHRhcmVhIGF1dG9mb2N1cyBzcGVsbGNoZWNrPSJmYWxzZSIgc3R5bGU9InJlc2l6ZTogbm9uZTt3aWR0aDoxMDAlO2hlaWdodDoxMDAlO2ZvbnQtc2l6ZToxMnB0O2xpbmUtaGVpZ2h0OjEuNDtib3JkZXI6IG5vbmU7b3V0bGluZTpub25lO2ZvbnQtZmFtaWx5Om1vbm9zcGFjZSI+CjwvdGV4dGFyZWE+");
+        };
+
+        const initNotepad = (tAreaB64) => {
+            const n = window.open();
+            n.document.title = "Notepad";
+            n.document.body.style = atob(bStyle);
+            n.document.body.innerHTML = atob(tAreaB64);
+        };
+
+    </script>
+
+    <script type="text/javascript">
+        const favIcon = "iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAKElEQVRIiWNgGAXDHjAisf/TwmwmKhs6CgYhGE1Fo4ByMJqKRsEQAADWCQMKYvEFtQAAAABJRU5ErkJggg==";
+        const docHead = document.getElementsByTagName("head")[0];
+        const newLink = document.createElement("link");
+        newLink.rel = "shortcut icon";
+        newLink.href = "data:image/png;base64," + favIcon;
+        docHead.appendChild(newLink);
+
+        const searchFunction = () => {
+            const input = document.getElementById("filterInput");
+            const filter = input.value.toUpperCase();
+            const links = document.getElementsByTagName("a");
+
+            for (i = 0; i < links.length; i++) {
+                const foundLinks = links[i];
+
+                if (foundLinks.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    foundLinks.style.color = "";
+                    foundLinks.style.borderColor = "";
+                } else {
+                    foundLinks.style.color = "var(--text-unselected)";
+                    foundLinks.style.borderColor = "var(--border-unselected)";
                 }
-            };
+            }
+        };
 
-            Mousetrap.bind("1", () => {
-                document.getElementById("filterInput").focus();
-                return false;
-            });
+        Mousetrap.bind("1", () => {
+            document.getElementById("filterInput").focus();
+            return false;
+        });
 
-            Mousetrap.bind("2", () => {
-                document.getElementById("searchDDG").focus();
-                return false;
-            });
+        Mousetrap.bind("2", () => {
+            document.getElementById("searchDDG").focus();
+            return false;
+        });
 
-            Mousetrap.bind("3", () => {
-                document.getElementById("searchGoogleEn").focus();
-                return false;
-            });
+        Mousetrap.bind("3", () => {
+            document.getElementById("searchGoogleEn").focus();
+            return false;
+        });
 
-            Mousetrap.bind("4", () => {
-                document.getElementById("SearchGoogle").focus();
-                return false;
-            });
+        Mousetrap.bind("4", () => {
+            document.getElementById("SearchGoogle").focus();
+            return false;
+        });
 
-            Mousetrap.bind("5", () => {
-                document.getElementById("searchWikipedia").focus();
-                return false;
-            });
+        Mousetrap.bind("5", () => {
+            document.getElementById("searchWikipedia").focus();
+            return false;
+        });
 
-            Mousetrap.bind("6", () => {
-                document.getElementById("searchHinta").focus();
-                return false;
-            });
+        Mousetrap.bind("6", () => {
+            document.getElementById("searchHinta").focus();
+            return false;
+        });
 
-            Mousetrap.bind("7", () => {
-                document.getElementById("searchYouTube").focus();
-                return false;
-            });
+        Mousetrap.bind("7", () => {
+            document.getElementById("searchYouTube").focus();
+            return false;
+        });
 
-            Mousetrap.bind("t", () => {
-                document.getElementById("tabName").focus();
-                return false;
-            });
+        Mousetrap.bind("t", () => {
+            document.getElementById("tabName").focus();
+            return false;
+        });
 
-            Mousetrap.bind("q", () => selectById("currentDate"));
-            Mousetrap.bind("w", () => selectById("currentTime"));
-            Mousetrap.bind("e", () => selectById("isoDate"));
-            Mousetrap.bind("a", () => selectById("isoDateWithTime"));
-            Mousetrap.bind("s", () => selectById("randomId"));
-            Mousetrap.bind("d", () => selectById("yearWithId"));
-            Mousetrap.bind("f", () => selectById("spacerLine"));
-            Mousetrap.bind("r", () => regenerateId());
-        </script>
-    </div>
+        Mousetrap.bind("q 1", () => selectById("currentDate"));
+        Mousetrap.bind("q 2", () => selectById("currentTime"));
+        Mousetrap.bind("q 3", () => selectById("isoDate"));
+        Mousetrap.bind("q 4", () => selectById("isoDateWithTime"));
+        Mousetrap.bind("q 5", () => selectById("randomId"));
+        Mousetrap.bind("q 6", () => selectById("yearWithId"));
+        Mousetrap.bind("q 7", () => selectById("spacerLine"));
+        Mousetrap.bind("r", () => regenerateId());
+        Mousetrap.bind("a", () => scrollToElement("anchor1"));
+        Mousetrap.bind("s", () => scrollToElement("anchor3"));
+        Mousetrap.bind("d", () => scrollToElement("anchor4"));
+        Mousetrap.bind("q w", () => openNotepad());
+        Mousetrap.bind("q q", () => openNotepadLexend());
+    </script>
+
 </body>
 
 </html>
