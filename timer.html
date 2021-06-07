@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+
+    <style>
+        body {
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        input:not([type=range]) {
+            padding: 0.5em 1em;
+            width: 100%;
+        }
+
+        button {
+            border: none;
+            font-size: 11pt;
+            background-color: #E9E9E9;
+            border-radius: 0.15em;
+            border: none;
+            padding: 0.4em 0.75em;
+            margin: 0.1em;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+        }
+
+        textarea {
+            border: 1px solid grey;
+            outline: none;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            max-width: 500px;
+            /* align-items: center; */
+            margin: auto;
+        }
+
+        .container>div {
+            min-width: 200px;
+        }
+
+        .container-time {
+            width: 100%;
+            height: 100%;
+            max-width: 175px;
+        }
+
+        .container-time>div {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .large-clock>div {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .large-clock span {
+            font-size: 16pt;
+        }
+
+        .large-clock b {
+            font-size: 11pt;
+            color: #A1A1A1;
+        }
+
+        .container-controls {
+            height: 100%;
+        }
+
+        .container-controls>div {
+            display: flex;
+            justify-content: flex-end;
+            margin: 0.25em;
+        }
+
+        .container-controls>div>button {
+            width: 100%;
+        }
+
+        .blink {
+            animation: bgblink 1s ease infinite;
+        }
+
+        @keyframes bgblink {
+            from {
+                background-color: #fff;
+            }
+
+            50% {
+                background-color: #98FB98
+            }
+
+            to {
+                background-color: #fff;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="container-time">
+            <div class="large-clock">
+                <div>
+                    <span id="hoursSpan">0</span>
+                    <b>Hours</b>
+                </div>
+                <div>
+                    <span id="minutesSpan">0</span>
+                    <b>Minutes</b>
+                </div>
+                <div>
+                    <span id="secondsSpan">0</span>
+                    <b>Seconds</b>
+                </div>
+            </div>
+            <br />
+            <div>
+                <progress style="width:100%;" id="timerProgressIndicator" max="100" value="0"></progress>
+            </div>
+            <br />
+            <div>
+                <b>Total Minutes</b>
+                <span id="totalMinutesSpan">0</span>
+            </div>
+            <br />
+            <div>
+                <b>Timer ends at</b>
+                <span id="endsAtSpan"></span>
+            </div>
+            <br />
+            <div>
+                <input style="width:100%;" type="range" value="0" min="0" max="45" id="selectTimeRange">
+                <span id="selectTimeRangeSpan"></span>
+            </div>
+            <hr>
+            <br />
+            <div>
+                <input placeholder="Minutes…" type="number" name="" id="timerMinutes">
+            </div>
+            <div style="margin-top: 0.4em;">
+                <input type="text" name="Note" placeholder="Note…" id="noteInput">
+            </div>
+
+        </div>
+
+        <div class="container-controls">
+            <div>
+                <button onclick="startClock()" style="background-color: #7FECAA">Start</button>
+                <button onclick="stopClock()" style="background-color: #FFE9C3; height: 2.5em;">Stop</button>
+            </div>
+            <div>
+                <button onclick=" startClockWithTime(5)">5</button>
+                <button onclick="startClockWithTime(10)">10</button>
+                <button onclick="startClockWithTime(15)">15</button>
+                <button onclick="startClockWithTime(20)">20</button>
+            </div>
+            <div>
+                <button onclick="startClockWithTime(30)">30</button>
+                <button onclick="startClockWithTime(60)">60</button>
+                <button onclick="startClockWithTime(480)">8h</button>
+                <button onclick="subtractFromEndtime(1)">-1</button>
+                <button onclick="addToEndtime(1)">+1</button>
+            </div>
+            <div>
+                <textarea readonly="true" spellcheck="false" name="" id="logTextarea" cols="30" rows="6"></textarea>
+                <br>
+            </div>
+            <div>
+                <textarea spellcheck="false" name="" cols="30" rows="6" placeholder="Note…"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: center;">
+        <div style="width: 50;">
+            <div style="display: flex; justify-content: center; flex-direction: column;">
+                <br />
+                <span>30 min</span>
+                <input style="width:450px;" type="range" value="0" min="0" max="30" id="selectTimeRange0">
+                <span>60 min</span>
+                <input style="width:450px;" type="range" value="0" min="0" max="60" id="selectTimeRange1">
+                <span>120 min - 2h</span>
+                <input style="width:450px;" type="range" value="0" min="0" max="120" id="selectTimeRange2">
+                <span>240 min - 4h</span>
+                <input style="width:450px;" type="range" value="0" min="0" max="240" id="selectTimeRange3">
+                <span>360 min - 6h</span>
+                <input style="width:450px;" type="range" value="0" min="0" max="360" id="selectTimeRange4">
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    //if you have another AudioContext class use that one, as some browsers have a limit
+    var audioCtx = new (window.AudioContext || window.webkitAudioContext || window.audioContext);
+    //All arguments are optional:
+    //duration of the tone in milliseconds. Default is 500
+    //frequency of the tone in hertz. default is 440
+    //volume of the tone. Default is 1, off is 0.
+    //type of tone. Possible values are sine, square, sawtooth, triangle, and custom. Default is sine.
+    //callback to use on end of tone
+    function beep(duration, frequency, volume, type, callback) {
+        var oscillator = audioCtx.createOscillator();
+        var gainNode = audioCtx.createGain();
+        oscillator.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+
+        if (volume) { gainNode.gain.value = volume; }
+        if (frequency) { oscillator.frequency.value = frequency; }
+        if (type) { oscillator.type = type; }
+        if (callback) { oscillator.onended = callback; }
+
+        oscillator.frequency.value = 300;
+
+        gainNode.gain.value = 0.1;
+
+        oscillator.start(audioCtx.currentTime);
+        oscillator.stop(audioCtx.currentTime + ((duration || 500) / 1000));
+    };
+
+    const getSpans = () => {
+        const totalMinutesSpan = document.getElementById("totalMinutesSpan");
+        const hoursSpan = document.getElementById("hoursSpan");
+        const minutesSpan = document.getElementById("minutesSpan");
+        const secondsSpan = document.getElementById("secondsSpan");
+        const endsAtSpan = document.getElementById("endsAtSpan");
+        const progressIndicator = document.getElementById("timerProgressIndicator");
+        const selectTimeRange = document.getElementById("selectTimeRange");
+        const selectTimeRange0 = document.getElementById("selectTimeRange0");
+        const selectTimeRange1 = document.getElementById("selectTimeRange1");
+        const selectTimeRange2 = document.getElementById("selectTimeRange2");
+        const selectTimeRange3 = document.getElementById("selectTimeRange3");
+        const selectTimeRange4 = document.getElementById("selectTimeRange4");
+        const timerMinutes = document.getElementById('timerMinutes');
+
+        return {
+            totalMinutesSpan,
+            hoursSpan,
+            minutesSpan,
+            secondsSpan,
+            endsAtSpan,
+            progressIndicator,
+            selectTimeRange,
+            selectTimeRange0,
+            selectTimeRange1,
+            selectTimeRange2,
+            selectTimeRange3,
+            selectTimeRange4,
+            timerMinutes
+        }
+    }
+
+    let starttime;
+    let endtime;
+    let beepInterval;
+    let timeinterval;
+
+    const spans = getSpans();
+
+    spans.selectTimeRange.oninput = function () {
+        spans.timerMinutes.value = selectTimeRange.value;
+        updateEndTimeDisplay();
+    }
+
+    spans.selectTimeRange0.oninput = function () {
+        spans.timerMinutes.value = selectTimeRange0.value;
+        updateEndTimeDisplay();
+    }
+    spans.selectTimeRange1.oninput = function () {
+        spans.timerMinutes.value = selectTimeRange1.value;
+        updateEndTimeDisplay();
+    }
+
+    spans.selectTimeRange2.oninput = function () {
+        spans.timerMinutes.value = selectTimeRange2.value;
+        updateEndTimeDisplay();
+    }
+
+    spans.selectTimeRange3.oninput = function () {
+        spans.timerMinutes.value = selectTimeRange3.value;
+        updateEndTimeDisplay();
+    }
+
+    spans.selectTimeRange4.oninput = function () {
+        spans.timerMinutes.value = selectTimeRange4.value;
+        updateEndTimeDisplay();
+    }
+
+    spans.selectTimeRange0.onmouseup = () => startClock();
+    spans.selectTimeRange1.onmouseup = () => startClock();
+    spans.selectTimeRange2.onmouseup = () => startClock();
+    spans.selectTimeRange3.onmouseup = () => startClock();
+    spans.selectTimeRange4.onmouseup = () => startClock();
+
+    function getTimeRemaining(timeOfEnd) {
+        const total = Date.parse(timeOfEnd) - Date.parse(new Date());
+        const seconds = Math.floor((total / 1000) % 60);
+        const minutes = Math.floor((total / 1000 / 60) % 60);
+        const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+        const days = Math.floor(total / (1000 * 60 * 60 * 24));
+        return { total, days, hours, minutes, seconds };
+    }
+
+    const stopBeep = () => {
+        clearInterval(timeinterval);
+    }
+
+    const logClockStart = (timeInMinutes) => {
+        const noteInput = document.getElementById("noteInput").value;
+        const logArea = document.getElementById("logTextarea");
+        const cDate = new Date();
+        const cHours = ("0" + cDate.getHours()).slice(-2);
+        const cMinutes = ("0" + cDate.getMinutes()).slice(-2);
+        var temp = `${cHours}:${cMinutes} ${timeInMinutes}min ${noteInput}\n`
+        logArea.innerHTML += temp;
+    }
+
+    const logClockStop = () => {
+        const logArea = document.getElementById("logTextarea");
+        const cDate = new Date();
+        const cHours = ("0" + cDate.getHours()).slice(-2);
+        const cMinutes = ("0" + cDate.getMinutes()).slice(-2);
+        var temp = `${cHours}:${cMinutes} Stopped\n`
+        logArea.innerHTML += temp;
+    }
+
+    const updateEndTimeDisplay = () => {
+        const deadline = new Date(Date.parse(new Date()) + spans.timerMinutes.value * 60 * 1000);
+        const endHours = ('0' + deadline.getHours()).slice(-2);
+        const endMinutes = ('0' + deadline.getMinutes()).slice(-2);
+        spans.endsAtSpan.innerText = `${endHours}:${endMinutes}`;
+    }
+
+    function initializeClock() {
+        const endHours = ('0' + endtime.getHours()).slice(-2);
+        const endMinutes = ('0' + endtime.getMinutes()).slice(-2);
+        spans.endsAtSpan.innerText = `${endHours}:${endMinutes}`;
+
+        function updateClock() {
+            const t = getTimeRemaining(endtime);
+            const tMinutes = Math.floor((t.total / 1000 / 60));
+
+            const now = new Date();
+            const percentage = 100 - Math.round(((now - starttime) / (endtime - starttime)) * 100);
+
+            spans.totalMinutesSpan.innerText = tMinutes;
+            spans.hoursSpan.innerText = ('0' + t.hours).slice(-2);
+            spans.minutesSpan.innerText = ('0' + t.minutes).slice(-2);
+            spans.secondsSpan.innerText = ('0' + t.seconds).slice(-2);
+            spans.progressIndicator.value = percentage;
+
+            if (t.total <= 0) {
+                beep();
+                document.getElementsByTagName("BODY")[0].classList.value = "blink"
+            }
+        }
+
+        updateClock();
+        timeinterval = setInterval(updateClock, 1000);
+    }
+
+    const addToEndtime = (minutes) => {
+        endtime.setMinutes(endtime.getMinutes() + minutes);
+    }
+
+    const subtractFromEndtime = (minutes) => {
+        endtime.setMinutes(endtime.getMinutes() - minutes);
+    }
+
+    const clearClock = () => {
+        spans.totalMinutesSpan.innerText = "0";
+        spans.hoursSpan.innerText = "0";
+        spans.minutesSpan.innerText = "0";
+        spans.secondsSpan.innerText = "0";
+        spans.endsAtSpan.innerText = "";
+        spans.progressIndicator.value = 0;
+        spans.selectTimeRange.value = 0;
+        spans.selectTimeRange0.value = 0;
+        spans.selectTimeRange1.value = 0;
+        spans.selectTimeRange2.value = 0;
+        spans.selectTimeRange3.value = 0;
+    }
+
+    const stopClock = () => {
+        stopBeep();
+        clearClock();
+
+        if (endtime) {
+            logClockStop();
+        }
+
+        endtime = undefined;
+        document.getElementsByTagName("BODY")[0].classList.value = ""
+    }
+
+    const startClock = () => {
+        const timeInMinutes = spans.timerMinutes.value;
+        console.log('timeInMinutes', timeInMinutes);
+
+        if (timeInMinutes == 0) {
+            return;
+        } else {
+            stopClock();
+            spans.timerMinutes.value = null;
+            const currentTime = Date.parse(new Date());
+            const deadline = new Date(currentTime + timeInMinutes * 60 * 1000);
+            logClockStart(timeInMinutes);
+            starttime = new Date();
+            endtime = deadline;
+            initializeClock();
+        }
+    }
+
+    const startClockWithTime = (timeInMinutes) => {
+        stopClock();
+        const currentTime = Date.parse(new Date());
+        const deadline = new Date(currentTime + timeInMinutes * 60 * 1000);
+        logClockStart(timeInMinutes);
+        starttime = new Date();
+        endtime = deadline;
+        initializeClock();
+    }
+</script>
+
+</html>
