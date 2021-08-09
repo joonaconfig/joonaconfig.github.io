@@ -8,6 +8,10 @@
     <title>Timer</title>
 
     <style>
+        *:focus {
+            outline: none;
+        }
+
         body {
             font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
@@ -31,8 +35,11 @@
         }
 
         textarea {
-            border: 1px solid grey;
-            outline: none;
+            resize: none;
+            font-family: monospace;
+            font-size: 10pt;
+            border: 1px solid white;
+            border: 1px solid #B5B5B5;
         }
 
         .container {
@@ -92,7 +99,7 @@
         }
 
         .blink {
-            animation: bgblink 1s ease infinite;
+            animation: bgblink 0.5s ease-in-out infinite;
         }
 
         @keyframes bgblink {
@@ -101,7 +108,7 @@
             }
 
             50% {
-                background-color: #98FB98
+                background-color: #aed6b8;
             }
 
             to {
@@ -150,6 +157,7 @@
             <hr>
             <br />
             <div>
+                <input placeholder="Hours..." type="number" name="" id="timerHours">
                 <input placeholder="Minutes…" type="number" name="" id="timerMinutes">
             </div>
             <div style="margin-top: 0.4em;">
@@ -162,31 +170,55 @@
             <div>
                 <button onclick="startClock()" style="background-color: #7FECAA">Start</button>
                 <button onclick="stopClock()" style="background-color: #FFE9C3; height: 2.5em;">Stop</button>
+                <button onclick="clearData()" style="height: 2.5em;">Clear</button>
             </div>
             <div>
-                <button onclick=" startClockWithTime(5)">5</button>
+                <textarea style="font-size: 13pt; width: 100%;" id="noteTextArea" spellcheck="false" name="" rows="2" placeholder="Note…"></textarea>
+            </div>
+            <div>
+                <button onclick="startClockWithTime(5)">5</button>
                 <button onclick="startClockWithTime(10)">10</button>
                 <button onclick="startClockWithTime(15)">15</button>
                 <button onclick="startClockWithTime(20)">20</button>
+                <button onclick="startClockWithTime(30)">30</button>
             </div>
             <div>
-                <button onclick="startClockWithTime(30)">30</button>
+                <button onclick="startClockWithTime(45)">45</button>
                 <button onclick="startClockWithTime(60)">60</button>
                 <button onclick="startClockWithTime(480)">8h</button>
                 <button onclick="subtractFromEndtime(1)">-1</button>
                 <button onclick="addToEndtime(1)">+1</button>
             </div>
             <div>
-                <textarea readonly="true" spellcheck="false" name="" id="logTextarea" cols="30" rows="6"></textarea>
-                <br>
+                <button style="height: 25px;" onclick="subtractFromEndtime(5)">-5</button>
+                <button style="height: 25px;" onclick="addToEndtime(5)">+5</button>
+                <button style="height: 25px;" onclick="subtractFromEndtime(10)">-10</button>
+                <button style="height: 25px;" onclick="addToEndtime(10)">+10</button>
+            </div>
+            <br>
+
+            <div>
+                <button onclick="startWithTime(8,50)">8:50</button>
+                <button onclick="startWithTime(11,00)">11:00</button>
+                <button onclick="startWithTime(11,40)">11:40</button>
+                <button onclick="startWithTime(12,00)">12:00</button>
             </div>
             <div>
-                <textarea spellcheck="false" name="" cols="30" rows="6" placeholder="Note…"></textarea>
+                <button onclick="startWithTime(12,40)">12:40</button>
+                <button onclick="startWithTime(12,50)">12:50</button>
+                <button onclick="startWithTime(13,55)">13:55</button>
+                <button onclick="startWithTime(14,55)">14:55</button>
+            </div>
+            <div>
+                <button onclick="startWithTime(16,30)">16:30</button>
+                <button onclick="startWithTime(16,45)">16:45</button>
+                <button onclick="startWithTime(17,00)">17:00</button>
+                <button onclick="startWithTime(17,30)">17:30</button>
             </div>
         </div>
     </div>
 
-    <div style="display: flex; justify-content: center;">
+    <div style="display: flex; align-items: center; flex-direction: column; width: 100%;">
         <div style="width: 50;">
             <div style="display: flex; justify-content: center; flex-direction: column;">
                 <br />
@@ -198,10 +230,25 @@
                 <input style="width:450px;" type="range" value="0" min="0" max="120" id="selectTimeRange2">
                 <span>240 min - 4h</span>
                 <input style="width:450px;" type="range" value="0" min="0" max="240" id="selectTimeRange3">
-                <span>360 min - 6h</span>
-                <input style="width:450px;" type="range" value="0" min="0" max="360" id="selectTimeRange4">
             </div>
+
+            <div style="display: flex; justify-content: center; flex-direction: column;">
+                <br />
+                <span>Hours</span>
+                <input style="width:450px;" type="range" value="0" min="0" max="8" id="selectHoursRange" oninput="this.nextElementSibling.value = this.value">
+                <span>Minutes</span>
+                <input style="width:450px;" type="range" value="0" min="0" max="60" id="selectMinutesRange" oninput="this.nextElementSibling.value = this.value">
+                <br />
+                <button onclick="startClock()">Start</button>
+            </div>
+
         </div>
+
+        <div style="width: 450px;">
+            <textarea readonly="true" style="width: 100%;" spellcheck="false" name="" id="logTextarea" cols="30" rows="4"></textarea>
+            <br>
+        </div>
+
     </div>
 
 </body>
@@ -220,19 +267,31 @@
         var gainNode = audioCtx.createGain();
         oscillator.connect(gainNode);
         gainNode.connect(audioCtx.destination);
-
         if (volume) { gainNode.gain.value = volume; }
         if (frequency) { oscillator.frequency.value = frequency; }
         if (type) { oscillator.type = type; }
         if (callback) { oscillator.onended = callback; }
-
         oscillator.frequency.value = 300;
-
         gainNode.gain.value = 0.1;
-
         oscillator.start(audioCtx.currentTime);
         oscillator.stop(audioCtx.currentTime + ((duration || 500) / 1000));
     };
+
+    const getSelectorSpans = () => {
+        const selectTimeRange = document.getElementById("selectTimeRange");
+        const selectTimeRange0 = document.getElementById("selectTimeRange0");
+        const selectTimeRange1 = document.getElementById("selectTimeRange1");
+        const selectTimeRange2 = document.getElementById("selectTimeRange2");
+        const selectTimeRange3 = document.getElementById("selectTimeRange3");
+
+        return [
+            selectTimeRange,
+            selectTimeRange0,
+            selectTimeRange1,
+            selectTimeRange2,
+            selectTimeRange3
+        ]
+    }
 
     const getSpans = () => {
         const totalMinutesSpan = document.getElementById("totalMinutesSpan");
@@ -246,8 +305,11 @@
         const selectTimeRange1 = document.getElementById("selectTimeRange1");
         const selectTimeRange2 = document.getElementById("selectTimeRange2");
         const selectTimeRange3 = document.getElementById("selectTimeRange3");
-        const selectTimeRange4 = document.getElementById("selectTimeRange4");
         const timerMinutes = document.getElementById('timerMinutes');
+        const timerHours = document.getElementById('timerHours');
+
+        const selectHoursRange = document.getElementById("selectHoursRange");
+        const selectMinutesRange = document.getElementById("selectMinutesRange");
 
         return {
             totalMinutesSpan,
@@ -261,8 +323,10 @@
             selectTimeRange1,
             selectTimeRange2,
             selectTimeRange3,
-            selectTimeRange4,
-            timerMinutes
+            timerMinutes,
+            timerHours,
+            selectHoursRange,
+            selectMinutesRange
         }
     }
 
@@ -271,42 +335,51 @@
     let beepInterval;
     let timeinterval;
 
+    let timerDurationMinutes;
+    let timerDurationHours;
+    let timerDurationTotalMinutes
+
     const spans = getSpans();
+    const selectorSpans = getSelectorSpans();
 
     spans.selectTimeRange.oninput = function () {
-        spans.timerMinutes.value = selectTimeRange.value;
+        timerDurationMinutes = selectTimeRange.value;
         updateEndTimeDisplay();
     }
 
     spans.selectTimeRange0.oninput = function () {
-        spans.timerMinutes.value = selectTimeRange0.value;
+        timerDurationMinutes = selectTimeRange0.value;
         updateEndTimeDisplay();
     }
     spans.selectTimeRange1.oninput = function () {
-        spans.timerMinutes.value = selectTimeRange1.value;
+        timerDurationMinutes = selectTimeRange1.value;
         updateEndTimeDisplay();
     }
 
     spans.selectTimeRange2.oninput = function () {
-        spans.timerMinutes.value = selectTimeRange2.value;
+        timerDurationMinutes = selectTimeRange2.value;
         updateEndTimeDisplay();
     }
 
     spans.selectTimeRange3.oninput = function () {
-        spans.timerMinutes.value = selectTimeRange3.value;
+        timerDurationMinutes = selectTimeRange3.value;
         updateEndTimeDisplay();
     }
 
-    spans.selectTimeRange4.oninput = function () {
-        spans.timerMinutes.value = selectTimeRange4.value;
+    spans.selectHoursRange.oninput = function () {
+        timerDurationHours = selectHoursRange.value;
         updateEndTimeDisplay();
     }
 
-    spans.selectTimeRange0.onmouseup = () => startClock();
-    spans.selectTimeRange1.onmouseup = () => startClock();
-    spans.selectTimeRange2.onmouseup = () => startClock();
-    spans.selectTimeRange3.onmouseup = () => startClock();
-    spans.selectTimeRange4.onmouseup = () => startClock();
+    spans.selectMinutesRange.oninput = function () {
+        timerDurationMinutes = selectMinutesRange.value;
+        updateEndTimeDisplay();
+    }
+
+    selectorSpans.forEach(s => {
+        s.onmouseup = () => startClock();
+    });
+
 
     function getTimeRemaining(timeOfEnd) {
         const total = Date.parse(timeOfEnd) - Date.parse(new Date());
@@ -317,17 +390,22 @@
         return { total, days, hours, minutes, seconds };
     }
 
-    const stopBeep = () => {
-        clearInterval(timeinterval);
-    }
+    const stopBeep = () => clearInterval(timeinterval);
+    const addToEndtime = (minutes) => endtime.setMinutes(endtime.getMinutes() + minutes);
+    const subtractFromEndtime = (minutes) => endtime.setMinutes(endtime.getMinutes() - minutes);
 
-    const logClockStart = (timeInMinutes) => {
+    const logClockStart = (timeInMinutes, deadline) => {
         const noteInput = document.getElementById("noteInput").value;
         const logArea = document.getElementById("logTextarea");
         const cDate = new Date();
         const cHours = ("0" + cDate.getHours()).slice(-2);
         const cMinutes = ("0" + cDate.getMinutes()).slice(-2);
-        var temp = `${cHours}:${cMinutes} ${timeInMinutes}min ${noteInput}\n`
+
+
+        const deadlineHours = (deadline === undefined) ? 0 : ("0" + deadline.getHours()).slice(-2);
+        const deadlineMinutes = (deadline === undefined) ? 0 : ("0" + deadline.getMinutes()).slice(-2);
+
+        var temp = `${cHours}:${cMinutes} ${timeInMinutes}min ${noteInput} - until ${deadlineHours}:${deadlineMinutes}\n`
         logArea.innerHTML += temp;
     }
 
@@ -341,13 +419,21 @@
     }
 
     const updateEndTimeDisplay = () => {
-        const deadline = new Date(Date.parse(new Date()) + spans.timerMinutes.value * 60 * 1000);
+
+        const hours = (timerDurationHours == null || timerDurationHours === 0) ? 0 : parseInt(timerDurationHours);
+        const minutes = (timerDurationMinutes == null || timerDurationMinutes === 0) ? 0 : parseInt(timerDurationMinutes);
+        const lengthMinutes = (hours * 60) + minutes;
+        spans.totalMinutesSpan.innerText = lengthMinutes;
+
+        timerDurationTotalMinutes = lengthMinutes;
+        const deadline = new Date(Date.parse(new Date()) + lengthMinutes * 60 * 1000);
         const endHours = ('0' + deadline.getHours()).slice(-2);
         const endMinutes = ('0' + deadline.getMinutes()).slice(-2);
         spans.endsAtSpan.innerText = `${endHours}:${endMinutes}`;
     }
 
     function initializeClock() {
+        setTimeToWindowTitle(endtime);
         const endHours = ('0' + endtime.getHours()).slice(-2);
         const endMinutes = ('0' + endtime.getMinutes()).slice(-2);
         spans.endsAtSpan.innerText = `${endHours}:${endMinutes}`;
@@ -375,14 +461,6 @@
         timeinterval = setInterval(updateClock, 1000);
     }
 
-    const addToEndtime = (minutes) => {
-        endtime.setMinutes(endtime.getMinutes() + minutes);
-    }
-
-    const subtractFromEndtime = (minutes) => {
-        endtime.setMinutes(endtime.getMinutes() - minutes);
-    }
-
     const clearClock = () => {
         spans.totalMinutesSpan.innerText = "0";
         spans.hoursSpan.innerText = "0";
@@ -395,6 +473,15 @@
         spans.selectTimeRange1.value = 0;
         spans.selectTimeRange2.value = 0;
         spans.selectTimeRange3.value = 0;
+        spans.timerHours.value = null;
+        spans.timerMinutes.value = null;
+
+        spans.selectHoursRange.value = 0;
+        spans.selectMinutesRange.value = 0;
+
+        timerDurationMinutes = 0;
+        timerDurationHours = 0;
+        timerDurationTotalMinutes = 0;
     }
 
     const stopClock = () => {
@@ -409,18 +496,63 @@
         document.getElementsByTagName("BODY")[0].classList.value = ""
     }
 
+    const clearData = () => {
+        stopClock();
+        window.document.title = "Timer"
+
+        document.getElementById("logTextarea").innerHTML = "";
+        document.getElementById("noteTextArea").value = "";
+    }
+
+    const startWithTime = (hours, minutes) => {
+        stopClock();
+        const date = new Date();
+        date.setHours(hours, minutes)
+        starttime = new Date();
+        endtime = date;
+        initializeClock();
+    }
+
+    const setTimeToWindowTitle = (dateObj) => {
+        const hours = ('0' + dateObj.getHours()).slice(-2);
+        const minutes = ('0' + dateObj.getMinutes()).slice(-2);
+        window.document.title = `Timer ${hours}:${minutes}`
+    }
+
+    const startClockWithTimeAndNote = (hours, minutes, note) => {
+        startWithTime(hours, minutes);
+        document.getElementById("noteTextArea").value = note;
+    }
+
+    const getTimeInMinutes = () => {
+        const inputHours = (spans.timerHours.value == null || spans.timerHours.value === 0 || spans.timerHours.value === "")
+            ? 0
+            : parseInt(spans.timerHours.value);
+
+        const inputMinutes = (spans.timerMinutes.value == "" || spans.timerMinutes.value == null || spans.timerMinutes.value === 0)
+            ? 0
+            : parseInt(spans.timerMinutes.value);
+
+
+        const hours = (timerDurationHours == null || timerDurationHours === 0) ? 0 : parseInt(timerDurationHours);
+        const minutes = (timerDurationMinutes == null || timerDurationMinutes === 0) ? 0 : parseInt(timerDurationMinutes);
+
+        const timeInMinutes = (hours * 60) + minutes + inputMinutes + (inputHours * 60);
+        return timeInMinutes;
+    }
+
     const startClock = () => {
-        const timeInMinutes = spans.timerMinutes.value;
-        console.log('timeInMinutes', timeInMinutes);
+        const timeInMinutes = getTimeInMinutes();
 
         if (timeInMinutes == 0) {
             return;
         } else {
             stopClock();
             spans.timerMinutes.value = null;
+            spans.timerHours.value = null;
             const currentTime = Date.parse(new Date());
             const deadline = new Date(currentTime + timeInMinutes * 60 * 1000);
-            logClockStart(timeInMinutes);
+            logClockStart(timeInMinutes, deadline);
             starttime = new Date();
             endtime = deadline;
             initializeClock();
@@ -431,7 +563,7 @@
         stopClock();
         const currentTime = Date.parse(new Date());
         const deadline = new Date(currentTime + timeInMinutes * 60 * 1000);
-        logClockStart(timeInMinutes);
+        logClockStart(timeInMinutes, deadline);
         starttime = new Date();
         endtime = deadline;
         initializeClock();
