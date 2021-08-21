@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writer</title>
+
+    <style>
+        *,
+        *:focus,
+        *:hover {
+            outline: none;
+        }
+
+        :root {
+            --bg-color: #002B36;
+            --text-color: #FFFFFF;
+            --font-family: monospace;
+            --line-height: 1.4em;
+            --font-size: 15pt;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .container {
+            height: 100%;
+            max-width: 100%;
+            overflow: hidden;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .textarea-container {
+            margin: 0;
+            padding: 0;
+            height: 95%;
+        }
+
+        button {
+            border: none;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 1em;
+            padding: 0.5em 1em;
+            transition: all 0.2s ease-in-out;
+        }
+
+        button:hover {
+            background-color: gainsboro;
+        }
+
+        #writeArea {
+            height: 100%;
+            width: 90%;
+            width: 900px;
+            max-width: 100%;
+            border: none;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            font-family: var(--font-family);
+            font-size: var(--font-size);
+            line-height: var(--line-height);
+            margin: 0 1em 0 1em;
+        }
+
+        ::-webkit-scrollbar {
+            width: 18px;
+            height: 18px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            height: 6px;
+            border: 4px solid rgba(0, 0, 0, 0);
+            background-clip: padding-box;
+            background-color: #2222;
+            border-radius: 7px;
+            box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05),
+                inset 1px 1px 0px rgba(0, 0, 0, 0.05);
+        }
+
+        ::-webkit-scrollbar-button {
+            display: none;
+            width: 0;
+            height: 0;
+        }
+
+        ::-webkit-scrollbar-corner {
+            background-color: transparent;
+        }
+
+        select {
+            appearance: none;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            border: none;
+            border-bottom: 1px solid var(--text-color);
+            margin-left: 1em;
+        }
+
+        .colorPicker {
+            border: none;
+            margin-left: 1em;
+            opacity: 10%;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        .colorPicker:hover {
+            opacity: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+            <button onclick="handleFontSize('-')">-</button>
+            <button onclick="handleFontSize('+')">+</button>
+            <button onclick="resetSettings()">R</button>
+            <select onchange="setPreset(this)" name="presetSelect" id="presetSelect"></select>
+            <select onchange="setThemeFromSelect(this)" name="themeSelect" id="themeSelect"></select>
+
+            <select name="" onchange="setFont(this)" id="fontSelect">
+                <option selected value=""></option>
+                <option value="monospace">monospace</option>
+                <option value="Cascadia Code">Cascadia Code</option>
+                <option value="Cascadia Mono">Cascadia Mono</option>
+                <option value="Comic Mono">Comic Mono</option>
+                <option value="DejaVuSansMono">DejaVu Sans Mono</option>
+                <option value="Fira Mono">Fira Mono</option>
+                <option value="Fira Sans">Fira Sans</option>
+                <option value="iAWriterDuoS-Regular">iA Writer Duo</option>
+                <option value="iAWriterMonoS-Regular">iA Writer Mono</option>
+                <option value="iAWriterQuattroS-Regular">iA Writer Quattro</option>
+                <option value="IBM Plex Mono">IBM Plex Mono</option>
+                <option value="IBM Plex Sans">IBM Plex Sans</option>
+                <option value="Inria Sans">Inria Sans</option>
+                <option value="Inria Serif">Inria Serif</option>
+                <option value="Lexend Deca">Lexend Deca</option>
+                <option value="Noto Mono">Noto Mono</option>
+                <option value="Noto Sans">Noto Sans</option>
+                <option value="Open Sans">Open Sans</option>
+                <option value="PT Sans">PT Sans</option>
+                <option value="Roboto Mono">Roboto Mono</option>
+                <option value="Roboto">Roboto</option>
+                <option value="Source Code Pro">Source Code Pro</option>
+                <option value="Source Sans Pro">Source Sans Pro</option>
+                <option value="Source Serif Pro">Source Serif Pro</option>
+                <option value="Ubuntu">Ubuntu</option>
+            </select>
+
+            <select onchange="setLineHeight(this)" name="lineHeightSelect" id="lineHeightSelect">
+                <option value="1.0">1.0</option>
+                <option value="1.1">1.1</option>
+                <option value="1.2">1.2</option>
+                <option value="1.3">1.3</option>
+                <option value="1.4">1.4</option>
+                <option value="1.5">1.5</option>
+                <option value="1.6">1.6</option>
+                <option value="1.7">1.7</option>
+            </select>
+
+            <input class="colorPicker" onchange="setBgColor(this)" type="color" name="" id="bgColor">
+            <input class="colorPicker" onchange="setTextColor(this)" type="color" name="" id="textColor">
+        </div>
+        <div class="textarea-container">
+            <textarea spellcheck="false" autofocus name="" id="writeArea" cols="30" rows="10"></textarea>
+        </div>
+    </div>
+
+    <script>
+        const urlSearchParams = new URLSearchParams(window.location.search);
+        const params = Object.fromEntries(urlSearchParams.entries());
+        const resetQueryParams = () => history.pushState(null, '', window.location.pathname);
+        let fontSize = 15;
+        let root = document.documentElement;
+        let writeArea = document.getElementById("writeArea");
+        let bgColor = document.getElementById("bgColor");
+        let textColor = document.getElementById("textColor");
+        let themeSelect = document.getElementById("themeSelect");
+        let fontSelect = document.getElementById("fontSelect");
+        let lineHeightSelect = document.getElementById("lineHeightSelect");
+        lineHeightSelect.value = "1.4";
+        let presetSelect = document.getElementById("presetSelect");
+        let themesListHtml = "";
+        let presetsListHtml = "";
+
+        const presets = [
+            { name: "Default", theme: "Solarized Dark white text", font: "monospace", lineHeight: "1.4", fontSize: "15" },
+            { name: "Default small", theme: "Solarized Dark white text", font: "monospace", lineHeight: "1.4", fontSize: "12" },
+            { name: "iA Writer", theme: "iA", font: "iAWriterQuattroS-Regular", lineHeight: "1.4", fontSize: "14" },
+            { name: "iA Mono small", theme: "iA", font: "iAWriterMonoS-Regular", lineHeight: "1.4", fontSize: "12" },
+            { name: "Terminal", theme: "Terminal", font: "monospace", lineHeight: "1.4", fontSize: "13" },
+            { name: "Terminal Light", theme: "BW Light", font: "monospace", lineHeight: "1.4", fontSize: "13" },
+            { name: "Terminal Light 14", theme: "BW Light", font: "monospace", lineHeight: "1.4", fontSize: "14" },
+            { name: "Floralwhite", theme: "Floralwhite", font: "monospace", lineHeight: "1.4", fontSize: "13" }
+        ]
+
+        const themes = [
+            { name: "Solarized Dark", text: "#FDF6E3", background: "#002B36" },
+            { name: "Solarized Dark white text", text: "#FFFFFF", background: "#002B36" },
+            { name: "Solarized Light", text: "#002B36", background: "#FDF6E3" },
+            { name: "Solarized Light Custom", text: "#002B36", background: "#FFF9E9" },
+            { name: "Terminal", text: "#FFFFFF", background: "#131A21" },
+            { name: "Dracula", text: "#f8f8f2", background: "#282a36" },
+            { name: "One Dark Pro", text: "#FFFFFF", background: "#282C34" },
+            { name: "Grey", text: "#000000", background: "#F1F1F1" },
+            { name: "BW Light", text: "#000000", background: "#FFFFFF" },
+            { name: "BW Dark", text: "#FFFFFF", background: "#000000" },
+            { name: "iA", text: "#19191A", background: "#F7F7F7" },
+            { name: "iA Dark", text: "#CBCCCB", background: "#19191A" },
+            { name: "Slate Blue", text: "#FFFFFF", background: "#235D6C" },
+            { name: "Slate Blue Dark", text: "#FFFFFF", background: "#344E50" },
+            { name: "Blue Light", text: "#000000", background: "#56A6ED" },
+            { name: "Blue Light 2", text: "#000000", background: "#C2E3FF" },
+            { name: "Cornsilk", text: "#000000", background: "#FFF8DC" },
+            { name: "Floralwhite", text: "#000000", background: "#FFFAF0" },
+            { name: "Ivory", text: "#000000", background: "#FFFFF0" },
+            { name: "Linen", text: "#000000", background: "#FFFAFA" },
+            { name: "Snow", text: "#000000", background: "#FAF0E6" },
+            { name: "Ghostwhite", text: "#000000", background: "#F8F8FF" }
+        ]
+
+        themesListHtml += `<option></option>`;
+        themes.forEach(t => {
+            themesListHtml += `<option value='${t.name}'> ${t.name} </option>`;
+        });
+
+        themeSelect.innerHTML = themesListHtml;
+
+        presetsListHtml += `<option></option>`;
+
+        presets.forEach(t => {
+            presetsListHtml += `<option value='${t.name}'> ${t.name} </option>`;
+        });
+
+        presetSelect.innerHTML = presetsListHtml;
+
+        const setThemeFromSelect = (selectObject) => {
+            const selectedTheme = themes.find(t => t.name === selectObject.value);
+            setTheme(selectedTheme);
+        }
+
+        const setPreset = (selectObject) => {
+            const s = presets.find(t => t.name === selectObject.value);
+            const theme = themes.find(t => t.name === s.theme);
+            setTheme(theme);
+
+            root.style.setProperty('--line-height', `${s.lineHeight}em`);
+            root.style.setProperty('--font-family', s.font);
+            root.style.setProperty('--font-size', `${s.fontSize}pt`);
+
+            setQueryParam("font", s.font)
+            setQueryParam("l", s.lineHeight)
+            setQueryParam("fontSize", s.fontSize);
+
+            fontSize = s.fontSize;
+            themeSelect.value = s.theme;
+            fontSelect.value = s.font;
+            lineHeightSelect.value = s.lineHeight
+        }
+
+        const setTheme = (theme) => {
+            root.style.setProperty('--text-color', theme.text);
+            root.style.setProperty('--bg-color', theme.background);
+            setQueryParam("t", theme.text);
+            setQueryParam("bg", theme.background);
+            setQueryParam("theme", theme.name);
+            bgColor.value = theme.background;
+            textColor.value = theme.text;
+        }
+
+        window.onbeforeunload = function (e) {
+            e = e || window.event;
+            const el = document.getElementById("writeArea");
+            hasChanges = (el && el.value) ? true : false;
+            return hasChanges ? 'Sure?' : null;
+        };
+
+        const setQueryParam = (key, value) => {
+            const searchParams = new URLSearchParams(window.location.search)
+            searchParams.set(key, value);
+            const newRelativePathQuery = window.location.pathname + '?' + searchParams.toString();
+            history.pushState(null, '', newRelativePathQuery);
+        }
+
+        const resetSettings = () => {
+            resetQueryParams();
+            root.style.setProperty('--text-color', '#FFFFFF');
+            root.style.setProperty('--bg-color', '#002B36');
+            root.style.setProperty('--line-height', '1.4em');
+            root.style.setProperty('--font-family', 'monospace');
+            root.style.setProperty('--font-size', '15pt');
+
+            fontSize = 15;
+            themeSelect.value = "";
+            fontSelect.value = "";
+            lineHeightSelect.value = "1.4"
+            bgColor.value = "#002B36";
+            textColor.value = "#FFFFFF";
+            presetSelect.value = "";
+        }
+
+        const handleParams = () => {
+            for (const param in params) {
+                switch (param) {
+                    case "bg":
+                        const bgValue = decodeURI(params.bg);
+                        bgColor.value = bgValue;
+                        root.style.setProperty('--bg-color', bgValue);
+                        break;
+                    case "l":
+                        root.style.setProperty('--line-height', `${params.l}em`);
+                        lineHeightSelect.value = params.l;
+                        break;
+                    case "font":
+                        const font = decodeURI(params.font);
+                        root.style.setProperty('--font-family', font);
+                        fontSelect.value = font;
+                        break;
+                    case "fontSize":
+                        root.style.setProperty('--font-size', `${params.fontSize}pt`);
+                        fontSize = parseInt(params.fontSize);
+                        break;
+                    case "t":
+                        const tValue = decodeURI(params.t);
+                        textColor.value = tValue;
+                        root.style.setProperty('--text-color', tValue);
+                        break;
+                    case "theme":
+                        console.log("here");
+                        const themeValue = decodeURI(params.theme);
+                        themeSelect.value = themeValue;
+                        break;
+                }
+            }
+        }
+
+        handleParams()
+
+        const handleFontSize = (action) => {
+            (action === "+") ? fontSize++ : fontSize--;
+            root.style.setProperty('--font-size', `${fontSize}pt`);
+            setQueryParam("fontSize", fontSize);
+        }
+
+        const setFont = (selectObject) => {
+            root.style.setProperty('--font-family', selectObject.value);
+            setQueryParam("font", selectObject.value)
+        }
+
+        const setLineHeight = (selectObject) => {
+            root.style.setProperty('--line-height', `${selectObject.value}em`);
+            setQueryParam("l", selectObject.value)
+        }
+
+        const setBgColor = (selectObject) => {
+            root.style.setProperty('--bg-color', selectObject.value);
+            setQueryParam("bg", selectObject.value);
+        }
+
+        const setTextColor = (selectObject) => {
+            root.style.setProperty('--text-color', selectObject.value);
+            setQueryParam("t", selectObject.value);
+        }
+    </script>
+</body>
+
+</html>
