@@ -15,11 +15,18 @@
         }
 
         :root {
-            --bg-color: #002B36;
-            --text-color: #FFFFFF;
-            --font-family: monospace;
+            --bg-color: #FFFFFF;
+            --font-family: 'Cascadia Mono','Cascadia Mono', 'Roboto Mono', monospace;
+            --font-size: 13pt;
+            --font-weight: initial;
+            --hide-display: none;
             --line-height: 1.4em;
-            --font-size: 15pt;
+            --text-color: #24292e;
+            --write-area-width: 900px;
+        }
+
+        .hideDisplay {
+            display: var(--hide-display);
         }
 
         body {
@@ -37,27 +44,39 @@
             width: 100%;
             display: flex;
             flex-direction: column;
+            align-items: center;
         }
 
         .container div {
+            max-width: 100%;
+        }
+
+        #controls {
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-direction: column;
+            flex-wrap: wrap;
+            width: 100%;
+            max-width: 900px;
         }
 
         .textarea-container {
             margin: 0;
             padding: 0;
             height: 95%;
+            width: 100%;
+            display: flex;
+            place-content: center center;
         }
 
         button {
             border: none;
             background-color: var(--bg-color);
             color: var(--text-color);
-            margin: 1em;
-            padding: 0.5em 1em;
-            transition: all 0.2s ease-in-out;
+            margin: 0.25em 0.5em;
+            padding: 0.5em 0.5em;
+            user-select: none;
         }
 
         button:hover {
@@ -65,42 +84,23 @@
         }
 
         #writeArea {
-            height: 100%;
-            width: 90%;
-            width: 900px;
-            max-width: 100%;
+            height: 95%;
+            width: var(--write-area-width);
             border: none;
             color: var(--text-color);
             background-color: var(--bg-color);
+            font-weight: var(--font-weight);
             font-family: var(--font-family);
             font-size: var(--font-size);
             line-height: var(--line-height);
             margin: 0 1em 0 1em;
+            max-width: 95%;
         }
 
-        ::-webkit-scrollbar {
-            width: 18px;
-            height: 18px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            height: 6px;
-            border: 4px solid rgba(0, 0, 0, 0);
-            background-clip: padding-box;
-            background-color: #2222;
-            border-radius: 7px;
-            box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05),
-                inset 1px 1px 0px rgba(0, 0, 0, 0.05);
-        }
-
-        ::-webkit-scrollbar-button {
-            display: none;
-            width: 0;
-            height: 0;
-        }
-
-        ::-webkit-scrollbar-corner {
-            background-color: transparent;
+        @media (max-width: 990px) {
+            #controls {
+                margin-left: 2em;
+            }
         }
 
         select {
@@ -117,112 +117,293 @@
             margin-left: 1em;
             opacity: 10%;
             transition: opacity 0.2s ease-in-out;
+            display: none;
         }
 
         .colorPicker:hover {
             opacity: 100%;
         }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            margin-right: 1em;
+        }
+
+        .switch-input {
+            display: none;
+        }
+
+        .switch-label {
+            display: block;
+            width: 36px;
+            height: 18px;
+            text-indent: -150%;
+            clip: rect(0 0 0 0);
+            color: transparent;
+            user-select: none;
+        }
+
+        .switch-label::before,
+        .switch-label::after {
+            content: "";
+            display: block;
+            position: absolute;
+            cursor: pointer;
+        }
+
+        .switch-label::before {
+            width: 100%;
+            height: 100%;
+            background-color: #dedede;
+            border-radius: 9999em;
+            -webkit-transition: background-color 0.25s ease;
+            transition: background-color 0.25s ease;
+        }
+
+        .switch-label::after {
+            top: 0;
+            left: 0;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: #fff;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.45);
+            -webkit-transition: left 0.25s ease;
+            transition: left 0.25s ease;
+        }
+
+        .switch-input:checked+.switch-label::before {
+            background-color: #278BD2;
+        }
+
+        .switch-input:checked+.switch-label::after {
+            left: 18px;
+        }
+
+        .dropdown {
+            font-family: sans-serif;
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown span {
+            font-size: 11pt;
+        }
+
+        .dropdown-content {
+            font-family: sans-serif;
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0px 8px 16px 0px rgba(95, 95, 95, 0.452);
+            background-color: var(--bg-color);
+            max-width: 180px;
+            min-width: 180px;
+            padding: 10px;
+            width: 200px !important;
+            z-index: 1;
+            left: -20%;
+            top: 30px;
+        }
+
+        .dropdown-content button {
+            display: block;
+            text-decoration: none;
+            color: var(--text-color);
+            padding: 0.5em 0.5em;
+            margin: 0.1em 0;
+            width: 100%;
+            text-align: left !important;
+        }
+
+        .dropdown:hover > button {
+            background-color: gainsboro;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
     </style>
-</head>
 
 <body>
     <div class="container">
-        <div style="display: flex; flex-wrap: wrap; justify-content: center;">
-            <button onclick="handleFontSize('-')">-</button>
-            <button onclick="handleFontSize('+')">+</button>
-            <button onclick="resetSettings()">R</button>
-            <select onchange="setPreset(this)" name="presetSelect" id="presetSelect"></select>
-            <select onchange="setThemeFromSelect(this)" name="themeSelect" id="themeSelect"></select>
 
-            <select name="" onchange="setFont(this)" id="fontSelect">
-                <option selected value=""></option>
-                <option value="monospace">monospace</option>
-                <option value="Cascadia Code">Cascadia Code</option>
-                <option value="Cascadia Mono">Cascadia Mono</option>
-                <option value="Comic Mono">Comic Mono</option>
-                <option value="DejaVuSansMono">DejaVu Sans Mono</option>
-                <option value="Fira Mono">Fira Mono</option>
-                <option value="Fira Sans">Fira Sans</option>
-                <option value="iAWriterDuoS-Regular">iA Writer Duo</option>
-                <option value="iAWriterMonoS-Regular">iA Writer Mono</option>
-                <option value="iAWriterQuattroS-Regular">iA Writer Quattro</option>
-                <option value="IBM Plex Mono">IBM Plex Mono</option>
-                <option value="IBM Plex Sans">IBM Plex Sans</option>
-                <option value="Inria Sans">Inria Sans</option>
-                <option value="Inria Serif">Inria Serif</option>
-                <option value="Lexend Deca">Lexend Deca</option>
-                <option value="Noto Mono">Noto Mono</option>
-                <option value="Noto Sans">Noto Sans</option>
-                <option value="Open Sans">Open Sans</option>
-                <option value="PT Sans">PT Sans</option>
-                <option value="Roboto Mono">Roboto Mono</option>
-                <option value="Roboto">Roboto</option>
-                <option value="Source Code Pro">Source Code Pro</option>
-                <option value="Source Sans Pro">Source Sans Pro</option>
-                <option value="Source Serif Pro">Source Serif Pro</option>
-                <option value="Ubuntu">Ubuntu</option>
-            </select>
+        <div id="controls">
+            <div>
+                <div class="switch">
+                    <input onclick="toggleSettingsShow()" id="toggleSettingsDisplay" type="checkbox" class="switch-input" />
+                    <label for="toggleSettingsDisplay" class="switch-label">Switch</label>
+                </div>
+                <button style="font-size: 12pt;" title="Remove double empty lines" onclick="writeAreaFunctions.removeDoubleEmptyLines()">✂</button>
+                <button title="Inspert empty lines" onclick="writeAreaFunctions.insert.lines()">Add</button>
+                <button style="font-size: 12pt;" title="Insert divider line" onclick="writeAreaFunctions.insert.line()">⏤</button>
 
-            <select onchange="setLineHeight(this)" name="lineHeightSelect" id="lineHeightSelect">
-                <option value="1.0">1.0</option>
-                <option value="1.1">1.1</option>
-                <option value="1.2">1.2</option>
-                <option value="1.3">1.3</option>
-                <option value="1.4">1.4</option>
-                <option value="1.5">1.5</option>
-                <option value="1.6">1.6</option>
-                <option value="1.7">1.7</option>
-            </select>
+                <div class="dropdown">
+                    <button>Insert</button>
+                    <div class="dropdown-content">
+                        <button onclick="writeAreaFunctions.insert.lines()">Add empty lines</button>
+                        <button onclick="writeAreaFunctions.insert.line()">Insert divider</button>
+                        <button title="Insert date" onclick="writeAreaFunctions.insert.date()">Insert date</button>
+                        <button title="Insert time" onclick="writeAreaFunctions.insert.time()">Insert time</button>
+                        <button title="Insert date and time" onclick="writeAreaFunctions.insert.dateTime()">Insert date & time</button>
+                        <button title="Insert date and time" onclick="writeAreaFunctions.insert.dateTimeJoined()">Insert date & time (joined)</button>
+                        <button onclick="writeAreaFunctions.insert.guid()">Insert GUID</button>
+                        <button onclick="writeAreaFunctions.insert.guidNoDashes()">Insert GUID, no spaces</button>
+                    </div>
+                </div>
 
-            <input class="colorPicker" onchange="setBgColor(this)" type="color" name="" id="bgColor">
-            <input class="colorPicker" onchange="setTextColor(this)" type="color" name="" id="textColor">
+                <div class="dropdown">
+                    <button>Actions</button>
+                    <div class="dropdown-content">
+                        <button onclick="writeAreaFunctions.removeDoubleEmptyLines()">Remove double empty lines</button>
+                        <button onclick="writeAreaFunctions.trimEndFromAllLines()">Trim ends</button>
+                        <button onclick="writeAreaFunctions.trimAndRemoveEmptyLines()">Trim all</button>
+                        <button onclick="writeAreaFunctions.removeEmptyLines()">Remove empty lines</button>
+                        <button onclick="writeAreaFunctions.sortSelection()">Sort selection</button>
+                        <button ondblclick="writeAreaFunctions.clear()">Clear (double click)</button>
+                        <button onclick="writeAreaFunctions.replaceSpacesWithUnderScoresFromSelection()">Replace spaces</button>
+                    </div>
+                </div>
+
+                <button onclick="writeAreaFunctions.insert.section()">Section</button>
+                <button onclick="writeAreaFunctions.insert.spacerWithTitle()">Title</button>
+                <input  class="hideDisplay" title="Ask for confirmation on exit" onclick="toggleAskConfirmationOnExitCommand()" id="toggleAskConfirmationOnExit" type="checkbox" checked />
+                <input class="hideDisplay" onclick="toggleColorSelectShow()" type="checkbox" name="showColorSelect" id="showColorSelect">
+                <input class="control-item colorPicker hideDisplay" onchange="setBgColor(this)" type="color" name="" id="bgColor">
+                <input class="control-item colorPicker hideDisplay" onchange="setTextColor(this)" type="color" name="" id="textColor">
+            </div>
+
+            <div>
+                <button class="hideDisplay" onclick="handleFontSize('-')">-</button>
+                <button class="hideDisplay" onclick="handleFontSize('+')">+</button>
+                <input style="width:3em; background-color: var(--bg-color); color: var(--text-color); border: none; border-bottom: 1px solid var(--text-color);" class="control-item hideDisplay" type="number" name="" id="fontSizeSelect" onchange="setFontSize(this)">
+                <button class="hideDisplay" onclick="resetSettings()">R</button>
+
+                <select class="control-item hideDisplay" onchange="setPresetFromSelect(this)" name="presetSelect" id="presetSelect"></select>
+                <select class="control-item hideDisplay" onchange="setThemeFromSelect(this)" name="themeSelect" id="themeSelect"></select>
+                <select class="control-item hideDisplay" onchange="setFontFromSelect(this)" id="fontSelect"></select>
+
+                <select class="control-item hideDisplay" onchange="setLineHeight(this)" name="lineHeightSelect" id="lineHeightSelect">
+                    <option value="1.0">1.0</option>
+                    <option value="1.1">1.1</option>
+                    <option value="1.2">1.2</option>
+                    <option value="1.3">1.3</option>
+                    <option value="1.4">1.4</option>
+                    <option value="1.5">1.5</option>
+                    <option value="1.6">1.6</option>
+                    <option value="1.7">1.7</option>
+                    <option value="1.8">1.8</option>
+                    <option value="1.9">1.9</option>
+                    <option value="2.0">2.0</option>
+                    <option value="2.0">2.0</option>
+                </select>
+
+                <select class="control-item hideDisplay" onchange="setFontWeightFromSelect(this)" id="fontWeightSelect">
+                    <option value="100">100</option>
+                    <option value="200">200</option>
+                    <option value="300">300</option>
+                    <option value="400">400</option>
+                    <option value="500">500</option>
+                    <option value="600">600</option>
+                    <option value="700">700</option>
+                    <option value="800">800</option>
+                    <option value="900">900</option>
+                </select>
+
+                <select class="control-item hideDisplay" name="" id="writeAreaWidthSelect" onchange="setWriteAreaWidth(this)">
+                    <option value="100px">100px</option>
+                    <option value="200px">200px</option>
+                    <option value="300px">300px</option>
+                    <option value="400px">400px</option>
+                    <option value="500px">500px</option>
+                    <option value="600px">600px</option>
+                    <option value="700px">700px</option>
+                    <option value="800px">800px</option>
+                    <option value="900px">900px</option>
+                    <option value="1000px">1000px</option>
+                    <option value="1100px">1100px</option>
+                    <option value="1200px">1200px</option>
+                    <option value="1300px">1300px</option>
+                    <option value="1400px">1400px</option>
+                    <option value="1500px">1500px</option>
+                    <option value="">--</option>
+                    <option value="50%">50%</option>
+                    <option value="75%">75%</option>
+                    <option value="100%">100%</option>
+                </select>
+            </div>
         </div>
         <div class="textarea-container">
-            <textarea spellcheck="false" autofocus name="" id="writeArea" cols="30" rows="10"></textarea>
+            <textarea autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" autofocus name="" id="writeArea" cols="30" rows="10"></textarea>
         </div>
     </div>
 
     <script>
         const urlSearchParams = new URLSearchParams(window.location.search);
         const params = Object.fromEntries(urlSearchParams.entries());
-        const resetQueryParams = () => history.pushState(null, '', window.location.pathname);
-        let fontSize = 15;
         let root = document.documentElement;
-        let writeArea = document.getElementById("writeArea");
+        let wa = document.getElementById("writeArea");
         let bgColor = document.getElementById("bgColor");
         let textColor = document.getElementById("textColor");
         let themeSelect = document.getElementById("themeSelect");
         let fontSelect = document.getElementById("fontSelect");
         let lineHeightSelect = document.getElementById("lineHeightSelect");
-        lineHeightSelect.value = "1.4";
         let presetSelect = document.getElementById("presetSelect");
+        let fontSizeSelect = document.getElementById("fontSizeSelect");
+        let writeAreaWidthSelect = document.getElementById("writeAreaWidthSelect");
+        let toggleSettingsDisplay = document.getElementById("toggleSettingsDisplay");
+        let fontWeightSelect = document.getElementById("fontWeightSelect");
+        let toggleAskConfirmationOnExit = document.getElementById("toggleAskConfirmationOnExit");
+
+        let askForConfirmationOnExit = true;
+        let showSettings = false;
         let themesListHtml = "";
         let presetsListHtml = "";
+        let fontSize = 13;
+        lineHeightSelect.value = "1.4";
+        fontWeightSelect.value = 400;
+
+        const resetQueryParams = () => history.pushState(null, '', window.location.pathname);
 
         const presets = [
-            { name: "Default", theme: "Solarized Dark white text", font: "monospace", lineHeight: "1.4", fontSize: "15" },
-            { name: "Default small", theme: "Solarized Dark white text", font: "monospace", lineHeight: "1.4", fontSize: "12" },
+            { name: "Github Light", theme: "Github Light", font: "monospace", lineHeight: "1.4", fontSize: "15" },
+            { name: "Github Light Cascadia", theme: "Github Light", font: "Cascadia Mono", lineHeight: "1.4", fontSize: "11" },
+            { name: "iA Cascadia", theme: "iA", font: "Cascadia Mono", lineHeight: "1.5", fontSize: "12" },
+            { name: "Github Dark", theme: "Github Dark", font: "monospace", lineHeight: "1.4", fontSize: "15" },
+            { name: "Lexend Light", theme: "Github Light", font: "Lexend Deca", lineHeight: "2.0", fontSize: "13" },
+            { name: "Lexend Dark", theme: "Github Dark", font: "Lexend Deca", lineHeight: "2.0", fontSize: "13" },
+            { name: "Default", theme: "Solarized Dark white", font: "monospace", lineHeight: "1.4", fontSize: "15" },
+            { name: "Default small", theme: "Solarized Dark white", font: "monospace", lineHeight: "1.4", fontSize: "12" },
             { name: "iA Writer", theme: "iA", font: "iAWriterQuattroS-Regular", lineHeight: "1.4", fontSize: "14" },
             { name: "iA Mono small", theme: "iA", font: "iAWriterMonoS-Regular", lineHeight: "1.4", fontSize: "12" },
             { name: "Terminal", theme: "Terminal", font: "monospace", lineHeight: "1.4", fontSize: "13" },
             { name: "Terminal Light", theme: "BW Light", font: "monospace", lineHeight: "1.4", fontSize: "13" },
             { name: "Terminal Light 14", theme: "BW Light", font: "monospace", lineHeight: "1.4", fontSize: "14" },
-            { name: "Floralwhite", theme: "Floralwhite", font: "monospace", lineHeight: "1.4", fontSize: "13" }
+            { name: "Terminal Light 15", theme: "BW Light", font: "monospace", lineHeight: "1.4", fontSize: "15" },
+            { name: "Floralwhite", theme: "Floralwhite", font: "monospace", lineHeight: "1.4", fontSize: "13" },
         ]
 
         const themes = [
+            { name: "Github Light", text: "#24292e", background: "#FFFFFF" },
+            { name: "Github Dark", text: "#c9d1d9", background: "#22292E" },
             { name: "Solarized Dark", text: "#FDF6E3", background: "#002B36" },
-            { name: "Solarized Dark white text", text: "#FFFFFF", background: "#002B36" },
+            { name: "Solarized Dark white", text: "#FFFFFF", background: "#002B36" },
             { name: "Solarized Light", text: "#002B36", background: "#FDF6E3" },
-            { name: "Solarized Light Custom", text: "#002B36", background: "#FFF9E9" },
+            { name: "Solarized Light 2", text: "#002B36", background: "#FFF9E9" },
             { name: "Terminal", text: "#FFFFFF", background: "#131A21" },
             { name: "Dracula", text: "#f8f8f2", background: "#282a36" },
             { name: "One Dark Pro", text: "#FFFFFF", background: "#282C34" },
-            { name: "Grey", text: "#000000", background: "#F1F1F1" },
             { name: "BW Light", text: "#000000", background: "#FFFFFF" },
             { name: "BW Dark", text: "#FFFFFF", background: "#000000" },
             { name: "iA", text: "#19191A", background: "#F7F7F7" },
             { name: "iA Dark", text: "#CBCCCB", background: "#19191A" },
+            { name: "Ayu Dark", text: "#B3B1AD", background: "#0A0E14" },
+            { name: "Ayu Light", text: "#575F66", background: "#FAFAFA" },
+            { name: "Ayu Mirage", text: "#CBCCC6", background: "#1F2430" },
+            { name: "Night Owl Light", text: "#24292e", background: "#FBFBFB" },
+            { name: "-----", text: "#000000", background: "#FFFFFF" },
+            { name: "Grey", text: "#000000", background: "#F1F1F1" },
             { name: "Slate Blue", text: "#FFFFFF", background: "#235D6C" },
             { name: "Slate Blue Dark", text: "#FFFFFF", background: "#344E50" },
             { name: "Blue Light", text: "#000000", background: "#56A6ED" },
@@ -232,81 +413,166 @@
             { name: "Ivory", text: "#000000", background: "#FFFFF0" },
             { name: "Linen", text: "#000000", background: "#FFFAFA" },
             { name: "Snow", text: "#000000", background: "#FAF0E6" },
-            { name: "Ghostwhite", text: "#000000", background: "#F8F8FF" }
+            { name: "Ghostwhite", text: "#000000", background: "#F8F8FF" },
+            { name: "Azure", text: "#000000", background: "#F1FFFF" },
+            { name: "Bisque", text: "#000000", background: "#FFE4C4" },
+            { name: "DodgerBlue", text: "#FFFFFF", background: "#1E91FF" },
+            { name: "Matrix", text: "#3DD605", background: "#000000" },
+            { name: "MatrixR", text: "#000000", background: "#46EA0C" },
         ]
 
-        themesListHtml += `<option></option>`;
-        themes.forEach(t => {
-            themesListHtml += `<option value='${t.name}'> ${t.name} </option>`;
-        });
+        const fonts = [
+            { name: "monospace", fontName: "monospace" },
+            { name: "Cascadia Code", fontName: "Cascadia Code" },
+            { name: "Cascadia Mono", fontName: "Cascadia Mono" },
+            { name: "Comic Mono", fontName: "Comic Mono" },
+            { name: "CooperHewitt-Book", fontName: "CooperHewitt-Book" },
+            { name: "Cormorant-Regular", fontName: "Cormorant-Regular" },
+            { name: "Crimson-Roman", fontName: "Crimson-Roman" },
+            { name: "DejaVu Sans Mono", fontName: "DejaVuSansMono" },
+            { name: "FantasqueSansMono-Regular", fontName: "FantasqueSansMono-Regular" },
+            { name: "Fira Mono", fontName: "Fira Mono" },
+            { name: "Fira Sans", fontName: "Fira Sans" },
+            { name: "iA Writer Duo", fontName: "iAWriterDuoS-Regular" },
+            { name: "iA Writer Mono", fontName: "iAWriterMonoS-Regular" },
+            { name: "iA Writer Quattro", fontName: "iAWriterQuattroS-Regular" },
+            { name: "IBM Plex Mono", fontName: "IBM Plex Mono" },
+            { name: "IBM Plex Sans", fontName: "IBM Plex Sans" },
+            { name: "Inria Sans", fontName: "Inria Sans" },
+            { name: "Inria Serif", fontName: "Inria Serif" },
+            { name: "JetBrainsMono-Regular", fontName: "JetBrainsMono-Regular" },
+            { name: "Lexend Deca", fontName: "Lexend Deca" },
+            { name: "Muli", fontName: "Muli" },
+            { name: "Noto Mono", fontName: "Noto Mono" },
+            { name: "Noto Sans", fontName: "Noto Sans" },
+            { name: "OfficeCodePro-Regular", fontName: "OfficeCodePro-Regular" },
+            { name: "Open Sans", fontName: "Open Sans" },
+            { name: "PT Sans", fontName: "PT Sans" },
+            { name: "Roboto Mono", fontName: "Roboto Mono" },
+            { name: "Roboto", fontName: "Roboto" },
+            { name: "Source Code Pro", fontName: "Source Code Pro" },
+            { name: "Source Sans Pro", fontName: "Source Sans Pro" },
+            { name: "Source Serif Pro", fontName: "Source Serif Pro" },
+            { name: "Ubuntu", fontName: "Ubuntu" },
+            { name: "ArialMT", fontName: "ArialMT" },
+            { name: "Georgia", fontName: "Georgia" },
+            { name: "Verdana", fontName: "Verdana" },
+            { name: "Helvetica", fontName: "Helvetica" },
+            { name: "Times New Roman", fontName: "TimesNewRomanPSMT" },
+        ];
 
-        themeSelect.innerHTML = themesListHtml;
+        const cssVarEnum = {
+            bgColor: "--bg-color",
+            fontFamily: "--font-family",
+            fontSize: "--font-size",
+            fontWeight: "--font-weight",
+            lineHeight: "--line-height",
+            showSettings: "--hide-display",
+            textColor: "--text-color",
+            writeAreaWidth: "--write-area-width",
+        }
 
-        presetsListHtml += `<option></option>`;
+        const qParamEnum = {
+            bgColor: "bg",
+            fontFamily: "font",
+            fontSize: "fontSize",
+            fontWeight: "fw",
+            lineHeight: "l",
+            showSettings: "s",
+            textColor: "t",
+            theme: "th",
+            writeAreaWidth: "w",
+        }
 
-        presets.forEach(t => {
-            presetsListHtml += `<option value='${t.name}'> ${t.name} </option>`;
-        });
+        const textEnum = {
+            line: "------------------",
+            lines: "\n\n\n\n\n\n\n\n\n\n\n\n\n"
+        }
 
-        presetSelect.innerHTML = presetsListHtml;
+        const addToOptionsFromObjArray = (select, objArray) => {
+            let options = `<option></option>`;
+            objArray.forEach(t => {
+                options += `<option value='${t.name}'> ${t.name} </option>`;
+            });
+            select.innerHTML = options;
+        }
 
-        const setThemeFromSelect = (selectObject) => {
-            const selectedTheme = themes.find(t => t.name === selectObject.value);
+        addToOptionsFromObjArray(themeSelect, themes);
+        addToOptionsFromObjArray(presetSelect, presets);
+        addToOptionsFromObjArray(fontSelect, fonts);
+
+        const setThemeFromSelect = (sObj) => {
+            const selectedTheme = themes.find(t => t.name === sObj.value);
             setTheme(selectedTheme);
         }
 
-        const setPreset = (selectObject) => {
-            const s = presets.find(t => t.name === selectObject.value);
-            const theme = themes.find(t => t.name === s.theme);
+        const setPresetFromSelect = (sObj) => {
+            const s = presets.find(t => t.name === sObj.value);
+            setPreset(s);
+        }
+
+        const setRandomStyle = () => {
+            setRandomTheme();
+            setRandomFont();
+        }
+
+        const setPreset = (preset) => {
+            const theme = themes.find(t => t.name === preset.theme);
             setTheme(theme);
+            const font = fonts.find(f => f.name === preset.font);
+            setFont(font);
+            root.style.setProperty(cssVarEnum.lineHeight, `${preset.lineHeight}em`);
+            root.style.setProperty(cssVarEnum.fontSize, `${preset.fontSize}pt`);
+            setQueryParam(qParamEnum.lineHeight, preset.lineHeight)
+            setQueryParam(qParamEnum.fontSize, preset.fontSize);
+            fontSize = preset.fontSize;
+            lineHeightSelect.value = preset.lineHeight
+            fontSizeSelect.value = preset.fontSize;
+        }
 
-            root.style.setProperty('--line-height', `${s.lineHeight}em`);
-            root.style.setProperty('--font-family', s.font);
-            root.style.setProperty('--font-size', `${s.fontSize}pt`);
-
-            setQueryParam("font", s.font)
-            setQueryParam("l", s.lineHeight)
-            setQueryParam("fontSize", s.fontSize);
-
-            fontSize = s.fontSize;
-            themeSelect.value = s.theme;
-            fontSelect.value = s.font;
-            lineHeightSelect.value = s.lineHeight
+        const setFont = (font) => {
+            root.style.setProperty(cssVarEnum.fontFamily, font.fontName);
+            setQueryParam(qParamEnum.fontFamily, font.fontName)
+            fontSelect.value = font.name;
         }
 
         const setTheme = (theme) => {
-            root.style.setProperty('--text-color', theme.text);
-            root.style.setProperty('--bg-color', theme.background);
-            setQueryParam("t", theme.text);
-            setQueryParam("bg", theme.background);
-            setQueryParam("theme", theme.name);
+            root.style.setProperty(cssVarEnum.textColor, theme.text);
+            root.style.setProperty(cssVarEnum.bgColor, theme.background);
+            setQueryParam(qParamEnum.textColor, theme.text);
+            setQueryParam(qParamEnum.bgColor, theme.background);
+            setQueryParam(qParamEnum.theme, theme.name);
             bgColor.value = theme.background;
             textColor.value = theme.text;
+            themeSelect.value = theme.name;
         }
 
         window.onbeforeunload = function (e) {
             e = e || window.event;
-            const el = document.getElementById("writeArea");
-            hasChanges = (el && el.value) ? true : false;
-            return hasChanges ? 'Sure?' : null;
+            hasChanges = (wa && wa.value) ? true : false;
+            if (askForConfirmationOnExit === true && hasChanges) {
+                return hasChanges ? 'Sure?' : null;
+            }
         };
 
         const setQueryParam = (key, value) => {
             const searchParams = new URLSearchParams(window.location.search)
-            searchParams.set(key, value);
+            const v = encodeURI(value);
+            searchParams.set(key, v);
             const newRelativePathQuery = window.location.pathname + '?' + searchParams.toString();
             history.pushState(null, '', newRelativePathQuery);
         }
 
         const resetSettings = () => {
             resetQueryParams();
-            root.style.setProperty('--text-color', '#FFFFFF');
-            root.style.setProperty('--bg-color', '#002B36');
-            root.style.setProperty('--line-height', '1.4em');
-            root.style.setProperty('--font-family', 'monospace');
-            root.style.setProperty('--font-size', '15pt');
+            root.style.setProperty(cssVarEnum.textColor, '#24292e');
+            root.style.setProperty(cssVarEnum.bgColor, '#FFFFFF');
+            root.style.setProperty(cssVarEnum.lineHeight, '1.4em');
+            root.style.setProperty(cssVarEnum.fontFamily, "'Cascadia Mono','Cascadia Mono', 'Roboto Mono', monospace;");
+            root.style.setProperty(cssVarEnum.fontSize, '13pt');
+            root.style.setProperty(cssVarEnum.writeAreaWidth, '900px');
 
-            fontSize = 15;
+            fontSize = 13;
             themeSelect.value = "";
             fontSelect.value = "";
             lineHeightSelect.value = "1.4"
@@ -315,68 +581,306 @@
             presetSelect.value = "";
         }
 
+        const setFontSize = (sObj) => {
+            root.style.setProperty(cssVarEnum.fontSize, `${sObj.value}pt`);
+            setQueryParam(qParamEnum.fontSize, sObj.value);
+            fontSize = sObj.value;
+        }
+
+        const handleFontSize = (action) => {
+            (action === "+") ? fontSize++ : fontSize--;
+            root.style.setProperty(cssVarEnum.fontSize, `${fontSize}pt`);
+            setQueryParam(qParamEnum.fontSize, fontSize);
+            fontSizeSelect.value = fontSize;
+        }
+
+        const setStyle = (cssVar, qVar, cssValue, qValue) => {
+            root.style.setProperty(cssVar, cssValue);
+            setQueryParam(qVar, qValue);
+        }
+
+        const setBgColor = (sObj) => setStyle(cssVarEnum.bgColor, qParamEnum.bgColor, sObj.value, sObj.value);
+        const setTextColor = (sObj) => setStyle(cssVarEnum.textColor, qParamEnum.textColor, sObj.value, sObj.value);
+        const setWriteAreaWidth = (sObj) => setStyle(cssVarEnum.writeAreaWidth, qParamEnum.writeAreaWidth, `${sObj.value}`, sObj.value);
+        const setLineHeight = (sObj) => setStyle(cssVarEnum.lineHeight, qParamEnum.lineHeight, `${sObj.value}em`, sObj.value);
+        const setFontWeight = (fwNum) => setStyle(cssVarEnum.fontWeight, qParamEnum.fontWeight, fwNum, fwNum);
+
+        function typeInTextarea(newText, el = document.activeElement) {
+            const [start, end] = [el.selectionStart, el.selectionEnd];
+            let z = newText.length;
+            el.setRangeText(newText, start, end, 'select');
+            el.focus();
+            el.setSelectionRange(start + z, start + z);
+        }
+
+        const helperFunctions = {
+            getEol: (arg) => {
+                return arg.match(/\r\n/gm) ? "\r\n" : "\n"
+            },
+            uuidv4: () => {
+                return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+                    return v.toString(16);
+                });
+            },
+            uuidv4NoDashes: () => {
+                return 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+                    return v.toString(16);
+                });
+            },
+            randomNumber: (min, max) => {
+                const r = Math.random() * (max - min) + min
+                return Math.floor(r)
+            }
+        }
+
+        const textFunctions = {
+            removeEmptyLines: (argStr) => {
+                let eol = helperFunctions.getEol(argStr);
+                return argStr.split(helperFunctions.getEol(eol))
+                    .filter(line => line)
+                    .join(eol);
+            },
+            trimAllLines: (argStr) => {
+                let eol = helperFunctions.getEol(argStr);
+                return argStr.split(helperFunctions.getEol(eol))
+                    .map(line => line.trim())
+                    .join(eol)
+            },
+            trimEndFromAllLines: (argStr) => {
+                let eol = helperFunctions.getEol(argStr);
+                return argStr.split(helperFunctions.getEol(eol))
+                    .map(line => line.trimEnd())
+                    .join(eol)
+            },
+            trimAndRemoveEmptyLines: (argStr) => {
+                let eol = helperFunctions.getEol(argStr);
+                return argStr.split(eol)
+                    .filter(line => line)
+                    .map(line => line.trim())
+                    .join(eol)
+            },
+            sortLines: (argStr) => {
+                let eol = helperFunctions.getEol(argStr);
+                return argStr.split(eol)
+                    .sort()
+                    .join(eol)
+            },
+            removeDoubleEmptyLines: (argStr) => {
+                let eol = helperFunctions.getEol(argStr);
+                let regExp = new RegExp("(" + eol + "){3,}", "gm");
+                let output = argStr.replace(regExp, eol + eol).trim();
+                return output;
+            },
+            replaceSpacesWithUnderstores: (argStr) => {
+                return argStr.replaceAll(' ', '_');
+            }
+        }
+
+        const writeAreaFunctions = {
+            removeDoubleEmptyLines: () => {
+                wa.value = textFunctions.removeDoubleEmptyLines(wa.value);
+                writeAreaFunctions.focus();
+            },
+            removeEmptyLines: () => {
+                wa.value = textFunctions.removeEmptyLines(wa.value);
+                writeAreaFunctions.focus();
+            },
+            trimAndRemoveEmptyLines: () => {
+                wa.value = textFunctions.trimAndRemoveEmptyLines(wa.value);
+                writeAreaFunctions.focus();
+            },
+            trimEndFromAllLines: () => {
+                wa.value = textFunctions.trimEndFromAllLines(wa.value);
+                writeAreaFunctions.focus();
+            },
+            clear: () => {
+                wa.value = "";
+                writeAreaFunctions.focus();
+            },
+            focus: () => {
+                wa.focus();
+            },
+            sortSelection: () => {
+                let start = wa.selectionStart;
+                let finish = wa.selectionEnd;
+                let allText = wa.value;
+                let sel = allText.substring(start, finish);
+                const selSorted = textFunctions.sortLines(sel);
+                const res = `${allText.substring(0, start)}${selSorted}${allText.substring(finish, allText.length)}`
+                wa.value = res;
+                writeAreaFunctions.focus();
+            },
+            replaceSpacesWithUnderScoresFromSelection: () => {
+                let start = wa.selectionStart;
+                let finish = wa.selectionEnd;
+                let allText = wa.value;
+                let sel = allText.substring(start, finish);
+                const selSorted = textFunctions.replaceSpacesWithUnderstores(sel);
+                const res = `${allText.substring(0, start)}${selSorted}${allText.substring(finish, allText.length)}`
+                wa.value = res;
+                wa.focus();
+                wa.setSelectionRange(finish, finish);
+            },
+            insert: {
+                spacerWithTitle: () => typeInTextarea(`${textEnum.line}\n${new Date().toISOString().slice(0, 10)} `, wa),
+                section: () => typeInTextarea(`\n${textEnum.line}\n\n\n\n\n\n${textEnum.line}\n`, wa),
+                lines: () => typeInTextarea(textEnum.lines, wa),
+                guid: () => typeInTextarea(helperFunctions.uuidv4(), wa),
+                guidNoDashes: () => typeInTextarea(helperFunctions.uuidv4NoDashes(), wa),
+                line: () => typeInTextarea(textEnum.line, wa),
+                date: () => typeInTextarea(new Date().toISOString().slice(0, 10), wa),
+                time: () => {
+                    const cDate = new Date();
+                    const cHours = ("0" + cDate.getHours()).slice(-2);
+                    const cMinutes = ("0" + cDate.getMinutes()).slice(-2);
+                    typeInTextarea(`${cHours}${cMinutes}`, wa);
+                },
+                dateTime: () => {
+                    const cDate = new Date();
+                    const cHours = ("0" + cDate.getHours()).slice(-2);
+                    const cMinutes = ("0" + cDate.getMinutes()).slice(-2);
+                    const ISOdateString = cDate.toISOString().slice(0, 10);
+                    const ISOdateWithTime = `${ISOdateString}_${cHours}${cMinutes}`;
+                    typeInTextarea(ISOdateWithTime, wa);
+                },
+                dateTimeJoined: () => {
+                    const cDate = new Date();
+                    const hours = ("0" + cDate.getHours()).slice(-2);
+                    const minutes = ("0" + cDate.getMinutes()).slice(-2);
+                    const year = cDate.getFullYear();
+                    const month = cDate.getMonth() +1;
+                    const day = cDate.getDate();
+                    const monthX = ("0" + month).slice(-2);
+                    const dayX = ("0" + day).slice(-2);
+                    const out = `${year}${monthX}${dayX}${hours}${minutes}`
+                    typeInTextarea(out, wa);
+                }
+            }
+        }
+
+        const toggleAskConfirmationOnExitCommand = () => {
+            askForConfirmationOnExit = !askForConfirmationOnExit;
+            setQueryParam("q", askForConfirmationOnExit);
+        }
+
+        const toggleSettingsShow = () => {
+            showSettings = !showSettings
+            setQueryParam('s', showSettings);
+            if (showSettings === true) {
+                root.style.setProperty(cssVarEnum.showSettings, 'inherit');
+            } else {
+                root.style.setProperty(cssVarEnum.showSettings, 'none');
+            }
+        }
+
+        const toggleColorSelectShow = () => {
+            const el = document.getElementById("showColorSelect");
+            const elements = document.getElementsByClassName("colorPicker");
+
+            const forX = (style) => {
+                for (let item of elements) {
+                    item.style.display = style;
+                }
+            }
+
+            if (el.checked === true) {
+                forX("inline")
+            } else {
+                forX("none")
+            }
+        }
+
+        const setShowSettings = (booleanValue) => {
+            if (booleanValue === true) {
+                root.style.setProperty('--hide-display', 'inherit');
+            } else {
+                root.style.setProperty('--hide-display', 'none');
+            }
+        }
+
+        const setRandomTheme = () => setTheme(themes[helperFunctions.randomNumber(0, themes.length)]);
+        const setRandomPreset = () => setPreset(presets[helperFunctions.randomNumber(0, presets.length)]);
+        const setRandomFont = () => setFont(fonts[helperFunctions.randomNumber(0, fonts.length)]);
+        const setFontWeightFromSelect = (selectObject) => setFontWeight(selectObject.value);
+        const setFontFromSelect = (sObj) => setFont(fonts.find(f => f.name === sObj.value))
+
         const handleParams = () => {
             for (const param in params) {
                 switch (param) {
                     case "bg":
                         const bgValue = decodeURI(params.bg);
                         bgColor.value = bgValue;
-                        root.style.setProperty('--bg-color', bgValue);
+                        root.style.setProperty(cssVarEnum.bgColor, bgValue);
                         break;
                     case "l":
-                        root.style.setProperty('--line-height', `${params.l}em`);
+                        root.style.setProperty(cssVarEnum.lineHeight, `${params.l}em`);
                         lineHeightSelect.value = params.l;
                         break;
                     case "font":
                         const font = decodeURI(params.font);
-                        root.style.setProperty('--font-family', font);
+                        root.style.setProperty(cssVarEnum.fontFamily, font);
                         fontSelect.value = font;
                         break;
                     case "fontSize":
-                        root.style.setProperty('--font-size', `${params.fontSize}pt`);
+                        root.style.setProperty(cssVarEnum.fontSize, `${params.fontSize}pt`);
                         fontSize = parseInt(params.fontSize);
+                        fontSizeSelect.value = fontSize;
                         break;
                     case "t":
                         const tValue = decodeURI(params.t);
                         textColor.value = tValue;
-                        root.style.setProperty('--text-color', tValue);
+                        root.style.setProperty(cssVarEnum.textColor, tValue);
                         break;
                     case "theme":
-                        console.log("here");
                         const themeValue = decodeURI(params.theme);
                         themeSelect.value = themeValue;
+                        break;
+                    case "s":
+                        const showSettingsValue = decodeURI(params.s) === "true";
+                        toggleSettingsDisplay.checked = showSettingsValue;
+                        showSettings = showSettingsValue;
+                        setShowSettings(showSettingsValue);
+                        break;
+                    case "w":
+                        const widthValue = decodeURI(params.w);
+                        root.style.setProperty(cssVarEnum.writeAreaWidth, widthValue);
+                        writeAreaWidthSelect.value = widthValue;
+                        break;
+                    case "fw":
+                        const fwValue = decodeURI(params.fw);
+                        setFontWeight(fwValue);
+                        fontWeightSelect.value = fwValue;
+                        break;
+                    case "q":
+                        const qValue = decodeURI(params.q) === "true";
+                        toggleAskConfirmationOnExit.checked = qValue;
+                        askForConfirmationOnExit = qValue;
                         break;
                 }
             }
         }
 
-        handleParams()
+        handleParams();
+    </script>
 
-        const handleFontSize = (action) => {
-            (action === "+") ? fontSize++ : fontSize--;
-            root.style.setProperty('--font-size', `${fontSize}pt`);
-            setQueryParam("fontSize", fontSize);
-        }
+    <script>
+        /*! taboverride v4.0.3 | https://github.com/wjbryant/taboverride
+        (c) 2015 Bill Bryant | http://opensource.org/licenses/mit */
+        !function (a) { "use strict"; var b; "object" == typeof exports ? a(exports) : "function" == typeof define && define.amd ? define(["exports"], a) : (b = window.tabOverride = {}, a(b)) }(function (a) { "use strict"; function b(a, b) { var c, d, e, f = ["alt", "ctrl", "meta", "shift"], g = a.length, h = !0; for (c = 0; g > c; c += 1)if (!b[a[c]]) { h = !1; break } if (h) for (c = 0; c < f.length; c += 1) { if (e = f[c] + "Key", b[e]) if (g) { for (h = !1, d = 0; g > d; d += 1)if (e === a[d]) { h = !0; break } } else h = !1; if (!h) break } return h } function c(a, c) { return a === q && b(s, c) } function d(a, c) { return a === r && b(t, c) } function e(a, b) { return function (c, d) { var e, f = ""; if (arguments.length) { if ("number" == typeof c && (a(c), b.length = 0, d && d.length)) for (e = 0; e < d.length; e += 1)b.push(d[e] + "Key"); return this } for (e = 0; e < b.length; e += 1)f += b[e].slice(0, -3) + "+"; return f + a() } } function f(a) { a = a || event; var b, e, f, g, h, i, j, k, l, s, t, w, x, y, z, A, B, C, D = a.currentTarget || a.srcElement, E = a.keyCode, F = "character"; if ((!D.nodeName || "textarea" === D.nodeName.toLowerCase()) && (E === q || E === r || 13 === E && u)) { if (v = !1, f = D.value, k = D.scrollTop, "number" == typeof D.selectionStart) l = D.selectionStart, s = D.selectionEnd, t = f.slice(l, s); else { if (!o.selection) return; g = o.selection.createRange(), t = g.text, h = g.duplicate(), h.moveToElementText(D), h.setEndPoint("EndToEnd", g), s = h.text.length, l = s - t.length, n > 1 ? (i = f.slice(0, l).split(m).length - 1, j = t.split(m).length - 1) : i = j = 0 } if (E === q || E === r) if (b = p, e = b.length, y = 0, z = 0, A = 0, l !== s && -1 !== t.indexOf("\n")) if (w = 0 === l || "\n" === f.charAt(l - 1) ? l : f.lastIndexOf("\n", l - 1) + 1, s === f.length || "\n" === f.charAt(s) ? x = s : "\n" === f.charAt(s - 1) ? x = s - 1 : (x = f.indexOf("\n", s), -1 === x && (x = f.length)), c(E, a)) y = 1, D.value = f.slice(0, w) + b + f.slice(w, x).replace(/\n/g, function () { return y += 1, "\n" + b }) + f.slice(x), g ? (g.collapse(), g.moveEnd(F, s + y * e - j - i), g.moveStart(F, l + e - i), g.select()) : (D.selectionStart = l + e, D.selectionEnd = s + y * e, D.scrollTop = k); else { if (!d(E, a)) return; 0 === f.slice(w).indexOf(b) && (w === l ? t = t.slice(e) : A = e, z = e), D.value = f.slice(0, w) + f.slice(w + A, l) + t.replace(new RegExp("\n" + b, "g"), function () { return y += 1, "\n" }) + f.slice(s), g ? (g.collapse(), g.moveEnd(F, s - z - y * e - j - i), g.moveStart(F, l - A - i), g.select()) : (D.selectionStart = l - A, D.selectionEnd = s - z - y * e) } else if (c(E, a)) g ? (g.text = b, g.select()) : (D.value = f.slice(0, l) + b + f.slice(s), D.selectionEnd = D.selectionStart = l + e, D.scrollTop = k); else { if (!d(E, a)) return; 0 === f.slice(l - e).indexOf(b) && (D.value = f.slice(0, l - e) + f.slice(l), g ? (g.move(F, l - e - i), g.select()) : (D.selectionEnd = D.selectionStart = l - e, D.scrollTop = k)) } else if (u) { if (0 === l || "\n" === f.charAt(l - 1)) return void (v = !0); if (w = f.lastIndexOf("\n", l - 1) + 1, x = f.indexOf("\n", l), -1 === x && (x = f.length), B = f.slice(w, x).match(/^[ \t]*/)[0], C = B.length, w + C > l) return void (v = !0); g ? (g.text = "\n" + B, g.select()) : (D.value = f.slice(0, l) + "\n" + B + f.slice(s), D.selectionEnd = D.selectionStart = l + n + C, D.scrollTop = k) } return a.preventDefault ? void a.preventDefault() : (a.returnValue = !1, !1) } } function g(a) { a = a || event; var b = a.keyCode; if (c(b, a) || d(b, a) || 13 === b && u && !v) { if (!a.preventDefault) return a.returnValue = !1, !1; a.preventDefault() } } function h(a, b) { var c, d = x[a] || [], e = d.length; for (c = 0; e > c; c += 1)d[c].apply(null, b) } function i(a) { function b(b) { for (c = 0; f > c; c += 1)b(a[c].type, a[c].handler) } var c, d, e, f = a.length; return o.addEventListener ? (d = function (a) { b(function (b, c) { a.removeEventListener(b, c, !1) }) }, e = function (a) { d(a), b(function (b, c) { a.addEventListener(b, c, !1) }) }) : o.attachEvent && (d = function (a) { b(function (b, c) { a.detachEvent("on" + b, c) }) }, e = function (a) { d(a), b(function (b, c) { a.attachEvent("on" + b, c) }) }), { add: e, remove: d } } function j(a) { h("addListeners", [a]), l.add(a) } function k(a) { h("removeListeners", [a]), l.remove(a) } var l, m, n, o = window.document, p = "\t", q = 9, r = 9, s = [], t = ["shiftKey"], u = !0, v = !1, w = o.createElement("textarea"), x = {}; l = i([{ type: "keydown", handler: f }, { type: "keypress", handler: g }]), w.value = "\n", m = w.value, n = m.length, w = null, a.utils = { executeExtensions: h, isValidModifierKeyCombo: b, createListeners: i, addListeners: j, removeListeners: k }, a.handlers = { keydown: f, keypress: g }, a.addExtension = function (a, b) { return a && "string" == typeof a && "function" == typeof b && (x[a] || (x[a] = []), x[a].push(b)), this }, a.set = function (a, b) { var c, d, e, f, g, i, l; if (a) for (c = arguments.length < 2 || b, d = a, e = d.length, "number" != typeof e && (d = [d], e = 1), c ? (f = j, g = "true") : (f = k, g = ""), i = 0; e > i; i += 1)l = d[i], l && l.nodeName && "textarea" === l.nodeName.toLowerCase() && (h("set", [l, c]), l.setAttribute("data-taboverride-enabled", g), f(l)); return this }, a.tabSize = function (a) { var b; if (arguments.length) { if (a && "number" == typeof a && a > 0) for (p = "", b = 0; a > b; b += 1)p += " "; else p = "\t"; return this } return "\t" === p ? 0 : p.length }, a.autoIndent = function (a) { return arguments.length ? (u = a ? !0 : !1, this) : u }, a.tabKey = e(function (a) { return arguments.length ? void (q = a) : q }, s), a.untabKey = e(function (a) { return arguments.length ? void (r = a) : r }, t) });
+        const kNBeQeRWejjM = document.getElementById("writeArea");
+        tabOverride.tabSize(4);
+        tabOverride.set(kNBeQeRWejjM);
+    </script>
 
-        const setFont = (selectObject) => {
-            root.style.setProperty('--font-family', selectObject.value);
-            setQueryParam("font", selectObject.value)
-        }
-
-        const setLineHeight = (selectObject) => {
-            root.style.setProperty('--line-height', `${selectObject.value}em`);
-            setQueryParam("l", selectObject.value)
-        }
-
-        const setBgColor = (selectObject) => {
-            root.style.setProperty('--bg-color', selectObject.value);
-            setQueryParam("bg", selectObject.value);
-        }
-
-        const setTextColor = (selectObject) => {
-            root.style.setProperty('--text-color', selectObject.value);
-            setQueryParam("t", selectObject.value);
-        }
+    <script>
+        const favIcon = "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDI0IDI0IiB3aWR0aD0iMjRweCIgZmlsbD0iIzAwMDAwMCI+PHBhdGggZD0iTTAgMGgyNHYyNEgwVjB6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTIwIDExSDRjLS41NSAwLTEgLjQ1LTEgMXMuNDUgMSAxIDFoMTZjLjU1IDAgMS0uNDUgMS0xcy0uNDUtMS0xLTF6TTQgMThoMTBjLjU1IDAgMS0uNDUgMS0xcy0uNDUtMS0xLTFINGMtLjU1IDAtMSAuNDUtMSAxcy40NSAxIDEgMXpNMjAgNkg0Yy0uNTUgMC0xIC40NS0xIDF2LjAxYzAgLjU1LjQ1IDEgMSAxaDE2Yy41NSAwIDEtLjQ1IDEtMVY3YzAtLjU1LS40NS0xLTEtMXoiLz48L3N2Zz4=";
+        const docHead = document.getElementsByTagName("head")[0];
+        const newLink = document.createElement("link");
+        newLink.rel = "shortcut icon";
+        newLink.href = "data:image/svg+xml;base64," + favIcon;
+        docHead.appendChild(newLink);
     </script>
 </body>
 
