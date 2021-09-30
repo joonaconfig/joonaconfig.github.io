@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -237,32 +238,35 @@
                 </div>
                 <button style="font-size: 12pt;" title="Remove double empty lines" onclick="writeAreaFunctions.removeDoubleEmptyLines()">✂</button>
                 <button title="Inspert empty lines" onclick="writeAreaFunctions.insert.lines()">Add</button>
+                <button title="Inspert empty lines" onclick="writeAreaFunctions.insert.linesDouble()">Add+</button>
                 <button style="font-size: 12pt;" title="Insert divider line" onclick="writeAreaFunctions.insert.line()">⏤</button>
 
                 <div class="dropdown">
                     <button>Insert</button>
                     <div class="dropdown-content">
-                        <button onclick="writeAreaFunctions.insert.lines()">Add empty lines</button>
-                        <button onclick="writeAreaFunctions.insert.line()">Insert divider</button>
-                        <button title="Insert date" onclick="writeAreaFunctions.insert.date()">Insert date</button>
-                        <button title="Insert time" onclick="writeAreaFunctions.insert.time()">Insert time</button>
-                        <button title="Insert date and time" onclick="writeAreaFunctions.insert.dateTime()">Insert date & time</button>
-                        <button title="Insert date and time" onclick="writeAreaFunctions.insert.dateTimeJoined()">Insert date & time (joined)</button>
-                        <button onclick="writeAreaFunctions.insert.guid()">Insert GUID</button>
-                        <button onclick="writeAreaFunctions.insert.guidNoDashes()">Insert GUID, no spaces</button>
+                        <button onclick="writeAreaFunctions.insert.lines()">Empty lines</button>
+                        <button onclick="writeAreaFunctions.insert.line()">Divider</button>
+                        <button title="Insert date" onclick="writeAreaFunctions.insert.date()">Date</button>
+                        <button title="Insert date" onclick="writeAreaFunctions.insert.dateJoined()">Date (joined)</button>
+                        <button title="Insert date and time" onclick="writeAreaFunctions.insert.dateTime()">Datetime</button>
+                        <button title="Insert date and time" onclick="writeAreaFunctions.insert.dateTimeJoined()">Datetime (joined)</button>
+                        <button title="Insert time" onclick="writeAreaFunctions.insert.dateTimeJoinedWithSeconds()">Datetime + seconds</button>
+                        <button title="Insert time" onclick="writeAreaFunctions.insert.time()">Time</button>
+                        <button onclick="writeAreaFunctions.insert.guid()">GUID</button>
+                        <button onclick="writeAreaFunctions.insert.guidNoDashes()">GUID, no spaces</button>
                     </div>
                 </div>
 
                 <div class="dropdown">
                     <button>Actions</button>
                     <div class="dropdown-content">
+                        <button onclick="writeAreaFunctions.replaceSpacesWithUnderScoresFromSelection()">Replace spaces</button>
                         <button onclick="writeAreaFunctions.removeDoubleEmptyLines()">Remove double empty lines</button>
                         <button onclick="writeAreaFunctions.trimEndFromAllLines()">Trim ends</button>
                         <button onclick="writeAreaFunctions.trimAndRemoveEmptyLines()">Trim all</button>
                         <button onclick="writeAreaFunctions.removeEmptyLines()">Remove empty lines</button>
                         <button onclick="writeAreaFunctions.sortSelection()">Sort selection</button>
                         <button ondblclick="writeAreaFunctions.clear()">Clear (double click)</button>
-                        <button onclick="writeAreaFunctions.replaceSpacesWithUnderScoresFromSelection()">Replace spaces</button>
                     </div>
                 </div>
 
@@ -725,8 +729,9 @@
             },
             insert: {
                 spacerWithTitle: () => typeInTextarea(`${textEnum.line}\n${new Date().toISOString().slice(0, 10)} `, wa),
-                section: () => typeInTextarea(`\n${textEnum.line}\n\n\n\n\n\n${textEnum.line}\n`, wa),
+                section: () => typeInTextarea(`\n\n${textEnum.line}\n\n\n\n\n\n${textEnum.line}\n\n\n`, wa),
                 lines: () => typeInTextarea(textEnum.lines, wa),
+                linesDouble: () => typeInTextarea(`${textEnum.lines}${textEnum.lines}`, wa),
                 guid: () => typeInTextarea(helperFunctions.uuidv4(), wa),
                 guidNoDashes: () => typeInTextarea(helperFunctions.uuidv4NoDashes(), wa),
                 line: () => typeInTextarea(textEnum.line, wa),
@@ -745,6 +750,20 @@
                     const ISOdateWithTime = `${ISOdateString}_${cHours}${cMinutes}`;
                     typeInTextarea(ISOdateWithTime, wa);
                 },
+                dateTimeJoinedWithSeconds: () => {
+                    const cDate = new Date();
+                    const hours = ("0" + cDate.getHours()).slice(-2);
+                    const minutes = ("0" + cDate.getMinutes()).slice(-2);
+                    const year = cDate.getFullYear();
+                    const month = cDate.getMonth() +1;
+                    const day = cDate.getDate();
+                    const seconds = cDate.getSeconds();
+                    const monthX = ("0" + month).slice(-2);
+                    const dayX = ("0" + day).slice(-2);
+                    const secondsX = ("0" + seconds).slice(-2);
+                    const out = `${year}${monthX}${dayX}${hours}${minutes}${secondsX}`
+                    typeInTextarea(out, wa);
+                },
                 dateTimeJoined: () => {
                     const cDate = new Date();
                     const hours = ("0" + cDate.getHours()).slice(-2);
@@ -756,6 +775,16 @@
                     const dayX = ("0" + day).slice(-2);
                     const out = `${year}${monthX}${dayX}${hours}${minutes}`
                     typeInTextarea(out, wa);
+                },
+                dateJoined: () => {
+                    const cDate = new Date();
+                    const year = cDate.getFullYear();
+                    const month = cDate.getMonth() +1;
+                    const day = cDate.getDate();
+                    const monthX = ("0" + month).slice(-2);
+                    const dayX = ("0" + day).slice(-2);
+                    const out = `${year}${monthX}${dayX}`
+                    typeInTextarea(out, wa);  
                 }
             }
         }
